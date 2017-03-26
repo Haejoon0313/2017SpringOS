@@ -1,0 +1,26 @@
+Writing command line to /tmp/mW5i8Z6XM4.dsk...
+warning: can't find squish-pty, so terminal input will fail
+bochs -q
+Kernel command line: -q run priority-donate-one
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+374 pages available in user pool.
+Calibrating timer...  102,400 loops/s.
+Boot complete.
+Executing 'priority-donate-one':
+(priority-donate-one) begin
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc01028b4
+ cr2=0000001c error=00000000
+ eax=c0110540 ebx=c002ff10 ecx=c0116000 edx=00000000
+ esi=00000000 edi=00000000 esp=c0116000 ebp=c0116f90
+ cs=0008 ds=0010 es=0010 ss=ff10
+Kernel PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
+Call stack: 0xc0107416 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc0109f03 0xc0100d20.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 38 ticks
+Thread: 0 idle ticks, 38 kernel ticks, 0 user ticks
+Console: 906 characters output
+Keyboard: 0 keys pressed
+Powering off...
