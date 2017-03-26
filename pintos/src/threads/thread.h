@@ -101,7 +101,15 @@ struct thread
     unsigned magic;                     /* Detects stack overflow. */
 		int64_t morning_tick;								/* When to wake up*/
 	
-	
+
+		int origin_priority;
+		struct list potential_donator;
+		struct lock * waiting_lock;
+		struct list_elem donation_elem;
+
+
+
+
 	  /*About priority donation part,by chaehun */
 	//	int  donation_count;
 //		struct list potential_donator;//threads that want to acquire lock.

@@ -212,7 +212,7 @@ thread_create (const char *name, int priority,
   sf = alloc_frame (t, sizeof *sf);
   sf->eip = switch_entry;
 	
-//	t->donation_count =0;
+
   /* Add to run queue. */
   thread_unblock (t);
 
@@ -483,6 +483,12 @@ init_thread (struct thread *t, const char *name, int priority)
   t->stack = (uint8_t *) t + PGSIZE;
   t->priority = priority;
   t->magic = THREAD_MAGIC;
+
+	//About priority scheduling part, project1 initialization
+	t->origin_priority = priority;
+	list_init(&t->potential_donator);
+	t->waiting_lock = NULL;
+
 }
 
 /* Allocates a SIZE-byte frame at the top of thread T's stack and
