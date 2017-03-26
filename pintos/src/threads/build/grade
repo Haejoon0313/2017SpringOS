@@ -73,22 +73,84 @@ Functionality of advanced scheduler (tests/threads/Rubric.mlfqs):
 
 DETAILS OF tests/threads/priority-condvar FAILURE:
 
-Kernel panic in run: PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc01073f6 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc0102c18 0xc010ae8c 0xc0100d20
-Translation of call stack:
-0xc01073f6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0101778: intr_handler (..../threads/interrupt.c:377)
-0xc010190b: intr_entry (threads/intr-stubs.S:38)
-0xc01028b4: donate_priority (...../../threads/synch.c:247)
-0xc01028e2: donate_priority (...../../threads/synch.c:258)
-0xc010288a: lock_acquire (...../../threads/synch.c:235)
-0xc0102c18: cond_wait (...../../threads/synch.c:379)
-0xc010ae8c: priority_condvar_thread (...ads/priority-condvar.c:51)
-0xc0100d20: kernel_thread (..../../threads/thread.c:447)
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (priority-condvar) begin
+  (priority-condvar) Thread priority 23 starting.
+  (priority-condvar) Thread priority 22 starting.
+  (priority-condvar) Thread priority 21 starting.
+  (priority-condvar) Thread priority 30 starting.
+  (priority-condvar) Thread priority 29 starting.
+  (priority-condvar) Thread priority 28 starting.
+  (priority-condvar) Thread priority 27 starting.
+  (priority-condvar) Thread priority 26 starting.
+  (priority-condvar) Thread priority 25 starting.
+  (priority-condvar) Thread priority 24 starting.
+  (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 30 woke up.
+  (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 29 woke up.
+  (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 28 woke up.
+  (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 27 woke up.
+  (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 26 woke up.
+  (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 25 woke up.
+  (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 24 woke up.
+  (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 23 woke up.
+  (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 22 woke up.
+  (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 21 woke up.
+  (priority-condvar) end
+Differences in `diff -u' format:
+  (priority-condvar) begin
+  (priority-condvar) Thread priority 23 starting.
+  (priority-condvar) Thread priority 22 starting.
+  (priority-condvar) Thread priority 21 starting.
+  (priority-condvar) Thread priority 30 starting.
+  (priority-condvar) Thread priority 29 starting.
+  (priority-condvar) Thread priority 28 starting.
+  (priority-condvar) Thread priority 27 starting.
+  (priority-condvar) Thread priority 26 starting.
+  (priority-condvar) Thread priority 25 starting.
+  (priority-condvar) Thread priority 24 starting.
+  (priority-condvar) Signaling...
++ (priority-condvar) Thread priority 23 woke up.
++ (priority-condvar) Signaling...
++ (priority-condvar) Thread priority 22 woke up.
++ (priority-condvar) Signaling...
++ (priority-condvar) Thread priority 21 woke up.
++ (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 30 woke up.
+  (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 29 woke up.
+  (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 28 woke up.
+  (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 27 woke up.
+  (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 26 woke up.
+  (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 25 woke up.
+  (priority-condvar) Signaling...
+  (priority-condvar) Thread priority 24 woke up.
+- (priority-condvar) Signaling...
+- (priority-condvar) Thread priority 23 woke up.
+- (priority-condvar) Signaling...
+- (priority-condvar) Thread priority 22 woke up.
+- (priority-condvar) Signaling...
+- (priority-condvar) Thread priority 21 woke up.
+  (priority-condvar) end
 
 OUTPUT FROM tests/threads/priority-condvar:
 
-Writing command line to /tmp/JZSUhXknR7.dsk...
+Writing command line to /tmp/Ev3FMDYZZu.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-condvar
@@ -110,19 +172,30 @@ Executing 'priority-condvar':
 (priority-condvar) Thread priority 25 starting.
 (priority-condvar) Thread priority 24 starting.
 (priority-condvar) Signaling...
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc01028b4
- cr2=0000001c error=00000000
- eax=c0111b08 ebx=c0111b68 ecx=c0116000 edx=00000000
- esi=c0116f90 edi=c0111b68 esp=c0116000 ebp=c0116f30
- cs=0008 ds=0010 es=0010 ss=1b68
-Kernel PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc01073f6 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc0102c18 0xc010ae8c 0xc0100d20.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 135 ticks
-Thread: 0 idle ticks, 135 kernel ticks, 0 user ticks
-Console: 1422 characters output
+(priority-condvar) Thread priority 23 woke up.
+(priority-condvar) Signaling...
+(priority-condvar) Thread priority 22 woke up.
+(priority-condvar) Signaling...
+(priority-condvar) Thread priority 21 woke up.
+(priority-condvar) Signaling...
+(priority-condvar) Thread priority 30 woke up.
+(priority-condvar) Signaling...
+(priority-condvar) Thread priority 29 woke up.
+(priority-condvar) Signaling...
+(priority-condvar) Thread priority 28 woke up.
+(priority-condvar) Signaling...
+(priority-condvar) Thread priority 27 woke up.
+(priority-condvar) Signaling...
+(priority-condvar) Thread priority 26 woke up.
+(priority-condvar) Signaling...
+(priority-condvar) Thread priority 25 woke up.
+(priority-condvar) Signaling...
+(priority-condvar) Thread priority 24 woke up.
+(priority-condvar) end
+Execution of 'priority-condvar' complete.
+Timer: 262 ticks
+Thread: 0 idle ticks, 265 kernel ticks, 0 user ticks
+Console: 1665 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -130,21 +203,36 @@ Powering off...
 
 DETAILS OF tests/threads/priority-donate-one FAILURE:
 
-Kernel panic in run: PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc01073f6 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc0109ee3 0xc0100d20
-Translation of call stack:
-0xc01073f6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0101778: intr_handler (..../threads/interrupt.c:377)
-0xc010190b: intr_entry (threads/intr-stubs.S:38)
-0xc01028b4: donate_priority (...../../threads/synch.c:247)
-0xc01028e2: donate_priority (...../../threads/synch.c:258)
-0xc010288a: lock_acquire (...../../threads/synch.c:235)
-0xc0109ee3: acquire1_thread_func (.../priority-donate-one.c:51)
-0xc0100d20: kernel_thread (..../../threads/thread.c:447)
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (priority-donate-one) begin
+  (priority-donate-one) This thread should have priority 32.  Actual priority: 32.
+  (priority-donate-one) This thread should have priority 33.  Actual priority: 33.
+  (priority-donate-one) acquire2: got the lock
+  (priority-donate-one) acquire2: done
+  (priority-donate-one) acquire1: got the lock
+  (priority-donate-one) acquire1: done
+  (priority-donate-one) acquire2, acquire1 must already have finished, in that order.
+  (priority-donate-one) This should be the last line before finishing this test.
+  (priority-donate-one) end
+Differences in `diff -u' format:
+  (priority-donate-one) begin
+- (priority-donate-one) This thread should have priority 32.  Actual priority: 32.
+- (priority-donate-one) This thread should have priority 33.  Actual priority: 33.
++ (priority-donate-one) This thread should have priority 32.  Actual priority: 31.
++ (priority-donate-one) This thread should have priority 33.  Actual priority: 31.
+  (priority-donate-one) acquire2: got the lock
+  (priority-donate-one) acquire2: done
+  (priority-donate-one) acquire1: got the lock
+  (priority-donate-one) acquire1: done
+  (priority-donate-one) acquire2, acquire1 must already have finished, in that order.
+  (priority-donate-one) This should be the last line before finishing this test.
+  (priority-donate-one) end
 
 OUTPUT FROM tests/threads/priority-donate-one:
 
-Writing command line to /tmp/gNscsD1ZAf.dsk...
+Writing command line to /tmp/NIP8XhEhjC.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-one
@@ -155,19 +243,19 @@ Calibrating timer...  102,400 loops/s.
 Boot complete.
 Executing 'priority-donate-one':
 (priority-donate-one) begin
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc01028b4
- cr2=0000001c error=00000000
- eax=c0110540 ebx=c002ff10 ecx=c0116000 edx=00000000
- esi=00000000 edi=00000000 esp=c0116000 ebp=c0116f90
- cs=0008 ds=0010 es=0010 ss=ff10
-Kernel PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc01073f6 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc0109ee3 0xc0100d20.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 38 ticks
-Thread: 0 idle ticks, 38 kernel ticks, 0 user ticks
-Console: 906 characters output
+(priority-donate-one) This thread should have priority 32.  Actual priority: 31.
+(priority-donate-one) This thread should have priority 33.  Actual priority: 31.
+(priority-donate-one) acquire2: got the lock
+(priority-donate-one) acquire2: done
+(priority-donate-one) acquire1: got the lock
+(priority-donate-one) acquire1: done
+(priority-donate-one) acquire2, acquire1 must already have finished, in that order.
+(priority-donate-one) This should be the last line before finishing this test.
+(priority-donate-one) end
+Execution of 'priority-donate-one' complete.
+Timer: 120 ticks
+Thread: 0 idle ticks, 123 kernel ticks, 0 user ticks
+Console: 899 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -175,21 +263,41 @@ Powering off...
 
 DETAILS OF tests/threads/priority-donate-multiple FAILURE:
 
-Kernel panic in run: PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc01073f6 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc010a0d2 0xc0100d20
-Translation of call stack:
-0xc01073f6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0101778: intr_handler (..../threads/interrupt.c:377)
-0xc010190b: intr_entry (threads/intr-stubs.S:38)
-0xc01028b4: donate_priority (...../../threads/synch.c:247)
-0xc01028e2: donate_priority (...../../threads/synch.c:258)
-0xc010288a: lock_acquire (...../../threads/synch.c:235)
-0xc010a0d2: a_thread_func (...rity-donate-multiple.c:63)
-0xc0100d20: kernel_thread (..../../threads/thread.c:447)
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (priority-donate-multiple) begin
+  (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 32.
+  (priority-donate-multiple) Main thread should have priority 33.  Actual priority: 33.
+  (priority-donate-multiple) Thread b acquired lock b.
+  (priority-donate-multiple) Thread b finished.
+  (priority-donate-multiple) Thread b should have just finished.
+  (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 32.
+  (priority-donate-multiple) Thread a acquired lock a.
+  (priority-donate-multiple) Thread a finished.
+  (priority-donate-multiple) Thread a should have just finished.
+  (priority-donate-multiple) Main thread should have priority 31.  Actual priority: 31.
+  (priority-donate-multiple) end
+Differences in `diff -u' format:
+  (priority-donate-multiple) begin
+- (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 32.
+- (priority-donate-multiple) Main thread should have priority 33.  Actual priority: 33.
++ (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 31.
++ (priority-donate-multiple) Main thread should have priority 33.  Actual priority: 31.
+  (priority-donate-multiple) Thread b acquired lock b.
+  (priority-donate-multiple) Thread b finished.
+  (priority-donate-multiple) Thread b should have just finished.
+- (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 32.
++ (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 31.
+  (priority-donate-multiple) Thread a acquired lock a.
+  (priority-donate-multiple) Thread a finished.
+  (priority-donate-multiple) Thread a should have just finished.
+  (priority-donate-multiple) Main thread should have priority 31.  Actual priority: 31.
+  (priority-donate-multiple) end
 
 OUTPUT FROM tests/threads/priority-donate-multiple:
 
-Writing command line to /tmp/2uiyVc3gOH.dsk...
+Writing command line to /tmp/55RE7uKPWL.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-multiple
@@ -200,19 +308,21 @@ Calibrating timer...  102,400 loops/s.
 Boot complete.
 Executing 'priority-donate-multiple':
 (priority-donate-multiple) begin
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc01028b4
- cr2=0000001c error=00000000
- eax=c0110540 ebx=c002ff10 ecx=c0116000 edx=00000000
- esi=00000000 edi=00000000 esp=c0116000 ebp=c0116f90
- cs=0008 ds=0010 es=0010 ss=ff10
-Kernel PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc01073f6 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc010a0d2 0xc0100d20.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 39 ticks
-Thread: 0 idle ticks, 39 kernel ticks, 0 user ticks
-Console: 921 characters output
+(priority-donate-multiple) Main thread should have priority 32.  Actual priority: 31.
+(priority-donate-multiple) Main thread should have priority 33.  Actual priority: 31.
+(priority-donate-multiple) Thread b acquired lock b.
+(priority-donate-multiple) Thread b finished.
+(priority-donate-multiple) Thread b should have just finished.
+(priority-donate-multiple) Main thread should have priority 32.  Actual priority: 31.
+(priority-donate-multiple) Thread a acquired lock a.
+(priority-donate-multiple) Thread a finished.
+(priority-donate-multiple) Thread a should have just finished.
+(priority-donate-multiple) Main thread should have priority 31.  Actual priority: 31.
+(priority-donate-multiple) end
+Execution of 'priority-donate-multiple' complete.
+Timer: 144 ticks
+Thread: 0 idle ticks, 147 kernel ticks, 0 user ticks
+Console: 1103 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -220,21 +330,44 @@ Powering off...
 
 DETAILS OF tests/threads/priority-donate-multiple2 FAILURE:
 
-Kernel panic in run: PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc01073f6 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc010a2d6 0xc0100d20
-Translation of call stack:
-0xc01073f6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0101778: intr_handler (..../threads/interrupt.c:377)
-0xc010190b: intr_entry (threads/intr-stubs.S:38)
-0xc01028b4: donate_priority (...../../threads/synch.c:247)
-0xc01028e2: donate_priority (...../../threads/synch.c:258)
-0xc010288a: lock_acquire (...../../threads/synch.c:235)
-0xc010a2d6: a_thread_func (...ity-donate-multiple2.c:70)
-0xc0100d20: kernel_thread (..../../threads/thread.c:447)
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (priority-donate-multiple2) begin
+  (priority-donate-multiple2) Main thread should have priority 34.  Actual priority: 34.
+  (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 36.
+  (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 36.
+  (priority-donate-multiple2) Thread b acquired lock b.
+  (priority-donate-multiple2) Thread b finished.
+  (priority-donate-multiple2) Thread a acquired lock a.
+  (priority-donate-multiple2) Thread a finished.
+  (priority-donate-multiple2) Thread c finished.
+  (priority-donate-multiple2) Threads b, a, c should have just finished, in that order.
+  (priority-donate-multiple2) Main thread should have priority 31.  Actual priority: 31.
+  (priority-donate-multiple2) end
+Differences in `diff -u' format:
+  (priority-donate-multiple2) begin
+- (priority-donate-multiple2) Main thread should have priority 34.  Actual priority: 34.
+- (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 36.
+- (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 36.
+- (priority-donate-multiple2) Thread b acquired lock b.
+- (priority-donate-multiple2) Thread b finished.
++ (priority-donate-multiple2) Main thread should have priority 34.  Actual priority: 31.
++ (priority-donate-multiple2) Thread c finished.
++ (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 31.
+  (priority-donate-multiple2) Thread a acquired lock a.
+  (priority-donate-multiple2) Thread a finished.
+- (priority-donate-multiple2) Thread c finished.
++ (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 31.
++ (priority-donate-multiple2) Thread b acquired lock b.
++ (priority-donate-multiple2) Thread b finished.
+  (priority-donate-multiple2) Threads b, a, c should have just finished, in that order.
+  (priority-donate-multiple2) Main thread should have priority 31.  Actual priority: 31.
+  (priority-donate-multiple2) end
 
 OUTPUT FROM tests/threads/priority-donate-multiple2:
 
-Writing command line to /tmp/eXcTeySW3T.dsk...
+Writing command line to /tmp/KB5extpDN1.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-multiple2
@@ -245,19 +378,21 @@ Calibrating timer...  102,400 loops/s.
 Boot complete.
 Executing 'priority-donate-multiple2':
 (priority-donate-multiple2) begin
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc01028b4
- cr2=0000001c error=00000000
- eax=c0110540 ebx=c002ff10 ecx=c0116000 edx=00000000
- esi=00000000 edi=00000000 esp=c0116000 ebp=c0116f90
- cs=0008 ds=0010 es=0010 ss=ff10
-Kernel PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc01073f6 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc010a2d6 0xc0100d20.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 40 ticks
-Thread: 0 idle ticks, 40 kernel ticks, 0 user ticks
-Console: 924 characters output
+(priority-donate-multiple2) Main thread should have priority 34.  Actual priority: 31.
+(priority-donate-multiple2) Thread c finished.
+(priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 31.
+(priority-donate-multiple2) Thread a acquired lock a.
+(priority-donate-multiple2) Thread a finished.
+(priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 31.
+(priority-donate-multiple2) Thread b acquired lock b.
+(priority-donate-multiple2) Thread b finished.
+(priority-donate-multiple2) Threads b, a, c should have just finished, in that order.
+(priority-donate-multiple2) Main thread should have priority 31.  Actual priority: 31.
+(priority-donate-multiple2) end
+Execution of 'priority-donate-multiple2' complete.
+Timer: 153 ticks
+Thread: 0 idle ticks, 156 kernel ticks, 0 user ticks
+Console: 1123 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -265,21 +400,41 @@ Powering off...
 
 DETAILS OF tests/threads/priority-donate-nest FAILURE:
 
-Kernel panic in run: PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc01073f6 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc010a4c2 0xc0100d20
-Translation of call stack:
-0xc01073f6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0101778: intr_handler (..../threads/interrupt.c:377)
-0xc010190b: intr_entry (threads/intr-stubs.S:38)
-0xc01028b4: donate_priority (...../../threads/synch.c:247)
-0xc01028e2: donate_priority (...../../threads/synch.c:258)
-0xc010288a: lock_acquire (...../../threads/synch.c:235)
-0xc010a4c2: medium_thread_func (...priority-donate-nest.c:71)
-0xc0100d20: kernel_thread (..../../threads/thread.c:447)
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (priority-donate-nest) begin
+  (priority-donate-nest) Low thread should have priority 32.  Actual priority: 32.
+  (priority-donate-nest) Low thread should have priority 33.  Actual priority: 33.
+  (priority-donate-nest) Medium thread should have priority 33.  Actual priority: 33.
+  (priority-donate-nest) Medium thread got the lock.
+  (priority-donate-nest) High thread got the lock.
+  (priority-donate-nest) High thread finished.
+  (priority-donate-nest) High thread should have just finished.
+  (priority-donate-nest) Middle thread finished.
+  (priority-donate-nest) Medium thread should just have finished.
+  (priority-donate-nest) Low thread should have priority 31.  Actual priority: 31.
+  (priority-donate-nest) end
+Differences in `diff -u' format:
+  (priority-donate-nest) begin
+- (priority-donate-nest) Low thread should have priority 32.  Actual priority: 32.
+- (priority-donate-nest) Low thread should have priority 33.  Actual priority: 33.
+- (priority-donate-nest) Medium thread should have priority 33.  Actual priority: 33.
++ (priority-donate-nest) Low thread should have priority 32.  Actual priority: 31.
++ (priority-donate-nest) Low thread should have priority 33.  Actual priority: 31.
++ (priority-donate-nest) Medium thread should have priority 33.  Actual priority: 32.
+  (priority-donate-nest) Medium thread got the lock.
+  (priority-donate-nest) High thread got the lock.
+  (priority-donate-nest) High thread finished.
+  (priority-donate-nest) High thread should have just finished.
+  (priority-donate-nest) Middle thread finished.
+  (priority-donate-nest) Medium thread should just have finished.
+  (priority-donate-nest) Low thread should have priority 31.  Actual priority: 31.
+  (priority-donate-nest) end
 
 OUTPUT FROM tests/threads/priority-donate-nest:
 
-Writing command line to /tmp/a1MF3QgSAL.dsk...
+Writing command line to /tmp/1VVEsVBocI.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-nest
@@ -290,19 +445,21 @@ Calibrating timer...  102,400 loops/s.
 Boot complete.
 Executing 'priority-donate-nest':
 (priority-donate-nest) begin
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc01028b4
- cr2=0000001c error=00000000
- eax=c0110540 ebx=c002ff10 ecx=c0116000 edx=00000000
- esi=00000000 edi=00000000 esp=c0116000 ebp=c0116f80
- cs=0008 ds=0010 es=0010 ss=ff10
-Kernel PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc01073f6 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc010a4c2 0xc0100d20.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 39 ticks
-Thread: 0 idle ticks, 39 kernel ticks, 0 user ticks
-Console: 909 characters output
+(priority-donate-nest) Low thread should have priority 32.  Actual priority: 31.
+(priority-donate-nest) Low thread should have priority 33.  Actual priority: 31.
+(priority-donate-nest) Medium thread should have priority 33.  Actual priority: 32.
+(priority-donate-nest) Medium thread got the lock.
+(priority-donate-nest) High thread got the lock.
+(priority-donate-nest) High thread finished.
+(priority-donate-nest) High thread should have just finished.
+(priority-donate-nest) Middle thread finished.
+(priority-donate-nest) Medium thread should just have finished.
+(priority-donate-nest) Low thread should have priority 31.  Actual priority: 31.
+(priority-donate-nest) end
+Execution of 'priority-donate-nest' complete.
+Timer: 141 ticks
+Thread: 0 idle ticks, 144 kernel ticks, 0 user ticks
+Console: 1060 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -310,21 +467,112 @@ Powering off...
 
 DETAILS OF tests/threads/priority-donate-chain FAILURE:
 
-Kernel panic in run: PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc01073f6 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc010b08c 0xc0100d20
-Translation of call stack:
-0xc01073f6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0101778: intr_handler (..../threads/interrupt.c:377)
-0xc010190b: intr_entry (threads/intr-stubs.S:38)
-0xc01028b4: donate_priority (...../../threads/synch.c:247)
-0xc01028e2: donate_priority (...../../threads/synch.c:258)
-0xc010288a: lock_acquire (...../../threads/synch.c:235)
-0xc010b08c: donor_thread_func (...riority-donate-chain.c:94)
-0xc0100d20: kernel_thread (..../../threads/thread.c:447)
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (priority-donate-chain) begin
+  (priority-donate-chain) main got lock.
+  (priority-donate-chain) main should have priority 3.  Actual priority: 3.
+  (priority-donate-chain) main should have priority 6.  Actual priority: 6.
+  (priority-donate-chain) main should have priority 9.  Actual priority: 9.
+  (priority-donate-chain) main should have priority 12.  Actual priority: 12.
+  (priority-donate-chain) main should have priority 15.  Actual priority: 15.
+  (priority-donate-chain) main should have priority 18.  Actual priority: 18.
+  (priority-donate-chain) main should have priority 21.  Actual priority: 21.
+  (priority-donate-chain) thread 1 got lock
+  (priority-donate-chain) thread 1 should have priority 21. Actual priority: 21
+  (priority-donate-chain) thread 2 got lock
+  (priority-donate-chain) thread 2 should have priority 21. Actual priority: 21
+  (priority-donate-chain) thread 3 got lock
+  (priority-donate-chain) thread 3 should have priority 21. Actual priority: 21
+  (priority-donate-chain) thread 4 got lock
+  (priority-donate-chain) thread 4 should have priority 21. Actual priority: 21
+  (priority-donate-chain) thread 5 got lock
+  (priority-donate-chain) thread 5 should have priority 21. Actual priority: 21
+  (priority-donate-chain) thread 6 got lock
+  (priority-donate-chain) thread 6 should have priority 21. Actual priority: 21
+  (priority-donate-chain) thread 7 got lock
+  (priority-donate-chain) thread 7 should have priority 21. Actual priority: 21
+  (priority-donate-chain) thread 7 finishing with priority 21.
+  (priority-donate-chain) interloper 7 finished.
+  (priority-donate-chain) thread 6 finishing with priority 18.
+  (priority-donate-chain) interloper 6 finished.
+  (priority-donate-chain) thread 5 finishing with priority 15.
+  (priority-donate-chain) interloper 5 finished.
+  (priority-donate-chain) thread 4 finishing with priority 12.
+  (priority-donate-chain) interloper 4 finished.
+  (priority-donate-chain) thread 3 finishing with priority 9.
+  (priority-donate-chain) interloper 3 finished.
+  (priority-donate-chain) thread 2 finishing with priority 6.
+  (priority-donate-chain) interloper 2 finished.
+  (priority-donate-chain) thread 1 finishing with priority 3.
+  (priority-donate-chain) interloper 1 finished.
+  (priority-donate-chain) main finishing with priority 0.
+  (priority-donate-chain) end
+Differences in `diff -u' format:
+  (priority-donate-chain) begin
+  (priority-donate-chain) main got lock.
+- (priority-donate-chain) main should have priority 3.  Actual priority: 3.
+- (priority-donate-chain) main should have priority 6.  Actual priority: 6.
+- (priority-donate-chain) main should have priority 9.  Actual priority: 9.
+- (priority-donate-chain) main should have priority 12.  Actual priority: 12.
+- (priority-donate-chain) main should have priority 15.  Actual priority: 15.
+- (priority-donate-chain) main should have priority 18.  Actual priority: 18.
+- (priority-donate-chain) main should have priority 21.  Actual priority: 21.
++ (priority-donate-chain) main should have priority 3.  Actual priority: 0.
++ (priority-donate-chain) interloper 1 finished.
++ (priority-donate-chain) main should have priority 6.  Actual priority: 0.
++ (priority-donate-chain) interloper 2 finished.
++ (priority-donate-chain) main should have priority 9.  Actual priority: 0.
++ (priority-donate-chain) interloper 3 finished.
++ (priority-donate-chain) main should have priority 12.  Actual priority: 0.
++ (priority-donate-chain) interloper 4 finished.
++ (priority-donate-chain) main should have priority 15.  Actual priority: 0.
++ (priority-donate-chain) interloper 5 finished.
++ (priority-donate-chain) main should have priority 18.  Actual priority: 0.
++ (priority-donate-chain) interloper 6 finished.
++ (priority-donate-chain) main should have priority 21.  Actual priority: 0.
++ (priority-donate-chain) interloper 7 finished.
+  (priority-donate-chain) thread 1 got lock
+- (priority-donate-chain) thread 1 should have priority 21. Actual priority: 21
++ (priority-donate-chain) thread 1 should have priority 21. Actual priority: 3
+  (priority-donate-chain) thread 2 got lock
+- (priority-donate-chain) thread 2 should have priority 21. Actual priority: 21
++ (priority-donate-chain) thread 2 should have priority 21. Actual priority: 6
+  (priority-donate-chain) thread 3 got lock
+- (priority-donate-chain) thread 3 should have priority 21. Actual priority: 21
++ (priority-donate-chain) thread 3 should have priority 21. Actual priority: 9
+  (priority-donate-chain) thread 4 got lock
+- (priority-donate-chain) thread 4 should have priority 21. Actual priority: 21
++ (priority-donate-chain) thread 4 should have priority 21. Actual priority: 12
+  (priority-donate-chain) thread 5 got lock
+- (priority-donate-chain) thread 5 should have priority 21. Actual priority: 21
++ (priority-donate-chain) thread 5 should have priority 21. Actual priority: 15
+  (priority-donate-chain) thread 6 got lock
+- (priority-donate-chain) thread 6 should have priority 21. Actual priority: 21
++ (priority-donate-chain) thread 6 should have priority 21. Actual priority: 18
+  (priority-donate-chain) thread 7 got lock
+  (priority-donate-chain) thread 7 should have priority 21. Actual priority: 21
+  (priority-donate-chain) thread 7 finishing with priority 21.
+- (priority-donate-chain) interloper 7 finished.
+  (priority-donate-chain) thread 6 finishing with priority 18.
+- (priority-donate-chain) interloper 6 finished.
+  (priority-donate-chain) thread 5 finishing with priority 15.
+- (priority-donate-chain) interloper 5 finished.
+  (priority-donate-chain) thread 4 finishing with priority 12.
+- (priority-donate-chain) interloper 4 finished.
+  (priority-donate-chain) thread 3 finishing with priority 9.
+- (priority-donate-chain) interloper 3 finished.
+  (priority-donate-chain) thread 2 finishing with priority 6.
+- (priority-donate-chain) interloper 2 finished.
+  (priority-donate-chain) thread 1 finishing with priority 3.
+- (priority-donate-chain) interloper 1 finished.
+  (priority-donate-chain) main finishing with priority 0.
+  (priority-donate-chain) end
 
 OUTPUT FROM tests/threads/priority-donate-chain:
 
-Writing command line to /tmp/FD5TkDSdYc.dsk...
+Writing command line to /tmp/7E0EU3wFND.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-chain
@@ -336,19 +584,47 @@ Boot complete.
 Executing 'priority-donate-chain':
 (priority-donate-chain) begin
 (priority-donate-chain) main got lock.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc01028b4
- cr2=0000001c error=00000000
- eax=c0110540 ebx=c002fe70 ecx=c0116000 edx=00000000
- esi=c002fe38 edi=00000000 esp=c0116000 ebp=c0116f80
- cs=0008 ds=0010 es=0010 ss=fe70
-Kernel PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc01073f6 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc010b08c 0xc0100d20.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 44 ticks
-Thread: 0 idle ticks, 44 kernel ticks, 0 user ticks
-Console: 951 characters output
+(priority-donate-chain) main should have priority 3.  Actual priority: 0.
+(priority-donate-chain) interloper 1 finished.
+(priority-donate-chain) main should have priority 6.  Actual priority: 0.
+(priority-donate-chain) interloper 2 finished.
+(priority-donate-chain) main should have priority 9.  Actual priority: 0.
+(priority-donate-chain) interloper 3 finished.
+(priority-donate-chain) main should have priority 12.  Actual priority: 0.
+(priority-donate-chain) interloper 4 finished.
+(priority-donate-chain) main should have priority 15.  Actual priority: 0.
+(priority-donate-chain) interloper 5 finished.
+(priority-donate-chain) main should have priority 18.  Actual priority: 0.
+(priority-donate-chain) interloper 6 finished.
+(priority-donate-chain) main should have priority 21.  Actual priority: 0.
+(priority-donate-chain) interloper 7 finished.
+(priority-donate-chain) thread 1 got lock
+(priority-donate-chain) thread 1 should have priority 21. Actual priority: 3
+(priority-donate-chain) thread 2 got lock
+(priority-donate-chain) thread 2 should have priority 21. Actual priority: 6
+(priority-donate-chain) thread 3 got lock
+(priority-donate-chain) thread 3 should have priority 21. Actual priority: 9
+(priority-donate-chain) thread 4 got lock
+(priority-donate-chain) thread 4 should have priority 21. Actual priority: 12
+(priority-donate-chain) thread 5 got lock
+(priority-donate-chain) thread 5 should have priority 21. Actual priority: 15
+(priority-donate-chain) thread 6 got lock
+(priority-donate-chain) thread 6 should have priority 21. Actual priority: 18
+(priority-donate-chain) thread 7 got lock
+(priority-donate-chain) thread 7 should have priority 21. Actual priority: 21
+(priority-donate-chain) thread 7 finishing with priority 21.
+(priority-donate-chain) thread 6 finishing with priority 18.
+(priority-donate-chain) thread 5 finishing with priority 15.
+(priority-donate-chain) thread 4 finishing with priority 12.
+(priority-donate-chain) thread 3 finishing with priority 9.
+(priority-donate-chain) thread 2 finishing with priority 6.
+(priority-donate-chain) thread 1 finishing with priority 3.
+(priority-donate-chain) main finishing with priority 0.
+(priority-donate-chain) end
+Execution of 'priority-donate-chain' complete.
+Timer: 388 ticks
+Thread: 0 idle ticks, 392 kernel ticks, 0 user ticks
+Console: 2627 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -356,21 +632,32 @@ Powering off...
 
 DETAILS OF tests/threads/priority-donate-sema FAILURE:
 
-Kernel panic in run: PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc01073f6 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc010a6ef 0xc0100d20
-Translation of call stack:
-0xc01073f6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0101778: intr_handler (..../threads/interrupt.c:377)
-0xc010190b: intr_entry (threads/intr-stubs.S:38)
-0xc01028b4: donate_priority (...../../threads/synch.c:247)
-0xc01028e2: donate_priority (...../../threads/synch.c:258)
-0xc010288a: lock_acquire (...../../threads/synch.c:235)
-0xc010a6ef: h_thread_func (...priority-donate-sema.c:77)
-0xc0100d20: kernel_thread (..../../threads/thread.c:447)
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (priority-donate-sema) begin
+  (priority-donate-sema) Thread L acquired lock.
+  (priority-donate-sema) Thread L downed semaphore.
+  (priority-donate-sema) Thread H acquired lock.
+  (priority-donate-sema) Thread H finished.
+  (priority-donate-sema) Thread M finished.
+  (priority-donate-sema) Thread L finished.
+  (priority-donate-sema) Main thread finished.
+  (priority-donate-sema) end
+Differences in `diff -u' format:
+  (priority-donate-sema) begin
+  (priority-donate-sema) Thread L acquired lock.
+- (priority-donate-sema) Thread L downed semaphore.
+- (priority-donate-sema) Thread H acquired lock.
+- (priority-donate-sema) Thread H finished.
+  (priority-donate-sema) Thread M finished.
+- (priority-donate-sema) Thread L finished.
+  (priority-donate-sema) Main thread finished.
+  (priority-donate-sema) end
 
 OUTPUT FROM tests/threads/priority-donate-sema:
 
-Writing command line to /tmp/Y7714g3na2.dsk...
+Writing command line to /tmp/uEhBRkq6g4.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-sema
@@ -382,19 +669,13 @@ Boot complete.
 Executing 'priority-donate-sema':
 (priority-donate-sema) begin
 (priority-donate-sema) Thread L acquired lock.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc01028b4
- cr2=0000001c error=00000000
- eax=c0111b08 ebx=c002ff00 ecx=c0118000 edx=00000000
- esi=00000000 edi=00000000 esp=c0118000 ebp=c0118f90
- cs=0008 ds=0010 es=0010 ss=ff00
-Kernel PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc01073f6 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc010a6ef 0xc0100d20.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 50 ticks
-Thread: 0 idle ticks, 50 kernel ticks, 0 user ticks
-Console: 956 characters output
+(priority-donate-sema) Thread M finished.
+(priority-donate-sema) Main thread finished.
+(priority-donate-sema) end
+Execution of 'priority-donate-sema' complete.
+Timer: 75 ticks
+Thread: 0 idle ticks, 78 kernel ticks, 0 user ticks
+Console: 547 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -402,21 +683,34 @@ Powering off...
 
 DETAILS OF tests/threads/priority-donate-lower FAILURE:
 
-Kernel panic in run: PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc01073f6 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc010a860 0xc0100d20
-Translation of call stack:
-0xc01073f6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0101778: intr_handler (..../threads/interrupt.c:377)
-0xc010190b: intr_entry (threads/intr-stubs.S:38)
-0xc01028b4: donate_priority (...../../threads/synch.c:247)
-0xc01028e2: donate_priority (...../../threads/synch.c:258)
-0xc010288a: lock_acquire (...../../threads/synch.c:235)
-0xc010a860: acquire_thread_func (...riority-donate-lower.c:48)
-0xc0100d20: kernel_thread (..../../threads/thread.c:447)
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (priority-donate-lower) begin
+  (priority-donate-lower) Main thread should have priority 41.  Actual priority: 41.
+  (priority-donate-lower) Lowering base priority...
+  (priority-donate-lower) Main thread should have priority 41.  Actual priority: 41.
+  (priority-donate-lower) acquire: got the lock
+  (priority-donate-lower) acquire: done
+  (priority-donate-lower) acquire must already have finished.
+  (priority-donate-lower) Main thread should have priority 21.  Actual priority: 21.
+  (priority-donate-lower) end
+Differences in `diff -u' format:
+  (priority-donate-lower) begin
+- (priority-donate-lower) Main thread should have priority 41.  Actual priority: 41.
++ (priority-donate-lower) Main thread should have priority 41.  Actual priority: 31.
+  (priority-donate-lower) Lowering base priority...
+- (priority-donate-lower) Main thread should have priority 41.  Actual priority: 41.
++ (priority-donate-lower) Main thread should have priority 41.  Actual priority: 21.
+  (priority-donate-lower) acquire: got the lock
+  (priority-donate-lower) acquire: done
+  (priority-donate-lower) acquire must already have finished.
+  (priority-donate-lower) Main thread should have priority 21.  Actual priority: 21.
+  (priority-donate-lower) end
 
 OUTPUT FROM tests/threads/priority-donate-lower:
 
-Writing command line to /tmp/NaxEpVjyOk.dsk...
+Writing command line to /tmp/2UCApVrNg0.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run priority-donate-lower
@@ -427,19 +721,18 @@ Calibrating timer...  102,400 loops/s.
 Boot complete.
 Executing 'priority-donate-lower':
 (priority-donate-lower) begin
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc01028b4
- cr2=0000001c error=00000000
- eax=c0110540 ebx=c002ff10 ecx=c0116000 edx=00000000
- esi=00000000 edi=00000000 esp=c0116000 ebp=c0116f90
- cs=0008 ds=0010 es=0010 ss=ff10
-Kernel PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc01073f6 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc010a860 0xc0100d20.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 39 ticks
-Thread: 0 idle ticks, 39 kernel ticks, 0 user ticks
-Console: 912 characters output
+(priority-donate-lower) Main thread should have priority 41.  Actual priority: 31.
+(priority-donate-lower) Lowering base priority...
+(priority-donate-lower) Main thread should have priority 41.  Actual priority: 21.
+(priority-donate-lower) acquire: got the lock
+(priority-donate-lower) acquire: done
+(priority-donate-lower) acquire must already have finished.
+(priority-donate-lower) Main thread should have priority 21.  Actual priority: 21.
+(priority-donate-lower) end
+Execution of 'priority-donate-lower' complete.
+Timer: 108 ticks
+Thread: 0 idle ticks, 111 kernel ticks, 0 user ticks
+Console: 863 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -448,19 +741,19 @@ Powering off...
 DETAILS OF tests/threads/mlfqs-load-1 FAILURE:
 
 Kernel panic in run: PANIC at ../../tests/threads/tests.c:93 in fail(): test failed
-Call stack: 0xc01073f6 0xc0109515 0xc010b242 0xc010946a 0xc010052f 0xc01005f6 0xc010009e
+Call stack: 0xc0107376 0xc0109495 0xc010b1c2 0xc01093ea 0xc010052f 0xc01005f6 0xc010009e
 Translation of call stack:
-0xc01073f6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0109515: pass (.../tests/threads/tests.c:99)
-0xc010b242: test_mlfqs_load_1 (...threads/mlfqs-load-1.c:29)
-0xc010946a: run_test (.../tests/threads/tests.c:57)
+0xc0107376: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0109495: pass (.../tests/threads/tests.c:99)
+0xc010b1c2: test_mlfqs_load_1 (...threads/mlfqs-load-1.c:29)
+0xc01093ea: run_test (.../tests/threads/tests.c:57)
 0xc010052f: run_task (.../../../threads/init.c:270)
 0xc01005f6: run_actions (.../../../threads/init.c:319)
 0xc010009e: main (.../../../threads/init.c:124)
 
 OUTPUT FROM tests/threads/mlfqs-load-1:
 
-Writing command line to /tmp/vIo22wnRlW.dsk...
+Writing command line to /tmp/X4Qk3384V6.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-load-1
@@ -474,7 +767,7 @@ Executing 'mlfqs-load-1':
 (mlfqs-load-1) spinning for up to 45 seconds, please wait...
 (mlfqs-load-1) FAIL: load average stayed below 0.5 for more than 45 seconds
 Kernel PANIC at ../../tests/threads/tests.c:93 in fail(): test failed
-Call stack: 0xc01073f6 0xc0109515 0xc010b242 0xc010946a 0xc010052f 0xc01005f6 0xc010009e.
+Call stack: 0xc0107376 0xc0109495 0xc010b1c2 0xc01093ea 0xc010052f 0xc01005f6 0xc010009e.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -583,7 +876,7 @@ Some load average values were missing or differed from those expected by more th
 
 OUTPUT FROM tests/threads/mlfqs-load-60:
 
-Writing command line to /tmp/VxqBq6plsw.dsk...
+Writing command line to /tmp/lyKtwPmTar.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-load-60
@@ -688,8 +981,8 @@ Executing 'mlfqs-load-60':
 (mlfqs-load-60) After 178 seconds, load average=0.00.
 (mlfqs-load-60) end
 Execution of 'mlfqs-load-60' complete.
-Timer: 18849 ticks
-Thread: 11903 idle ticks, 6949 kernel ticks, 0 user ticks
+Timer: 18850 ticks
+Thread: 11933 idle ticks, 6920 kernel ticks, 0 user ticks
 Console: 5298 characters output
 Keyboard: 0 keys pressed
 Powering off...
@@ -793,7 +1086,7 @@ Some load average values were missing or differed from those expected by more th
 
 OUTPUT FROM tests/threads/mlfqs-load-avg:
 
-Writing command line to /tmp/dyAbKOEq00.dsk...
+Writing command line to /tmp/zwbNty0MnL.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-load-avg
@@ -899,7 +1192,7 @@ Executing 'mlfqs-load-avg':
 (mlfqs-load-avg) end
 Execution of 'mlfqs-load-avg' complete.
 Timer: 18849 ticks
-Thread: 6450 idle ticks, 12402 kernel ticks, 0 user ticks
+Thread: 6485 idle ticks, 12367 kernel ticks, 0 user ticks
 Console: 5389 characters output
 Keyboard: 0 keys pressed
 Powering off...
@@ -1003,7 +1296,7 @@ Some recent_cpu values were missing or differed from those expected by more than
 
 OUTPUT FROM tests/threads/mlfqs-recent-1:
 
-Writing command line to /tmp/bZ4Bs8RU9l.dsk...
+Writing command line to /tmp/O41fYZTIvp.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-recent-1
@@ -1120,12 +1413,12 @@ DETAILS OF tests/threads/mlfqs-nice-2 FAILURE:
 Some tick counts were missing or differed from those expected by more than 50.
 thread   actual <-> expected explanation
 ------ -------- --- -------- ----------------------------------------
-     0     1500 <<< 1904     Too small, by 354.
+     0     1501 <<< 1904     Too small, by 353.
      1     1500 >>> 1096     Too big, by 354.
 
 OUTPUT FROM tests/threads/mlfqs-nice-2:
 
-Writing command line to /tmp/BQ9H63ptU7.dsk...
+Writing command line to /tmp/98q6aLhCnO.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-nice-2
@@ -1137,14 +1430,14 @@ Boot complete.
 Executing 'mlfqs-nice-2':
 (mlfqs-nice-2) begin
 (mlfqs-nice-2) Starting 2 threads...
-(mlfqs-nice-2) Starting threads took 11 ticks.
+(mlfqs-nice-2) Starting threads took 10 ticks.
 (mlfqs-nice-2) Sleeping 40 seconds to let threads run, please wait...
-(mlfqs-nice-2) Thread 0 received 1500 ticks.
+(mlfqs-nice-2) Thread 0 received 1501 ticks.
 (mlfqs-nice-2) Thread 1 received 1500 ticks.
 (mlfqs-nice-2) end
 Execution of 'mlfqs-nice-2' complete.
-Timer: 4080 ticks
-Thread: 999 idle ticks, 3084 kernel ticks, 0 user ticks
+Timer: 4081 ticks
+Thread: 999 idle ticks, 3086 kernel ticks, 0 user ticks
 Console: 630 characters output
 Keyboard: 0 keys pressed
 Powering off...
@@ -1156,20 +1449,20 @@ DETAILS OF tests/threads/mlfqs-nice-10 FAILURE:
 Some tick counts were missing or differed from those expected by more than 25.
 thread   actual <-> expected explanation
 ------ -------- --- -------- ----------------------------------------
-     0      300 <<< 672      Too small, by 347.
+     0      301 <<< 672      Too small, by 346.
      1      301 <<< 588      Too small, by 262.
-     2      301 <<< 492      Too small, by 166.
-     3      301 <<< 408      Too small, by 82.
+     2      300 <<< 492      Too small, by 167.
+     3      300 <<< 408      Too small, by 83.
      4      301  =  316      
-     5      301 >>> 232      Too big, by 44.
-     6      300 >>> 152      Too big, by 123.
+     5      300 >>> 232      Too big, by 43.
+     6      301 >>> 152      Too big, by 124.
      7      301 >>> 92       Too big, by 184.
      8      301 >>> 40       Too big, by 236.
-     9      301 >>> 8        Too big, by 268.
+     9      300 >>> 8        Too big, by 267.
 
 OUTPUT FROM tests/threads/mlfqs-nice-10:
 
-Writing command line to /tmp/LWQ2nLWiIu.dsk...
+Writing command line to /tmp/fholZi3BQW.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-nice-10
@@ -1181,22 +1474,22 @@ Boot complete.
 Executing 'mlfqs-nice-10':
 (mlfqs-nice-10) begin
 (mlfqs-nice-10) Starting 10 threads...
-(mlfqs-nice-10) Starting threads took 37 ticks.
+(mlfqs-nice-10) Starting threads took 34 ticks.
 (mlfqs-nice-10) Sleeping 40 seconds to let threads run, please wait...
-(mlfqs-nice-10) Thread 0 received 300 ticks.
+(mlfqs-nice-10) Thread 0 received 301 ticks.
 (mlfqs-nice-10) Thread 1 received 301 ticks.
-(mlfqs-nice-10) Thread 2 received 301 ticks.
-(mlfqs-nice-10) Thread 3 received 301 ticks.
+(mlfqs-nice-10) Thread 2 received 300 ticks.
+(mlfqs-nice-10) Thread 3 received 300 ticks.
 (mlfqs-nice-10) Thread 4 received 301 ticks.
-(mlfqs-nice-10) Thread 5 received 301 ticks.
-(mlfqs-nice-10) Thread 6 received 300 ticks.
+(mlfqs-nice-10) Thread 5 received 300 ticks.
+(mlfqs-nice-10) Thread 6 received 301 ticks.
 (mlfqs-nice-10) Thread 7 received 301 ticks.
 (mlfqs-nice-10) Thread 8 received 301 ticks.
-(mlfqs-nice-10) Thread 9 received 301 ticks.
+(mlfqs-nice-10) Thread 9 received 300 ticks.
 (mlfqs-nice-10) end
 Execution of 'mlfqs-nice-10' complete.
-Timer: 4155 ticks
-Thread: 991 idle ticks, 3167 kernel ticks, 0 user ticks
+Timer: 4157 ticks
+Thread: 990 idle ticks, 3170 kernel ticks, 0 user ticks
 Console: 999 characters output
 Keyboard: 0 keys pressed
 Powering off...
@@ -1232,7 +1525,7 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/threads/mlfqs-block:
 
-Writing command line to /tmp/nVxVLFHNaX.dsk...
+Writing command line to /tmp/MKjtQnuxP4.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-block
@@ -1256,4 +1549,5 @@ Timer: 3078 ticks
 Thread: 487 idle ticks, 2594 kernel ticks, 0 user ticks
 Console: 750 characters output
 Keyboard: 0 keys pressed
+(mlfqs-block) ...got it.
 Powering off...

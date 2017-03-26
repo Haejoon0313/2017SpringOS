@@ -30,7 +30,7 @@
 00000000000i[     ]   SB16 support: no
 00000000000i[     ]   USB support: no
 00000000000i[     ]   VGA extension support:  
-00000000000i[MEM0 ] allocated memory at 0x2b1ce1e52010. after alignment, vector=0x2b1ce1e53000
+00000000000i[MEM0 ] allocated memory at 0x2ac2013f8010. after alignment, vector=0x2ac2013f9000
 00000000000i[MEM0 ] 4.00MB
 00000000000i[MEM0 ] rom at 0xf0000/65536 ('/usr/local//share/bochs/BIOS-bochs-latest')
 00000000000i[MEM0 ] rom at 0xc0000/32768 ('/usr/local//share/bochs/VGABIOS-lgpl-latest')
@@ -46,7 +46,7 @@
 00000000000i[     ] init_mem of 'extfpuirq' plugin device by virtual method
 00000000000i[     ] init_mem of 'speaker' plugin device by virtual method
 00000000000i[     ] init_dev of 'harddrv' plugin device by virtual method
-00000000000i[HD   ] HD on ata0-0: '/tmp/TMJmKSAbdm.dsk' 'flat' mode 
+00000000000i[HD   ] HD on ata0-0: '/tmp/MKjtQnuxP4.dsk' 'flat' mode 
 00000000000i[HD   ] Using boot sequence disk, none, none
 00000000000i[HD   ] Floppy boot signature check is enabled
 00000000000i[     ] init_dev of 'keyboard' plugin device by virtual method
@@ -73,28 +73,27 @@
 00000786523e[HD   ] ata0: device set to 1 which does not exist
 00000786815e[HD   ] ata1: device set to 0 which does not exist
 00000787108e[HD   ] ata1: device set to 1 which does not exist
-00001108412p[     ] >>PANIC<< SIGNAL 2 caught
-00001108412i[SYS  ] Last time is 1
-00001108412i[NGUI ] bx_nogui_gui_c::exit() not implemented yet.
-00001108412i[CPU  ] protected mode
-00001108412i[CPU  ] CS.d_b = 32 bit
-00001108412i[CPU  ] SS.d_b = 32 bit
-00001108412i[CPU  ] | EAX=0023c000  EBX=c023c000  ECX=c0114000  EDX=0023b003
-00001108412i[CPU  ] | ESP=c002ff80  EBP=c002ffb8  ESI=00000000  EDI=00000300
-00001108412i[CPU  ] | IOPL=0 id vip vif ac vm rf nt of df if tf sf zf af PF CF
-00001108412i[CPU  ] | SEG selector     base    limit G D
-00001108412i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
-00001108412i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
-00001108412i[CPU  ] |  DS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00001108412i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00001108412i[CPU  ] |  ES:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00001108412i[CPU  ] |  FS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00001108412i[CPU  ] |  GS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00001108412i[CPU  ] | EIP=c0100165 (c0100165)
-00001108412i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0x00000000
-00001108412i[CPU  ] | CR3=0x00010000 CR4=0x00000000
-00001108412i[CPU  ] >> 89
-00001108412i[CPU  ] >> d8
-00001108412i[CPU  ] >> : mov eax, ebx
-00001108412i[     ] restoring default signal behavior
-00001108412i[CTRL ] quit_sim called with exit code 1
+00032498824p[UNMP ] >>PANIC<< Shutdown port: shutdown requested
+00032498824i[SYS  ] Last time is 32
+00032498824i[NGUI ] bx_nogui_gui_c::exit() not implemented yet.
+00032498824i[CPU  ] protected mode
+00032498824i[CPU  ] CS.d_b = 32 bit
+00032498824i[CPU  ] SS.d_b = 32 bit
+00032498824i[CPU  ] | EAX=0000006e  EBX=c002ffa7  ECX=ffff8900  EDX=ffff8900
+00032498824i[CPU  ] | ESP=c002ff90  EBP=c002ffb8  ESI=00007369  EDI=c0111000
+00032498824i[CPU  ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf zf af pf cf
+00032498824i[CPU  ] | SEG selector     base    limit G D
+00032498824i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00032498824i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00032498824i[CPU  ] |  DS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00032498824i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00032498824i[CPU  ] |  ES:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00032498824i[CPU  ] |  FS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00032498824i[CPU  ] |  GS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00032498824i[CPU  ] | EIP=c010066e (c010066d)
+00032498824i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0x00000000
+00032498824i[CPU  ] | CR3=0x00113000 CR4=0x00000000
+00032498824i[CPU  ] >> ee
+00032498824i[CPU  ] >> : out dx, al
+00032498824i[     ] restoring default signal behavior
+00032498824i[CTRL ] quit_sim called with exit code 1

@@ -103,12 +103,12 @@ struct thread
 	
 	
 	  /*About priority donation part,by chaehun */
-		int  donation_count;
-		struct list potential_donator;//threads that want to acquire lock.
-		struct lock * waiting_lock;//lock which the thread is waiting
-		struct list holding_lock;//list of lock that thread has locking
-		struct lock * try_to_lock;//lock that current thread is try to acquire.
-		int original_priority;
+	//	int  donation_count;
+//		struct list potential_donator;//threads that want to acquire lock.
+//		struct lock * waiting_lock;//lock which the thread is waiting
+//		struct list holding_lock;//list of lock that thread has locking
+//		struct lock * try_to_lock;//lock that current thread is try to acquire.
+//		int original_priority;
 	};
 
 /* If false (default), use round-robin scheduler.
@@ -144,6 +144,10 @@ int thread_get_nice (void);
 void thread_set_nice (int);
 int thread_get_recent_cpu (void);
 int thread_get_load_avg (void);
+
+
+bool
+compare_tick(struct list_elem *a,	struct list_elem*b,	void *aux UNUSED);
 
 extern struct list* sleeping_list;
 #endif /* threads/thread.h */

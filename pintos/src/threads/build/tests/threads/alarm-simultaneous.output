@@ -1,4 +1,4 @@
-Writing command line to /tmp/TpZ2hdS07W.dsk...
+Writing command line to /tmp/aOhV39pjzH.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q run alarm-simultaneous
@@ -29,8 +29,8 @@ Executing 'alarm-simultaneous':
 (alarm-simultaneous) iteration 4, thread 2: woke up 0 ticks later
 (alarm-simultaneous) end
 Execution of 'alarm-simultaneous' complete.
-Timer: 462 ticks
-Thread: 248 idle ticks, 217 kernel ticks, 0 user ticks
+Timer: 461 ticks
+Thread: 248 idle ticks, 216 kernel ticks, 0 user ticks
 Console: 1612 characters output
 Keyboard: 0 keys pressed
 Powering off...

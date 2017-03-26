@@ -1,12 +1,23 @@
 FAIL
-Kernel panic in run: PANIC at ../../threads/interrupt.c:373 in intr_handler(): Unexpected interrupt
-Call stack: 0xc0107416 0xc0101778 0xc010190b 0xc01028b4 0xc01028e2 0xc010288a 0xc010a70f 0xc0100d20
-Translation of call stack:
-0xc0107416: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0101778: intr_handler (..../threads/interrupt.c:377)
-0xc010190b: intr_entry (threads/intr-stubs.S:38)
-0xc01028b4: donate_priority (...../../threads/synch.c:247)
-0xc01028e2: donate_priority (...../../threads/synch.c:258)
-0xc010288a: lock_acquire (...../../threads/synch.c:235)
-0xc010a70f: h_thread_func (...priority-donate-sema.c:77)
-0xc0100d20: kernel_thread (..../../threads/thread.c:447)
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (priority-donate-sema) begin
+  (priority-donate-sema) Thread L acquired lock.
+  (priority-donate-sema) Thread L downed semaphore.
+  (priority-donate-sema) Thread H acquired lock.
+  (priority-donate-sema) Thread H finished.
+  (priority-donate-sema) Thread M finished.
+  (priority-donate-sema) Thread L finished.
+  (priority-donate-sema) Main thread finished.
+  (priority-donate-sema) end
+Differences in `diff -u' format:
+  (priority-donate-sema) begin
+  (priority-donate-sema) Thread L acquired lock.
+- (priority-donate-sema) Thread L downed semaphore.
+- (priority-donate-sema) Thread H acquired lock.
+- (priority-donate-sema) Thread H finished.
+  (priority-donate-sema) Thread M finished.
+- (priority-donate-sema) Thread L finished.
+  (priority-donate-sema) Main thread finished.
+  (priority-donate-sema) end

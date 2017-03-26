@@ -212,7 +212,7 @@ thread_create (const char *name, int priority,
   sf = alloc_frame (t, sizeof *sf);
   sf->eip = switch_entry;
 	
-	t->donation_count =0;
+//	t->donation_count =0;
   /* Add to run queue. */
   thread_unblock (t);
 
@@ -596,6 +596,25 @@ allocate_tid (void)
 
   return tid;
 }
+
+bool
+compare_tick(struct list_elem *a,
+								struct list_elem*b,
+								void *aux UNUSED){
+	struct thread *thread_a = list_entry(a,struct thread, elem);
+	struct thread* thread_b = list_entry(b,struct thread, elem);
+	
+	if(thread_a->morning_tick < thread_b->morning_tick){
+		return true;
+	}else
+	{
+		return false;
+	}
+}
+
+
+
+
 
 /* Offset of `stack' member within `struct thread'.
    Used by switch.S, which can't figure it out on its own. */

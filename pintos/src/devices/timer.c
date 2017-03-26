@@ -109,28 +109,27 @@ make thread to blocked, with save current thread and ticks into sleeping_list
 	 */
 void
 thread_to_sleep(int64_t when_to_wakeup){
-				int64_t wakeup_tick ;
-				wakeup_tick = when_to_wakeup;
+	struct thread * curr;
+	
+	enum intr_level pre_level;
+	
+	//make interrupt to be disable
+	pre_level = intr_disable();
 
-				struct thread * curr;
-				enum intr_level pre_level;
-
-				//make interrupt to be disable
-				pre_level = intr_disable();
-
-				curr = thread_current();
+	curr = thread_current();
 				
-				//update current thread, about when should be wake up.
-				curr->morning_tick = wakeup_tick;
+	//update current thread, about when should be wake up.
+	curr->morning_tick = when_to_wakeup;
 
-				//put thread into sleeping list
-			  list_push_back(&sleeping_list,&curr->elem);
+	//put thread into sleeping list
+	//list_push_back(&sleeping_list,&curr->elem);
+	list_insert_ordered(&sleeping_list,&thread_current()->elem,compare_tick,NULL);// (list_less_func *) &compare_tick,NULL);
+	
+	//and block(sleep) it
+	thread_block();
 
-				//and block(sleep) it
-				thread_block();
-
-				//and rollback to previous interrupt state
-				intr_set_level(pre_level);
+	//and rollback to previous interrupt state
+	intr_set_level(pre_level);
 }
 /*
 iterate the thread, check whether thread should be waked up, and wake up(unblock) the thread.
@@ -151,7 +150,7 @@ thread_to_wakeup(int64_t current_tick){
 					my_elem = list_remove(&curr_thread->elem);
 					thread_unblock(curr_thread);
 	}else{
-					my_elem = list_next(my_elem);
+				break;//	my_elem = list_next(my_elem);
 	}}
 }
 
