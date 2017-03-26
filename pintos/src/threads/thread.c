@@ -349,17 +349,28 @@ thread_yield (void)
 void
 thread_set_priority (int new_priority) 
 {
-  thread_current()->priority = new_priority;
+	struct thread * curr = thread_current();
+	enum intr_level pre_level = intr_disable();
+//	int previous_priority = curr->priority;
 
-  if(!list_empty(&ready_list))
+	if (curr->priority != curr->origin_priority){
+		curr->origin_priority =new_priority;
+		intr_set_level(pre_level);
+	}else{
+
+	curr->priority = new_priority;
+	curr->origin_priority = new_priority;
+  
+	if(!list_empty(&ready_list))
 	{
-	//현재 thread의 priority를 높인 결과 가장 커질 수 있음.
-	if(new_priority < list_entry(list_front(&ready_list),struct thread,elem)->priority){
-					thread_yield();
+		//현재 thread의 priority를 높인 결과 가장 커질 수 있음.
+		if(new_priority < list_entry(list_front(&ready_list),struct thread,elem)->priority){
+				thread_yield();
+		}
 	}
-	}
+	intr_set_level(pre_level);
 }
-
+}
 /* Returns the current thread's priority. */
 int
 thread_get_priority (void) 

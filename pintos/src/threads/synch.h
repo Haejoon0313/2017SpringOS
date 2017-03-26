@@ -25,6 +25,9 @@ struct lock
  	//	struct list_elem lock_elem; ///chaehun
 	};
 
+
+
+
 void lock_init (struct lock *);
 void lock_acquire (struct lock *);
 bool lock_try_acquire (struct lock *);
@@ -48,6 +51,7 @@ void cond_broadcast (struct condition *, struct lock *);
 void donate_priority(void);
 void restore_priority(struct lock*);
 
+bool compare_sema_priority(struct list_elem* a,struct list_elem *b);
 
 /* Optimization barrier.
 
