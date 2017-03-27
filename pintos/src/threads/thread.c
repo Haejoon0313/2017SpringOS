@@ -71,18 +71,13 @@ static void schedule (void);
 void schedule_tail (struct thread *prev);
 static tid_t allocate_tid (void);
 
-
-static bool priority_compare_two_thread(struct list_elem *a, struct list_elem *b, void *aux UNUSED);
-
-
-
 bool
 priority_compare_two_thread(struct list_elem * a,struct list_elem * b,void *aux UNUSED){
   struct thread* a_thread = list_entry(a,struct thread, elem);
 	struct thread* b_thread = list_entry(b,struct thread, elem);
 
-	int a_priority = a_thread->priority;// thread_get_priority(a_thread);
-	int b_priority = b_thread->priority;// thread_get_priority(b_thread);
+	int a_priority = a_thread->priority;
+	int b_priority = b_thread->priority;
 
 	return a_priority > b_priority;
 }
@@ -216,11 +211,9 @@ thread_create (const char *name, int priority,
   /* Add to run queue. */
   thread_unblock (t);
 
-	//새로 만든 Thread가 현재 thread보다 priority가 높으면 => 현재꺼를 멈춘다.
-	//if (!list_empty(&ready_list)){
-		
-		if(thread_current()->priority<priority)// list_entry(list_front(&ready_list),struct thread,elem)->priority){
-					 thread_yield();
+	//When new threads is hier priority than current thread, it needs switch
+	if(thread_current()->priority<priority)
+			thread_yield();
 				
 	//}
   return tid;
@@ -264,9 +257,11 @@ thread_unblock (struct thread *t)
   
 	
 	t->status = THREAD_READY;
-	int a = t->priority; 
+	int wakeup_priority = t->priority;
+
+	//if unblocked thread has higher priority than now, maybe needs to switch.
 	if(thread_current()!= idle_thread){
-		if(a>thread_current()->priority){
+		if(wakeup_priority > thread_current()->priority){
 			thread_yield();
 		}
 	}
@@ -338,7 +333,7 @@ thread_yield (void)
 
   old_level = intr_disable ();
   if (curr != idle_thread) 
-	{ list_insert_ordered(&ready_list,&curr->elem,priority_compare_two_thread,0);// list_push_back (&ready_list, &curr->elem);
+	{ list_insert_ordered(&ready_list,&curr->elem,priority_compare_two_thread,0);
 	}
 	curr->status = THREAD_READY;
   schedule ();
@@ -351,19 +346,19 @@ thread_set_priority (int new_priority)
 {
 	struct thread * curr = thread_current();
 	enum intr_level pre_level = intr_disable();
-//	int previous_priority = curr->priority;
-
+	//Consider the "priority-donate-lower"t test. Check whether this thread is donated or not
 	if (curr->priority != curr->origin_priority){
 		curr->origin_priority =new_priority;
 		intr_set_level(pre_level);
-	}else{
-
+	}
+	else
+	{
 	curr->priority = new_priority;
 	curr->origin_priority = new_priority;
   
 	if(!list_empty(&ready_list))
 	{
-		//현재 thread의 priority를 높인 결과 가장 커질 수 있음.
+		//priority를 변경시킴으로서, 현재의 thread가 최대 priority가 아닐때.
 		if(new_priority < list_entry(list_front(&ready_list),struct thread,elem)->priority){
 				thread_yield();
 		}
@@ -614,19 +609,15 @@ allocate_tid (void)
   return tid;
 }
 
+
+//copare two tick
 bool
-compare_tick(struct list_elem *a,
-								struct list_elem*b,
-								void *aux UNUSED){
+compare_tick(struct list_elem *a,	struct list_elem*b,	void *aux UNUSED){
 	struct thread *thread_a = list_entry(a,struct thread, elem);
 	struct thread* thread_b = list_entry(b,struct thread, elem);
 	
-	if(thread_a->morning_tick < thread_b->morning_tick){
-		return true;
-	}else
-	{
-		return false;
-	}
+	return thread_a->morning_tick < thread_b->morning_tick;
+
 }
 
 

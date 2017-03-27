@@ -101,6 +101,7 @@ timer_sleep (int64_t ticks)
 
   ASSERT (intr_get_level () == INTR_ON);
   
+  //makes current thread to sleep
 	thread_to_sleep(start+ticks);
 }
 
@@ -118,12 +119,11 @@ thread_to_sleep(int64_t when_to_wakeup){
 
 	curr = thread_current();
 				
-	//update current thread, about when should be wake up.
+	//update current thread, to record when should be wake up.
 	curr->morning_tick = when_to_wakeup;
 
 	//put thread into sleeping list
-	//list_push_back(&sleeping_list,&curr->elem);
-	list_insert_ordered(&sleeping_list,&thread_current()->elem,compare_tick,NULL);// (list_less_func *) &compare_tick,NULL);
+	list_insert_ordered(&sleeping_list,&thread_current()->elem,compare_tick,NULL);
 	
 	//and block(sleep) it
 	thread_block();
@@ -141,20 +141,17 @@ thread_to_wakeup(int64_t current_tick){
 
 	my_elem = list_begin(&sleeping_list);
 
-	//ASSERT(!list_empty(&sleeping_list));
-
   while( my_elem->next != NULL){
 	curr_thread = list_entry(my_elem,struct thread,elem);
 
 	if(current_tick >= curr_thread->morning_tick){
-					my_elem = list_remove(&curr_thread->elem);
-					thread_unblock(curr_thread);
-	}else{
-				break;//	my_elem = list_next(my_elem);
+			my_elem = list_remove(&curr_thread->elem);
+			thread_unblock(curr_thread);
+	}
+	else{//coming threads would not wake up, because list is already sorted.
+			break;
 	}}
 }
-
-
 
 /* Suspends execution for approximately MS milliseconds. */
 void

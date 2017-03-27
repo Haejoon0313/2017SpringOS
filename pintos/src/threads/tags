@@ -93,7 +93,7 @@ arena_to_block	malloc.c	/^arena_to_block (struct arena *a, size_t idx) $/;"	f	fi
 arg_cnt	loader.S	/^arg_cnt:$/;"	l
 args	loader.S	/^args:$/;"	l
 aux	thread.c	/^    void *aux;                  \/* Auxiliary data for function. *\/$/;"	m	struct:kernel_thread_frame	file:
-barrier	synch.h	49;"	d
+barrier	synch.h	61;"	d
 base	palloc.c	/^    uint8_t *base;                      \/* Base of pool. *\/$/;"	m	struct:pool	file:
 base_page_dir	init.c	/^uint32_t *base_page_dir;$/;"	v
 block	malloc.c	/^struct block $/;"	s	file:
@@ -102,6 +102,9 @@ block_size	malloc.c	/^block_size (void *block) $/;"	f	file:
 block_to_arena	malloc.c	/^block_to_arena (struct block *b)$/;"	f	file:
 blocks_per_arena	malloc.c	/^    size_t blocks_per_arena;    \/* Number of blocks in an arena. *\/$/;"	m	struct:desc	file:
 calloc	malloc.c	/^calloc (size_t a, size_t b) $/;"	f
+compare_priority	synch.c	/^compare_priority(struct list_elem * a,struct list_elem * b){$/;"	f
+compare_sema_priority	synch.c	/^compare_sema_priority(struct list_elem* a,struct list_elem* b){$/;"	f
+compare_tick	thread.c	/^compare_tick(struct list_elem *a,	struct list_elem*b,	void *aux UNUSED){$/;"	f
 cond_broadcast	synch.c	/^cond_broadcast (struct condition *cond, struct lock *lock) $/;"	f
 cond_init	synch.c	/^cond_init (struct condition *cond)$/;"	f
 cond_signal	synch.c	/^cond_signal (struct condition *cond, struct lock *lock UNUSED) $/;"	f
@@ -113,6 +116,8 @@ desc	malloc.c	/^    struct desc *desc;          \/* Owning descriptor, null for 
 desc	malloc.c	/^struct desc$/;"	s	file:
 desc_cnt	malloc.c	/^static size_t desc_cnt;         \/* Number of descriptors. *\/$/;"	v	file:
 descs	malloc.c	/^static struct desc descs[10];   \/* Descriptors. *\/$/;"	v	typeref:struct:desc	file:
+donate_priority	synch.c	/^void donate_priority(void)$/;"	f
+donation_elem	thread.h	/^		struct list_elem donation_elem;			\/\/for donation list element$/;"	m	struct:thread	typeref:struct:thread::list_elem
 ds	interrupt.h	/^    uint16_t ds, :16;           \/* Saved DS segment register. *\/$/;"	m	struct:intr_frame
 eax	interrupt.h	/^    uint32_t eax;               \/* Saved EAX. *\/$/;"	m	struct:intr_frame
 ebp	interrupt.h	/^    uint32_t ebp;               \/* Saved EBP. *\/$/;"	m	struct:intr_frame
@@ -211,6 +216,7 @@ morning_tick	thread.h	/^		int64_t morning_tick;								\/* When to wake up*\/$/;
 name	thread.h	/^    char name[16];                      \/* Name (for debugging purposes). *\/$/;"	m	struct:thread
 next	switch.h	/^    struct thread *next;        \/* 24: switch_threads()'s NEXT argument. *\/$/;"	m	struct:switch_threads_frame	typeref:struct:switch_threads_frame::thread
 next_thread_to_run	thread.c	/^next_thread_to_run (void) $/;"	f	file:
+origin_priority	thread.h	/^		int origin_priority;								\/\/original priority before priority donation$/;"	m	struct:thread
 outb	io.h	/^outb (uint16_t port, uint8_t data)$/;"	f
 outl	io.h	/^outl (uint16_t port, uint32_t data)$/;"	f
 outsb	io.h	/^outsb (uint16_t port, const void *addr, size_t cnt)$/;"	f
@@ -239,10 +245,12 @@ pg_round_up	vaddr.h	/^static inline void *pg_round_up (const void *va) {$/;"	f
 pic_end_of_interrupt	interrupt.c	/^pic_end_of_interrupt (int irq) $/;"	f	file:
 pic_init	interrupt.c	/^pic_init (void)$/;"	f	file:
 pool	palloc.c	/^struct pool$/;"	s	file:
+potential_donator	thread.h	/^		struct list potential_donator;			\/\/list of threads that waiting the lock of thread.$/;"	m	struct:thread	typeref:struct:thread::list
 power_off	init.c	/^power_off (void) $/;"	f
 power_off_when_done	init.c	/^bool power_off_when_done;$/;"	v
 print_stats	init.c	/^print_stats (void) $/;"	f	file:
 priority	thread.h	/^    int priority;                       \/* Priority. *\/$/;"	m	struct:thread
+priority_compare_two_thread	thread.c	/^priority_compare_two_thread(struct list_elem * a,struct list_elem * b,void *aux UNUSED){$/;"	f
 pt_no	pte.h	/^static inline unsigned pt_no (const void *va) {$/;"	f
 pte_create_kernel	pte.h	/^static inline uint32_t pte_create_kernel (void *page, bool writable) {$/;"	f
 pte_create_user	pte.h	/^static inline uint32_t pte_create_user (void *page, bool writable) {$/;"	f
@@ -256,6 +264,7 @@ read_sector	loader.S	/^read_sector:$/;"	l
 ready_list	thread.c	/^static struct list ready_list;$/;"	v	typeref:struct:list	file:
 realloc	malloc.c	/^realloc (void *old_block, size_t new_size) $/;"	f
 register_handler	interrupt.c	/^register_handler (uint8_t vec_no, int dpl, enum intr_level level,$/;"	f	file:
+restore_priority	synch.c	/^restore_priority(struct lock *lock){$/;"	f
 run_actions	init.c	/^run_actions (char **argv) $/;"	f	file:
 run_task	init.c	/^run_task (char **argv)$/;"	f	file:
 running_thread	thread.c	/^running_thread (void) $/;"	f
@@ -317,5 +326,6 @@ vec_no	interrupt.h	/^    uint32_t vec_no;            \/* Interrupt vector number
 vtop	vaddr.h	/^vtop (const void *vaddr)$/;"	f
 waiters	synch.h	/^    struct list waiters;        \/* List of waiting threads. *\/$/;"	m	struct:condition	typeref:struct:condition::list
 waiters	synch.h	/^    struct list waiters;        \/* List of waiting threads. *\/$/;"	m	struct:semaphore	typeref:struct:semaphore::list
+waiting_lock	thread.h	/^		struct lock * waiting_lock;			    \/\/The lock whick current thread is waiting$/;"	m	struct:thread	typeref:struct:thread::lock
 yield_on_return	interrupt.c	/^static bool yield_on_return;    \/* Should we yield on interrupt return? *\/$/;"	v	file:
 zero	intr-stubs.S	/^#define zero                                    \\$/;"	d

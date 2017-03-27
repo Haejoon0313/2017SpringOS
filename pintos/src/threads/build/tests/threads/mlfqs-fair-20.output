@@ -1,4 +1,4 @@
-Writing command line to /tmp/igy8pR9Mu1.dsk...
+Writing command line to /tmp/88MbitKwv6.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -mlfqs run mlfqs-fair-20
@@ -34,8 +34,8 @@ Executing 'mlfqs-fair-20':
 (mlfqs-fair-20) Thread 19 received 148 ticks.
 (mlfqs-fair-20) end
 Execution of 'mlfqs-fair-20' complete.
-Timer: 4255 ticks
-Thread: 981 idle ticks, 3277 kernel ticks, 0 user ticks
+Timer: 4256 ticks
+Thread: 982 idle ticks, 3277 kernel ticks, 0 user ticks
 Console: 1459 characters output
 Keyboard: 0 keys pressed
 Powering off...

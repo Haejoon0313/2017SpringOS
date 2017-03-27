@@ -101,23 +101,15 @@ struct thread
     unsigned magic;                     /* Detects stack overflow. */
 		int64_t morning_tick;								/* When to wake up*/
 	
-
-		int origin_priority;
-		struct list potential_donator;
-		struct lock * waiting_lock;
-		struct list_elem donation_elem;
-
-
+		/*about Priority donataion*/
+		int origin_priority;								//original priority before priority donation
+		struct list potential_donator;			//list of threads that waiting the lock of thread.
+		struct lock * waiting_lock;			    //The lock whick current thread is waiting
+		struct list_elem donation_elem;			//for donation list element
 
 
-	  /*About priority donation part,by chaehun */
-	//	int  donation_count;
-//		struct list potential_donator;//threads that want to acquire lock.
-//		struct lock * waiting_lock;//lock which the thread is waiting
-//		struct list holding_lock;//list of lock that thread has locking
-//		struct lock * try_to_lock;//lock that current thread is try to acquire.
-//		int original_priority;
-	};
+
+};
 
 /* If false (default), use round-robin scheduler.
    If true, use multi-level feedback queue scheduler.
