@@ -1,0 +1,27 @@
+Copying tests/userprog/read-normal into /tmp/BUnvZPYz13.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/BUnvZPYz13.dsk...
+Writing command line to /tmp/uWLqPcCX5b.dsk...
+qemu -hda /tmp/uWLqPcCX5b.dsk -hdb /tmp/dmYrFpIJfh.dsk -hdc /tmp/BUnvZPYz13.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put read-normal put sample.txt run read-normal
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+374 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+Formatting file system...done.
+Boot complete.
+Putting 'read-normal' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'read-normal':
+Execution of 'read-normal' complete.
+Timer: 61 ticks
+Thread: 30 idle ticks, 31 kernel ticks, 0 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 57 reads, 162 writes
+hd1:0: 76 reads, 0 writes
+Console: 812 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
