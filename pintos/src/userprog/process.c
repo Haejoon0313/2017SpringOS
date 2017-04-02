@@ -38,11 +38,23 @@ process_execute (const char *file_name)
     return TID_ERROR;
   strlcpy (fn_copy, file_name, PGSIZE);
 
+	char *cmd_name;
+	
+	char *rest;
+
+	cmd_name = strtok_r(cmd_name," ",&rest);
+	
   /* Create a new thread to execute FILE_NAME. */
   tid = thread_create (file_name, PRI_DEFAULT, start_process, fn_copy);
   if (tid == TID_ERROR)
     palloc_free_page (fn_copy); 
-  return tid;
+  
+	
+//	struct thread* new_t = thread_get(tid);
+//	new_t->cmd_name = cmd_name;
+//	printf("hihi &c \n",cmd_name);
+	
+	return tid;
 }
 
 /* A thread function that loads a user process and makes it start
@@ -59,6 +71,7 @@ start_process (void *f_name)
   if_.gs = if_.fs = if_.es = if_.ds = if_.ss = SEL_UDSEG;
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
+	//In tihs step, load ELF excutable file of user program.
   success = load (file_name, &if_.eip, &if_.esp);
 
   /* If load failed, quit. */
@@ -88,7 +101,11 @@ start_process (void *f_name)
 int
 process_wait (tid_t child_tid UNUSED) 
 {
-  return -1;
+  while(true)
+					continue;//잠깐 넣어둠
+				
+				
+				return -1;
 }
 
 /* Free the current process's resources. */
@@ -103,6 +120,9 @@ process_exit (void)
   pd = curr->pagedir;
   if (pd != NULL) 
     {
+      /* Correct ordering here is crucial.  We must set
+         cur->pagedir to NULL before switching page directories,
+         so that a timer interrupt can't switch back to the
       /* Correct ordering here is crucial.  We must set
          cur->pagedir to NULL before switching page directories,
          so that a timer interrupt can't switch back to the
@@ -195,7 +215,7 @@ struct Elf32_Phdr
 #define PF_W 2          /* Writable. */
 #define PF_R 4          /* Readable. */
 
-static bool setup_stack (void **esp);
+static bool setup_stack (void **esp,char* file_name);
 static bool validate_segment (const struct Elf32_Phdr *, struct file *);
 static bool load_segment (struct file *file, off_t ofs, uint8_t *upage,
                           uint32_t read_bytes, uint32_t zero_bytes,
@@ -302,7 +322,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
     }
 
   /* Set up stack. */
-  if (!setup_stack (esp))
+  if (!setup_stack (esp,file_name))
     goto done;
 
   /* Start address. */
@@ -427,7 +447,7 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 /* Create a minimal stack by mapping a zeroed page at the top of
    user virtual memory. */
 static bool
-setup_stack (void **esp) 
+setup_stack (void **esp,char * file_name) 
 {
   uint8_t *kpage;
   bool success = false;
@@ -441,7 +461,79 @@ setup_stack (void **esp)
       else
         palloc_free_page (kpage);
     }
-  return success;
+//Implemented by 28
+	char *token, *rest;
+	int argc = 0;
+	char * file_copy = malloc(strlen(file_name)+1);
+	
+	strlcpy(file_copy,file_name,strlen(file_name)+1);
+
+	for (token = strtok_r(file_copy," ",&rest); token != NULL; token = strtok_r(NULL," ",&rest))
+		argc++;//count the argument token numbers
+	
+	
+
+	int *argv = calloc(argc,sizeof(int));
+	int i = 0;
+
+	//STEP1. push command token to stack.
+	strlcpy(file_copy,file_name,strlen(file_name)+1);
+	for(token = strtok_r(strlcpy," ",&rest); token != NULL; token =strtok_r(NULL," ",&rest)){
+		*esp = *esp - (strlen(token)+1)*sizeof(char);
+		memcpy(*esp,token,strlen(token)+1);
+		argv[i] = *esp;
+		i++;
+	}
+	//이거 순서를 맞게 넣은건지 모르겠다. 반대로 넣은거면, 수정은 아래의 방법으로 해보자
+	// => 모든 tokensize만큼 esp를 내린 다음, strtok하면서 아래에서 위로 넣기. 다 넣으면
+	// 다시 또 내려오기
+
+
+
+
+	//STEP2. makes word_align
+	char align = '0';
+	while((size_t)*esp%4 != 0){
+		*esp = *esp -1;
+		memcpy(*esp,&align,sizeof(int));
+	}
+
+	//STEP3. NULL pointer push. (Why?)
+	char* null_pointer = NULL;
+	*esp = *esp - sizeof(char *);
+	memcpy(*esp,&null_pointer,sizeof(int));
+
+	//STEP4. argv array value PUSH
+	i--;
+	for(i ; i >=0 ; i--){
+		*esp = *esp- sizeof(int);
+		memcpy(*esp,&argv[i],sizeof(int));
+	} 
+
+	//STEP5. remain part. argv,argc,return address push & free malloc if any
+	int argv_addr = *esp;
+	*esp -=  sizeof(int);
+	memcpy(*esp,argv_addr,sizeof(int));
+
+	*esp -=  sizeof(int);
+	memcpy(*esp,argc,sizeof(int));
+	
+	int return_addr = 0 ;
+	*esp -=  sizeof(int);
+	memcpy(*esp,return_addr, sizeof(int));
+
+
+	free(argv);
+	free(file_copy);
+
+
+	//hex_dump((uintptr_t) (PHYS_BASE - 200), (void **) (PHYS_BASE – 200), 130, true);
+
+
+
+//imple end
+
+	return success;
 }
 
 /* Adds a mapping from user virtual address UPAGE to kernel
@@ -454,9 +546,9 @@ setup_stack (void **esp)
    Returns true on success, false if UPAGE is already mapped or
    if memory allocation fails. */
 static bool
-install_page (void *upage, void *kpage, bool writable)
-{
-  struct thread *t = thread_current ();
+install_page (void *upage, void *kpage, bool writable){
+
+				struct thread *t = thread_current ();
 
   /* Verify that there's not already a page at that virtual
      address, then map our page there. */

@@ -1,6 +1,6 @@
-Copying tests/userprog/args-none into /tmp/uSEC8BoD3L.dsk...
-Writing command line to /tmp/zYeRuUKDMb.dsk...
-qemu -hda /tmp/zYeRuUKDMb.dsk -hdb /tmp/8odpBZNWmQ.dsk -hdc /tmp/uSEC8BoD3L.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/args-none into /tmp/DmimLerYPr.dsk...
+Writing command line to /tmp/tRTGFoRqV7.dsk...
+qemu -hda /tmp/tRTGFoRqV7.dsk -hdb /tmp/o5frudDWyR.dsk -hdc /tmp/DmimLerYPr.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put args-none run args-none
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -13,13 +13,23 @@ Formatting file system...done.
 Boot complete.
 Putting 'args-none' into the file system...
 Executing 'args-none':
-Execution of 'args-none' complete.
-Timer: 60 ticks
-Thread: 30 idle ticks, 30 kernel ticks, 0 user ticks
+Page fault at 0x1: not present error reading page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0109f78
+ cr2=00000001 error=00000000
+ eax=bfffffb8 ebx=ffffffff ecx=00000001 edx=bfffffbc
+ esi=c011bfc0 edi=c0107145 esp=00000000 ebp=c011beb0
+ cs=0008 ds=0010 es=0010 ss=e7b0
+Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc0107676 0xc010ab6f 0xc010ac29 0xc0101855 0xc0101a2b 0xc0109f78 0xc0109b10 0xc0109843 0xc0100dfa.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 72 ticks
+Thread: 30 idle ticks, 41 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 30 reads, 152 writes
+hd0:1: 59 reads, 152 writes
 hd1:0: 72 reads, 0 writes
-Console: 742 characters output
+Console: 1372 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 1 page faults
 Powering off...

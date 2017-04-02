@@ -108,6 +108,8 @@ struct thread
 		struct list_elem donation_elem;			//for donation list element
 
 
+		//Project2, arg_parsing part
+		char* cmd_name;
 
 };
 
