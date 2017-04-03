@@ -1,6 +1,6 @@
-Copying tests/userprog/args-multiple into /tmp/IPbQQ1Ksui.dsk...
-Writing command line to /tmp/hd4Y3Gvzaj.dsk...
-qemu -hda /tmp/hd4Y3Gvzaj.dsk -hdb /tmp/u5HVPCK47v.dsk -hdc /tmp/IPbQQ1Ksui.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/args-multiple into /tmp/r3eL30sVS8.dsk...
+Writing command line to /tmp/mWWLakw90w.dsk...
+qemu -hda /tmp/mWWLakw90w.dsk -hdb /tmp/N4hskfT1lc.dsk -hdc /tmp/r3eL30sVS8.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put args-multiple run 'args-multiple some arguments for you!'
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -13,13 +13,24 @@ Formatting file system...done.
 Boot complete.
 Putting 'args-multiple' into the file system...
 Executing 'args-multiple some arguments for you!':
-Execution of 'args-multiple some arguments for you!' complete.
-Timer: 60 ticks
-Thread: 30 idle ticks, 30 kernel ticks, 0 user ticks
+-1073741880 
+Page fault at 0x1: not present error reading page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0109f9d
+ cr2=00000001 error=00000000
+ eax=bfffffb8 ebx=ffffffff ecx=00000001 edx=bfffffbc
+ esi=c011bfc0 edi=c0107145 esp=00000000 ebp=c011bea0
+ cs=0008 ds=0010 es=0010 ss=e7f0
+Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc0107676 0xc010ab8f 0xc010ac49 0xc0101855 0xc0101a2b 0xc0109f9d 0xc0109b2a 0xc010985a 0xc0100dfa.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 64 ticks
+Thread: 30 idle ticks, 33 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 30 reads, 152 writes
+hd0:1: 59 reads, 152 writes
 hd1:0: 72 reads, 0 writes
-Console: 836 characters output
+Console: 1451 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 1 page faults
 Powering off...

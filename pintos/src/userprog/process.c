@@ -66,6 +66,12 @@ start_process (void *f_name)
   struct intr_frame if_;
   bool success;
 
+
+	char *rest;
+	char *file_command;
+	file_command = strtok_r(f_name," ",&rest);
+	
+
   /* Initialize interrupt frame and load executable. */
   memset (&if_, 0, sizeof if_);
   if_.gs = if_.fs = if_.es = if_.ds = if_.ss = SEL_UDSEG;
@@ -323,8 +329,13 @@ load (const char *file_name, void (**eip) (void), void **esp)
 
   /* Set up stack. */
   if (!setup_stack (esp,file_name))
-    goto done;
+	{  
+		printf("set up stack is excuting!\n");
 
+		goto done;
+}
+
+	hex_dump((uintptr_t)(PHYS_BASE - 200),(void **)(PHYS_BASE -200),130,true);
   /* Start address. */
   *eip = (void (*) (void)) ehdr.e_entry;
 
@@ -462,6 +473,7 @@ setup_stack (void **esp,char * file_name)
         palloc_free_page (kpage);
     }
 //Implemented by 28
+	printf("setup_stack function is now start! \n");
 	char *token, *rest;
 	int argc = 0;
 	char * file_copy = malloc(strlen(file_name)+1);
@@ -483,6 +495,7 @@ setup_stack (void **esp,char * file_name)
 		memcpy(*esp,token,strlen(token)+1);
 		argv[i] = *esp;
 		i++;
+		printf("%d \n",*esp);
 	}
 	//이거 순서를 맞게 넣은건지 모르겠다. 반대로 넣은거면, 수정은 아래의 방법으로 해보자
 	// => 모든 tokensize만큼 esp를 내린 다음, strtok하면서 아래에서 위로 넣기. 다 넣으면
@@ -513,24 +526,21 @@ setup_stack (void **esp,char * file_name)
 	//STEP5. remain part. argv,argc,return address push & free malloc if any
 	int argv_addr = *esp;
 	*esp -=  sizeof(int);
-	memcpy(*esp,argv_addr,sizeof(int));
+	memcpy(*esp,&argv_addr,sizeof(int));
 
 	*esp -=  sizeof(int);
-	memcpy(*esp,argc,sizeof(int));
+	memcpy(*esp,&argc,sizeof(int));
 	
 	int return_addr = 0 ;
 	*esp -=  sizeof(int);
-	memcpy(*esp,return_addr, sizeof(int));
+	memcpy(*esp,&return_addr, sizeof(int));
 
 
 	free(argv);
 	free(file_copy);
 
-
-	//hex_dump((uintptr_t) (PHYS_BASE - 200), (void **) (PHYS_BASE – 200), 130, true);
-
-
-
+	hex_dump((uintptr_t)(PHYS_BASE - 200),(void **)(PHYS_BASE -200),130,true);
+	printf("setup stack function is end! \n");
 //imple end
 
 	return success;

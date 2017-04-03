@@ -1,6 +1,6 @@
-Copying tests/userprog/args-dbl-space into /tmp/R8Ud8SszxR.dsk...
-Writing command line to /tmp/hWLcPRydHU.dsk...
-qemu -hda /tmp/hWLcPRydHU.dsk -hdb /tmp/rphJEG8966.dsk -hdc /tmp/R8Ud8SszxR.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/args-dbl-space into /tmp/VVPrEVKnEe.dsk...
+Writing command line to /tmp/gW3Um0CB5I.dsk...
+qemu -hda /tmp/gW3Um0CB5I.dsk -hdb /tmp/mlmWTafQMF.dsk -hdc /tmp/VVPrEVKnEe.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put args-dbl-space run 'args-dbl-space two  spaces!'
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -13,13 +13,24 @@ Formatting file system...done.
 Boot complete.
 Putting 'args-dbl-space' into the file system...
 Executing 'args-dbl-space two  spaces!':
-Execution of 'args-dbl-space two  spaces!' complete.
-Timer: 60 ticks
-Thread: 30 idle ticks, 30 kernel ticks, 0 user ticks
+-1073741880 
+Page fault at 0x1: not present error reading page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0109f9d
+ cr2=00000001 error=00000000
+ eax=bfffffb8 ebx=ffffffff ecx=00000001 edx=bfffffbc
+ esi=c011bfc0 edi=c0107145 esp=00000000 ebp=c011bea0
+ cs=0008 ds=0010 es=0010 ss=e7f0
+Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc0107676 0xc010ab8f 0xc010ac49 0xc0101855 0xc0101a2b 0xc0109f9d 0xc0109b2a 0xc010985a 0xc0100dfa.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 68 ticks
+Thread: 30 idle ticks, 37 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 30 reads, 152 writes
+hd0:1: 59 reads, 152 writes
 hd1:0: 72 reads, 0 writes
-Console: 808 characters output
+Console: 1433 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 1 page faults
 Powering off...
