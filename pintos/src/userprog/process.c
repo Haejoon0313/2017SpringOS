@@ -334,8 +334,6 @@ load (const char *file_name, void (**eip) (void), void **esp)
 
 		goto done;
 }
-
-	hex_dump((uintptr_t)(PHYS_BASE - 200),(void **)(PHYS_BASE -200),130,true);
   /* Start address. */
   *eip = (void (*) (void)) ehdr.e_entry;
 
@@ -344,7 +342,11 @@ load (const char *file_name, void (**eip) (void), void **esp)
  done:
   /* We arrive here whether the load is successful or not. */
   file_close (file);
-  return success;
+
+
+//	hex_dump((uintptr_t)(PHYS_BASE - 200),(void **)(PHYS_BASE -200),130,true);
+
+	return success;
 }
 
 /* load() helpers. */
@@ -468,8 +470,10 @@ setup_stack (void **esp,char * file_name)
     {
       success = install_page (((uint8_t *) PHYS_BASE) - PGSIZE, kpage, true);
       if (success)
-        *esp = PHYS_BASE;
-      else
+			{
+							*esp = PHYS_BASE;
+			//	printf("PHYSICAL BASE````````````````````````````````````````````````	: %d \n",PHYS_BASE);
+			}else
         palloc_free_page (kpage);
     }
 //Implemented by 28
@@ -490,18 +494,20 @@ setup_stack (void **esp,char * file_name)
 
 	//STEP1. push command token to stack.
 	strlcpy(file_copy,file_name,strlen(file_name)+1);
-	for(token = strtok_r(strlcpy," ",&rest); token != NULL; token =strtok_r(NULL," ",&rest)){
+	for(token = strtok_r(file_copy," ",&rest); token != NULL; token =strtok_r(NULL," ",&rest)){
 		*esp = *esp - (strlen(token)+1)*sizeof(char);
 		memcpy(*esp,token,strlen(token)+1);
 		argv[i] = *esp;
 		i++;
-		printf("%d \n",*esp);
+		printf("command token string check : %s \n",token );
+		char * examples = "asdf";
+	
 	}
 	//이거 순서를 맞게 넣은건지 모르겠다. 반대로 넣은거면, 수정은 아래의 방법으로 해보자
 	// => 모든 tokensize만큼 esp를 내린 다음, strtok하면서 아래에서 위로 넣기. 다 넣으면
 	// 다시 또 내려오기
 
-
+	printf("i count ! : %d \n");
 
 
 	//STEP2. makes word_align
@@ -539,8 +545,8 @@ setup_stack (void **esp,char * file_name)
 	free(argv);
 	free(file_copy);
 
-	hex_dump((uintptr_t)(PHYS_BASE - 200),(void **)(PHYS_BASE -200),130,true);
-	printf("setup stack function is end! \n");
+	hex_dump((uintptr_t)(PHYS_BASE - 200),(void **)(PHYS_BASE -200),210,true);
+	printf("setup stack function is end~! \n");
 //imple end
 
 	return success;

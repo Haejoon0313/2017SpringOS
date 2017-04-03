@@ -15,24 +15,24 @@ Elf32_Word	process.c	/^typedef uint32_t Elf32_Word, Elf32_Addr, Elf32_Off;$/;"	t
 GRAN_BYTE	gdt.c	/^    GRAN_BYTE = 0,              \/* Limit has 1-byte granularity. *\/$/;"	e	enum:seg_granularity	file:
 GRAN_PAGE	gdt.c	/^    GRAN_PAGE = 1               \/* Limit has 4 kB granularity. *\/$/;"	e	enum:seg_granularity	file:
 NO_RETURN	process.c	/^static thread_func start_process NO_RETURN;$/;"	v	file:
-PE32Ax	process.c	164;"	d	file:
-PE32Hx	process.c	166;"	d	file:
-PE32Ox	process.c	165;"	d	file:
-PE32Wx	process.c	163;"	d	file:
+PE32Ax	process.c	170;"	d	file:
+PE32Hx	process.c	172;"	d	file:
+PE32Ox	process.c	171;"	d	file:
+PE32Wx	process.c	169;"	d	file:
 PF_P	exception.h	5;"	d
-PF_R	process.c	216;"	d	file:
+PF_R	process.c	222;"	d	file:
 PF_U	exception.h	7;"	d
 PF_W	exception.h	6;"	d
-PF_W	process.c	215;"	d	file:
-PF_X	process.c	214;"	d	file:
-PT_DYNAMIC	process.c	206;"	d	file:
-PT_INTERP	process.c	207;"	d	file:
-PT_LOAD	process.c	205;"	d	file:
-PT_NOTE	process.c	208;"	d	file:
-PT_NULL	process.c	204;"	d	file:
-PT_PHDR	process.c	210;"	d	file:
-PT_SHLIB	process.c	209;"	d	file:
-PT_STACK	process.c	211;"	d	file:
+PF_W	process.c	221;"	d	file:
+PF_X	process.c	220;"	d	file:
+PT_DYNAMIC	process.c	212;"	d	file:
+PT_INTERP	process.c	213;"	d	file:
+PT_LOAD	process.c	211;"	d	file:
+PT_NOTE	process.c	214;"	d	file:
+PT_NULL	process.c	210;"	d	file:
+PT_PHDR	process.c	216;"	d	file:
+PT_SHLIB	process.c	215;"	d	file:
+PT_STACK	process.c	217;"	d	file:
 SEL_CNT	gdt.h	11;"	d
 SEL_TSS	gdt.h	10;"	d
 SEL_UCSEG	gdt.h	8;"	d
@@ -83,6 +83,7 @@ fs	tss.c	/^    uint16_t fs, :16;$/;"	m	struct:tss	file:
 gdt	gdt.c	/^static uint64_t gdt[SEL_CNT];$/;"	v	file:
 gdt_init	gdt.c	/^gdt_init (void)$/;"	f
 gs	tss.c	/^    uint16_t gs, :16;$/;"	m	struct:tss	file:
+install_page	process.c	/^install_page (void *upage, void *kpage, bool writable){$/;"	f	file:
 invalidate_pagedir	pagedir.c	/^invalidate_pagedir (uint32_t *pd) $/;"	f	file:
 kill	exception.c	/^kill (struct intr_frame *f) $/;"	f	file:
 ldt	tss.c	/^    uint16_t ldt, :16;$/;"	m	struct:tss	file:
