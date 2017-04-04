@@ -1,7 +1,7 @@
-Copying tests/userprog/args-single into /tmp/WVYWqBu1jd.dsk...
-Writing command line to /tmp/PFu7c2uqiX.dsk...
-qemu -hda /tmp/PFu7c2uqiX.dsk -hdb /tmp/ABz1WMT7eY.dsk -hdc /tmp/WVYWqBu1jd.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put args-single run 'args-single onearg'
+Copying tests/userprog/args-none into /tmp/9IibLKzLdt.dsk...
+Writing command line to /tmp/PpP2mgNZJU.dsk...
+qemu -hda /tmp/PpP2mgNZJU.dsk -hdb /tmp/6cgyerotlY.dsk -hdc /tmp/9IibLKzLdt.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put args-none run args-none
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
 374 pages available in user pool.
@@ -11,22 +11,19 @@ hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002
 hd1:0: detected 72 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 Formatting file system...done.
 Boot complete.
-Putting 'args-single' into the file system...
-Executing 'args-single onearg':
-file name that passed to load() : args-single onearg 
-file name that passed to setup_stack : args-single onearg 
+Putting 'args-none' into the file system...
+Executing 'args-none':
+file name that passed to load() : args-none 
+file name that passed to setup_stack : args-none 
 setup_stack function is now start! 
-argc count : 2 
-file name is : args-single onearg 
-argv[0] value is bffffff4 
-command token string check : args-single 
-argv[1] value is bfffffed 
-command token string check : onearg 
-i count ! : 2 
+argc count : 1 
+file name is : args-none 
+argv[0] value is bffffff6 
+command token string check : args-none 
+i count ! : 1 
 word aligned : 0 
 null pointer : c011be8c
-argv[1] address : bfffffed
-argv[0] address : bffffff4
+argv[0] address : bffffff6
 argv address : c011be88
 bfffff30                          00 00 00 00 00 00 00 00 |        ........|
 bfffff40  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
@@ -38,9 +35,9 @@ bfffff90  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
 bfffffa0  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
 bfffffb0  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
 bfffffc0  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffffd0  00 00 00 00 00 00 00 00-02 00 00 00 e0 ff ff bf |................|
-bfffffe0  f4 ff ff bf ed ff ff bf-00 00 00 00 00 6f 6e 65 |.............one|
-bffffff0  61 72 67 00 61 72 67 73-2d 73 69 6e 67 6c 65 00 |arg.args-single.|
+bfffffd0  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+bfffffe0  00 00 00 00 01 00 00 00-ec ff ff bf f6 ff ff bf |................|
+bffffff0  00 00 00 00 00 00 61 72-67 73 2d 6e 6f 6e 65 00 |......args-none.|
 c0000000  53 ff 00 f0 53 ff 00 f0-c3 e2                   |S...S.....      |
 setup stack function is end~! 
 syscall number : 9
@@ -48,19 +45,19 @@ Page fault at 0x1: not present error reading page in kernel context.
 Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105b89
  cr2=00000001 error=00000000
  eax=00000001 ebx=00000001 ecx=00000780 edx=c011b000
- esi=bfffff28 edi=0804ba8e esp=c011b000 ebp=c011bf24
+ esi=bfffff38 edi=0804ba8e esp=c011b000 ebp=c011bf24
  cs=0008 ds=0010 es=0010 ss=1b08
 Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
 Call stack: 0xc0107676 0xc010acef 0xc010ada9 0xc0101855 0xc0101a2b 0xc0105b89 0xc010961e 0xc0105b7b 0xc010ae42 0xc0101855 0xc0101a2b 0x804a0a9 0x8048214 0x8048245 0x80480cb 0x80486f8.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 74 ticks
-Thread: 30 idle ticks, 37 kernel ticks, 7 user ticks
+Timer: 78 ticks
+Thread: 30 idle ticks, 41 kernel ticks, 7 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 152 writes
 hd1:0: 72 reads, 0 writes
-Console: 3064 characters output
+Console: 2920 characters output
 Keyboard: 0 keys pressed
 Exception: 1 page faults
 Powering off...

@@ -30,21 +30,15 @@ process_execute (const char *file_name)
 {
   char *fn_copy;
   tid_t tid;
-
+	char *f_name;
   /* Make a copy of FILE_NAME.
      Otherwise there's a race between the caller and load(). */
   fn_copy = palloc_get_page (0);
   if (fn_copy == NULL)
     return TID_ERROR;
-  strlcpy (fn_copy, file_name, PGSIZE);
-
-	char *cmd_name;
+  strlcpy (fn_copy, file_name, PGSIZE);	
 	
-	char *rest;
-
-	cmd_name = strtok_r(cmd_name," ",&rest);
-	
-  /* Create a new thread to execute FILE_NAME. */
+	/* Create a new thread to execute FILE_NAME. */
   tid = thread_create (file_name, PRI_DEFAULT, start_process, fn_copy);
   if (tid == TID_ERROR)
     palloc_free_page (fn_copy); 
@@ -69,7 +63,7 @@ start_process (void *f_name)
 
 	char *rest;
 	char *file_command;
-	file_command = strtok_r(f_name," ",&rest);
+	//file_command = strtok_r(f_name," ",&rest);
 	
 
   /* Initialize interrupt frame and load executable. */
@@ -78,8 +72,10 @@ start_process (void *f_name)
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
 	//In tihs step, load ELF excutable file of user program.
-  success = load (file_name, &if_.eip, &if_.esp);
-
+ 	
+	printf("file name that passed to load() : %s \n",file_name);
+	success = load (file_name, &if_.eip, &if_.esp);
+ 
   /* If load failed, quit. */
   palloc_free_page (file_name);
   if (!success) 
@@ -107,8 +103,9 @@ start_process (void *f_name)
 int
 process_wait (tid_t child_tid UNUSED) 
 {
-  while(true)
-					continue;//잠깐 넣어둠
+int i; 
+ for(i =0;i< 100000000; i++)
+		continue;//잠깐 넣어둠
 				
 				
 				return -1;
@@ -246,10 +243,21 @@ load (const char *file_name, void (**eip) (void), void **esp)
   if (t->pagedir == NULL) 
     goto done;
   process_activate ();
+	char * rest;
 
-  /* Open executable file. */
-  file = filesys_open (file_name);
-  if (file == NULL) 
+	char * file_copy =  malloc(strlen(file_name)+1);
+
+  strlcpy(file_copy,file_name,strlen(file_name)+1);
+	file_copy = strtok_r(file_copy," ",&rest);
+	//	printf("~~~~~~~~~~~~~~~~~~~%s \n",file_name);
+  
+	/* Open executable file. */
+  
+	file = filesys_open (file_copy);
+
+	free(file_copy);
+  
+	if (file == NULL) 
     {
       printf ("load: %s: open failed\n", file_name);
       goto done; 
@@ -328,6 +336,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
     }
 
   /* Set up stack. */
+	printf("file name that passed to setup_stack : %s \n",file_name);
   if (!setup_stack (esp,file_name))
 	{  
 		printf("set up stack is excuting!\n");
@@ -341,10 +350,10 @@ load (const char *file_name, void (**eip) (void), void **esp)
 
  done:
   /* We arrive here whether the load is successful or not. */
-  file_close (file);
+ file_close (file);
 
 
-//	hex_dump((uintptr_t)(PHYS_BASE - 200),(void **)(PHYS_BASE -200),130,true);
+	//hex_dump((uintptr_t)(PHYS_BASE - 200),(void **)(PHYS_BASE -200),130,true);
 
 	return success;
 }
@@ -472,12 +481,12 @@ setup_stack (void **esp,char * file_name)
       if (success)
 			{
 							*esp = PHYS_BASE;
-			//	printf("PHYSICAL BASE````````````````````````````````````````````````	: %d \n",PHYS_BASE);
 			}else
         palloc_free_page (kpage);
     }
 //Implemented by 28
 	printf("setup_stack function is now start! \n");
+;
 	char *token, *rest;
 	int argc = 0;
 	char * file_copy = malloc(strlen(file_name)+1);
@@ -488,52 +497,54 @@ setup_stack (void **esp,char * file_name)
 		argc++;//count the argument token numbers
 	
 	
+	printf("argc count : %d \n",argc);
 
 	int *argv = calloc(argc,sizeof(int));
 	int i = 0;
-
+	printf( "file name is : %s \n",file_name);
 	//STEP1. push command token to stack.
-	strlcpy(file_copy,file_name,strlen(file_name)+1);
-	for(token = strtok_r(file_copy," ",&rest); token != NULL; token =strtok_r(NULL," ",&rest)){
-		*esp = *esp - (strlen(token)+1)*sizeof(char);
+	for(token = strtok_r(file_name," ",&rest); token != NULL; token =strtok_r(NULL," ",&rest)){
+		*esp = *esp - (strlen(token)+1);
 		memcpy(*esp,token,strlen(token)+1);
 		argv[i] = *esp;
 		i++;
+		printf("argv[%d] value is %x \n",i-1,*esp);
 		printf("command token string check : %s \n",token );
-		char * examples = "asdf";
-	
+
 	}
 	//이거 순서를 맞게 넣은건지 모르겠다. 반대로 넣은거면, 수정은 아래의 방법으로 해보자
 	// => 모든 tokensize만큼 esp를 내린 다음, strtok하면서 아래에서 위로 넣기. 다 넣으면
 	// 다시 또 내려오기
 
-	printf("i count ! : %d \n");
-
+	printf("i count ! : %d \n",i);
+	
 
 	//STEP2. makes word_align
-	char align = '0';
-	while((size_t)*esp%4 != 0){
-		*esp = *esp -1;
-		memcpy(*esp,&align,sizeof(int));
+	char align = (size_t)*esp % 4;
+	if(align != 0){
+		*esp = *esp - align;
+		memset(*esp, 0,  align);
+		printf("word aligned : 0 \n");
+		
 	}
 
 	//STEP3. NULL pointer push. (Why?)
-	char* null_pointer = NULL;
-	*esp = *esp - sizeof(char *);
-	memcpy(*esp,&null_pointer,sizeof(int));
-
+	*esp -= sizeof(int);
+	memset(*esp,0,sizeof(int));
+	printf("null pointer End \n");
 	//STEP4. argv array value PUSH
 	i--;
 	for(i ; i >=0 ; i--){
 		*esp = *esp- sizeof(int);
-		memcpy(*esp,&argv[i],sizeof(int));
+		memcpy(*esp,&argv[i],sizeof(int));//여기 이거 맞나??argv[i]같은데
+		printf("argv[%d] address : %x\n",i,argv[i]);
 	} 
 
 	//STEP5. remain part. argv,argc,return address push & free malloc if any
 	int argv_addr = *esp;
 	*esp -=  sizeof(int);
 	memcpy(*esp,&argv_addr,sizeof(int));
-
+	printf("argv address : %x\n",&argv_addr);
 	*esp -=  sizeof(int);
 	memcpy(*esp,&argc,sizeof(int));
 	
