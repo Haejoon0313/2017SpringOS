@@ -108,8 +108,16 @@ struct thread
 		struct list_elem donation_elem;			//for donation list element
 
 
-		//Project2, arg_parsing part
-		char* cmd_name;
+
+		/*Project2, member about user program */
+		struct list child_list;
+		struct thread * parent_process;
+		int exit_code;
+		int parent_tid;
+
+		struct list file_list;
+		int fd_count;
+
 
 };
 

@@ -1,2 +1,2 @@
 FAIL
-Run didn't produce any output
+run: write 512 bytes at offset 6144 failed: FAILED

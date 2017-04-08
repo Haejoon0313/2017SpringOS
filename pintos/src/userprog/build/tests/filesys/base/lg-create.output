@@ -1,6 +1,6 @@
-Copying tests/filesys/base/lg-create into /tmp/23BSGLHhYo.dsk...
-Writing command line to /tmp/Yf43TOW1Wl.dsk...
-qemu -hda /tmp/Yf43TOW1Wl.dsk -hdb /tmp/zyz2GRozbR.dsk -hdc /tmp/23BSGLHhYo.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/lg-create into /tmp/nI6txlYjkG.dsk...
+Writing command line to /tmp/QbatG2YIzg.dsk...
+qemu -hda /tmp/QbatG2YIzg.dsk -hdb /tmp/lbhZEtKq0R.dsk -hdc /tmp/nI6txlYjkG.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put lg-create run lg-create
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -13,13 +13,19 @@ Formatting file system...done.
 Boot complete.
 Putting 'lg-create' into the file system...
 Executing 'lg-create':
+(lg-create) begin
+(lg-create) create "blargle"
+(lg-create) open "blargle" for verification
+(lg-create) size of blargle (134522600) differs from expected (75678)
+(lg-create) read of 512 bytes at offset 0 in "blargle" returned 134522600: FAILED
+lg-create: exit(1)
 Execution of 'lg-create' complete.
-Timer: 62 ticks
-Thread: 30 idle ticks, 32 kernel ticks, 0 user ticks
+Timer: 106 ticks
+Thread: 30 idle ticks, 64 kernel ticks, 12 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 59 reads, 160 writes
+hd0:1: 85 reads, 312 writes
 hd1:0: 76 reads, 0 writes
-Console: 742 characters output
+Console: 1006 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 0 page faults
 Powering off...

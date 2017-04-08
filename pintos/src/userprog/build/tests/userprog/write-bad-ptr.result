@@ -1,2 +1,2 @@
 FAIL
-Run didn't produce any output
+Run started 'write-bad-ptr' but it never finished

@@ -1,6 +1,6 @@
-Copying tests/userprog/create-exists into /tmp/cLUc4drbB9.dsk...
-Writing command line to /tmp/FO1ehf1ooa.dsk...
-qemu -hda /tmp/FO1ehf1ooa.dsk -hdb /tmp/4ZwkUHBFbf.dsk -hdc /tmp/cLUc4drbB9.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/create-exists into /tmp/262Nd299Nx.dsk...
+Writing command line to /tmp/FZkFLheG7c.dsk...
+qemu -hda /tmp/FZkFLheG7c.dsk -hdb /tmp/6c9RCtAYHw.dsk -hdc /tmp/262Nd299Nx.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put create-exists run create-exists
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -13,13 +13,21 @@ Formatting file system...done.
 Boot complete.
 Putting 'create-exists' into the file system...
 Executing 'create-exists':
+(create-exists) begin
+(create-exists) create quux.dat
+(create-exists) create warble.dat
+(create-exists) try to re-create quux.dat
+(create-exists) create baffle.dat
+(create-exists) try to re-create quux.dat
+(create-exists) end
+create-exists: exit(0)
 Execution of 'create-exists' complete.
-Timer: 59 ticks
-Thread: 30 idle ticks, 29 kernel ticks, 0 user ticks
+Timer: 91 ticks
+Thread: 30 idle ticks, 59 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 30 reads, 154 writes
+hd0:1: 141 reads, 174 writes
 hd1:0: 73 reads, 0 writes
-Console: 762 characters output
+Console: 1012 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

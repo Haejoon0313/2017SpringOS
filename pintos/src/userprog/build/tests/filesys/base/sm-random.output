@@ -1,6 +1,6 @@
-Copying tests/filesys/base/sm-random into /tmp/pBcVc9AJmH.dsk...
-Writing command line to /tmp/kmRZVwWf14.dsk...
-qemu -hda /tmp/kmRZVwWf14.dsk -hdb /tmp/vfrD8aTsm7.dsk -hdc /tmp/pBcVc9AJmH.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/sm-random into /tmp/QfnO9Wx0nA.dsk...
+Writing command line to /tmp/eSZq3Z32U7.dsk...
+qemu -hda /tmp/eSZq3Z32U7.dsk -hdb /tmp/zFdSeq4xfw.dsk -hdc /tmp/QfnO9Wx0nA.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put sm-random run sm-random
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -13,13 +13,19 @@ Formatting file system...done.
 Boot complete.
 Putting 'sm-random' into the file system...
 Executing 'sm-random':
+(sm-random) begin
+(sm-random) create "bazzle"
+(sm-random) open "bazzle"
+(sm-random) write "bazzle" in random order
+(sm-random) write 13 bytes at offset 858 failed: FAILED
+sm-random: exit(1)
 Execution of 'sm-random' complete.
-Timer: 59 ticks
-Thread: 30 idle ticks, 29 kernel ticks, 0 user ticks
+Timer: 94 ticks
+Thread: 30 idle ticks, 62 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 30 reads, 164 writes
+hd0:1: 87 reads, 172 writes
 hd1:0: 78 reads, 0 writes
-Console: 742 characters output
+Console: 932 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

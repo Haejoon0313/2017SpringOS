@@ -208,6 +208,15 @@ thread_create (const char *name, int priority,
   sf->eip = switch_entry;
 	
 
+	t->parent_tid = thread_current()->tid;
+	
+
+	
+
+
+
+
+
   /* Add to run queue. */
   thread_unblock (t);
 

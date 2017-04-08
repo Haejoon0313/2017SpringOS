@@ -1,7 +1,7 @@
-Copying tests/userprog/open-boundary into /tmp/Eb8Bmf5iEt.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/Eb8Bmf5iEt.dsk...
-Writing command line to /tmp/0bGrg7pDLn.dsk...
-qemu -hda /tmp/0bGrg7pDLn.dsk -hdb /tmp/ZaTl6bfoHP.dsk -hdc /tmp/Eb8Bmf5iEt.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/open-boundary into /tmp/IKgDKNfDdD.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/IKgDKNfDdD.dsk...
+Writing command line to /tmp/0EDcqabLPd.dsk...
+qemu -hda /tmp/0EDcqabLPd.dsk -hdb /tmp/Sh7tkVls38.dsk -hdc /tmp/IKgDKNfDdD.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put open-boundary put sample.txt run open-boundary
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -15,13 +15,17 @@ Boot complete.
 Putting 'open-boundary' into the file system...
 Putting 'sample.txt' into the file system...
 Executing 'open-boundary':
+(open-boundary) begin
+(open-boundary) open "sample.txt"
+(open-boundary) end
+open-boundary: exit(0)
 Execution of 'open-boundary' complete.
-Timer: 60 ticks
-Thread: 30 idle ticks, 30 kernel ticks, 0 user ticks
+Timer: 93 ticks
+Thread: 30 idle ticks, 62 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 57 reads, 164 writes
+hd0:1: 90 reads, 164 writes
 hd1:0: 77 reads, 0 writes
-Console: 822 characters output
+Console: 921 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

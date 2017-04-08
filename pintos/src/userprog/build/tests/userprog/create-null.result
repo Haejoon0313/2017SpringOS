@@ -1,2 +1,19 @@
 FAIL
-Run didn't produce any output
+Kernel panic in run: PANIC at ../../filesys/directory.c:149 in dir_add(): assertion `name != NULL' failed.
+Call stack: 0xc0107676 0xc010bd9e 0xc010b360 0xc010ad4c 0xc0101855 0xc0101a2b 0x804a019 0x80480ba 0x8048103 0x80486dc
+Translation of call stack:
+In kernel.o:
+0xc0107676: debug_panic (.../../lib/kernel/debug.c:34)
+0xc010bd9e: dir_add (..../filesys/directory.c:152)
+0xc010b360: filesys_create (..../../filesys/filesys.c:51)
+0xc010ad4c: syscall_handler (.../../userprog/syscall.c:62)
+0xc0101855: intr_handler (..../threads/interrupt.c:361)
+0xc0101a2b: intr_entry (threads/intr-stubs.S:38)
+In tests/userprog/create-null:
+0x0804a019: create (.../../lib/user/syscall.c:93)
+0x080480ba: test_main (...userprog/create-null.c:10)
+0x08048103: main (...ild/../../tests/main.c:13)
+0x080486dc: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.

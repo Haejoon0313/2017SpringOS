@@ -1,6 +1,6 @@
-Copying tests/userprog/args-none into /tmp/9IibLKzLdt.dsk...
-Writing command line to /tmp/PpP2mgNZJU.dsk...
-qemu -hda /tmp/PpP2mgNZJU.dsk -hdb /tmp/6cgyerotlY.dsk -hdc /tmp/9IibLKzLdt.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/args-none into /tmp/I7ZZu2yw8H.dsk...
+Writing command line to /tmp/PIbvhzBrKE.dsk...
+qemu -hda /tmp/PIbvhzBrKE.dsk -hdb /tmp/YdlFprpiEB.dsk -hdc /tmp/I7ZZu2yw8H.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put args-none run args-none
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -13,51 +13,19 @@ Formatting file system...done.
 Boot complete.
 Putting 'args-none' into the file system...
 Executing 'args-none':
-file name that passed to load() : args-none 
-file name that passed to setup_stack : args-none 
-setup_stack function is now start! 
-argc count : 1 
-file name is : args-none 
-argv[0] value is bffffff6 
-command token string check : args-none 
-i count ! : 1 
-word aligned : 0 
-null pointer : c011be8c
-argv[0] address : bffffff6
-argv address : c011be88
-bfffff30                          00 00 00 00 00 00 00 00 |        ........|
-bfffff40  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffff50  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffff60  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffff70  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffff80  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffff90  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffffa0  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffffb0  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffffc0  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffffd0  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
-bfffffe0  00 00 00 00 01 00 00 00-ec ff ff bf f6 ff ff bf |................|
-bffffff0  00 00 00 00 00 00 61 72-67 73 2d 6e 6f 6e 65 00 |......args-none.|
-c0000000  53 ff 00 f0 53 ff 00 f0-c3 e2                   |S...S.....      |
-setup stack function is end~! 
-syscall number : 9
-Page fault at 0x1: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105b89
- cr2=00000001 error=00000000
- eax=00000001 ebx=00000001 ecx=00000780 edx=c011b000
- esi=bfffff38 edi=0804ba8e esp=c011b000 ebp=c011bf24
- cs=0008 ds=0010 es=0010 ss=1b08
-Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc0107676 0xc010acef 0xc010ada9 0xc0101855 0xc0101a2b 0xc0105b89 0xc010961e 0xc0105b7b 0xc010ae42 0xc0101855 0xc0101a2b 0x804a0a9 0x8048214 0x8048245 0x80480cb 0x80486f8.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 78 ticks
-Thread: 30 idle ticks, 41 kernel ticks, 7 user ticks
+(args) begin
+(args) argc = 1
+(args) argv[0] = 'args-none'
+(args) argv[1] = null
+(args) end
+args-none: exit(0)
+Execution of 'args-none' complete.
+Timer: 93 ticks
+Thread: 30 idle ticks, 63 kernel ticks, 0 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 152 writes
 hd1:0: 72 reads, 0 writes
-Console: 2920 characters output
+Console: 852 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 0 page faults
 Powering off...
