@@ -1,7 +1,7 @@
-Copying tests/userprog/exec-multiple into /tmp/r2nqzFT3JD.dsk...
-Copying tests/userprog/child-simple into /tmp/r2nqzFT3JD.dsk...
-Writing command line to /tmp/NJJ8oxu21x.dsk...
-qemu -hda /tmp/NJJ8oxu21x.dsk -hdb /tmp/ORtyZkWyiZ.dsk -hdc /tmp/r2nqzFT3JD.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/exec-multiple into /tmp/LD6FMjxWMj.dsk...
+Copying tests/userprog/child-simple into /tmp/LD6FMjxWMj.dsk...
+Writing command line to /tmp/8xOEDWTUVF.dsk...
+qemu -hda /tmp/8xOEDWTUVF.dsk -hdb /tmp/NNBZ3EdPt9.dsk -hdc /tmp/LD6FMjxWMj.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put exec-multiple put child-simple run exec-multiple
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -22,19 +22,17 @@ child-simple: exit(81)
 child-simple: exit(81)
 (child-simple) run
 child-simple: exit(81)
+(child-simple) run
+child-simple: exit(81)
 (exec-multiple) end
 exec-multiple: exit(0)
-Kernel PANIC at ../../lib/kernel/list.c:369 in find_end_of_run(): assertion `a != NULL' failed.
-Call stack: 0xc0107726 0xc0107f0d 0xc0108252 0xc01028b5 0xc010999e 0xc0100e3b.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 74 ticks
-Thread: 30 idle ticks, 42 kernel ticks, 2 user ticks
+Execution of 'exec-multiple' complete.
+Timer: 76 ticks
+Thread: 30 idle ticks, 44 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 238 reads, 300 writes
 hd1:0: 145 reads, 0 writes
-Console: 1310 characters output
+Console: 1062 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

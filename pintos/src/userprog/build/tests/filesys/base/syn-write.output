@@ -1,7 +1,7 @@
-Copying tests/filesys/base/syn-write into /tmp/GFsZWpKETT.dsk...
-Copying tests/filesys/base/child-syn-wrt into /tmp/GFsZWpKETT.dsk...
-Writing command line to /tmp/7D48yUDR0h.dsk...
-qemu -hda /tmp/7D48yUDR0h.dsk -hdb /tmp/7k6YMnI34B.dsk -hdc /tmp/GFsZWpKETT.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/syn-write into /tmp/xxbvfT7OLr.dsk...
+Copying tests/filesys/base/child-syn-wrt into /tmp/xxbvfT7OLr.dsk...
+Writing command line to /tmp/mc0Vu5qpNJ.dsk...
+qemu -hda /tmp/mc0Vu5qpNJ.dsk -hdb /tmp/181MNj60y0.dsk -hdc /tmp/xxbvfT7OLr.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put syn-write put child-syn-wrt run syn-write
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -20,34 +20,56 @@ Executing 'syn-write':
 (syn-write) exec child 1 of 10: "child-syn-wrt 0"
 child-syn-wrt: exit(0)
 (syn-write) exec child 2 of 10: "child-syn-wrt 1"
-(syn-write) exec child 3 of 10: "child-syn-wrt 2"
 child-syn-wrt: exit(1)
+(syn-write) exec child 3 of 10: "child-syn-wrt 2"
 child-syn-wrt: exit(2)
 (syn-write) exec child 4 of 10: "child-syn-wrt 3"
-(syn-write) exec child 5 of 10: "child-syn-wrt 4"
-(syn-write) exec child 6 of 10: "child-syn-wrt 5"
-(syn-write) exec child 7 of 10: "child-syn-wrt 6"
 child-syn-wrt: exit(3)
+(syn-write) exec child 5 of 10: "child-syn-wrt 4"
 child-syn-wrt: exit(4)
+(syn-write) exec child 6 of 10: "child-syn-wrt 5"
 child-syn-wrt: exit(5)
+(syn-write) exec child 7 of 10: "child-syn-wrt 6"
 child-syn-wrt: exit(6)
 (syn-write) exec child 8 of 10: "child-syn-wrt 7"
+child-syn-wrt: exit(7)
 (syn-write) exec child 9 of 10: "child-syn-wrt 8"
+child-syn-wrt: exit(8)
 (syn-write) exec child 10 of 10: "child-syn-wrt 9"
-(syn-write) wait for child 1 of 10 returned -1 (expected 0)
-(syn-write) wait for child 1 of 10 returned -1 (expected 0): FAILED
+child-syn-wrt: exit(9)
+(syn-write) wait for child 1 of 10 returned 0 (expected 0)
+(syn-write) wait for child 2 of 10 returned 1 (expected 1)
+(syn-write) wait for child 3 of 10 returned 2 (expected 2)
+(syn-write) wait for child 4 of 10 returned 3 (expected 3)
+(syn-write) wait for child 5 of 10 returned 4 (expected 4)
+(syn-write) wait for child 6 of 10 returned 5 (expected 5)
+(syn-write) wait for child 7 of 10 returned 6 (expected 6)
+(syn-write) wait for child 8 of 10 returned 7 (expected 7)
+(syn-write) wait for child 9 of 10 returned 8 (expected 8)
+(syn-write) wait for child 10 of 10 returned 9 (expected 9)
+(syn-write) open "stuff"
+(syn-write) read "stuff"
+(syn-write) 176 bytes read starting at offset 0 in "stuff" differ from expected.
+(syn-write) Showing first differing 64 bytes.
+(syn-write) Data actually read:
+00000000  00 00 09 88 6e d1 e4 c6-aa 99 0b 80 ea 57 70 a8 |....n........Wp.|
+00000010  7e 3e 82 cd 13 3a 8c c4-aa 72 48 82 c5 35 5a 5d |~>...:...rH..5Z]|
+00000020  aa d1 49 ef 7e fe 6c b7-bd ea 88 25 09 62 ca eb |..I.~.l....%.b..|
+00000030  69 86 b3 94 75 a1 b1 5e-9d 50 4e bd c4 31 ce 30 |i...u..^.PN..1.0|
+(syn-write) Expected data:
+00000000  de 18 89 41 a3 37 5d 3a-8a 06 1e 67 57 6e 92 6d |...A.7]:...gWn.m|
+00000010  c7 1a 7f a3 f0 cc eb 97-45 2b 4d 32 27 96 5f 9e |........E+M2'._.|
+00000020  a8 cc 75 07 6d 9f b9 c5-41 7a a5 cb 30 fc 22 19 |..u.m...Az..0.".|
+00000030  8b 34 98 2d bb 62 9e c0-4b 4f 8b 05 a0 71 08 50 |.4.-.b..KO...q.P|
+(syn-write) 176 bytes read starting at offset 0 in "stuff" differ from expected: FAILED
 syn-write: exit(1)
-Kernel PANIC at ../../lib/kernel/list.c:369 in find_end_of_run(): assertion `a != NULL' failed.
-Call stack: 0xc0107726 0xc0107f0d 0xc0108252 0xc01028b5 0xc010999e 0xc0100e3b.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 83 ticks
-Thread: 30 idle ticks, 44 kernel ticks, 9 user ticks
+Execution of 'syn-write' complete.
+Timer: 86 ticks
+Thread: 30 idle ticks, 43 kernel ticks, 13 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 463 reads, 358 writes
+hd0:1: 565 reads, 364 writes
 hd1:0: 160 reads, 0 writes
-Console: 1959 characters output
+Console: 3138 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

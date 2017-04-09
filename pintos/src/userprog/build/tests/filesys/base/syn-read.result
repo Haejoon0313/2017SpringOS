@@ -1,20 +1,2 @@
 FAIL
-Kernel panic in run: PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc0107726 0xc010adcf 0xc010ae89 0xc0101905 0xc0101adb 0xc010b468 0xc010af2b 0xc0101905 0xc0101adb 0x804a5e3 0x80488e4
-Translation of call stack:
-In kernel.o:
-0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
-0xc010adcf: kill (.../userprog/exception.c:105)
-0xc010ae89: page_fault (.../userprog/exception.c:160)
-0xc0101905: intr_handler (..../threads/interrupt.c:361)
-0xc0101adb: intr_entry (threads/intr-stubs.S:38)
-0xc010b468: exit_process (...../userprog/syscall.c:307)
-0xc010af2b: syscall_handler (.../../userprog/syscall.c:50)
-0xc0101905: intr_handler (..../threads/interrupt.c:361)
-0xc0101adb: intr_entry (threads/intr-stubs.S:38)
-0x0804a5e3: (unknown)
-In tests/filesys/base/syn-read:
-0x080488e4: main (...ild/../../tests/main.c:11)
-Translations of user virtual addresses above are based on a guess at
-the binary to use.  If this guess is incorrect, then those
-translations will be misleading.
+run: wait for child 10 of 10 returned -2 (expected 9): FAILED

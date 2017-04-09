@@ -53,7 +53,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 						check_address(p+1);
 						check_address(*(p+1));
 						
-						//acquire_file_lock()
+						acquire_file_lock();
 						char * filename = *(p+1);
 
 						char * restore_name = malloc(strlen(filename)+1);
@@ -65,14 +65,15 @@ syscall_handler (struct intr_frame *f UNUSED)
 						struct file * exec_file = filesys_open(restore_name);
 					//	struct file * exec_file = filesys_open(filename);
 						
-						if(exec_file ==NULL)
-								return -1;
-
-						else{
+						if(exec_file == NULL){
+								release_file_lock();
+								f->eax = -1;
+						}else{
 								file_close(exec_file);
-								tid_t ex_return = process_execute(filename);
+								release_file_lock();
+							//	tid_t ex_return = process_execute(filename);
 							//	printf("EX syscall return : %d \n",ex_return);
-								return ex_return;
+								f->eax = process_execute(filename);
 						}
 						//release_file_lock()
 						break;
@@ -80,7 +81,6 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 		case SYS_WAIT:{
 						check_address(p+1);
-						check_address(*(p+1));
 						int wait_pid =*(p+1);// *(p+1);
 						//printf("WAIT wait_pid args: %d \n",wait_pid);
 						f->eax =  process_wait(wait_pid);
@@ -88,13 +88,14 @@ syscall_handler (struct intr_frame *f UNUSED)
 		}
 		case SYS_CREATE:
 						{
+						check_address(*(p+1));
+						check_address(p+2);
+
+
 						const char * new_file;
 						unsigned new_initial_size;
 						//check address validation
-						check_address(p+1);
-						check_address(p+2);
-
-						acquire_file_lock();
+											acquire_file_lock();
 
 						new_file = *(p+1);
 						new_initial_size = *(p+2);
@@ -123,7 +124,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 		case SYS_OPEN:
 						{
-						check_address(p+1);
+						check_address(*(p+1));
 
 						acquire_file_lock();
 
@@ -254,14 +255,14 @@ void check_address(void *addr){
 
 	//user address boundary check
 	if (!is_user_vaddr(addr)){
-		exit_process(-1);					
+		exit_process(-1);
 	}
 
 	//addreess mapping the virtual memory check
 	uint32_t *thread_pd = thread_current()->pagedir;
 	void *mapping_check = pagedir_get_page(thread_pd,addr);
 	if (mapping_check ==NULL){
-		exit_process(-1);	
+		exit_process(-1);
 	}	
 }
 
@@ -286,7 +287,7 @@ void file_close_inlist(struct list* file_list, int fd){
 			open_f = list_entry(temp, struct open_file, elem);
 			if (open_f->fd == fd){
 				file_close(open_f->file);
-				list_remove(&open_f->elem);
+				list_remove(temp);
 			}
 	}
 	free(open_f);
@@ -315,15 +316,25 @@ void exit_process(int status){
 
 	//printf("thread! name & status : %s, %d \n",curr->name,curr->exit_code);	//If parent is waiting on this child,
 	
-	if(curr->parent_process->lock_child_id = thread_current()->tid){
+	if(curr->parent_process->lock_child_id == thread_current()->tid){
 			//wake-up parents that is waiting on child to exit.
 			sema_up(&thread_current()->parent_process->child_lock);
 	}
 	thread_exit();
-
-
 }
 
+void close_all_filelist(struct list * file_list){
+	struct list_elem *temp;
+	struct open_file *open_f;
+
+	while(!list_empty(file_list)){
+		temp = list_pop_front(file_list);
+
+		open_f = list_entry(temp, struct open_file, elem);
+		list_remove(temp);
+		free(open_f);
+	}
+}
 
 
 //	printf ("system call!\n");

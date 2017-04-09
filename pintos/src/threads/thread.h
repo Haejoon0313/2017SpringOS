@@ -168,6 +168,8 @@ void thread_set_nice (int);
 int thread_get_recent_cpu (void);
 int thread_get_load_avg (void);
 
+void acquire_file_lock(void);
+void release_file_lock(void);
 
 bool
 compare_tick(struct list_elem *a,	struct list_elem*b,	void *aux UNUSED);

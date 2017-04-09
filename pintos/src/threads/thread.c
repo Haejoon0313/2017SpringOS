@@ -330,10 +330,11 @@ thread_exit (void)
 #endif
 
 	/* Needs to free all the child process of current thread*/
-	//struct thread * curr = thread_current();
-	//while(!list_empty(&curr->child_list)){
-	//}
-
+	struct thread * curr = thread_current();
+	while(!list_empty(&curr->child_list)){
+		struct open_file *temp_file = list_entry(list_pop_front(&curr->child_list), struct child, elem);
+		free(temp_file);
+	}
 
   /* Just set our status to dying and schedule another process.
      We will be destroyed during the call to schedule_tail(). */
@@ -641,11 +642,11 @@ allocate_tid (void)
   return tid;
 }
 
-void acquire_file_lock(){
+void acquire_file_lock(void){
 	lock_acquire(&file_lock);
 }
 
-void release_file_lock(){
+void release_file_lock(void){
 	lock_release(&file_lock);
 }
 

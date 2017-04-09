@@ -170,6 +170,12 @@ process_exit (void)
 	//exit_process(exit_status);
 	printf("%s: exit(%d)\n",curr->name,exit_status);
 
+	acquire_file_lock();
+	
+	file_close(curr->load);
+	close_all_filelist(&curr->file_list);
+
+	release_file_lock();
 
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
