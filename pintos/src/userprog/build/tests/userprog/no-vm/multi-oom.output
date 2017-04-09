@@ -1,6 +1,6 @@
-Copying tests/userprog/no-vm/multi-oom into /tmp/sbYER9HyoD.dsk...
-Writing command line to /tmp/9ZeSv1jUeb.dsk...
-qemu -hda /tmp/9ZeSv1jUeb.dsk -hdb /tmp/PYMMVdFbAe.dsk -hdc /tmp/sbYER9HyoD.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/no-vm/multi-oom into /tmp/94fUujFchI.dsk...
+Writing command line to /tmp/mFqG0dj8Nh.dsk...
+qemu -hda /tmp/mFqG0dj8Nh.dsk -hdb /tmp/KuoX6fla3k.dsk -hdc /tmp/94fUujFchI.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put multi-oom run multi-oom
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -17,8 +17,8 @@ Executing 'multi-oom':
 (multi-oom) wait returned -1.: FAILED
 multi-oom: exit(1)
 Execution of 'multi-oom' complete.
-Timer: 69 ticks
-Thread: 30 idle ticks, 38 kernel ticks, 1 user ticks
+Timer: 66 ticks
+Thread: 30 idle ticks, 35 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 144 reads, 178 writes
 hd1:0: 85 reads, 0 writes

@@ -1,20 +1,20 @@
 FAIL
 Kernel panic in run: PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc01076e6 0xc010ad5f 0xc010ae19 0xc01018c5 0xc0101a9b 0xc0106d4b 0xc010be74 0xc010bf6d 0xc010b637 0xc010afe2 0xc01018c5 0xc0101a9b 0x804a049 0x80480b2 0x8048103 0x80486dc
+Call stack: 0xc0107726 0xc010adcf 0xc010ae89 0xc0101905 0xc0101adb 0xc0106d8b 0xc010c0b4 0xc010c1ad 0xc010b877 0xc010b076 0xc0101905 0xc0101adb 0x804a049 0x80480b2 0x8048103 0x80486dc
 Translation of call stack:
 In kernel.o:
-0xc01076e6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc010ad5f: kill (.../userprog/exception.c:105)
-0xc010ae19: page_fault (.../userprog/exception.c:160)
-0xc01018c5: intr_handler (..../threads/interrupt.c:361)
-0xc0101a9b: intr_entry (threads/intr-stubs.S:38)
-0xc0106d4b: strcmp (...ild/../../lib/string.c:84)
-0xc010be74: lookup (..../filesys/directory.c:103)
-0xc010bf6d: dir_lookup (..../filesys/directory.c:127)
-0xc010b637: filesys_open (..../../filesys/filesys.c:75)
-0xc010afe2: syscall_handler (...../userprog/syscall.c:101)
-0xc01018c5: intr_handler (..../threads/interrupt.c:361)
-0xc0101a9b: intr_entry (threads/intr-stubs.S:38)
+0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
+0xc010adcf: kill (.../userprog/exception.c:105)
+0xc010ae89: page_fault (.../userprog/exception.c:160)
+0xc0101905: intr_handler (..../threads/interrupt.c:361)
+0xc0101adb: intr_entry (threads/intr-stubs.S:38)
+0xc0106d8b: strcmp (...ild/../../lib/string.c:84)
+0xc010c0b4: lookup (..../filesys/directory.c:103)
+0xc010c1ad: dir_lookup (..../filesys/directory.c:127)
+0xc010b877: filesys_open (..../../filesys/filesys.c:75)
+0xc010b076: syscall_handler (...../userprog/syscall.c:126)
+0xc0101905: intr_handler (..../threads/interrupt.c:361)
+0xc0101adb: intr_entry (threads/intr-stubs.S:38)
 In tests/userprog/open-bad-ptr:
 0x0804a049: open (...../lib/user/syscall.c:105)
 0x080480b2: test_main (...serprog/open-bad-ptr.c:11)

@@ -1,6 +1,6 @@
-Copying tests/userprog/args-single into /tmp/KW1kkDjdeK.dsk...
-Writing command line to /tmp/NKSyAEFshx.dsk...
-qemu -hda /tmp/NKSyAEFshx.dsk -hdb /tmp/AMJV2VF7qZ.dsk -hdc /tmp/KW1kkDjdeK.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/args-single into /tmp/JP8ZYa9yLJ.dsk...
+Writing command line to /tmp/nvpucg29w6.dsk...
+qemu -hda /tmp/nvpucg29w6.dsk -hdb /tmp/9l0cPqbpHf.dsk -hdc /tmp/JP8ZYa9yLJ.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put args-single run 'args-single onearg'
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -21,8 +21,8 @@ Executing 'args-single onearg':
 (args) end
 args-single: exit(0)
 Execution of 'args-single onearg' complete.
-Timer: 62 ticks
-Thread: 30 idle ticks, 31 kernel ticks, 1 user ticks
+Timer: 60 ticks
+Thread: 30 idle ticks, 29 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 152 writes
 hd1:0: 72 reads, 0 writes

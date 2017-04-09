@@ -1,4 +1,4 @@
-TOTAL TESTING SCORE: 36.3%
+TOTAL TESTING SCORE: 36.6%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -6,12 +6,12 @@ SUMMARY BY TEST SET
 
 Test Set                                      Pts Max  % Ttl  % Max
 --------------------------------------------- --- --- ------ ------
-tests/userprog/Rubric.functionality            55/108  17.8%/ 35.0%
-tests/userprog/Rubric.robustness               65/ 88  18.5%/ 25.0%
+tests/userprog/Rubric.functionality            63/108  20.4%/ 35.0%
+tests/userprog/Rubric.robustness               57/ 88  16.2%/ 25.0%
 tests/userprog/no-vm/Rubric                     0/  1   0.0%/ 10.0%
 tests/filesys/base/Rubric                       0/ 30   0.0%/ 30.0%
 --------------------------------------------- --- --- ------ ------
-Total                                                  36.3%/100.0%
+Total                                                  36.6%/100.0%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -34,7 +34,7 @@ Functionality of system calls (tests/userprog/Rubric.functionality):
 	- Test "open" system call.
 	     3/ 3 tests/userprog/open-missing
 	     3/ 3 tests/userprog/open-normal
-	  ** 0/ 3 tests/userprog/open-twice
+	     3/ 3 tests/userprog/open-twice
 
 	- Test "read" system call.
 	  ** 0/ 3 tests/userprog/read-normal
@@ -50,7 +50,7 @@ Functionality of system calls (tests/userprog/Rubric.functionality):
 	- Test "exec" system call.
 	     5/ 5 tests/userprog/exec-once
 	  ** 0/ 5 tests/userprog/exec-multiple
-	  ** 0/ 5 tests/userprog/exec-arg
+	     5/ 5 tests/userprog/exec-arg
 
 	- Test "wait" system call.
 	  ** 0/ 5 tests/userprog/wait-simple
@@ -71,15 +71,15 @@ Functionality of system calls (tests/userprog/Rubric.functionality):
 	  ** 0/ 3 tests/userprog/rox-multichild
 
 	- Section summary.
-	     17/ 28 tests passed
-	     55/108 points subtotal
+	     19/ 28 tests passed
+	     63/108 points subtotal
 
 Robustness of system calls (tests/userprog/Rubric.robustness):
 	- Test robustness of file descriptor handling.
-	     2/ 2 tests/userprog/close-stdin
-	     2/ 2 tests/userprog/close-stdout
-	     2/ 2 tests/userprog/close-bad-fd
-	     2/ 2 tests/userprog/close-twice
+	  ** 0/ 2 tests/userprog/close-stdin
+	  ** 0/ 2 tests/userprog/close-stdout
+	  ** 0/ 2 tests/userprog/close-bad-fd
+	  ** 0/ 2 tests/userprog/close-twice
 	     2/ 2 tests/userprog/read-bad-fd
 	     2/ 2 tests/userprog/read-stdout
 	     2/ 2 tests/userprog/write-bad-fd
@@ -124,8 +124,8 @@ Robustness of system calls (tests/userprog/Rubric.robustness):
 	     1/ 1 tests/userprog/bad-jump2
 
 	- Section summary.
-	     26/ 34 tests passed
-	     65/ 88 points subtotal
+	     22/ 34 tests passed
+	     57/ 88 points subtotal
 
 Functionality of features that VM might break (tests/userprog/no-vm/Rubric):
 
@@ -162,57 +162,16 @@ Functionality of base file system (tests/filesys/base/Rubric):
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-DETAILS OF tests/userprog/open-twice FAILURE:
-
-run: open() returned 134522328 both times: FAILED
-
-OUTPUT FROM tests/userprog/open-twice:
-
-Copying tests/userprog/open-twice into /tmp/elhY6M9ecm.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/elhY6M9ecm.dsk...
-Writing command line to /tmp/s8dPC64lSu.dsk...
-qemu -hda /tmp/s8dPC64lSu.dsk -hdb /tmp/tUGeljPvES.dsk -hdc /tmp/elhY6M9ecm.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put open-twice put sample.txt run open-twice
-Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
-374 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 75 sector (37 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-Formatting file system...done.
-Boot complete.
-Putting 'open-twice' into the file system...
-Putting 'sample.txt' into the file system...
-Executing 'open-twice':
-(open-twice) begin
-(open-twice) open "sample.txt" once
-(open-twice) open "sample.txt" again
-(open-twice) open() returned 134522328 both times: FAILED
-open-twice: exit(1)
-Execution of 'open-twice' complete.
-Timer: 70 ticks
-Thread: 30 idle ticks, 40 kernel ticks, 1 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 99 reads, 160 writes
-hd1:0: 75 reads, 0 writes
-Console: 977 characters output
-Keyboard: 0 keys pressed
-Exception: 0 page faults
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
 DETAILS OF tests/userprog/read-normal FAILURE:
 
-run: read of 239 bytes at offset 0 in "sample.txt" returned 134522216: FAILED
+run: read of 239 bytes at offset 0 in "sample.txt" returned 2: FAILED
 
 OUTPUT FROM tests/userprog/read-normal:
 
-Copying tests/userprog/read-normal into /tmp/HoGDjPgKAC.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/HoGDjPgKAC.dsk...
-Writing command line to /tmp/SKx6DPJuBe.dsk...
-qemu -hda /tmp/SKx6DPJuBe.dsk -hdb /tmp/AZvErqPlhs.dsk -hdc /tmp/HoGDjPgKAC.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/read-normal into /tmp/00N4VKwoIH.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/00N4VKwoIH.dsk...
+Writing command line to /tmp/Yqgcg2FpC0.dsk...
+qemu -hda /tmp/Yqgcg2FpC0.dsk -hdb /tmp/NmbdEJGeng.dsk -hdc /tmp/00N4VKwoIH.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put read-normal put sample.txt run read-normal
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -228,16 +187,15 @@ Putting 'sample.txt' into the file system...
 Executing 'read-normal':
 (read-normal) begin
 (read-normal) open "sample.txt" for verification
-(read-normal) size of sample.txt (134522216) differs from expected (239)
-(read-normal) read of 239 bytes at offset 0 in "sample.txt" returned 134522216: FAILED
+(read-normal) read of 239 bytes at offset 0 in "sample.txt" returned 2: FAILED
 read-normal: exit(1)
 Execution of 'read-normal' complete.
-Timer: 62 ticks
-Thread: 30 idle ticks, 30 kernel ticks, 2 user ticks
+Timer: 64 ticks
+Thread: 30 idle ticks, 32 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 96 reads, 162 writes
 hd1:0: 76 reads, 0 writes
-Console: 1062 characters output
+Console: 981 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
@@ -246,14 +204,14 @@ Powering off...
 
 DETAILS OF tests/userprog/read-zero FAILURE:
 
-run: read() returned 134522314 instead of 0: FAILED
+run: read() returned 2 instead of 0: FAILED
 
 OUTPUT FROM tests/userprog/read-zero:
 
-Copying tests/userprog/read-zero into /tmp/626KdflLQ7.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/626KdflLQ7.dsk...
-Writing command line to /tmp/2ORO3t0iY8.dsk...
-qemu -hda /tmp/2ORO3t0iY8.dsk -hdb /tmp/uGpDK4Cm1e.dsk -hdc /tmp/626KdflLQ7.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/read-zero into /tmp/89CZMxAeIO.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/89CZMxAeIO.dsk...
+Writing command line to /tmp/t1K4Zn8NxH.dsk...
+qemu -hda /tmp/t1K4Zn8NxH.dsk -hdb /tmp/qif9g8JuNH.dsk -hdc /tmp/89CZMxAeIO.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put read-zero put sample.txt run read-zero
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -269,15 +227,15 @@ Putting 'sample.txt' into the file system...
 Executing 'read-zero':
 (read-zero) begin
 (read-zero) open "sample.txt"
-(read-zero) read() returned 134522314 instead of 0: FAILED
+(read-zero) read() returned 2 instead of 0: FAILED
 read-zero: exit(1)
 Execution of 'read-zero' complete.
-Timer: 61 ticks
-Thread: 30 idle ticks, 30 kernel ticks, 1 user ticks
+Timer: 65 ticks
+Thread: 30 idle ticks, 33 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 160 writes
 hd1:0: 75 reads, 0 writes
-Console: 928 characters output
+Console: 920 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
@@ -287,21 +245,21 @@ Powering off...
 DETAILS OF tests/userprog/exec-multiple FAILURE:
 
 Kernel panic in run: PANIC at ../../lib/kernel/list.c:369 in find_end_of_run(): assertion `a != NULL' failed.
-Call stack: 0xc01076e6 0xc0107ecd 0xc0108212 0xc0102875 0xc010991b 0xc0100e32
+Call stack: 0xc0107726 0xc0107f0d 0xc0108252 0xc01028b5 0xc010999e 0xc0100e3b
 Translation of call stack:
-0xc01076e6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0107ecd: find_end_of_run (.../../lib/kernel/list.c:370)
-0xc0108212: list_sort (.../../lib/kernel/list.c:436)
-0xc0102875: sema_up (...../../threads/synch.c:162)
-0xc010991b: start_process (...../userprog/process.c:101)
-0xc0100e32: kernel_thread (..../../threads/thread.c:472)
+0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107f0d: find_end_of_run (.../../lib/kernel/list.c:370)
+0xc0108252: list_sort (.../../lib/kernel/list.c:436)
+0xc01028b5: sema_up (...../../threads/synch.c:162)
+0xc010999e: start_process (...../userprog/process.c:105)
+0xc0100e3b: kernel_thread (..../../threads/thread.c:476)
 
 OUTPUT FROM tests/userprog/exec-multiple:
 
-Copying tests/userprog/exec-multiple into /tmp/f5fAaSfVvi.dsk...
-Copying tests/userprog/child-simple into /tmp/f5fAaSfVvi.dsk...
-Writing command line to /tmp/c9BZkNnD7I.dsk...
-qemu -hda /tmp/c9BZkNnD7I.dsk -hdb /tmp/dwUOpVu0J4.dsk -hdc /tmp/f5fAaSfVvi.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/exec-multiple into /tmp/9fKRGLYogu.dsk...
+Copying tests/userprog/child-simple into /tmp/9fKRGLYogu.dsk...
+Writing command line to /tmp/eBD9pGbYFc.dsk...
+qemu -hda /tmp/eBD9pGbYFc.dsk -hdb /tmp/lJKYDXo8Re.dsk -hdc /tmp/9fKRGLYogu.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put exec-multiple put child-simple run exec-multiple
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -325,7 +283,7 @@ child-simple: exit(81)
 (exec-multiple) end
 exec-multiple: exit(0)
 Kernel PANIC at ../../lib/kernel/list.c:369 in find_end_of_run(): assertion `a != NULL' failed.
-Call stack: 0xc01076e6 0xc0107ecd 0xc0108212 0xc0102875 0xc010991b 0xc0100e32.
+Call stack: 0xc0107726 0xc0107f0d 0xc0108252 0xc01028b5 0xc010999e 0xc0100e3b.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -337,74 +295,6 @@ hd1:0: 145 reads, 0 writes
 Console: 1310 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/userprog/exec-arg FAILURE:
-
-Kernel panic in run: PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc01076e6 0xc010ad5f 0xc010ae19 0xc01018c5 0xc0101a9b 0xc010706c 0xc010980d 0xc010af5b 0xc01018c5 0xc0101a9b 0x8049fe5 0x80480b2 0x80480ef 0x80486c8
-Translation of call stack:
-In kernel.o:
-0xc01076e6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc010ad5f: kill (.../userprog/exception.c:105)
-0xc010ae19: page_fault (.../userprog/exception.c:160)
-0xc01018c5: intr_handler (..../threads/interrupt.c:361)
-0xc0101a9b: intr_entry (threads/intr-stubs.S:38)
-0xc010706c: strtok_r (...ld/../../lib/string.c:269)
-0xc010980d: process_execute (.../../userprog/process.c:44)
-0xc010af5b: syscall_handler (.../../userprog/syscall.c:62)
-0xc01018c5: intr_handler (..../threads/interrupt.c:361)
-0xc0101a9b: intr_entry (threads/intr-stubs.S:38)
-In tests/userprog/exec-arg:
-0x08049fe5: exec (.../../lib/user/syscall.c:81)
-0x080480b2: test_main (...sts/userprog/exec-arg.c:9)
-0x080480ef: main (...ild/../../tests/main.c:13)
-0x080486c8: _start (.../../../lib/user/entry.c:9)
-Translations of user virtual addresses above are based on a guess at
-the binary to use.  If this guess is incorrect, then those
-translations will be misleading.
-
-OUTPUT FROM tests/userprog/exec-arg:
-
-Copying tests/userprog/exec-arg into /tmp/M5Mye19UIB.dsk...
-Copying tests/userprog/child-args into /tmp/M5Mye19UIB.dsk...
-Writing command line to /tmp/X7R2HNIAlP.dsk...
-qemu -hda /tmp/X7R2HNIAlP.dsk -hdb /tmp/tk4Na5YfjU.dsk -hdc /tmp/M5Mye19UIB.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put exec-arg put child-args run exec-arg
-Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
-374 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-Formatting file system...done.
-Boot complete.
-Putting 'exec-arg' into the file system...
-Putting 'child-args' into the file system...
-Executing 'exec-arg':
-(exec-arg) begin
-Page fault at 0x804a572: rights violation error writing page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc010706c
- cr2=0804a572 error=00000003
- eax=c010ec78 ebx=0804a572 ecx=ffffffff edx=00000020
- esi=c010ec78 edi=c011cf18 esp=c010ec78 ebp=c011cef4
- cs=0008 ds=0010 es=0010 ss=0020
-Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc01076e6 0xc010ad5f 0xc010ae19 0xc01018c5 0xc0101a9b 0xc010706c 0xc010980d 0xc010af5b 0xc01018c5 0xc0101a9b 0x8049fe5 0x80480b2 0x80480ef 0x80486c8.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 72 ticks
-Thread: 30 idle ticks, 41 kernel ticks, 1 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 90 reads, 300 writes
-hd1:0: 145 reads, 0 writes
-Console: 1509 characters output
-Keyboard: 0 keys pressed
-Exception: 1 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -431,10 +321,10 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/userprog/wait-simple:
 
-Copying tests/userprog/wait-simple into /tmp/dMAx9zDom0.dsk...
-Copying tests/userprog/child-simple into /tmp/dMAx9zDom0.dsk...
-Writing command line to /tmp/PZoWkLAZ1c.dsk...
-qemu -hda /tmp/PZoWkLAZ1c.dsk -hdb /tmp/Pk1eIqyhOY.dsk -hdc /tmp/dMAx9zDom0.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/wait-simple into /tmp/X41eBwdaFx.dsk...
+Copying tests/userprog/child-simple into /tmp/X41eBwdaFx.dsk...
+Writing command line to /tmp/o6mLocDFeN.dsk...
+qemu -hda /tmp/o6mLocDFeN.dsk -hdb /tmp/p94nCT1sUy.dsk -hdc /tmp/X41eBwdaFx.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put wait-simple put child-simple run wait-simple
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -455,8 +345,8 @@ child-simple: exit(81)
 (wait-simple) end
 wait-simple: exit(0)
 Execution of 'wait-simple' complete.
-Timer: 67 ticks
-Thread: 30 idle ticks, 36 kernel ticks, 1 user ticks
+Timer: 72 ticks
+Thread: 30 idle ticks, 41 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 124 reads, 300 writes
 hd1:0: 145 reads, 0 writes
@@ -491,10 +381,10 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/userprog/wait-twice:
 
-Copying tests/userprog/wait-twice into /tmp/Ph4KHq0Zpd.dsk...
-Copying tests/userprog/child-simple into /tmp/Ph4KHq0Zpd.dsk...
-Writing command line to /tmp/uStw18LrB1.dsk...
-qemu -hda /tmp/uStw18LrB1.dsk -hdb /tmp/ld6bQkmy9J.dsk -hdc /tmp/Ph4KHq0Zpd.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/wait-twice into /tmp/uJCbvQMWPl.dsk...
+Copying tests/userprog/child-simple into /tmp/uJCbvQMWPl.dsk...
+Writing command line to /tmp/YTvGDLSDK1.dsk...
+qemu -hda /tmp/YTvGDLSDK1.dsk -hdb /tmp/ysc7zx2IQP.dsk -hdc /tmp/uJCbvQMWPl.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put wait-twice put child-simple run wait-twice
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -517,7 +407,7 @@ child-simple: exit(81)
 wait-twice: exit(0)
 Execution of 'wait-twice' complete.
 Timer: 68 ticks
-Thread: 30 idle ticks, 37 kernel ticks, 1 user ticks
+Thread: 30 idle ticks, 38 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 124 reads, 300 writes
 hd1:0: 145 reads, 0 writes
@@ -530,13 +420,13 @@ Powering off...
 
 DETAILS OF tests/userprog/multi-recurse FAILURE:
 
-run: wait(exec("multi-recurse")) returned -1: FAILED
+run: wait(exec("multi-recurse 14")) returned -1: FAILED
 
 OUTPUT FROM tests/userprog/multi-recurse:
 
-Copying tests/userprog/multi-recurse into /tmp/PxkTu6YCh4.dsk...
-Writing command line to /tmp/tkvJ7MkR1Q.dsk...
-qemu -hda /tmp/tkvJ7MkR1Q.dsk -hdb /tmp/lD6km017Fp.dsk -hdc /tmp/PxkTu6YCh4.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/multi-recurse into /tmp/wIXlwNPB0U.dsk...
+Writing command line to /tmp/kbGvazNAfG.dsk...
+qemu -hda /tmp/kbGvazNAfG.dsk -hdb /tmp/1kmABkjJV9.dsk -hdc /tmp/wIXlwNPB0U.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put multi-recurse run 'multi-recurse 15'
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -553,17 +443,17 @@ Executing 'multi-recurse 15':
 (multi-recurse) exec("multi-recurse 14")
 (multi-recurse) begin 14
 (multi-recurse) exec("multi-recurse 13")
-(multi-recurse) wait(exec("multi-recurse")) returned -1: FAILED
+(multi-recurse) wait(exec("multi-recurse 14")) returned -1: FAILED
 multi-recurse: exit(1)
 (multi-recurse) begin 13
 (multi-recurse) exec("multi-recurse 12")
-Execution of 'multi-recurse' complete.
-Timer: 62 ticks
-Thread: 30 idle ticks, 30 kernel ticks, 2 user ticks
+Execution of 'multi-recurse 15' complete.
+Timer: 64 ticks
+Thread: 30 idle ticks, 32 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 156 reads, 170 writes
 hd1:0: 81 reads, 0 writes
-Console: 1056 characters output
+Console: 1062 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
@@ -576,9 +466,9 @@ run: read "rox-simple": FAILED
 
 OUTPUT FROM tests/userprog/rox-simple:
 
-Copying tests/userprog/rox-simple into /tmp/qoKrT6739H.dsk...
-Writing command line to /tmp/Z8Jdid2CZ9.dsk...
-qemu -hda /tmp/Z8Jdid2CZ9.dsk -hdb /tmp/UMkOl8ni3h.dsk -hdc /tmp/qoKrT6739H.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/rox-simple into /tmp/LslfLIToDv.dsk...
+Writing command line to /tmp/Jde24rGPfF.dsk...
+qemu -hda /tmp/Jde24rGPfF.dsk -hdb /tmp/ECk5bdgnTM.dsk -hdc /tmp/LslfLIToDv.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put rox-simple run rox-simple
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -597,8 +487,8 @@ Executing 'rox-simple':
 (rox-simple) read "rox-simple": FAILED
 rox-simple: exit(1)
 Execution of 'rox-simple' complete.
-Timer: 63 ticks
-Thread: 30 idle ticks, 32 kernel ticks, 1 user ticks
+Timer: 64 ticks
+Thread: 30 idle ticks, 33 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 62 reads, 154 writes
 hd1:0: 73 reads, 0 writes
@@ -615,10 +505,10 @@ run: read "child-rox": FAILED
 
 OUTPUT FROM tests/userprog/rox-child:
 
-Copying tests/userprog/rox-child into /tmp/7XIgprTx9r.dsk...
-Copying tests/userprog/child-rox into /tmp/7XIgprTx9r.dsk...
-Writing command line to /tmp/3fCdveNOUa.dsk...
-qemu -hda /tmp/3fCdveNOUa.dsk -hdb /tmp/K0SQjm1H0o.dsk -hdc /tmp/7XIgprTx9r.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/rox-child into /tmp/teIhCkbRS2.dsk...
+Copying tests/userprog/child-rox into /tmp/teIhCkbRS2.dsk...
+Writing command line to /tmp/gOJ6NHcjZO.dsk...
+qemu -hda /tmp/gOJ6NHcjZO.dsk -hdb /tmp/Yv0Mi0GtDb.dsk -hdc /tmp/teIhCkbRS2.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put rox-child put child-rox run rox-child
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -638,8 +528,8 @@ Executing 'rox-child':
 (rox-child) read "child-rox": FAILED
 rox-child: exit(1)
 Execution of 'rox-child' complete.
-Timer: 75 ticks
-Thread: 30 idle ticks, 44 kernel ticks, 1 user ticks
+Timer: 76 ticks
+Thread: 30 idle ticks, 44 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 322 writes
 hd1:0: 156 reads, 0 writes
@@ -656,10 +546,10 @@ run: read "child-rox": FAILED
 
 OUTPUT FROM tests/userprog/rox-multichild:
 
-Copying tests/userprog/rox-multichild into /tmp/t2JkqbK7OP.dsk...
-Copying tests/userprog/child-rox into /tmp/t2JkqbK7OP.dsk...
-Writing command line to /tmp/07keYNxnCj.dsk...
-qemu -hda /tmp/07keYNxnCj.dsk -hdb /tmp/3rdeZqYgWO.dsk -hdc /tmp/t2JkqbK7OP.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/rox-multichild into /tmp/lSS2UM1G5v.dsk...
+Copying tests/userprog/child-rox into /tmp/lSS2UM1G5v.dsk...
+Writing command line to /tmp/jUlblXf8o3.dsk...
+qemu -hda /tmp/jUlblXf8o3.dsk -hdb /tmp/fTE0mg3aQi.dsk -hdc /tmp/lSS2UM1G5v.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put rox-multichild put child-rox run rox-multichild
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -679,8 +569,8 @@ Executing 'rox-multichild':
 (rox-multichild) read "child-rox": FAILED
 rox-multichild: exit(1)
 Execution of 'rox-multichild' complete.
-Timer: 75 ticks
-Thread: 30 idle ticks, 44 kernel ticks, 1 user ticks
+Timer: 76 ticks
+Thread: 30 idle ticks, 44 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 322 writes
 hd1:0: 156 reads, 0 writes
@@ -691,17 +581,267 @@ Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
+DETAILS OF tests/userprog/close-stdin FAILURE:
+
+Kernel panic in run: PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a09d 0x80480b2 0x80480e7 0x80486c0
+Translation of call stack:
+In kernel.o:
+0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0103902: block_to_arena (..../../threads/malloc.c:277)
+0xc01037bb: free (..../../threads/malloc.c:224)
+0xc010b2cb: file_close_inlist (...../userprog/syscall.c:253)
+0xc010b1c9: syscall_handler (...../userprog/syscall.c:196)
+0xc0101905: intr_handler (..../threads/interrupt.c:361)
+0xc0101adb: intr_entry (threads/intr-stubs.S:38)
+In tests/userprog/close-stdin:
+0x0804a09d: close (...../lib/user/syscall.c:141)
+0x080480b2: test_main (...userprog/close-stdin.c:11)
+0x080480e7: main (...ild/../../tests/main.c:13)
+0x080486c0: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
+
+OUTPUT FROM tests/userprog/close-stdin:
+
+Copying tests/userprog/close-stdin into /tmp/c6sUEhAHpH.dsk...
+Writing command line to /tmp/0ORrkkCB6l.dsk...
+qemu -hda /tmp/0ORrkkCB6l.dsk -hdb /tmp/9kaWFpSLZ5.dsk -hdc /tmp/c6sUEhAHpH.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put close-stdin run close-stdin
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+374 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 73 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+Formatting file system...done.
+Boot complete.
+Putting 'close-stdin' into the file system...
+Executing 'close-stdin':
+(close-stdin) begin
+Kernel PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a09d 0x80480b2 0x80480e7 0x80486c0.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 63 ticks
+Thread: 30 idle ticks, 32 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 58 reads, 154 writes
+hd1:0: 73 reads, 0 writes
+Console: 1127 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/userprog/close-stdout FAILURE:
+
+Kernel panic in run: PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a09d 0x80480b2 0x80480e7 0x80486c0
+Translation of call stack:
+In kernel.o:
+0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0103902: block_to_arena (..../../threads/malloc.c:277)
+0xc01037bb: free (..../../threads/malloc.c:224)
+0xc010b2cb: file_close_inlist (...../userprog/syscall.c:253)
+0xc010b1c9: syscall_handler (...../userprog/syscall.c:196)
+0xc0101905: intr_handler (..../threads/interrupt.c:361)
+0xc0101adb: intr_entry (threads/intr-stubs.S:38)
+In tests/userprog/close-stdout:
+0x0804a09d: close (...../lib/user/syscall.c:141)
+0x080480b2: test_main (...serprog/close-stdout.c:11)
+0x080480e7: main (...ild/../../tests/main.c:13)
+0x080486c0: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
+
+OUTPUT FROM tests/userprog/close-stdout:
+
+Copying tests/userprog/close-stdout into /tmp/l3jCmgDxwy.dsk...
+Writing command line to /tmp/UndoQV7sJp.dsk...
+qemu -hda /tmp/UndoQV7sJp.dsk -hdb /tmp/K1OPtPlLyv.dsk -hdc /tmp/l3jCmgDxwy.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put close-stdout run close-stdout
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+374 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 73 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+Formatting file system...done.
+Boot complete.
+Putting 'close-stdout' into the file system...
+Executing 'close-stdout':
+(close-stdout) begin
+Kernel PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a09d 0x80480b2 0x80480e7 0x80486c0.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 61 ticks
+Thread: 30 idle ticks, 30 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 58 reads, 154 writes
+hd1:0: 73 reads, 0 writes
+Console: 1132 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/userprog/close-bad-fd FAILURE:
+
+Kernel panic in run: PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a09d 0x80480b2 0x80480e7 0x80486c0
+Translation of call stack:
+In kernel.o:
+0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0103902: block_to_arena (..../../threads/malloc.c:277)
+0xc01037bb: free (..../../threads/malloc.c:224)
+0xc010b2cb: file_close_inlist (...../userprog/syscall.c:253)
+0xc010b1c9: syscall_handler (...../userprog/syscall.c:196)
+0xc0101905: intr_handler (..../threads/interrupt.c:361)
+0xc0101adb: intr_entry (threads/intr-stubs.S:38)
+In tests/userprog/close-bad-fd:
+0x0804a09d: close (...../lib/user/syscall.c:141)
+0x080480b2: test_main (...serprog/close-bad-fd.c:11)
+0x080480e7: main (...ild/../../tests/main.c:13)
+0x080486c0: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
+
+OUTPUT FROM tests/userprog/close-bad-fd:
+
+Copying tests/userprog/close-bad-fd into /tmp/hojqUbt7jj.dsk...
+Writing command line to /tmp/odWRLpGvX7.dsk...
+qemu -hda /tmp/odWRLpGvX7.dsk -hdb /tmp/fQQzJwkvaW.dsk -hdc /tmp/hojqUbt7jj.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put close-bad-fd run close-bad-fd
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+374 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 73 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+Formatting file system...done.
+Boot complete.
+Putting 'close-bad-fd' into the file system...
+Executing 'close-bad-fd':
+(close-bad-fd) begin
+Kernel PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a09d 0x80480b2 0x80480e7 0x80486c0.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 61 ticks
+Thread: 30 idle ticks, 30 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 58 reads, 154 writes
+hd1:0: 73 reads, 0 writes
+Console: 1132 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/userprog/close-twice FAILURE:
+
+Kernel panic in run: PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a0ed 0x80480fa 0x8048133 0x804870c
+Translation of call stack:
+In kernel.o:
+0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0103902: block_to_arena (..../../threads/malloc.c:277)
+0xc01037bb: free (..../../threads/malloc.c:224)
+0xc010b2cb: file_close_inlist (...../userprog/syscall.c:253)
+0xc010b1c9: syscall_handler (...../userprog/syscall.c:196)
+0xc0101905: intr_handler (..../threads/interrupt.c:361)
+0xc0101adb: intr_entry (threads/intr-stubs.S:38)
+In tests/userprog/close-twice:
+0x0804a0ed: close (...../lib/user/syscall.c:141)
+0x080480fa: test_main (...userprog/close-twice.c:18)
+0x08048133: main (...ild/../../tests/main.c:13)
+0x0804870c: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
+
+OUTPUT FROM tests/userprog/close-twice:
+
+Copying tests/userprog/close-twice into /tmp/b76K9c5TwD.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/b76K9c5TwD.dsk...
+Writing command line to /tmp/RxaDLKNo6o.dsk...
+qemu -hda /tmp/RxaDLKNo6o.dsk -hdb /tmp/AnIHDn7ecT.dsk -hdc /tmp/b76K9c5TwD.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put close-twice put sample.txt run close-twice
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+374 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 75 sector (37 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+Formatting file system...done.
+Boot complete.
+Putting 'close-twice' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'close-twice':
+(close-twice) begin
+(close-twice) open "sample.txt"
+(close-twice) close "sample.txt"
+(close-twice) close "sample.txt" again
+Kernel PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a0ed 0x80480fa 0x8048133 0x804870c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 64 ticks
+Thread: 30 idle ticks, 34 kernel ticks, 0 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 90 reads, 160 writes
+hd1:0: 75 reads, 0 writes
+Console: 1291 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
 DETAILS OF tests/userprog/multi-child-fd FAILURE:
 
-run: read of 239 bytes at offset 0 in "sample.txt" returned 134522362: FAILED
+Kernel panic in run: PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a4bd 0x80480e9 0x80486c4
+Translation of call stack:
+In kernel.o:
+0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0103902: block_to_arena (..../../threads/malloc.c:277)
+0xc01037bb: free (..../../threads/malloc.c:224)
+0xc010b2cb: file_close_inlist (...../userprog/syscall.c:253)
+0xc010b1c9: syscall_handler (...../userprog/syscall.c:196)
+0xc0101905: intr_handler (..../threads/interrupt.c:361)
+0xc0101adb: intr_entry (threads/intr-stubs.S:38)
+0x0804a4bd: (unknown)
+In tests/userprog/multi-child-fd:
+0x080480e9: test_main (...rprog/multi-child-fd.c:20)
+0x080486c4: compare_bytes (...ild/../../tests/lib.c:191)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
 
 OUTPUT FROM tests/userprog/multi-child-fd:
 
-Copying tests/userprog/multi-child-fd into /tmp/XfMePG198F.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/XfMePG198F.dsk...
-Copying tests/userprog/child-close into /tmp/XfMePG198F.dsk...
-Writing command line to /tmp/gdsN5rbWnn.dsk...
-qemu -hda /tmp/gdsN5rbWnn.dsk -hdb /tmp/Y4btqusOqe.dsk -hdc /tmp/XfMePG198F.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/multi-child-fd into /tmp/r9y4OF0Z31.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/r9y4OF0Z31.dsk...
+Copying tests/userprog/child-close into /tmp/r9y4OF0Z31.dsk...
+Writing command line to /tmp/piyBW0gQQC.dsk...
+qemu -hda /tmp/piyBW0gQQC.dsk -hdb /tmp/VcjFivczau.dsk -hdc /tmp/r9y4OF0Z31.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put multi-child-fd put sample.txt put child-close run multi-child-fd
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -719,19 +859,17 @@ Executing 'multi-child-fd':
 (multi-child-fd) begin
 (multi-child-fd) open "sample.txt"
 (child-close) begin
-(child-close) end
-child-close: exit(0)
-(multi-child-fd) wait(exec()) = -1
-(multi-child-fd) size of sample.txt (134522362) differs from expected (239)
-(multi-child-fd) read of 239 bytes at offset 0 in "sample.txt" returned 134522362: FAILED
-multi-child-fd: exit(1)
-Execution of 'multi-child-fd' complete.
-Timer: 81 ticks
-Thread: 30 idle ticks, 47 kernel ticks, 4 user ticks
+Kernel PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a4bd 0x80480e9 0x80486c4.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 75 ticks
+Thread: 30 idle ticks, 44 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 171 reads, 324 writes
 hd1:0: 156 reads, 0 writes
-Console: 1234 characters output
+Console: 1312 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
@@ -741,19 +879,19 @@ Powering off...
 DETAILS OF tests/userprog/create-bad-ptr FAILURE:
 
 Kernel panic in run: PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc01076e6 0xc010ad5f 0xc010ae19 0xc01018c5 0xc0101a9b 0xc010c00e 0xc010b5d0 0xc010afa6 0xc01018c5 0xc0101a9b 0x804a019 0x80480ba 0x8048103 0x80486dc
+Call stack: 0xc0107726 0xc010adcf 0xc010ae89 0xc0101905 0xc0101adb 0xc010c24e 0xc010b810 0xc010b01b 0xc0101905 0xc0101adb 0x804a019 0x80480ba 0x8048103 0x80486dc
 Translation of call stack:
 In kernel.o:
-0xc01076e6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc010ad5f: kill (.../userprog/exception.c:105)
-0xc010ae19: page_fault (.../userprog/exception.c:160)
-0xc01018c5: intr_handler (..../threads/interrupt.c:361)
-0xc0101a9b: intr_entry (threads/intr-stubs.S:38)
-0xc010c00e: dir_add (..../filesys/directory.c:152)
-0xc010b5d0: filesys_create (..../../filesys/filesys.c:51)
-0xc010afa6: syscall_handler (.../../userprog/syscall.c:86)
-0xc01018c5: intr_handler (..../threads/interrupt.c:361)
-0xc0101a9b: intr_entry (threads/intr-stubs.S:38)
+0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
+0xc010adcf: kill (.../userprog/exception.c:105)
+0xc010ae89: page_fault (.../userprog/exception.c:160)
+0xc0101905: intr_handler (..../threads/interrupt.c:361)
+0xc0101adb: intr_entry (threads/intr-stubs.S:38)
+0xc010c24e: dir_add (..../filesys/directory.c:152)
+0xc010b810: filesys_create (..../../filesys/filesys.c:51)
+0xc010b01b: syscall_handler (.../../userprog/syscall.c:97)
+0xc0101905: intr_handler (..../threads/interrupt.c:361)
+0xc0101adb: intr_entry (threads/intr-stubs.S:38)
 In tests/userprog/create-bad-ptr:
 0x0804a019: create (.../../lib/user/syscall.c:93)
 0x080480ba: test_main (...rprog/create-bad-ptr.c:11)
@@ -765,9 +903,9 @@ translations will be misleading.
 
 OUTPUT FROM tests/userprog/create-bad-ptr:
 
-Copying tests/userprog/create-bad-ptr into /tmp/NlPi4mGpXD.dsk...
-Writing command line to /tmp/69dRo1Xd9v.dsk...
-qemu -hda /tmp/69dRo1Xd9v.dsk -hdb /tmp/0woXtPc7gq.dsk -hdc /tmp/NlPi4mGpXD.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/create-bad-ptr into /tmp/3yDfRK2m0k.dsk...
+Writing command line to /tmp/mcmE5Msebu.dsk...
+qemu -hda /tmp/mcmE5Msebu.dsk -hdb /tmp/4tdxkzgdRH.dsk -hdc /tmp/3yDfRK2m0k.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put create-bad-ptr run create-bad-ptr
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -782,18 +920,18 @@ Putting 'create-bad-ptr' into the file system...
 Executing 'create-bad-ptr':
 (create-bad-ptr) begin
 Page fault at 0x20101234: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc010c00e
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc010c24e
  cr2=20101234 error=00000000
  eax=20101234 ebx=20101234 ecx=c011920c edx=c011c000
- esi=c011803c edi=00000000 esp=c0111690 ebp=c011cf04
+ esi=c011803c edi=00000000 esp=c0111690 ebp=c011cf24
  cs=0008 ds=0010 es=0010 ss=920c
 Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc01076e6 0xc010ad5f 0xc010ae19 0xc01018c5 0xc0101a9b 0xc010c00e 0xc010b5d0 0xc010afa6 0xc01018c5 0xc0101a9b 0x804a019 0x80480ba 0x8048103 0x80486dc.
+Call stack: 0xc0107726 0xc010adcf 0xc010ae89 0xc0101905 0xc0101adb 0xc010c24e 0xc010b810 0xc010b01b 0xc0101905 0xc0101adb 0x804a019 0x80480ba 0x8048103 0x80486dc.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 70 ticks
-Thread: 30 idle ticks, 38 kernel ticks, 2 user ticks
+Timer: 75 ticks
+Thread: 30 idle ticks, 42 kernel ticks, 3 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 62 reads, 157 writes
 hd1:0: 73 reads, 0 writes
@@ -807,21 +945,21 @@ Powering off...
 DETAILS OF tests/userprog/open-bad-ptr FAILURE:
 
 Kernel panic in run: PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc01076e6 0xc010ad5f 0xc010ae19 0xc01018c5 0xc0101a9b 0xc0106d4b 0xc010be74 0xc010bf6d 0xc010b637 0xc010afe2 0xc01018c5 0xc0101a9b 0x804a049 0x80480b2 0x8048103 0x80486dc
+Call stack: 0xc0107726 0xc010adcf 0xc010ae89 0xc0101905 0xc0101adb 0xc0106d8b 0xc010c0b4 0xc010c1ad 0xc010b877 0xc010b076 0xc0101905 0xc0101adb 0x804a049 0x80480b2 0x8048103 0x80486dc
 Translation of call stack:
 In kernel.o:
-0xc01076e6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc010ad5f: kill (.../userprog/exception.c:105)
-0xc010ae19: page_fault (.../userprog/exception.c:160)
-0xc01018c5: intr_handler (..../threads/interrupt.c:361)
-0xc0101a9b: intr_entry (threads/intr-stubs.S:38)
-0xc0106d4b: strcmp (...ild/../../lib/string.c:84)
-0xc010be74: lookup (..../filesys/directory.c:103)
-0xc010bf6d: dir_lookup (..../filesys/directory.c:127)
-0xc010b637: filesys_open (..../../filesys/filesys.c:75)
-0xc010afe2: syscall_handler (...../userprog/syscall.c:101)
-0xc01018c5: intr_handler (..../threads/interrupt.c:361)
-0xc0101a9b: intr_entry (threads/intr-stubs.S:38)
+0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
+0xc010adcf: kill (.../userprog/exception.c:105)
+0xc010ae89: page_fault (.../userprog/exception.c:160)
+0xc0101905: intr_handler (..../threads/interrupt.c:361)
+0xc0101adb: intr_entry (threads/intr-stubs.S:38)
+0xc0106d8b: strcmp (...ild/../../lib/string.c:84)
+0xc010c0b4: lookup (..../filesys/directory.c:103)
+0xc010c1ad: dir_lookup (..../filesys/directory.c:127)
+0xc010b877: filesys_open (..../../filesys/filesys.c:75)
+0xc010b076: syscall_handler (...../userprog/syscall.c:126)
+0xc0101905: intr_handler (..../threads/interrupt.c:361)
+0xc0101adb: intr_entry (threads/intr-stubs.S:38)
 In tests/userprog/open-bad-ptr:
 0x0804a049: open (...../lib/user/syscall.c:105)
 0x080480b2: test_main (...serprog/open-bad-ptr.c:11)
@@ -833,9 +971,9 @@ translations will be misleading.
 
 OUTPUT FROM tests/userprog/open-bad-ptr:
 
-Copying tests/userprog/open-bad-ptr into /tmp/SsxwA14MZ5.dsk...
-Writing command line to /tmp/e2VrRx84xr.dsk...
-qemu -hda /tmp/e2VrRx84xr.dsk -hdb /tmp/DvT8jR9Ajl.dsk -hdc /tmp/SsxwA14MZ5.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/open-bad-ptr into /tmp/kbqGRa130c.dsk...
+Writing command line to /tmp/SRjwhfaVlg.dsk...
+qemu -hda /tmp/SRjwhfaVlg.dsk -hdb /tmp/O1pll4SEEk.dsk -hdc /tmp/kbqGRa130c.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put open-bad-ptr run open-bad-ptr
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -850,18 +988,18 @@ Putting 'open-bad-ptr' into the file system...
 Executing 'open-bad-ptr':
 (open-bad-ptr) begin
 Page fault at 0x20101234: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0106d4b
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0106d8b
  cr2=20101234 error=00000000
- eax=c011ce80 ebx=00000000 ecx=c011ce80 edx=20101234
- esi=c011803c edi=20101234 esp=c011920c ebp=c011ce54
+ eax=c011cea0 ebx=00000000 ecx=c011cea0 edx=20101234
+ esi=c011803c edi=20101234 esp=c011920c ebp=c011ce74
  cs=0008 ds=0010 es=0010 ss=0014
 Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc01076e6 0xc010ad5f 0xc010ae19 0xc01018c5 0xc0101a9b 0xc0106d4b 0xc010be74 0xc010bf6d 0xc010b637 0xc010afe2 0xc01018c5 0xc0101a9b 0x804a049 0x80480b2 0x8048103 0x80486dc.
+Call stack: 0xc0107726 0xc010adcf 0xc010ae89 0xc0101905 0xc0101adb 0xc0106d8b 0xc010c0b4 0xc010c1ad 0xc010b877 0xc010b076 0xc0101905 0xc0101adb 0x804a049 0x80480b2 0x8048103 0x80486dc.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 72 ticks
-Thread: 30 idle ticks, 40 kernel ticks, 2 user ticks
+Timer: 68 ticks
+Thread: 30 idle ticks, 35 kernel ticks, 3 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 61 reads, 154 writes
 hd1:0: 73 reads, 0 writes
@@ -878,10 +1016,10 @@ run: should not have survived read(): FAILED
 
 OUTPUT FROM tests/userprog/read-bad-ptr:
 
-Copying tests/userprog/read-bad-ptr into /tmp/rIZV2HNvKY.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/rIZV2HNvKY.dsk...
-Writing command line to /tmp/tGqBuFPrve.dsk...
-qemu -hda /tmp/tGqBuFPrve.dsk -hdb /tmp/E133PMEcSR.dsk -hdc /tmp/rIZV2HNvKY.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/read-bad-ptr into /tmp/X3nYEQI0Hb.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/X3nYEQI0Hb.dsk...
+Writing command line to /tmp/POLzNhEnn8.dsk...
+qemu -hda /tmp/POLzNhEnn8.dsk -hdb /tmp/d72MCyvt3N.dsk -hdc /tmp/X3nYEQI0Hb.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put read-bad-ptr put sample.txt run read-bad-ptr
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -900,8 +1038,8 @@ Executing 'read-bad-ptr':
 (read-bad-ptr) should not have survived read(): FAILED
 read-bad-ptr: exit(1)
 Execution of 'read-bad-ptr' complete.
-Timer: 68 ticks
-Thread: 30 idle ticks, 37 kernel ticks, 1 user ticks
+Timer: 61 ticks
+Thread: 30 idle ticks, 30 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 160 writes
 hd1:0: 75 reads, 0 writes
@@ -914,14 +1052,14 @@ Powering off...
 
 DETAILS OF tests/userprog/read-boundary FAILURE:
 
-run: read() returned 134522538 instead of 239: FAILED
+run: read() returned 2 instead of 239: FAILED
 
 OUTPUT FROM tests/userprog/read-boundary:
 
-Copying tests/userprog/read-boundary into /tmp/56Y3S0xn5I.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/56Y3S0xn5I.dsk...
-Writing command line to /tmp/TvKBd9b7nA.dsk...
-qemu -hda /tmp/TvKBd9b7nA.dsk -hdb /tmp/tps4ZoDfXH.dsk -hdc /tmp/56Y3S0xn5I.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/read-boundary into /tmp/U5QO40FdmF.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/U5QO40FdmF.dsk...
+Writing command line to /tmp/wlr0RxgHji.dsk...
+qemu -hda /tmp/wlr0RxgHji.dsk -hdb /tmp/Y7iLG0ceYR.dsk -hdc /tmp/U5QO40FdmF.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put read-boundary put sample.txt run read-boundary
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -937,15 +1075,15 @@ Putting 'sample.txt' into the file system...
 Executing 'read-boundary':
 (read-boundary) begin
 (read-boundary) open "sample.txt"
-(read-boundary) read() returned 134522538 instead of 239: FAILED
+(read-boundary) read() returned 2 instead of 239: FAILED
 read-boundary: exit(1)
 Execution of 'read-boundary' complete.
-Timer: 61 ticks
-Thread: 30 idle ticks, 30 kernel ticks, 1 user ticks
+Timer: 63 ticks
+Thread: 30 idle ticks, 32 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 97 reads, 168 writes
 hd1:0: 79 reads, 0 writes
-Console: 966 characters output
+Console: 958 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
@@ -955,15 +1093,15 @@ Powering off...
 DETAILS OF tests/userprog/create-null FAILURE:
 
 Kernel panic in run: PANIC at ../../filesys/directory.c:149 in dir_add(): assertion `name != NULL' failed.
-Call stack: 0xc01076e6 0xc010c00e 0xc010b5d0 0xc010afa6 0xc01018c5 0xc0101a9b 0x804a019 0x80480ba 0x8048103 0x80486dc
+Call stack: 0xc0107726 0xc010c24e 0xc010b810 0xc010b01b 0xc0101905 0xc0101adb 0x804a019 0x80480ba 0x8048103 0x80486dc
 Translation of call stack:
 In kernel.o:
-0xc01076e6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc010c00e: dir_add (..../filesys/directory.c:152)
-0xc010b5d0: filesys_create (..../../filesys/filesys.c:51)
-0xc010afa6: syscall_handler (.../../userprog/syscall.c:86)
-0xc01018c5: intr_handler (..../threads/interrupt.c:361)
-0xc0101a9b: intr_entry (threads/intr-stubs.S:38)
+0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
+0xc010c24e: dir_add (..../filesys/directory.c:152)
+0xc010b810: filesys_create (..../../filesys/filesys.c:51)
+0xc010b01b: syscall_handler (.../../userprog/syscall.c:97)
+0xc0101905: intr_handler (..../threads/interrupt.c:361)
+0xc0101adb: intr_entry (threads/intr-stubs.S:38)
 In tests/userprog/create-null:
 0x0804a019: create (.../../lib/user/syscall.c:93)
 0x080480ba: test_main (...userprog/create-null.c:10)
@@ -975,14 +1113,14 @@ translations will be misleading.
 
 OUTPUT FROM tests/userprog/create-null:
 
-Copying tests/userprog/create-null into /tmp/vbO7VpKYxN.dsk...
-Writing command line to /tmp/TxdJPcemDj.dsk...
-qemu -hda /tmp/TxdJPcemDj.dsk -hdb /tmp/lVfku8QzpB.dsk -hdc /tmp/vbO7VpKYxN.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/create-null into /tmp/I1UFeRMdO6.dsk...
+Writing command line to /tmp/jGC311EOxL.dsk...
+qemu -hda /tmp/jGC311EOxL.dsk -hdb /tmp/GiIxVtc9N1.dsk -hdc /tmp/I1UFeRMdO6.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put create-null run create-null
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
 374 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
+Calibrating timer...  65,433,600 loops/s.
 hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 73 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
@@ -992,12 +1130,12 @@ Putting 'create-null' into the file system...
 Executing 'create-null':
 (create-null) begin
 Kernel PANIC at ../../filesys/directory.c:149 in dir_add(): assertion `name != NULL' failed.
-Call stack: 0xc01076e6 0xc010c00e 0xc010b5d0 0xc010afa6 0xc01018c5 0xc0101a9b 0x804a019 0x80480ba 0x8048103 0x80486dc.
+Call stack: 0xc0107726 0xc010c24e 0xc010b810 0xc010b01b 0xc0101905 0xc0101adb 0x804a019 0x80480ba 0x8048103 0x80486dc.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 63 ticks
-Thread: 30 idle ticks, 32 kernel ticks, 1 user ticks
+Timer: 64 ticks
+Thread: 30 idle ticks, 33 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 62 reads, 157 writes
 hd1:0: 73 reads, 0 writes
@@ -1011,15 +1149,15 @@ Powering off...
 DETAILS OF tests/userprog/open-null FAILURE:
 
 Kernel panic in run: PANIC at ../../filesys/directory.c:125 in dir_lookup(): assertion `name != NULL' failed.
-Call stack: 0xc01076e6 0xc010bf52 0xc010b637 0xc010afe2 0xc01018c5 0xc0101a9b 0x804a029 0x80480b2 0x80480e7 0x80486c0
+Call stack: 0xc0107726 0xc010c192 0xc010b877 0xc010b076 0xc0101905 0xc0101adb 0x804a029 0x80480b2 0x80480e7 0x80486c0
 Translation of call stack:
 In kernel.o:
-0xc01076e6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc010bf52: dir_lookup (..../filesys/directory.c:127)
-0xc010b637: filesys_open (..../../filesys/filesys.c:75)
-0xc010afe2: syscall_handler (...../userprog/syscall.c:101)
-0xc01018c5: intr_handler (..../threads/interrupt.c:361)
-0xc0101a9b: intr_entry (threads/intr-stubs.S:38)
+0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
+0xc010c192: dir_lookup (..../filesys/directory.c:127)
+0xc010b877: filesys_open (..../../filesys/filesys.c:75)
+0xc010b076: syscall_handler (...../userprog/syscall.c:126)
+0xc0101905: intr_handler (..../threads/interrupt.c:361)
+0xc0101adb: intr_entry (threads/intr-stubs.S:38)
 In tests/userprog/open-null:
 0x0804a029: open (...../lib/user/syscall.c:105)
 0x080480b2: test_main (...s/userprog/open-null.c:12)
@@ -1031,9 +1169,9 @@ translations will be misleading.
 
 OUTPUT FROM tests/userprog/open-null:
 
-Copying tests/userprog/open-null into /tmp/7B3YKGRRR6.dsk...
-Writing command line to /tmp/Le1VX6iBPd.dsk...
-qemu -hda /tmp/Le1VX6iBPd.dsk -hdb /tmp/4teYeGLdkK.dsk -hdc /tmp/7B3YKGRRR6.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/open-null into /tmp/Av9DVtOBMm.dsk...
+Writing command line to /tmp/aA8X01lDi6.dsk...
+qemu -hda /tmp/aA8X01lDi6.dsk -hdb /tmp/EoUGU75FwL.dsk -hdc /tmp/Av9DVtOBMm.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put open-null run open-null
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1048,7 +1186,7 @@ Putting 'open-null' into the file system...
 Executing 'open-null':
 (open-null) begin
 Kernel PANIC at ../../filesys/directory.c:125 in dir_lookup(): assertion `name != NULL' failed.
-Call stack: 0xc01076e6 0xc010bf52 0xc010b637 0xc010afe2 0xc01018c5 0xc0101a9b 0x804a029 0x80480b2 0x80480e7 0x80486c0.
+Call stack: 0xc0107726 0xc010c192 0xc010b877 0xc010b076 0xc0101905 0xc0101adb 0x804a029 0x80480b2 0x80480e7 0x80486c0.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -1125,9 +1263,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/userprog/exec-missing:
 
-Copying tests/userprog/exec-missing into /tmp/1JBPtH2jXM.dsk...
-Writing command line to /tmp/QmKYiCzT8t.dsk...
-qemu -hda /tmp/QmKYiCzT8t.dsk -hdb /tmp/ieOx03qek4.dsk -hdc /tmp/1JBPtH2jXM.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/exec-missing into /tmp/zPOdQC83mW.dsk...
+Writing command line to /tmp/I9CyJvwWPJ.dsk...
+qemu -hda /tmp/I9CyJvwWPJ.dsk -hdb /tmp/I2VKdlta9N.dsk -hdc /tmp/zPOdQC83mW.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put exec-missing run exec-missing
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1163,9 +1301,9 @@ run: wait returned -1.: FAILED
 
 OUTPUT FROM tests/userprog/no-vm/multi-oom:
 
-Copying tests/userprog/no-vm/multi-oom into /tmp/sbYER9HyoD.dsk...
-Writing command line to /tmp/9ZeSv1jUeb.dsk...
-qemu -hda /tmp/9ZeSv1jUeb.dsk -hdb /tmp/PYMMVdFbAe.dsk -hdc /tmp/sbYER9HyoD.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/no-vm/multi-oom into /tmp/94fUujFchI.dsk...
+Writing command line to /tmp/mFqG0dj8Nh.dsk...
+qemu -hda /tmp/mFqG0dj8Nh.dsk -hdb /tmp/KuoX6fla3k.dsk -hdc /tmp/94fUujFchI.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put multi-oom run multi-oom
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1182,8 +1320,8 @@ Executing 'multi-oom':
 (multi-oom) wait returned -1.: FAILED
 multi-oom: exit(1)
 Execution of 'multi-oom' complete.
-Timer: 69 ticks
-Thread: 30 idle ticks, 38 kernel ticks, 1 user ticks
+Timer: 66 ticks
+Thread: 30 idle ticks, 35 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 144 reads, 178 writes
 hd1:0: 85 reads, 0 writes
@@ -1196,13 +1334,13 @@ Powering off...
 
 DETAILS OF tests/filesys/base/sm-create FAILURE:
 
-run: read of 512 bytes at offset 0 in "blargle" returned 134522600: FAILED
+run: read of 512 bytes at offset 0 in "blargle" returned 2: FAILED
 
 OUTPUT FROM tests/filesys/base/sm-create:
 
-Copying tests/filesys/base/sm-create into /tmp/FaxnFcY29Z.dsk...
-Writing command line to /tmp/puyvjTaEJS.dsk...
-qemu -hda /tmp/puyvjTaEJS.dsk -hdb /tmp/MU9tau2XAh.dsk -hdc /tmp/FaxnFcY29Z.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/sm-create into /tmp/DMsGtraXev.dsk...
+Writing command line to /tmp/D1A49XqDia.dsk...
+qemu -hda /tmp/D1A49XqDia.dsk -hdb /tmp/t7zZfSecB6.dsk -hdc /tmp/DMsGtraXev.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put sm-create run sm-create
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1218,16 +1356,15 @@ Executing 'sm-create':
 (sm-create) begin
 (sm-create) create "blargle"
 (sm-create) open "blargle" for verification
-(sm-create) size of blargle (134522600) differs from expected (5678)
-(sm-create) read of 512 bytes at offset 0 in "blargle" returned 134522600: FAILED
+(sm-create) read of 512 bytes at offset 0 in "blargle" returned 2: FAILED
 sm-create: exit(1)
 Execution of 'sm-create' complete.
-Timer: 66 ticks
-Thread: 30 idle ticks, 32 kernel ticks, 4 user ticks
+Timer: 63 ticks
+Thread: 30 idle ticks, 31 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 85 reads, 176 writes
 hd1:0: 76 reads, 0 writes
-Console: 1003 characters output
+Console: 926 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
@@ -1236,13 +1373,13 @@ Powering off...
 
 DETAILS OF tests/filesys/base/sm-full FAILURE:
 
-run: read of 512 bytes at offset 0 in "quux" returned 134522584: FAILED
+run: read of 512 bytes at offset 0 in "quux" returned 3: FAILED
 
 OUTPUT FROM tests/filesys/base/sm-full:
 
-Copying tests/filesys/base/sm-full into /tmp/1In64y7xJ5.dsk...
-Writing command line to /tmp/7Ai77nvcck.dsk...
-qemu -hda /tmp/7Ai77nvcck.dsk -hdb /tmp/cqTwRs6yYH.dsk -hdc /tmp/1In64y7xJ5.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/sm-full into /tmp/mTP4mHPl0w.dsk...
+Writing command line to /tmp/eIg7OnsXux.dsk...
+qemu -hda /tmp/eIg7OnsXux.dsk -hdb /tmp/GjnF3Gtdao.dsk -hdc /tmp/mTP4mHPl0w.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put sm-full run sm-full
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1261,16 +1398,15 @@ Executing 'sm-full':
 (sm-full) writing "quux"
 (sm-full) close "quux"
 (sm-full) open "quux" for verification
-(sm-full) size of quux (134522584) differs from expected (5678)
-(sm-full) read of 512 bytes at offset 0 in "quux" returned 134522584: FAILED
+(sm-full) read of 512 bytes at offset 0 in "quux" returned 3: FAILED
 sm-full: exit(1)
 Execution of 'sm-full' complete.
-Timer: 67 ticks
-Thread: 30 idle ticks, 33 kernel ticks, 4 user ticks
+Timer: 62 ticks
+Thread: 30 idle ticks, 29 kernel ticks, 3 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 88 reads, 176 writes
+hd0:1: 89 reads, 176 writes
 hd1:0: 76 reads, 0 writes
-Console: 1039 characters output
+Console: 967 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
@@ -1283,9 +1419,9 @@ run: read 13 bytes at offset 260 failed: FAILED
 
 OUTPUT FROM tests/filesys/base/sm-random:
 
-Copying tests/filesys/base/sm-random into /tmp/bjpYlGoEdo.dsk...
-Writing command line to /tmp/ZdRbqa7JMl.dsk...
-qemu -hda /tmp/ZdRbqa7JMl.dsk -hdb /tmp/Tcxd7cyUWr.dsk -hdc /tmp/bjpYlGoEdo.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/sm-random into /tmp/NSjEPkaPHM.dsk...
+Writing command line to /tmp/ameXjxytf8.dsk...
+qemu -hda /tmp/ameXjxytf8.dsk -hdb /tmp/CTdpGUZd0S.dsk -hdc /tmp/NSjEPkaPHM.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put sm-random run sm-random
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1306,8 +1442,8 @@ Executing 'sm-random':
 (sm-random) read 13 bytes at offset 260 failed: FAILED
 sm-random: exit(1)
 Execution of 'sm-random' complete.
-Timer: 66 ticks
-Thread: 30 idle ticks, 32 kernel ticks, 4 user ticks
+Timer: 63 ticks
+Thread: 30 idle ticks, 30 kernel ticks, 3 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 87 reads, 172 writes
 hd1:0: 78 reads, 0 writes
@@ -1320,13 +1456,13 @@ Powering off...
 
 DETAILS OF tests/filesys/base/sm-seq-block FAILURE:
 
-run: read of 512 bytes at offset 0 in "noodle" returned 134522584: FAILED
+run: read of 512 bytes at offset 0 in "noodle" returned 3: FAILED
 
 OUTPUT FROM tests/filesys/base/sm-seq-block:
 
-Copying tests/filesys/base/sm-seq-block into /tmp/KK9qapFgf6.dsk...
-Writing command line to /tmp/1XiWsPZY3y.dsk...
-qemu -hda /tmp/1XiWsPZY3y.dsk -hdb /tmp/fvyisBosfA.dsk -hdc /tmp/KK9qapFgf6.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/sm-seq-block into /tmp/wAYTZfQXsR.dsk...
+Writing command line to /tmp/pl5Fo2dy8j.dsk...
+qemu -hda /tmp/pl5Fo2dy8j.dsk -hdb /tmp/QHlym8sLdL.dsk -hdc /tmp/wAYTZfQXsR.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put sm-seq-block run sm-seq-block
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1345,16 +1481,15 @@ Executing 'sm-seq-block':
 (sm-seq-block) writing "noodle"
 (sm-seq-block) close "noodle"
 (sm-seq-block) open "noodle" for verification
-(sm-seq-block) size of noodle (134522584) differs from expected (5678)
-(sm-seq-block) read of 512 bytes at offset 0 in "noodle" returned 134522584: FAILED
+(sm-seq-block) read of 512 bytes at offset 0 in "noodle" returned 3: FAILED
 sm-seq-block: exit(1)
 Execution of 'sm-seq-block' complete.
-Timer: 62 ticks
-Thread: 30 idle ticks, 29 kernel ticks, 3 user ticks
+Timer: 66 ticks
+Thread: 30 idle ticks, 32 kernel ticks, 4 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 88 reads, 176 writes
+hd0:1: 89 reads, 176 writes
 hd1:0: 76 reads, 0 writes
-Console: 1123 characters output
+Console: 1044 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
@@ -1363,13 +1498,13 @@ Powering off...
 
 DETAILS OF tests/filesys/base/sm-seq-random FAILURE:
 
-run: read of 512 bytes at offset 0 in "nibble" returned 134522616: FAILED
+run: read of 512 bytes at offset 0 in "nibble" returned 3: FAILED
 
 OUTPUT FROM tests/filesys/base/sm-seq-random:
 
-Copying tests/filesys/base/sm-seq-random into /tmp/ErTkxNCFdH.dsk...
-Writing command line to /tmp/7ZDmjpVyhl.dsk...
-qemu -hda /tmp/7ZDmjpVyhl.dsk -hdb /tmp/1nezF1SKZB.dsk -hdc /tmp/ErTkxNCFdH.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/sm-seq-random into /tmp/nqavl0XLIO.dsk...
+Writing command line to /tmp/dXin5J10UZ.dsk...
+qemu -hda /tmp/dXin5J10UZ.dsk -hdb /tmp/jDG4rcUc72.dsk -hdc /tmp/nqavl0XLIO.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put sm-seq-random run sm-seq-random
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1388,16 +1523,15 @@ Executing 'sm-seq-random':
 (sm-seq-random) writing "nibble"
 (sm-seq-random) close "nibble"
 (sm-seq-random) open "nibble" for verification
-(sm-seq-random) size of nibble (134522616) differs from expected (5678)
-(sm-seq-random) read of 512 bytes at offset 0 in "nibble" returned 134522616: FAILED
+(sm-seq-random) read of 512 bytes at offset 0 in "nibble" returned 3: FAILED
 sm-seq-random: exit(1)
 Execution of 'sm-seq-random' complete.
 Timer: 67 ticks
-Thread: 30 idle ticks, 34 kernel ticks, 3 user ticks
+Thread: 30 idle ticks, 33 kernel ticks, 4 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 88 reads, 176 writes
+hd0:1: 89 reads, 176 writes
 hd1:0: 76 reads, 0 writes
-Console: 1137 characters output
+Console: 1057 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
@@ -1406,13 +1540,13 @@ Powering off...
 
 DETAILS OF tests/filesys/base/lg-create FAILURE:
 
-run: read of 512 bytes at offset 0 in "blargle" returned 134522600: FAILED
+run: read of 512 bytes at offset 0 in "blargle" returned 2: FAILED
 
 OUTPUT FROM tests/filesys/base/lg-create:
 
-Copying tests/filesys/base/lg-create into /tmp/0iNo3Kcipv.dsk...
-Writing command line to /tmp/6y1Oqkcyrs.dsk...
-qemu -hda /tmp/6y1Oqkcyrs.dsk -hdb /tmp/2FI5oAGIET.dsk -hdc /tmp/0iNo3Kcipv.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/lg-create into /tmp/JKJjyRP4b1.dsk...
+Writing command line to /tmp/OGeC8GG4ua.dsk...
+qemu -hda /tmp/OGeC8GG4ua.dsk -hdb /tmp/N4vL5MrWlZ.dsk -hdc /tmp/JKJjyRP4b1.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put lg-create run lg-create
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1428,16 +1562,15 @@ Executing 'lg-create':
 (lg-create) begin
 (lg-create) create "blargle"
 (lg-create) open "blargle" for verification
-(lg-create) size of blargle (134522600) differs from expected (75678)
-(lg-create) read of 512 bytes at offset 0 in "blargle" returned 134522600: FAILED
+(lg-create) read of 512 bytes at offset 0 in "blargle" returned 2: FAILED
 lg-create: exit(1)
 Execution of 'lg-create' complete.
-Timer: 69 ticks
-Thread: 30 idle ticks, 31 kernel ticks, 8 user ticks
+Timer: 71 ticks
+Thread: 30 idle ticks, 32 kernel ticks, 9 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 85 reads, 312 writes
 hd1:0: 76 reads, 0 writes
-Console: 1004 characters output
+Console: 926 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
@@ -1446,13 +1579,13 @@ Powering off...
 
 DETAILS OF tests/filesys/base/lg-full FAILURE:
 
-run: read of 512 bytes at offset 0 in "quux" returned 134522584: FAILED
+run: read of 512 bytes at offset 0 in "quux" returned 3: FAILED
 
 OUTPUT FROM tests/filesys/base/lg-full:
 
-Copying tests/filesys/base/lg-full into /tmp/Fgwk8OZoAh.dsk...
-Writing command line to /tmp/BEex7lnlkZ.dsk...
-qemu -hda /tmp/BEex7lnlkZ.dsk -hdb /tmp/0dOO9XBswS.dsk -hdc /tmp/Fgwk8OZoAh.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/lg-full into /tmp/oZ1i4y8B0F.dsk...
+Writing command line to /tmp/oeSU034GcZ.dsk...
+qemu -hda /tmp/oeSU034GcZ.dsk -hdb /tmp/EbMR4GKeqc.dsk -hdc /tmp/oZ1i4y8B0F.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put lg-full run lg-full
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1471,16 +1604,15 @@ Executing 'lg-full':
 (lg-full) writing "quux"
 (lg-full) close "quux"
 (lg-full) open "quux" for verification
-(lg-full) size of quux (134522584) differs from expected (75678)
-(lg-full) read of 512 bytes at offset 0 in "quux" returned 134522584: FAILED
+(lg-full) read of 512 bytes at offset 0 in "quux" returned 3: FAILED
 lg-full: exit(1)
 Execution of 'lg-full' complete.
-Timer: 71 ticks
-Thread: 30 idle ticks, 31 kernel ticks, 10 user ticks
+Timer: 70 ticks
+Thread: 30 idle ticks, 29 kernel ticks, 11 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 88 reads, 312 writes
+hd0:1: 89 reads, 312 writes
 hd1:0: 76 reads, 0 writes
-Console: 1041 characters output
+Console: 968 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
@@ -1493,14 +1625,14 @@ run: read 512 bytes at offset 16896 failed: FAILED
 
 OUTPUT FROM tests/filesys/base/lg-random:
 
-Copying tests/filesys/base/lg-random into /tmp/OObLAlKVQx.dsk...
-Writing command line to /tmp/RLlZDsRMBz.dsk...
-qemu -hda /tmp/RLlZDsRMBz.dsk -hdb /tmp/5OS9IBFbmk.dsk -hdc /tmp/OObLAlKVQx.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/lg-random into /tmp/MHK4IToeZv.dsk...
+Writing command line to /tmp/4n7MqjExQV.dsk...
+qemu -hda /tmp/4n7MqjExQV.dsk -hdb /tmp/W2WsioW36K.dsk -hdc /tmp/MHK4IToeZv.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put lg-random run lg-random
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
 374 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
+Calibrating timer...  65,433,600 loops/s.
 hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 78 sector (39 kB) disk, model "QEMU HARDDISK", serial "QM00003"
@@ -1516,8 +1648,8 @@ Executing 'lg-random':
 (lg-random) read 512 bytes at offset 16896 failed: FAILED
 lg-random: exit(1)
 Execution of 'lg-random' complete.
-Timer: 75 ticks
-Thread: 30 idle ticks, 33 kernel ticks, 12 user ticks
+Timer: 77 ticks
+Thread: 30 idle ticks, 34 kernel ticks, 13 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 87 reads, 318 writes
 hd1:0: 78 reads, 0 writes
@@ -1530,13 +1662,13 @@ Powering off...
 
 DETAILS OF tests/filesys/base/lg-seq-block FAILURE:
 
-run: read of 512 bytes at offset 0 in "noodle" returned 134522584: FAILED
+run: read of 512 bytes at offset 0 in "noodle" returned 3: FAILED
 
 OUTPUT FROM tests/filesys/base/lg-seq-block:
 
-Copying tests/filesys/base/lg-seq-block into /tmp/Ha8suei1ND.dsk...
-Writing command line to /tmp/SDAeOnoVdX.dsk...
-qemu -hda /tmp/SDAeOnoVdX.dsk -hdb /tmp/wKP0C5Ikr4.dsk -hdc /tmp/Ha8suei1ND.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/lg-seq-block into /tmp/8sWuO46mZr.dsk...
+Writing command line to /tmp/PyT3F8zxMb.dsk...
+qemu -hda /tmp/PyT3F8zxMb.dsk -hdb /tmp/pB6HpEAlsN.dsk -hdc /tmp/8sWuO46mZr.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put lg-seq-block run lg-seq-block
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1555,16 +1687,15 @@ Executing 'lg-seq-block':
 (lg-seq-block) writing "noodle"
 (lg-seq-block) close "noodle"
 (lg-seq-block) open "noodle" for verification
-(lg-seq-block) size of noodle (134522584) differs from expected (75678)
-(lg-seq-block) read of 512 bytes at offset 0 in "noodle" returned 134522584: FAILED
+(lg-seq-block) read of 512 bytes at offset 0 in "noodle" returned 3: FAILED
 lg-seq-block: exit(1)
 Execution of 'lg-seq-block' complete.
-Timer: 73 ticks
-Thread: 30 idle ticks, 32 kernel ticks, 11 user ticks
+Timer: 76 ticks
+Thread: 30 idle ticks, 32 kernel ticks, 14 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 88 reads, 312 writes
+hd0:1: 89 reads, 312 writes
 hd1:0: 76 reads, 0 writes
-Console: 1125 characters output
+Console: 1045 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
@@ -1573,13 +1704,13 @@ Powering off...
 
 DETAILS OF tests/filesys/base/lg-seq-random FAILURE:
 
-run: read of 512 bytes at offset 0 in "nibble" returned 134522616: FAILED
+run: read of 512 bytes at offset 0 in "nibble" returned 3: FAILED
 
 OUTPUT FROM tests/filesys/base/lg-seq-random:
 
-Copying tests/filesys/base/lg-seq-random into /tmp/LseryaDWPv.dsk...
-Writing command line to /tmp/OjAsqnuqIs.dsk...
-qemu -hda /tmp/OjAsqnuqIs.dsk -hdb /tmp/l5NQGgXNS6.dsk -hdc /tmp/LseryaDWPv.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/lg-seq-random into /tmp/JzKJ1wDJot.dsk...
+Writing command line to /tmp/NobFbyi6aQ.dsk...
+qemu -hda /tmp/NobFbyi6aQ.dsk -hdb /tmp/GNlAxTdhvC.dsk -hdc /tmp/JzKJ1wDJot.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put lg-seq-random run lg-seq-random
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1598,16 +1729,15 @@ Executing 'lg-seq-random':
 (lg-seq-random) writing "nibble"
 (lg-seq-random) close "nibble"
 (lg-seq-random) open "nibble" for verification
-(lg-seq-random) size of nibble (134522616) differs from expected (75678)
-(lg-seq-random) read of 512 bytes at offset 0 in "nibble" returned 134522616: FAILED
+(lg-seq-random) read of 512 bytes at offset 0 in "nibble" returned 3: FAILED
 lg-seq-random: exit(1)
 Execution of 'lg-seq-random' complete.
-Timer: 70 ticks
-Thread: 30 idle ticks, 29 kernel ticks, 11 user ticks
+Timer: 76 ticks
+Thread: 30 idle ticks, 32 kernel ticks, 14 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 88 reads, 312 writes
+hd0:1: 89 reads, 312 writes
 hd1:0: 76 reads, 0 writes
-Console: 1139 characters output
+Console: 1058 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
@@ -1617,21 +1747,21 @@ Powering off...
 DETAILS OF tests/filesys/base/syn-read FAILURE:
 
 Kernel panic in run: PANIC at ../../lib/kernel/list.c:369 in find_end_of_run(): assertion `a != NULL' failed.
-Call stack: 0xc01076e6 0xc0107ecd 0xc0108212 0xc0102875 0xc010991b 0xc0100e32
+Call stack: 0xc0107726 0xc0107f0d 0xc0108252 0xc01028b5 0xc010999e 0xc0100e3b
 Translation of call stack:
-0xc01076e6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0107ecd: find_end_of_run (.../../lib/kernel/list.c:370)
-0xc0108212: list_sort (.../../lib/kernel/list.c:436)
-0xc0102875: sema_up (...../../threads/synch.c:162)
-0xc010991b: start_process (...../userprog/process.c:101)
-0xc0100e32: kernel_thread (..../../threads/thread.c:472)
+0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107f0d: find_end_of_run (.../../lib/kernel/list.c:370)
+0xc0108252: list_sort (.../../lib/kernel/list.c:436)
+0xc01028b5: sema_up (...../../threads/synch.c:162)
+0xc010999e: start_process (...../userprog/process.c:105)
+0xc0100e3b: kernel_thread (..../../threads/thread.c:476)
 
 OUTPUT FROM tests/filesys/base/syn-read:
 
-Copying tests/filesys/base/syn-read into /tmp/BAvTGH9XuT.dsk...
-Copying tests/filesys/base/child-syn-read into /tmp/BAvTGH9XuT.dsk...
-Writing command line to /tmp/AybwD9Sz7r.dsk...
-qemu -hda /tmp/AybwD9Sz7r.dsk -hdb /tmp/VaiDqCPd80.dsk -hdc /tmp/BAvTGH9XuT.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/syn-read into /tmp/hhAsPqMUe7.dsk...
+Copying tests/filesys/base/child-syn-read into /tmp/hhAsPqMUe7.dsk...
+Writing command line to /tmp/e071tUmW9H.dsk...
+qemu -hda /tmp/e071tUmW9H.dsk -hdb /tmp/Dzx16Bw2oj.dsk -hdc /tmp/hhAsPqMUe7.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put syn-read put child-syn-read run syn-read
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1713,14 +1843,14 @@ child-syn-read: exit(1)
 (syn-read) wait for child 1 of 10 returned -1 (expected 0): FAILED
 syn-read: exit(1)
 Kernel PANIC at ../../lib/kernel/list.c:369 in find_end_of_run(): assertion `a != NULL' failed.
-Call stack: 0xc01076e6 0xc0107ecd 0xc0108212 0xc0102875 0xc010991b 0xc0100e32.
+Call stack: 0xc0107726 0xc0107f0d 0xc0108252 0xc01028b5 0xc010999e 0xc0100e3b.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 83 ticks
-Thread: 30 idle ticks, 38 kernel ticks, 15 user ticks
+Timer: 85 ticks
+Thread: 30 idle ticks, 39 kernel ticks, 16 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 455 reads, 338 writes
+hd0:1: 456 reads, 338 writes
 hd1:0: 161 reads, 0 writes
 Console: 4802 characters output
 Keyboard: 0 keys pressed
@@ -1732,21 +1862,21 @@ Powering off...
 DETAILS OF tests/filesys/base/syn-write FAILURE:
 
 Kernel panic in run: PANIC at ../../lib/kernel/list.c:369 in find_end_of_run(): assertion `a != NULL' failed.
-Call stack: 0xc01076e6 0xc0107ecd 0xc0108212 0xc0102875 0xc010991b 0xc0100e32
+Call stack: 0xc0107726 0xc0107f0d 0xc0108252 0xc01028b5 0xc010999e 0xc0100e3b
 Translation of call stack:
-0xc01076e6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0107ecd: find_end_of_run (.../../lib/kernel/list.c:370)
-0xc0108212: list_sort (.../../lib/kernel/list.c:436)
-0xc0102875: sema_up (...../../threads/synch.c:162)
-0xc010991b: start_process (...../userprog/process.c:101)
-0xc0100e32: kernel_thread (..../../threads/thread.c:472)
+0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107f0d: find_end_of_run (.../../lib/kernel/list.c:370)
+0xc0108252: list_sort (.../../lib/kernel/list.c:436)
+0xc01028b5: sema_up (...../../threads/synch.c:162)
+0xc010999e: start_process (...../userprog/process.c:105)
+0xc0100e3b: kernel_thread (..../../threads/thread.c:476)
 
 OUTPUT FROM tests/filesys/base/syn-write:
 
-Copying tests/filesys/base/syn-write into /tmp/EebYG0Alqy.dsk...
-Copying tests/filesys/base/child-syn-wrt into /tmp/EebYG0Alqy.dsk...
-Writing command line to /tmp/bBkfUlDyU6.dsk...
-qemu -hda /tmp/bBkfUlDyU6.dsk -hdb /tmp/cDCZKjS33p.dsk -hdc /tmp/EebYG0Alqy.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/syn-write into /tmp/vXS963AzDV.dsk...
+Copying tests/filesys/base/child-syn-wrt into /tmp/vXS963AzDV.dsk...
+Writing command line to /tmp/4ChtHxqAQW.dsk...
+qemu -hda /tmp/4ChtHxqAQW.dsk -hdb /tmp/SkoHhHMSjF.dsk -hdc /tmp/vXS963AzDV.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put syn-write put child-syn-wrt run syn-write
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1783,14 +1913,14 @@ child-syn-wrt: exit(6)
 (syn-write) wait for child 1 of 10 returned -1 (expected 0): FAILED
 syn-write: exit(1)
 Kernel PANIC at ../../lib/kernel/list.c:369 in find_end_of_run(): assertion `a != NULL' failed.
-Call stack: 0xc01076e6 0xc0107ecd 0xc0108212 0xc0102875 0xc010991b 0xc0100e32.
+Call stack: 0xc0107726 0xc0107f0d 0xc0108252 0xc01028b5 0xc010999e 0xc0100e3b.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 79 ticks
-Thread: 30 idle ticks, 43 kernel ticks, 6 user ticks
+Timer: 75 ticks
+Thread: 30 idle ticks, 39 kernel ticks, 6 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 443 reads, 344 writes
+hd0:1: 449 reads, 344 writes
 hd1:0: 160 reads, 0 writes
 Console: 1959 characters output
 Keyboard: 0 keys pressed
@@ -1801,13 +1931,13 @@ Powering off...
 
 DETAILS OF tests/filesys/base/syn-remove FAILURE:
 
-run: remove "deleteme": FAILED
+run: 78 bytes read starting at offset 0 in "deleteme" differ from expected: FAILED
 
 OUTPUT FROM tests/filesys/base/syn-remove:
 
-Copying tests/filesys/base/syn-remove into /tmp/7dLaNNLKhw.dsk...
-Writing command line to /tmp/llTaTxLc0f.dsk...
-qemu -hda /tmp/llTaTxLc0f.dsk -hdb /tmp/IFf6HQIdTQ.dsk -hdc /tmp/7dLaNNLKhw.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/syn-remove into /tmp/dUV8QAJR7z.dsk...
+Writing command line to /tmp/MeoNi5kVCx.dsk...
+qemu -hda /tmp/MeoNi5kVCx.dsk -hdb /tmp/Fl5bie6Gak.dsk -hdc /tmp/dUV8QAJR7z.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put syn-remove run syn-remove
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1824,15 +1954,30 @@ Executing 'syn-remove':
 (syn-remove) create "deleteme"
 (syn-remove) open "deleteme"
 (syn-remove) remove "deleteme"
-(syn-remove) remove "deleteme": FAILED
+(syn-remove) write "deleteme"
+(syn-remove) seek "deleteme" to 0
+(syn-remove) read "deleteme"
+(syn-remove) 78 bytes read starting at offset 0 in "deleteme" differ from expected.
+(syn-remove) Showing first differing 64 bytes.
+(syn-remove) Data actually read:
+00000000  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+00000010  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+00000020  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+00000030  00 00 00 00 00 00 00 00-00 00 00 00 00 00 00 00 |................|
+(syn-remove) Expected data:
+00000000  de 18 89 41 a3 37 5d 3a-8a 06 1e 67 57 6e 92 6d |...A.7]:...gWn.m|
+00000010  c7 1a 7f a3 f0 cc eb 97-45 2b 4d 32 27 96 5f 9e |........E+M2'._.|
+00000020  a8 cc 75 07 6d 9f b9 c5-41 7a a5 cb 30 fc 22 19 |..u.m...Az..0.".|
+00000030  8b 34 98 2d bb 62 9e c0-4b 4f 8b 05 a0 71 08 50 |.4.-.b..KO...q.P|
+(syn-remove) 78 bytes read starting at offset 0 in "deleteme" differ from expected: FAILED
 syn-remove: exit(1)
 Execution of 'syn-remove' complete.
-Timer: 63 ticks
-Thread: 30 idle ticks, 31 kernel ticks, 3 user ticks
+Timer: 69 ticks
+Thread: 30 idle ticks, 32 kernel ticks, 7 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 103 reads, 169 writes
+hd0:1: 90 reads, 170 writes
 hd1:0: 77 reads, 0 writes
-Console: 917 characters output
+Console: 1869 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

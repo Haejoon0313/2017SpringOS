@@ -1,7 +1,7 @@
-Copying tests/filesys/base/syn-write into /tmp/EebYG0Alqy.dsk...
-Copying tests/filesys/base/child-syn-wrt into /tmp/EebYG0Alqy.dsk...
-Writing command line to /tmp/bBkfUlDyU6.dsk...
-qemu -hda /tmp/bBkfUlDyU6.dsk -hdb /tmp/cDCZKjS33p.dsk -hdc /tmp/EebYG0Alqy.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/syn-write into /tmp/vXS963AzDV.dsk...
+Copying tests/filesys/base/child-syn-wrt into /tmp/vXS963AzDV.dsk...
+Writing command line to /tmp/4ChtHxqAQW.dsk...
+qemu -hda /tmp/4ChtHxqAQW.dsk -hdb /tmp/SkoHhHMSjF.dsk -hdc /tmp/vXS963AzDV.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put syn-write put child-syn-wrt run syn-write
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -38,14 +38,14 @@ child-syn-wrt: exit(6)
 (syn-write) wait for child 1 of 10 returned -1 (expected 0): FAILED
 syn-write: exit(1)
 Kernel PANIC at ../../lib/kernel/list.c:369 in find_end_of_run(): assertion `a != NULL' failed.
-Call stack: 0xc01076e6 0xc0107ecd 0xc0108212 0xc0102875 0xc010991b 0xc0100e32.
+Call stack: 0xc0107726 0xc0107f0d 0xc0108252 0xc01028b5 0xc010999e 0xc0100e3b.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 79 ticks
-Thread: 30 idle ticks, 43 kernel ticks, 6 user ticks
+Timer: 75 ticks
+Thread: 30 idle ticks, 39 kernel ticks, 6 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 443 reads, 344 writes
+hd0:1: 449 reads, 344 writes
 hd1:0: 160 reads, 0 writes
 Console: 1959 characters output
 Keyboard: 0 keys pressed

@@ -1,11 +1,11 @@
-Copying tests/userprog/close-stdin into /tmp/yypp5eu9lk.dsk...
-Writing command line to /tmp/4ftDl0Gl0l.dsk...
-qemu -hda /tmp/4ftDl0Gl0l.dsk -hdb /tmp/qjBqxIKMA9.dsk -hdc /tmp/yypp5eu9lk.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/close-stdin into /tmp/c6sUEhAHpH.dsk...
+Writing command line to /tmp/0ORrkkCB6l.dsk...
+qemu -hda /tmp/0ORrkkCB6l.dsk -hdb /tmp/9kaWFpSLZ5.dsk -hdc /tmp/c6sUEhAHpH.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put close-stdin run close-stdin
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
 374 pages available in user pool.
-Calibrating timer...  65,433,600 loops/s.
+Calibrating timer...  78,540,800 loops/s.
 hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 73 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
@@ -14,15 +14,17 @@ Boot complete.
 Putting 'close-stdin' into the file system...
 Executing 'close-stdin':
 (close-stdin) begin
-(close-stdin) end
-close-stdin: exit(0)
-Execution of 'close-stdin' complete.
-Timer: 65 ticks
-Thread: 30 idle ticks, 34 kernel ticks, 1 user ticks
+Kernel PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a09d 0x80480b2 0x80480e7 0x80486c0.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 63 ticks
+Thread: 30 idle ticks, 32 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 58 reads, 154 writes
 hd1:0: 73 reads, 0 writes
-Console: 811 characters output
+Console: 1127 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

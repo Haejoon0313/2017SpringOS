@@ -1,6 +1,6 @@
-Copying tests/userprog/open-bad-ptr into /tmp/SsxwA14MZ5.dsk...
-Writing command line to /tmp/e2VrRx84xr.dsk...
-qemu -hda /tmp/e2VrRx84xr.dsk -hdb /tmp/DvT8jR9Ajl.dsk -hdc /tmp/SsxwA14MZ5.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/open-bad-ptr into /tmp/kbqGRa130c.dsk...
+Writing command line to /tmp/SRjwhfaVlg.dsk...
+qemu -hda /tmp/SRjwhfaVlg.dsk -hdb /tmp/O1pll4SEEk.dsk -hdc /tmp/kbqGRa130c.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put open-bad-ptr run open-bad-ptr
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -15,18 +15,18 @@ Putting 'open-bad-ptr' into the file system...
 Executing 'open-bad-ptr':
 (open-bad-ptr) begin
 Page fault at 0x20101234: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0106d4b
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0106d8b
  cr2=20101234 error=00000000
- eax=c011ce80 ebx=00000000 ecx=c011ce80 edx=20101234
- esi=c011803c edi=20101234 esp=c011920c ebp=c011ce54
+ eax=c011cea0 ebx=00000000 ecx=c011cea0 edx=20101234
+ esi=c011803c edi=20101234 esp=c011920c ebp=c011ce74
  cs=0008 ds=0010 es=0010 ss=0014
 Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc01076e6 0xc010ad5f 0xc010ae19 0xc01018c5 0xc0101a9b 0xc0106d4b 0xc010be74 0xc010bf6d 0xc010b637 0xc010afe2 0xc01018c5 0xc0101a9b 0x804a049 0x80480b2 0x8048103 0x80486dc.
+Call stack: 0xc0107726 0xc010adcf 0xc010ae89 0xc0101905 0xc0101adb 0xc0106d8b 0xc010c0b4 0xc010c1ad 0xc010b877 0xc010b076 0xc0101905 0xc0101adb 0x804a049 0x80480b2 0x8048103 0x80486dc.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 72 ticks
-Thread: 30 idle ticks, 40 kernel ticks, 2 user ticks
+Timer: 68 ticks
+Thread: 30 idle ticks, 35 kernel ticks, 3 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 61 reads, 154 writes
 hd1:0: 73 reads, 0 writes

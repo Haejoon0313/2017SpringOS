@@ -1,8 +1,8 @@
-Copying tests/userprog/multi-child-fd into /tmp/XfMePG198F.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/XfMePG198F.dsk...
-Copying tests/userprog/child-close into /tmp/XfMePG198F.dsk...
-Writing command line to /tmp/gdsN5rbWnn.dsk...
-qemu -hda /tmp/gdsN5rbWnn.dsk -hdb /tmp/Y4btqusOqe.dsk -hdc /tmp/XfMePG198F.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/multi-child-fd into /tmp/r9y4OF0Z31.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/r9y4OF0Z31.dsk...
+Copying tests/userprog/child-close into /tmp/r9y4OF0Z31.dsk...
+Writing command line to /tmp/piyBW0gQQC.dsk...
+qemu -hda /tmp/piyBW0gQQC.dsk -hdb /tmp/VcjFivczau.dsk -hdc /tmp/r9y4OF0Z31.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put multi-child-fd put sample.txt put child-close run multi-child-fd
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -20,19 +20,17 @@ Executing 'multi-child-fd':
 (multi-child-fd) begin
 (multi-child-fd) open "sample.txt"
 (child-close) begin
-(child-close) end
-child-close: exit(0)
-(multi-child-fd) wait(exec()) = -1
-(multi-child-fd) size of sample.txt (134522362) differs from expected (239)
-(multi-child-fd) read of 239 bytes at offset 0 in "sample.txt" returned 134522362: FAILED
-multi-child-fd: exit(1)
-Execution of 'multi-child-fd' complete.
-Timer: 81 ticks
-Thread: 30 idle ticks, 47 kernel ticks, 4 user ticks
+Kernel PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a4bd 0x80480e9 0x80486c4.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 75 ticks
+Thread: 30 idle ticks, 44 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 171 reads, 324 writes
 hd1:0: 156 reads, 0 writes
-Console: 1234 characters output
+Console: 1312 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

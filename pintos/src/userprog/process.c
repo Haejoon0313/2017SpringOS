@@ -42,7 +42,7 @@ process_execute (const char *file_name)
 	strlcpy (fn_copy, file_name, PGSIZE);	
 
 	char * rest;
-	strtok_r(fn," ",&rest);
+	fn = strtok_r(fn," ",&rest);
 	/* Create a new thread to execute FILE_NAME. */
   tid = thread_create (fn, PRI_DEFAULT, start_process, fn_copy);
   free(fn);

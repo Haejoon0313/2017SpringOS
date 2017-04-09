@@ -120,6 +120,10 @@ struct thread
 		struct semaphore child_lock;
 
 		int lock_child_id;
+
+		struct list file_list;
+		int fd_count;
+		struct file *load;
 	};
 
 struct child{

@@ -37,6 +37,8 @@ static struct thread *initial_thread;
 /* Lock used by allocate_tid(). */
 static struct lock tid_lock;
 
+struct lock file_lock;
+
 /* Stack frame for kernel_thread(). */
 struct kernel_thread_frame 
   {
@@ -103,6 +105,8 @@ thread_init (void)
   lock_init (&tid_lock);
   list_init (&ready_list);
 	list_init (&sleeping_list);
+
+	lock_init(&file_lock);
   /* Set up a thread structure for the running thread. */
   initial_thread = running_thread ();
   init_thread (initial_thread, "main", PRI_DEFAULT);
@@ -520,6 +524,10 @@ init_thread (struct thread *t, const char *name, int priority)
 	t->lock_child_id = NULL;	
 	t->exit_code = -2;
 	sema_init(&t->child_lock,0);
+
+	t->fd_count = 2;
+	list_init(&t->file_list);
+	t->load = NULL;
 }
 
 /* Allocates a SIZE-byte frame at the top of thread T's stack and
@@ -634,6 +642,13 @@ allocate_tid (void)
   return tid;
 }
 
+void acquire_file_lock(){
+	lock_acquire(&file_lock);
+}
+
+void release_file_lock(){
+	lock_release(&file_lock);
+}
 
 //copare two tick
 bool

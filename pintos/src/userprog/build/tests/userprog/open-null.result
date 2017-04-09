@@ -1,14 +1,14 @@
 FAIL
 Kernel panic in run: PANIC at ../../filesys/directory.c:125 in dir_lookup(): assertion `name != NULL' failed.
-Call stack: 0xc01076e6 0xc010bf52 0xc010b637 0xc010afe2 0xc01018c5 0xc0101a9b 0x804a029 0x80480b2 0x80480e7 0x80486c0
+Call stack: 0xc0107726 0xc010c192 0xc010b877 0xc010b076 0xc0101905 0xc0101adb 0x804a029 0x80480b2 0x80480e7 0x80486c0
 Translation of call stack:
 In kernel.o:
-0xc01076e6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc010bf52: dir_lookup (..../filesys/directory.c:127)
-0xc010b637: filesys_open (..../../filesys/filesys.c:75)
-0xc010afe2: syscall_handler (...../userprog/syscall.c:101)
-0xc01018c5: intr_handler (..../threads/interrupt.c:361)
-0xc0101a9b: intr_entry (threads/intr-stubs.S:38)
+0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
+0xc010c192: dir_lookup (..../filesys/directory.c:127)
+0xc010b877: filesys_open (..../../filesys/filesys.c:75)
+0xc010b076: syscall_handler (...../userprog/syscall.c:126)
+0xc0101905: intr_handler (..../threads/interrupt.c:361)
+0xc0101adb: intr_entry (threads/intr-stubs.S:38)
 In tests/userprog/open-null:
 0x0804a029: open (...../lib/user/syscall.c:105)
 0x080480b2: test_main (...s/userprog/open-null.c:12)

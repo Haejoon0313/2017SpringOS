@@ -1,2 +1,19 @@
 FAIL
-run: read of 239 bytes at offset 0 in "sample.txt" returned 134522362: FAILED
+Kernel panic in run: PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a4bd 0x80480e9 0x80486c4
+Translation of call stack:
+In kernel.o:
+0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0103902: block_to_arena (..../../threads/malloc.c:277)
+0xc01037bb: free (..../../threads/malloc.c:224)
+0xc010b2cb: file_close_inlist (...../userprog/syscall.c:253)
+0xc010b1c9: syscall_handler (...../userprog/syscall.c:196)
+0xc0101905: intr_handler (..../threads/interrupt.c:361)
+0xc0101adb: intr_entry (threads/intr-stubs.S:38)
+0x0804a4bd: (unknown)
+In tests/userprog/multi-child-fd:
+0x080480e9: test_main (...rprog/multi-child-fd.c:20)
+0x080486c4: compare_bytes (...ild/../../tests/lib.c:191)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.

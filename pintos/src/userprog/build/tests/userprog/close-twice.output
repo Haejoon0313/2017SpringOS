@@ -1,7 +1,7 @@
-Copying tests/userprog/close-twice into /tmp/Vf6YsqaJdH.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/Vf6YsqaJdH.dsk...
-Writing command line to /tmp/qe4dEf3l2h.dsk...
-qemu -hda /tmp/qe4dEf3l2h.dsk -hdb /tmp/K3Y2x68pIi.dsk -hdc /tmp/Vf6YsqaJdH.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/close-twice into /tmp/b76K9c5TwD.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/b76K9c5TwD.dsk...
+Writing command line to /tmp/RxaDLKNo6o.dsk...
+qemu -hda /tmp/RxaDLKNo6o.dsk -hdb /tmp/AnIHDn7ecT.dsk -hdc /tmp/b76K9c5TwD.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put close-twice put sample.txt run close-twice
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -19,15 +19,17 @@ Executing 'close-twice':
 (close-twice) open "sample.txt"
 (close-twice) close "sample.txt"
 (close-twice) close "sample.txt" again
-(close-twice) end
-close-twice: exit(0)
-Execution of 'close-twice' complete.
-Timer: 62 ticks
-Thread: 30 idle ticks, 32 kernel ticks, 1 user ticks
+Kernel PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a0ed 0x80480fa 0x8048133 0x804870c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 64 ticks
+Thread: 30 idle ticks, 34 kernel ticks, 0 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 160 writes
 hd1:0: 75 reads, 0 writes
-Console: 975 characters output
+Console: 1291 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
