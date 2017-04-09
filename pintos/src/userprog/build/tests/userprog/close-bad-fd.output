@@ -1,6 +1,6 @@
-Copying tests/userprog/close-bad-fd into /tmp/hojqUbt7jj.dsk...
-Writing command line to /tmp/odWRLpGvX7.dsk...
-qemu -hda /tmp/odWRLpGvX7.dsk -hdb /tmp/fQQzJwkvaW.dsk -hdc /tmp/hojqUbt7jj.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/close-bad-fd into /tmp/JLPTWUBTTn.dsk...
+Writing command line to /tmp/ERNe4XKCsH.dsk...
+qemu -hda /tmp/ERNe4XKCsH.dsk -hdb /tmp/xc6XM2Q3bi.dsk -hdc /tmp/JLPTWUBTTn.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put close-bad-fd run close-bad-fd
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -15,12 +15,12 @@ Putting 'close-bad-fd' into the file system...
 Executing 'close-bad-fd':
 (close-bad-fd) begin
 Kernel PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
-Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a09d 0x80480b2 0x80480e7 0x80486c0.
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b438 0xc010b336 0xc0101905 0xc0101adb 0x804a09d 0x80480b2 0x80480e7 0x80486c0.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 61 ticks
-Thread: 30 idle ticks, 30 kernel ticks, 1 user ticks
+Timer: 64 ticks
+Thread: 30 idle ticks, 33 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 58 reads, 154 writes
 hd1:0: 73 reads, 0 writes

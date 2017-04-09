@@ -1,6 +1,6 @@
-Copying tests/userprog/bad-jump2 into /tmp/UKlStARrCu.dsk...
-Writing command line to /tmp/3vLj914MSX.dsk...
-qemu -hda /tmp/3vLj914MSX.dsk -hdb /tmp/egFbGZJd6r.dsk -hdc /tmp/UKlStARrCu.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/bad-jump2 into /tmp/KeLTTtnWyz.dsk...
+Writing command line to /tmp/i9hTfDi9Rb.dsk...
+qemu -hda /tmp/i9hTfDi9Rb.dsk -hdb /tmp/5x8OyYSLKr.dsk -hdc /tmp/KeLTTtnWyz.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put bad-jump2 run bad-jump2
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -23,8 +23,8 @@ Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0000000
  cs=001b ds=0023 es=0023 ss=0023
 bad-jump2: exit(-1)
 Execution of 'bad-jump2' complete.
-Timer: 65 ticks
-Thread: 30 idle ticks, 33 kernel ticks, 2 user ticks
+Timer: 63 ticks
+Thread: 30 idle ticks, 31 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 154 writes
 hd1:0: 73 reads, 0 writes

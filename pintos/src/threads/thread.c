@@ -167,7 +167,6 @@ thread_print_stats (void)
    and adds it to the ready queue.  Returns the thread identifier
    for the new thread, or TID_ERROR if creation fails.
 
-   If thread_start() has been called, then the new thread may be
    scheduled before thread_create() returns.  It could even exit
    before thread_create() returns.  Contrariwise, the original
    thread may run for any amount of time before the new thread is
@@ -199,12 +198,12 @@ thread_create (const char *name, int priority,
   tid = t->tid = allocate_tid ();
 
 	/*new child process initialization part */
-	struct child * child_process = malloc(sizeof(struct child));
+	struct child * child_process = malloc(sizeof(*child_process));
 	child_process->pid = t->tid;
 	child_process->is_wait = false;
-	child_process->status =t->exit_code;	
+	child_process->status =t->exit_code;
 	//child_process->parent_process = thread_current();
-	list_push_back(&thread_current()->child_list,&child_process->elem);
+	list_push_back(&running_thread()->child_list,&child_process->elem);
 	
 
 
@@ -521,7 +520,7 @@ init_thread (struct thread *t, const char *name, int priority)
 	//Project2 part
 	list_init(&t->child_list);
 	t->parent_process = running_thread();
-	t->lock_child_id = NULL;	
+	t->lock_child_id = 0;	
 	t->exit_code = -2;
 	sema_init(&t->child_lock,0);
 

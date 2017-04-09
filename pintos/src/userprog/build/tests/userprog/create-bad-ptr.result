@@ -1,6 +1,6 @@
 FAIL
 Kernel panic in run: PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc0107726 0xc010adcf 0xc010ae89 0xc0101905 0xc0101adb 0xc010c24e 0xc010b810 0xc010b01b 0xc0101905 0xc0101adb 0x804a019 0x80480ba 0x8048103 0x80486dc
+Call stack: 0xc0107726 0xc010adcf 0xc010ae89 0xc0101905 0xc0101adb 0xc010c3ae 0xc010b970 0xc010b029 0xc0101905 0xc0101adb 0x804a019 0x80480ba 0x8048103 0x80486dc
 Translation of call stack:
 In kernel.o:
 0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
@@ -8,9 +8,9 @@ In kernel.o:
 0xc010ae89: page_fault (.../userprog/exception.c:160)
 0xc0101905: intr_handler (..../threads/interrupt.c:361)
 0xc0101adb: intr_entry (threads/intr-stubs.S:38)
-0xc010c24e: dir_add (..../filesys/directory.c:152)
-0xc010b810: filesys_create (..../../filesys/filesys.c:51)
-0xc010b01b: syscall_handler (.../../userprog/syscall.c:97)
+0xc010c3ae: dir_add (..../filesys/directory.c:152)
+0xc010b970: filesys_create (..../../filesys/filesys.c:51)
+0xc010b029: syscall_handler (...../userprog/syscall.c:102)
 0xc0101905: intr_handler (..../threads/interrupt.c:361)
 0xc0101adb: intr_entry (threads/intr-stubs.S:38)
 In tests/userprog/create-bad-ptr:

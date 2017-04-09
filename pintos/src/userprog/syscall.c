@@ -70,7 +70,9 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 						else{
 								file_close(exec_file);
-								return process_execute(filename);
+								tid_t ex_return = process_execute(filename);
+							//	printf("EX syscall return : %d \n",ex_return);
+								return ex_return;
 						}
 						//release_file_lock()
 						break;
@@ -78,7 +80,10 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 		case SYS_WAIT:{
 						check_address(p+1);
-						f->eax =  process_wait(*(p+1));
+						check_address(*(p+1));
+						int wait_pid =*(p+1);// *(p+1);
+						//printf("WAIT wait_pid args: %d \n",wait_pid);
+						f->eax =  process_wait(wait_pid);
 						break;
 		}
 		case SYS_CREATE:
@@ -151,28 +156,63 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 						break;
 						}
-		case SYS_READ:
+		case SYS_READ:{
+						check_address(p+1);
+						check_address(*(p+2));
+						check_address(p+3);
+						int i;
+						int read_fd = *(p+1);
+						uint8_t* read_buffer = *(p+2);
+						unsigned read_size = *(p+3);
+						if(read_fd == 0){						
+						
+										for(i=0; i<read_size ; i++){
+										read_buffer[i] = input_getc();
+										f->eax =	read_size; 
+								}
+						}else{
+								struct open_file * read_file = get_file_by_fd(&thread_current()->file_list,read_fd);
+								if(read_file==NULL){
+												f->eax = -1;
+								}else{
+										acquire_file_lock();
+										f->eax= file_read(read_file->file,read_buffer,read_size);
+										release_file_lock();
+								}
+
+						}
+
 						break;
-
-
+	}
 		case SYS_WRITE:
 						check_address(p+1);
 						check_address(p+3);
 						check_address(*(p+2));
-						
+						unsigned write_size = *(p+3);
 						//printf("FD : %d \n",*(p+1));
-						if(*(p+1) ==1){
-										putbuf(*(p+2),*(p+3));
+						if(*(p+1) ==1){//for console printing
+								putbuf(*(p+2),*(p+3));
 
-										f->eax = *(p+3);
+								f->eax = write_size;
 						}
 						else{
-										f->eax = *(p+3);
-
-						}
+								struct open_file * write_file = get_file_by_fd(&thread_current()->file_list,*(p+1));
+								if(write_file==NULL){
+										f->eax=-1;
+								}else{
+								acquire_file_lock();
+								f->eax = file_write(write_file->file,*(p+2),write_size);
+								release_file_lock();
+						}}
 						break;
 
 		case SYS_SEEK:
+						check_address(p+1);
+						check_address(p+2);
+						acquire_file_lock();
+
+						file_seek(get_file_by_fd(&thread_current()->file_list,*(p+1))->file,*(p+1));
+						release_file_lock();
 						break;
 
 		case SYS_TELL:
@@ -256,16 +296,16 @@ void file_close_inlist(struct list* file_list, int fd){
 void exit_process(int status){
 	struct list_elem *child_elem;
 	struct thread * curr = thread_current();
-	struct child * temp_child;
+
 
 	for (child_elem = list_begin(&curr->parent_process->child_list); child_elem  != list_end(&curr->parent_process->child_list); child_elem = list_next(child_elem)){
 
 					
-		temp_child = list_entry(child_elem, struct child, elem);
+		struct child * temp_child = list_entry(child_elem, struct child, elem);
 
 	
 		if(temp_child->pid == curr->tid){
-		
+			//printf("child process %d set exit_code to %d \n",curr->tid,status);
 			temp_child->is_wait = true;
 			temp_child->status = status;
 		}
@@ -273,7 +313,8 @@ void exit_process(int status){
 
 	thread_current()->exit_code = status;
 
-	//If parent is waiting on this child,
+	//printf("thread! name & status : %s, %d \n",curr->name,curr->exit_code);	//If parent is waiting on this child,
+	
 	if(curr->parent_process->lock_child_id = thread_current()->tid){
 			//wake-up parents that is waiting on child to exit.
 			sema_up(&thread_current()->parent_process->child_lock);

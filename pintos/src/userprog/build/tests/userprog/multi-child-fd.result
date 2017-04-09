@@ -1,13 +1,13 @@
 FAIL
 Kernel panic in run: PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
-Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a4bd 0x80480e9 0x80486c4
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b438 0xc010b336 0xc0101905 0xc0101adb 0x804a4bd 0x80480e9 0x80486c4
 Translation of call stack:
 In kernel.o:
 0xc0107726: debug_panic (.../../lib/kernel/debug.c:34)
 0xc0103902: block_to_arena (..../../threads/malloc.c:277)
 0xc01037bb: free (..../../threads/malloc.c:224)
-0xc010b2cb: file_close_inlist (...../userprog/syscall.c:253)
-0xc010b1c9: syscall_handler (...../userprog/syscall.c:196)
+0xc010b438: file_close_inlist (...../userprog/syscall.c:293)
+0xc010b336: syscall_handler (...../userprog/syscall.c:236)
 0xc0101905: intr_handler (..../threads/interrupt.c:361)
 0xc0101adb: intr_entry (threads/intr-stubs.S:38)
 0x0804a4bd: (unknown)

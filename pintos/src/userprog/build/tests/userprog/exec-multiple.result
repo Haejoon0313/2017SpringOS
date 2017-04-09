@@ -6,5 +6,5 @@ Translation of call stack:
 0xc0107f0d: find_end_of_run (.../../lib/kernel/list.c:370)
 0xc0108252: list_sort (.../../lib/kernel/list.c:436)
 0xc01028b5: sema_up (...../../threads/synch.c:162)
-0xc010999e: start_process (...../userprog/process.c:105)
-0xc0100e3b: kernel_thread (..../../threads/thread.c:476)
+0xc010999e: start_process (...../userprog/process.c:106)
+0xc0100e3b: kernel_thread (..../../threads/thread.c:475)

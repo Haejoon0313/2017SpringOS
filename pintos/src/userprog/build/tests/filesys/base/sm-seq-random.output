@@ -1,6 +1,6 @@
-Copying tests/filesys/base/sm-seq-random into /tmp/nqavl0XLIO.dsk...
-Writing command line to /tmp/dXin5J10UZ.dsk...
-qemu -hda /tmp/dXin5J10UZ.dsk -hdb /tmp/jDG4rcUc72.dsk -hdc /tmp/nqavl0XLIO.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/sm-seq-random into /tmp/qtzjRbjgXR.dsk...
+Writing command line to /tmp/AUDQcKmv85.dsk...
+qemu -hda /tmp/AUDQcKmv85.dsk -hdb /tmp/QQ0N67Tm3t.dsk -hdc /tmp/qtzjRbjgXR.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put sm-seq-random run sm-seq-random
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -19,15 +19,17 @@ Executing 'sm-seq-random':
 (sm-seq-random) writing "nibble"
 (sm-seq-random) close "nibble"
 (sm-seq-random) open "nibble" for verification
-(sm-seq-random) read of 512 bytes at offset 0 in "nibble" returned 3: FAILED
-sm-seq-random: exit(1)
+(sm-seq-random) verified contents of "nibble"
+(sm-seq-random) close "nibble"
+(sm-seq-random) end
+sm-seq-random: exit(0)
 Execution of 'sm-seq-random' complete.
-Timer: 67 ticks
-Thread: 30 idle ticks, 33 kernel ticks, 4 user ticks
+Timer: 63 ticks
+Thread: 30 idle ticks, 30 kernel ticks, 3 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 89 reads, 176 writes
+hd0:1: 116 reads, 196 writes
 hd1:0: 76 reads, 0 writes
-Console: 1057 characters output
+Console: 1078 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

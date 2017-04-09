@@ -1,7 +1,7 @@
-Copying tests/userprog/close-twice into /tmp/b76K9c5TwD.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/b76K9c5TwD.dsk...
-Writing command line to /tmp/RxaDLKNo6o.dsk...
-qemu -hda /tmp/RxaDLKNo6o.dsk -hdb /tmp/AnIHDn7ecT.dsk -hdc /tmp/b76K9c5TwD.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/close-twice into /tmp/sTbc0TLwap.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/sTbc0TLwap.dsk...
+Writing command line to /tmp/8jPMdQ5Uq9.dsk...
+qemu -hda /tmp/8jPMdQ5Uq9.dsk -hdb /tmp/mT9P1Fd4tU.dsk -hdc /tmp/sTbc0TLwap.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put close-twice put sample.txt run close-twice
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -20,12 +20,12 @@ Executing 'close-twice':
 (close-twice) close "sample.txt"
 (close-twice) close "sample.txt" again
 Kernel PANIC at ../../threads/malloc.c:274 in block_to_arena(): assertion `a->magic == ARENA_MAGIC' failed.
-Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b2cb 0xc010b1c9 0xc0101905 0xc0101adb 0x804a0ed 0x80480fa 0x8048133 0x804870c.
+Call stack: 0xc0107726 0xc0103902 0xc01037bb 0xc010b438 0xc010b336 0xc0101905 0xc0101adb 0x804a0ed 0x80480fa 0x8048133 0x804870c.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
 Timer: 64 ticks
-Thread: 30 idle ticks, 34 kernel ticks, 0 user ticks
+Thread: 30 idle ticks, 33 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 160 writes
 hd1:0: 75 reads, 0 writes

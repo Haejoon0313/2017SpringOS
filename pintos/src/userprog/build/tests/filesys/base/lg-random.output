@@ -1,11 +1,11 @@
-Copying tests/filesys/base/lg-random into /tmp/MHK4IToeZv.dsk...
-Writing command line to /tmp/4n7MqjExQV.dsk...
-qemu -hda /tmp/4n7MqjExQV.dsk -hdb /tmp/W2WsioW36K.dsk -hdc /tmp/MHK4IToeZv.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/lg-random into /tmp/lakZZZbYOc.dsk...
+Writing command line to /tmp/TDFYqZrlHc.dsk...
+qemu -hda /tmp/TDFYqZrlHc.dsk -hdb /tmp/pYmdwaTK9s.dsk -hdc /tmp/lakZZZbYOc.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put lg-random run lg-random
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
 374 pages available in user pool.
-Calibrating timer...  65,433,600 loops/s.
+Calibrating timer...  78,540,800 loops/s.
 hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 78 sector (39 kB) disk, model "QEMU HARDDISK", serial "QM00003"
@@ -18,15 +18,27 @@ Executing 'lg-random':
 (lg-random) open "bazzle"
 (lg-random) write "bazzle" in random order
 (lg-random) read "bazzle" in random order
-(lg-random) read 512 bytes at offset 16896 failed: FAILED
+(lg-random) 256 bytes read starting at offset 16896 in "bazzle" differ from expected.
+(lg-random) Showing first differing 64 bytes.
+(lg-random) Data actually read:
+00004200  ac 27 03 a8 28 37 ca e0-be 69 ca 8e 18 a5 8b 92 |.'..(7...i......|
+00004210  45 af 62 19 8b 6a 9a fc-cb 7a b3 86 e9 5b 84 42 |E.b..j...z...[.B|
+00004220  74 8a c7 cd 56 a2 a2 65-9c b5 ed f4 cd b2 ab ee |t...V..e........|
+00004230  4a 50 18 fd 6b f4 94 4b-5d 58 2a 96 79 11 20 71 |JP..k..K]X*.y. q|
+(lg-random) Expected data:
+00004200  0c 3e dc cf 69 b5 bc f4-e2 e3 13 b7 c7 00 db 3b |.>..i..........;|
+00004210  fd 46 27 91 97 cc cc ff-c5 a0 5b 95 62 47 ad 9a |.F'.......[.bG..|
+00004220  21 4a f4 6a 6b 62 e4 1f-19 68 74 d6 b1 08 d6 b0 |!J.jkb...ht.....|
+00004230  68 a3 6f 88 f9 31 30 cf-79 23 cd 1e ff 96 01 f8 |h.o..10.y#......|
+(lg-random) 256 bytes read starting at offset 16896 in "bazzle" differ from expected: FAILED
 lg-random: exit(1)
 Execution of 'lg-random' complete.
-Timer: 77 ticks
-Thread: 30 idle ticks, 34 kernel ticks, 13 user ticks
+Timer: 100 ticks
+Thread: 30 idle ticks, 33 kernel ticks, 37 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 87 reads, 318 writes
+hd0:1: 389 reads, 618 writes
 hd1:0: 78 reads, 0 writes
-Console: 977 characters output
+Console: 1821 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

@@ -55,9 +55,10 @@ process_execute (const char *file_name)
 
 	if(!thread_current()->load_success){
 		return -1;
-	}else{
-		return tid;
 	}
+		//printf("Execute! return exitcode : %d \n",tid);
+		return tid;
+	
 }
 
 /* A thread function that loads a user process and makes it start
@@ -118,9 +119,9 @@ start_process (void *f_name)
 int
 process_wait (tid_t child_tid) 
 {
-	/*part1. get child process, with given child_tid */
 
-				
+	//printf("!!child id that is passed to wait() : %d \n",child_tid);	
+
 	struct thread * curr = thread_current();
 	struct list_elem *temp_el;
 	struct child * cp = NULL;
@@ -133,8 +134,8 @@ process_wait (tid_t child_tid)
 		if(child_process->pid == child_tid){
 			cp = child_process;		
 			return_elem = temp_el;
-				
-		}
+			//printf("G! wait child id : %d \n",child_tid);
+			}
 	}
 
 	//invalid or not a child check
