@@ -1,7 +1,7 @@
-Copying tests/filesys/base/syn-read into /tmp/U6HW5PYxGS.dsk...
-Copying tests/filesys/base/child-syn-read into /tmp/U6HW5PYxGS.dsk...
-Writing command line to /tmp/Ll026ecj23.dsk...
-qemu -hda /tmp/Ll026ecj23.dsk -hdb /tmp/OjXaFtHVjg.dsk -hdc /tmp/U6HW5PYxGS.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/syn-read into /tmp/BAvTGH9XuT.dsk...
+Copying tests/filesys/base/child-syn-read into /tmp/BAvTGH9XuT.dsk...
+Writing command line to /tmp/AybwD9Sz7r.dsk...
+qemu -hda /tmp/AybwD9Sz7r.dsk -hdb /tmp/VaiDqCPd80.dsk -hdc /tmp/BAvTGH9XuT.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put syn-read put child-syn-read run syn-read
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -21,25 +21,78 @@ Executing 'syn-read':
 (syn-read) write "data"
 (syn-read) close "data"
 (syn-read) exec child 1 of 10: "child-syn-read 0"
+(child-syn-read) 1 bytes read starting at offset 0 in "data" differ from expected.
+(child-syn-read) Data actually read:
+00000000  00                                              |.               |
+(child-syn-read) Expected data:
+00000000  de                                              |.               |
+(child-syn-read) 1 bytes read starting at offset 0 in "data" differ from expected: FAILED
+child-syn-read: exit(1)
 (syn-read) exec child 2 of 10: "child-syn-read 1"
 (syn-read) exec child 3 of 10: "child-syn-read 2"
+(child-syn-read) 1 bytes read starting at offset 0 in "data" differ from expected.
+(child-syn-read) Data actually read:
+00000000  00                                              |.               |
+(child-syn-read) Expected data:
+00000000  de                                              |.               |
+(child-syn-read) 1 bytes read starting at offset 0 in "data" differ from expected: FAILED
+child-syn-read: exit(1)
+(child-syn-read) 1 bytes read starting at offset 0 in "data" differ from expected.
+(child-syn-read) Data actually read:
+00000000  00                                              |.               |
+(child-syn-read) Expected data:
+00000000  de                                              |.               |
+(child-syn-read) 1 bytes read starting at offset 0 in "data" differ from expected: FAILED
+child-syn-read: exit(1)
 (syn-read) exec child 4 of 10: "child-syn-read 3"
 (syn-read) exec child 5 of 10: "child-syn-read 4"
 (syn-read) exec child 6 of 10: "child-syn-read 5"
 (syn-read) exec child 7 of 10: "child-syn-read 6"
+(child-syn-read) 1 bytes read starting at offset 0 in "data" differ from expected.
+(child-syn-read) Data actually read:
+00000000  00                                              |.               |
+(child-syn-read) Expected data:
+00000000  de                                              |.               |
+(child-syn-read) 1 bytes read starting at offset 0 in "data" differ from expected: FAILED
+child-syn-read: exit(1)
+(child-syn-read) 1 bytes read starting at offset 0 in "data" differ from expected.
+(child-syn-read) Data actually read:
+00000000  00                                              |.               |
+(child-syn-read) Expected data:
+00000000  de                                              |.               |
+(child-syn-read) 1 bytes read starting at offset 0 in "data" differ from expected: FAILED
+child-syn-read: exit(1)
+(child-syn-read) 1 bytes read starting at offset 0 in "data" differ from expected.
+(child-syn-read) Data actually read:
+00000000  00                                              |.               |
+(child-syn-read) Expected data:
+00000000  de                                              |.               |
+(child-syn-read) 1 bytes read starting at offset 0 in "data" differ from expected: FAILED
+child-syn-read: exit(1)
+(child-syn-read) 1 bytes read starting at offset 0 in "data" differ from expected.
+(child-syn-read) Data actually read:
+00000000  00                                              |.               |
+(child-syn-read) Expected data:
+00000000  de                                              |.               |
+(child-syn-read) 1 bytes read starting at offset 0 in "data" differ from expected: FAILED
+child-syn-read: exit(1)
 (syn-read) exec child 8 of 10: "child-syn-read 7"
 (syn-read) exec child 9 of 10: "child-syn-read 8"
 (syn-read) exec child 10 of 10: "child-syn-read 9"
-(syn-read) wait for child 1 of 10 returned -1073742144 (expected 0)
-(syn-read) wait for child 1 of 10 returned -1073742144 (expected 0): FAILED
+(syn-read) wait for child 1 of 10 returned -1 (expected 0)
+(syn-read) wait for child 1 of 10 returned -1 (expected 0): FAILED
 syn-read: exit(1)
-Execution of 'syn-read' complete.
-Timer: 107 ticks
-Thread: 30 idle ticks, 72 kernel ticks, 5 user ticks
+Kernel PANIC at ../../lib/kernel/list.c:369 in find_end_of_run(): assertion `a != NULL' failed.
+Call stack: 0xc01076e6 0xc0107ecd 0xc0108212 0xc0102875 0xc010991b 0xc0100e32.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 83 ticks
+Thread: 30 idle ticks, 38 kernel ticks, 15 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 115 reads, 338 writes
+hd0:1: 455 reads, 338 writes
 hd1:0: 161 reads, 0 writes
-Console: 1585 characters output
+Console: 4802 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

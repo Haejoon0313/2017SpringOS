@@ -1,6 +1,6 @@
-Copying tests/filesys/base/lg-seq-random into /tmp/3qHRrFLn5i.dsk...
-Writing command line to /tmp/jzPyD9iwqv.dsk...
-qemu -hda /tmp/jzPyD9iwqv.dsk -hdb /tmp/MdaToVzMhD.dsk -hdc /tmp/3qHRrFLn5i.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/lg-seq-random into /tmp/LseryaDWPv.dsk...
+Writing command line to /tmp/OjAsqnuqIs.dsk...
+qemu -hda /tmp/OjAsqnuqIs.dsk -hdb /tmp/l5NQGgXNS6.dsk -hdc /tmp/LseryaDWPv.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put lg-seq-random run lg-seq-random
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -17,15 +17,18 @@ Executing 'lg-seq-random':
 (lg-seq-random) create "nibble"
 (lg-seq-random) open "nibble"
 (lg-seq-random) writing "nibble"
-(lg-seq-random) write 717 bytes at offset 0 in "nibble" failed: FAILED
+(lg-seq-random) close "nibble"
+(lg-seq-random) open "nibble" for verification
+(lg-seq-random) size of nibble (134522616) differs from expected (75678)
+(lg-seq-random) read of 512 bytes at offset 0 in "nibble" returned 134522616: FAILED
 lg-seq-random: exit(1)
 Execution of 'lg-seq-random' complete.
-Timer: 105 ticks
-Thread: 30 idle ticks, 63 kernel ticks, 12 user ticks
+Timer: 70 ticks
+Thread: 30 idle ticks, 29 kernel ticks, 11 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 85 reads, 312 writes
+hd0:1: 88 reads, 312 writes
 hd1:0: 76 reads, 0 writes
-Console: 975 characters output
+Console: 1139 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

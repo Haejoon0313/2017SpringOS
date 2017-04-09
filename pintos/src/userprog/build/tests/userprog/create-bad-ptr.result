@@ -1,18 +1,18 @@
 FAIL
 Kernel panic in run: PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc0107676 0xc010abbf 0xc010ac79 0xc0101855 0xc0101a2b 0xc010bd9e 0xc010b360 0xc010ad4c 0xc0101855 0xc0101a2b 0x804a019 0x80480ba 0x8048103 0x80486dc
+Call stack: 0xc01076e6 0xc010ad5f 0xc010ae19 0xc01018c5 0xc0101a9b 0xc010c00e 0xc010b5d0 0xc010afa6 0xc01018c5 0xc0101a9b 0x804a019 0x80480ba 0x8048103 0x80486dc
 Translation of call stack:
 In kernel.o:
-0xc0107676: debug_panic (.../../lib/kernel/debug.c:34)
-0xc010abbf: kill (.../userprog/exception.c:105)
-0xc010ac79: page_fault (.../userprog/exception.c:160)
-0xc0101855: intr_handler (..../threads/interrupt.c:361)
-0xc0101a2b: intr_entry (threads/intr-stubs.S:38)
-0xc010bd9e: dir_add (..../filesys/directory.c:152)
-0xc010b360: filesys_create (..../../filesys/filesys.c:51)
-0xc010ad4c: syscall_handler (.../../userprog/syscall.c:62)
-0xc0101855: intr_handler (..../threads/interrupt.c:361)
-0xc0101a2b: intr_entry (threads/intr-stubs.S:38)
+0xc01076e6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc010ad5f: kill (.../userprog/exception.c:105)
+0xc010ae19: page_fault (.../userprog/exception.c:160)
+0xc01018c5: intr_handler (..../threads/interrupt.c:361)
+0xc0101a9b: intr_entry (threads/intr-stubs.S:38)
+0xc010c00e: dir_add (..../filesys/directory.c:152)
+0xc010b5d0: filesys_create (..../../filesys/filesys.c:51)
+0xc010afa6: syscall_handler (.../../userprog/syscall.c:86)
+0xc01018c5: intr_handler (..../threads/interrupt.c:361)
+0xc0101a9b: intr_entry (threads/intr-stubs.S:38)
 In tests/userprog/create-bad-ptr:
 0x0804a019: create (.../../lib/user/syscall.c:93)
 0x080480ba: test_main (...rprog/create-bad-ptr.c:11)

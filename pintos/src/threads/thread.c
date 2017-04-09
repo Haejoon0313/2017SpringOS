@@ -108,6 +108,7 @@ thread_init (void)
   init_thread (initial_thread, "main", PRI_DEFAULT);
   initial_thread->status = THREAD_RUNNING;
   initial_thread->tid = allocate_tid ();
+
 }
 
 /* Starts preemptive thread scheduling by enabling interrupts.
@@ -193,6 +194,16 @@ thread_create (const char *name, int priority,
   init_thread (t, name, priority);
   tid = t->tid = allocate_tid ();
 
+	/*new child process initialization part */
+	struct child * child_process = malloc(sizeof(struct child));
+	child_process->pid = t->tid;
+	child_process->is_wait = false;
+	child_process->status =t->exit_code;	
+	//child_process->parent_process = thread_current();
+	list_push_back(&thread_current()->child_list,&child_process->elem);
+	
+
+
   /* Stack frame for kernel_thread(). */
   kf = alloc_frame (t, sizeof *kf);
   kf->eip = NULL;
@@ -207,14 +218,7 @@ thread_create (const char *name, int priority,
   sf = alloc_frame (t, sizeof *sf);
   sf->eip = switch_entry;
 	
-
-	t->parent_tid = thread_current()->tid;
 	
-
-	
-
-
-
 
 
   /* Add to run queue. */
@@ -321,6 +325,12 @@ thread_exit (void)
 #ifdef USERPROG
   process_exit ();
 #endif
+
+	/* Needs to free all the child process of current thread*/
+	//struct thread * curr = thread_current();
+	//while(!list_empty(&curr->child_list)){
+	//}
+
 
   /* Just set our status to dying and schedule another process.
      We will be destroyed during the call to schedule_tail(). */
@@ -504,6 +514,12 @@ init_thread (struct thread *t, const char *name, int priority)
 	list_init(&t->potential_donator);
 	t->waiting_lock = NULL;
 
+	//Project2 part
+	list_init(&t->child_list);
+	t->parent_process = running_thread();
+	t->lock_child_id = NULL;	
+	t->exit_code = -2;
+	sema_init(&t->child_lock,0);
 }
 
 /* Allocates a SIZE-byte frame at the top of thread T's stack and

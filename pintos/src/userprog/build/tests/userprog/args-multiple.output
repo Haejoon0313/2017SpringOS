@@ -1,6 +1,6 @@
-Copying tests/userprog/args-multiple into /tmp/jAWWxgyzpW.dsk...
-Writing command line to /tmp/EbXN5Fob8i.dsk...
-qemu -hda /tmp/EbXN5Fob8i.dsk -hdb /tmp/OBVmoGjYt7.dsk -hdc /tmp/jAWWxgyzpW.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/args-multiple into /tmp/gInX6hbiVa.dsk...
+Writing command line to /tmp/qkHSqwbxKO.dsk...
+qemu -hda /tmp/qkHSqwbxKO.dsk -hdb /tmp/51MRUylotV.dsk -hdc /tmp/gInX6hbiVa.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put args-multiple run 'args-multiple some arguments for you!'
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -23,13 +23,13 @@ Executing 'args-multiple some arguments for you!':
 (args) argv[5] = null
 (args) end
 args-multiple: exit(0)
-Execution of 'args-multiple' complete.
-Timer: 94 ticks
-Thread: 30 idle ticks, 62 kernel ticks, 2 user ticks
+Execution of 'args-multiple some arguments for you!' complete.
+Timer: 60 ticks
+Thread: 30 idle ticks, 29 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 152 writes
 hd1:0: 72 reads, 0 writes
-Console: 1030 characters output
+Console: 1054 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

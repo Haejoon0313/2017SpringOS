@@ -1,7 +1,7 @@
-Copying tests/userprog/exec-arg into /tmp/kIXbwFGXnS.dsk...
-Copying tests/userprog/child-args into /tmp/kIXbwFGXnS.dsk...
-Writing command line to /tmp/lkgh6l93BY.dsk...
-qemu -hda /tmp/lkgh6l93BY.dsk -hdb /tmp/7QKkTWF2ZF.dsk -hdc /tmp/kIXbwFGXnS.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/exec-arg into /tmp/M5Mye19UIB.dsk...
+Copying tests/userprog/child-args into /tmp/M5Mye19UIB.dsk...
+Writing command line to /tmp/X7R2HNIAlP.dsk...
+qemu -hda /tmp/X7R2HNIAlP.dsk -hdb /tmp/tk4Na5YfjU.dsk -hdc /tmp/M5Mye19UIB.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put exec-arg put child-args run exec-arg
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -16,15 +16,23 @@ Putting 'exec-arg' into the file system...
 Putting 'child-args' into the file system...
 Executing 'exec-arg':
 (exec-arg) begin
-(exec-arg) end
-exec-arg: exit(0)
-Execution of 'exec-arg' complete.
-Timer: 104 ticks
-Thread: 30 idle ticks, 74 kernel ticks, 0 user ticks
+Page fault at 0x804a572: rights violation error writing page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc010706c
+ cr2=0804a572 error=00000003
+ eax=c010ec78 ebx=0804a572 ecx=ffffffff edx=00000020
+ esi=c010ec78 edi=c011cf18 esp=c010ec78 ebp=c011cef4
+ cs=0008 ds=0010 es=0010 ss=0020
+Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc01076e6 0xc010ad5f 0xc010ae19 0xc01018c5 0xc0101a9b 0xc010706c 0xc010980d 0xc010af5b 0xc01018c5 0xc0101a9b 0x8049fe5 0x80480b2 0x80480ef 0x80486c8.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 72 ticks
+Thread: 30 idle ticks, 41 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 86 reads, 300 writes
+hd0:1: 90 reads, 300 writes
 hd1:0: 145 reads, 0 writes
-Console: 850 characters output
+Console: 1509 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 1 page faults
 Powering off...

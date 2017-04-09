@@ -1,7 +1,7 @@
-Copying tests/filesys/base/syn-write into /tmp/8BJ4aSkTNE.dsk...
-Copying tests/filesys/base/child-syn-wrt into /tmp/8BJ4aSkTNE.dsk...
-Writing command line to /tmp/Y2x2Dr2jyl.dsk...
-qemu -hda /tmp/Y2x2Dr2jyl.dsk -hdb /tmp/ytR8XYlDpf.dsk -hdc /tmp/8BJ4aSkTNE.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/syn-write into /tmp/EebYG0Alqy.dsk...
+Copying tests/filesys/base/child-syn-wrt into /tmp/EebYG0Alqy.dsk...
+Writing command line to /tmp/bBkfUlDyU6.dsk...
+qemu -hda /tmp/bBkfUlDyU6.dsk -hdb /tmp/cDCZKjS33p.dsk -hdc /tmp/EebYG0Alqy.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put syn-write put child-syn-wrt run syn-write
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -18,25 +18,36 @@ Executing 'syn-write':
 (syn-write) begin
 (syn-write) create "stuff"
 (syn-write) exec child 1 of 10: "child-syn-wrt 0"
+child-syn-wrt: exit(0)
 (syn-write) exec child 2 of 10: "child-syn-wrt 1"
 (syn-write) exec child 3 of 10: "child-syn-wrt 2"
+child-syn-wrt: exit(1)
+child-syn-wrt: exit(2)
 (syn-write) exec child 4 of 10: "child-syn-wrt 3"
 (syn-write) exec child 5 of 10: "child-syn-wrt 4"
 (syn-write) exec child 6 of 10: "child-syn-wrt 5"
 (syn-write) exec child 7 of 10: "child-syn-wrt 6"
+child-syn-wrt: exit(3)
+child-syn-wrt: exit(4)
+child-syn-wrt: exit(5)
+child-syn-wrt: exit(6)
 (syn-write) exec child 8 of 10: "child-syn-wrt 7"
 (syn-write) exec child 9 of 10: "child-syn-wrt 8"
 (syn-write) exec child 10 of 10: "child-syn-wrt 9"
-(syn-write) wait for child 1 of 10 returned -1073742160 (expected 0)
-(syn-write) wait for child 1 of 10 returned -1073742160 (expected 0): FAILED
+(syn-write) wait for child 1 of 10 returned -1 (expected 0)
+(syn-write) wait for child 1 of 10 returned -1 (expected 0): FAILED
 syn-write: exit(1)
-Execution of 'syn-write' complete.
-Timer: 104 ticks
-Thread: 30 idle ticks, 70 kernel ticks, 4 user ticks
+Kernel PANIC at ../../lib/kernel/list.c:369 in find_end_of_run(): assertion `a != NULL' failed.
+Call stack: 0xc01076e6 0xc0107ecd 0xc0108212 0xc0102875 0xc010991b 0xc0100e32.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 79 ticks
+Thread: 30 idle ticks, 43 kernel ticks, 6 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 110 reads, 344 writes
+hd0:1: 443 reads, 344 writes
 hd1:0: 160 reads, 0 writes
-Console: 1523 characters output
+Console: 1959 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

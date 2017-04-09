@@ -31,26 +31,33 @@ process_execute (const char *file_name)
   char *fn_copy;
   tid_t tid;
 	char *f_name;
-  /* Make a copy of FILE_NAME.
+  char * fn;
+	/* Make a copy of FILE_NAME.
      Otherwise there's a race between the caller and load(). */
   fn_copy = palloc_get_page (0);
   if (fn_copy == NULL)
     return TID_ERROR;
-  strlcpy (fn_copy, file_name, PGSIZE);	
+  fn = malloc(strlen(file_name)+1);
+	strlcpy(fn,file_name,(file_name)+1);
+	strlcpy (fn_copy, file_name, PGSIZE);	
 
 	char * rest;
-	strtok_r(file_name," ",&rest);
+	strtok_r(fn," ",&rest);
 	/* Create a new thread to execute FILE_NAME. */
-  tid = thread_create (file_name, PRI_DEFAULT, start_process, fn_copy);
-  if (tid == TID_ERROR)
+  tid = thread_create (fn, PRI_DEFAULT, start_process, fn_copy);
+  free(fn);
+	if (tid == TID_ERROR)
     palloc_free_page (fn_copy); 
   
-	
-//	struct thread* new_t = thread_get(tid);
-//	new_t->cmd_name = cmd_name;
-//	printf("hihi &c \n",cmd_name);
-	
-	return tid;
+
+
+	sema_down(&thread_current()->child_lock);
+
+	if(!thread_current()->load_success){
+		return -1;
+	}else{
+		return tid;
+	}
 }
 
 /* A thread function that loads a user process and makes it start
@@ -80,10 +87,16 @@ start_process (void *f_name)
  
   /* If load failed, quit. */
   palloc_free_page (file_name);
-  if (!success) 
+  if (!success)
+	{
+		thread_current()->parent_process->load_success = false;
+		sema_up(&thread_current()->parent_process->child_lock);
     thread_exit ();
-
-  /* Start the user process by simulating a return from an
+	}else{
+		thread_current()->parent_process->load_success = true;
+		sema_up(&thread_current()->parent_process->child_lock);
+	}
+		/*
      interrupt, implemented by intr_exit (in
      threads/intr-stubs.S).  Because intr_exit takes all of its
      arguments on the stack in the form of a `struct intr_frame',
@@ -103,15 +116,44 @@ start_process (void *f_name)
    This function will be implemented in problem 2-2.  For now, it
    does nothing. */
 int
-process_wait (tid_t child_tid UNUSED) 
+process_wait (tid_t child_tid) 
 {
-int i; 
- for(i =0;i< 100000000; i++)
-		continue;//잠깐 넣어둠
-			
+	/*part1. get child process, with given child_tid */
+
 				
-				return -1;
-}
+	struct thread * curr = thread_current();
+	struct list_elem *temp_el;
+	struct child * cp = NULL;
+	struct list_elem * return_elem;
+
+	for(temp_el=list_begin(&curr->child_list) ; temp_el != list_end(&curr->child_list); temp_el = list_next(temp_el)){
+		
+		struct child *child_process = list_entry(temp_el,struct child, elem);
+		
+		if(child_process->pid == child_tid){
+			cp = child_process;		
+			return_elem = temp_el;
+				
+		}
+	}
+
+	//invalid or not a child check
+	if(!cp){
+		return -1;
+	}
+	//HOW to care about the wait call that is already waiting
+	curr->lock_child_id = cp->pid;
+	int return_status = cp->status;
+	
+	if(!cp->is_wait)
+		sema_down(&thread_current()->child_lock);
+
+	//cp->is_wait = false;
+	list_remove(return_elem);
+	free(cp);
+
+	return return_status;
+	}
 
 /* Free the current process's resources. */
 void
@@ -119,16 +161,21 @@ process_exit (void)
 {
   struct thread *curr = thread_current ();
   uint32_t *pd;
+	int exit_status = curr->exit_code;
+
+	if(exit_status == -2){
+		exit_process(-1);
+	}
+	//exit_process(exit_status);
+	printf("%s: exit(%d)\n",curr->name,exit_status);
+
 
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
   pd = curr->pagedir;
   if (pd != NULL) 
     {
-      /* Correct ordering here is crucial.  We must set
-         cur->pagedir to NULL before switching page directories,
-         so that a timer interrupt can't switch back to the
-      /* Correct ordering here is crucial.  We must set
+     /* Correct ordering here is crucial.  We must set
          cur->pagedir to NULL before switching page directories,
          so that a timer interrupt can't switch back to the
          process page directory.  We must activate the base page
@@ -251,8 +298,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
 
   strlcpy(file_copy,file_name,strlen(file_name)+1);
 	file_copy = strtok_r(file_copy," ",&rest);
-	//	printf("~~~~~~~~~~~~~~~~~~~%s \n",file_name);
-  
+
 	/* Open executable file. */
   
 	file = filesys_open (file_copy);
@@ -341,8 +387,6 @@ load (const char *file_name, void (**eip) (void), void **esp)
 	//printf("file name that passed to setup_stack : %s \n",file_name);
   if (!setup_stack (esp,file_name))
 	{  
-		printf("set up stack is excuting!\n");
-
 		goto done;
 }
   /* Start address. */
@@ -352,6 +396,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
 
  done:
   /* We arrive here whether the load is successful or not. */
+ file_deny_write(file);//Deny write to files in load, an excutable file
  file_close (file);
 
 

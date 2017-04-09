@@ -1,6 +1,6 @@
-Copying tests/userprog/sc-bad-sp into /tmp/goX0G3801R.dsk...
-Writing command line to /tmp/n6fM6r8nLR.dsk...
-qemu -hda /tmp/n6fM6r8nLR.dsk -hdb /tmp/99O6JuDnef.dsk -hdc /tmp/goX0G3801R.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/sc-bad-sp into /tmp/eAdvSOeTQP.dsk...
+Writing command line to /tmp/BypoTwb2VC.dsk...
+qemu -hda /tmp/BypoTwb2VC.dsk -hdb /tmp/Tfoq3dwr5S.dsk -hdc /tmp/eAdvSOeTQP.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put sc-bad-sp run sc-bad-sp
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -14,13 +14,14 @@ Boot complete.
 Putting 'sc-bad-sp' into the file system...
 Executing 'sc-bad-sp':
 (sc-bad-sp) begin
-sc-bad-sp: exit(-1)Execution of 'sc-bad-sp' complete.
-Timer: 92 ticks
-Thread: 30 idle ticks, 62 kernel ticks, 0 user ticks
+sc-bad-sp: exit(-1)
+Execution of 'sc-bad-sp' complete.
+Timer: 61 ticks
+Thread: 30 idle ticks, 30 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 154 writes
 hd1:0: 73 reads, 0 writes
-Console: 779 characters output
+Console: 780 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

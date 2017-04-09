@@ -1,6 +1,6 @@
-Copying tests/userprog/multi-recurse into /tmp/0yAUesJpcg.dsk...
-Writing command line to /tmp/ScI6Yd7YhB.dsk...
-qemu -hda /tmp/ScI6Yd7YhB.dsk -hdb /tmp/Pr0l0ecWsc.dsk -hdc /tmp/0yAUesJpcg.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/multi-recurse into /tmp/PxkTu6YCh4.dsk...
+Writing command line to /tmp/tkvJ7MkR1Q.dsk...
+qemu -hda /tmp/tkvJ7MkR1Q.dsk -hdb /tmp/lD6km017Fp.dsk -hdc /tmp/PxkTu6YCh4.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put multi-recurse run 'multi-recurse 15'
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -15,15 +15,19 @@ Putting 'multi-recurse' into the file system...
 Executing 'multi-recurse 15':
 (multi-recurse) begin 15
 (multi-recurse) exec("multi-recurse 14")
-(multi-recurse) wait(exec("multi-recurse 14")) returned -1073742024: FAILED
+(multi-recurse) begin 14
+(multi-recurse) exec("multi-recurse 13")
+(multi-recurse) wait(exec("multi-recurse")) returned -1: FAILED
 multi-recurse: exit(1)
+(multi-recurse) begin 13
+(multi-recurse) exec("multi-recurse 12")
 Execution of 'multi-recurse' complete.
-Timer: 92 ticks
-Thread: 30 idle ticks, 61 kernel ticks, 1 user ticks
+Timer: 62 ticks
+Thread: 30 idle ticks, 30 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 69 reads, 170 writes
+hd0:1: 156 reads, 170 writes
 hd1:0: 81 reads, 0 writes
-Console: 935 characters output
+Console: 1056 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

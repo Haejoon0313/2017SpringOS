@@ -1,6 +1,6 @@
-Copying tests/userprog/create-bad-ptr into /tmp/DogNTqgnt8.dsk...
-Writing command line to /tmp/yXxKlhZWfj.dsk...
-qemu -hda /tmp/yXxKlhZWfj.dsk -hdb /tmp/NIzRqXpFCJ.dsk -hdc /tmp/DogNTqgnt8.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/create-bad-ptr into /tmp/NlPi4mGpXD.dsk...
+Writing command line to /tmp/69dRo1Xd9v.dsk...
+qemu -hda /tmp/69dRo1Xd9v.dsk -hdb /tmp/0woXtPc7gq.dsk -hdc /tmp/NlPi4mGpXD.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put create-bad-ptr run create-bad-ptr
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -15,18 +15,18 @@ Putting 'create-bad-ptr' into the file system...
 Executing 'create-bad-ptr':
 (create-bad-ptr) begin
 Page fault at 0x20101234: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc010bd9e
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc010c00e
  cr2=20101234 error=00000000
- eax=20101234 ebx=20101234 ecx=c011820c edx=c011b000
- esi=c011703c edi=00000000 esp=c0111690 ebp=c011bf24
- cs=0008 ds=0010 es=0010 ss=820c
+ eax=20101234 ebx=20101234 ecx=c011920c edx=c011c000
+ esi=c011803c edi=00000000 esp=c0111690 ebp=c011cf04
+ cs=0008 ds=0010 es=0010 ss=920c
 Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc0107676 0xc010abbf 0xc010ac79 0xc0101855 0xc0101a2b 0xc010bd9e 0xc010b360 0xc010ad4c 0xc0101855 0xc0101a2b 0x804a019 0x80480ba 0x8048103 0x80486dc.
+Call stack: 0xc01076e6 0xc010ad5f 0xc010ae19 0xc01018c5 0xc0101a9b 0xc010c00e 0xc010b5d0 0xc010afa6 0xc01018c5 0xc0101a9b 0x804a019 0x80480ba 0x8048103 0x80486dc.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 65 ticks
-Thread: 30 idle ticks, 34 kernel ticks, 1 user ticks
+Timer: 70 ticks
+Thread: 30 idle ticks, 38 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 62 reads, 157 writes
 hd1:0: 73 reads, 0 writes

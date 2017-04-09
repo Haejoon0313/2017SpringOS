@@ -1,8 +1,8 @@
-Copying tests/userprog/multi-child-fd into /tmp/Bfz46KK87a.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/Bfz46KK87a.dsk...
-Copying tests/userprog/child-close into /tmp/Bfz46KK87a.dsk...
-Writing command line to /tmp/3f48Bxejdo.dsk...
-qemu -hda /tmp/3f48Bxejdo.dsk -hdb /tmp/LVEWllIHHt.dsk -hdc /tmp/Bfz46KK87a.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/multi-child-fd into /tmp/XfMePG198F.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/XfMePG198F.dsk...
+Copying tests/userprog/child-close into /tmp/XfMePG198F.dsk...
+Writing command line to /tmp/gdsN5rbWnn.dsk...
+qemu -hda /tmp/gdsN5rbWnn.dsk -hdb /tmp/Y4btqusOqe.dsk -hdc /tmp/XfMePG198F.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put multi-child-fd put sample.txt put child-close run multi-child-fd
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -19,17 +19,20 @@ Putting 'child-close' into the file system...
 Executing 'multi-child-fd':
 (multi-child-fd) begin
 (multi-child-fd) open "sample.txt"
-(multi-child-fd) wait(exec()) = -1073742048
+(child-close) begin
+(child-close) end
+child-close: exit(0)
+(multi-child-fd) wait(exec()) = -1
 (multi-child-fd) size of sample.txt (134522362) differs from expected (239)
 (multi-child-fd) read of 239 bytes at offset 0 in "sample.txt" returned 134522362: FAILED
 multi-child-fd: exit(1)
 Execution of 'multi-child-fd' complete.
-Timer: 105 ticks
-Thread: 30 idle ticks, 74 kernel ticks, 1 user ticks
+Timer: 81 ticks
+Thread: 30 idle ticks, 47 kernel ticks, 4 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 125 reads, 324 writes
+hd0:1: 171 reads, 324 writes
 hd1:0: 156 reads, 0 writes
-Console: 1185 characters output
+Console: 1234 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

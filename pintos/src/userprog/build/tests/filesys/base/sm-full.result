@@ -1,2 +1,2 @@
 FAIL
-run: write 5678 bytes at offset 0 in "quux" failed: FAILED
+run: read of 512 bytes at offset 0 in "quux" returned 134522584: FAILED
