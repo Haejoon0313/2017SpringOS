@@ -1,4 +1,4 @@
-TOTAL TESTING SCORE: 69.2%
+TOTAL TESTING SCORE: 80.2%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -6,12 +6,12 @@ SUMMARY BY TEST SET
 
 Test Set                                      Pts Max  % Ttl  % Max
 --------------------------------------------- --- --- ------ ------
-tests/userprog/Rubric.functionality            87/108  28.2%/ 35.0%
+tests/userprog/Rubric.functionality            90/108  29.2%/ 35.0%
 tests/userprog/Rubric.robustness               88/ 88  25.0%/ 25.0%
 tests/userprog/no-vm/Rubric                     0/  1   0.0%/ 10.0%
-tests/filesys/base/Rubric                      16/ 30  16.0%/ 30.0%
+tests/filesys/base/Rubric                      26/ 30  26.0%/ 30.0%
 --------------------------------------------- --- --- ------ ------
-Total                                                  69.2%/100.0%
+Total                                                  80.2%/100.0%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -67,12 +67,12 @@ Functionality of system calls (tests/userprog/Rubric.functionality):
 
 	- Test read-only executable feature.
 	     3/ 3 tests/userprog/rox-simple
-	  ** 0/ 3 tests/userprog/rox-child
+	     3/ 3 tests/userprog/rox-child
 	  ** 0/ 3 tests/userprog/rox-multichild
 
 	- Section summary.
-	     25/ 28 tests passed
-	     87/108 points subtotal
+	     26/ 28 tests passed
+	     90/108 points subtotal
 
 Robustness of system calls (tests/userprog/Rubric.robustness):
 	- Test robustness of file descriptor handling.
@@ -139,25 +139,25 @@ Functionality of base file system (tests/filesys/base/Rubric):
 	- Test basic support for small files.
 	     1/ 1 tests/filesys/base/sm-create
 	     2/ 2 tests/filesys/base/sm-full
-	  ** 0/ 2 tests/filesys/base/sm-random
+	     2/ 2 tests/filesys/base/sm-random
 	     2/ 2 tests/filesys/base/sm-seq-block
 	     3/ 3 tests/filesys/base/sm-seq-random
 
 	- Test basic support for large files.
 	     1/ 1 tests/filesys/base/lg-create
 	     2/ 2 tests/filesys/base/lg-full
-	  ** 0/ 2 tests/filesys/base/lg-random
+	     2/ 2 tests/filesys/base/lg-random
 	     2/ 2 tests/filesys/base/lg-seq-block
 	     3/ 3 tests/filesys/base/lg-seq-random
 
 	- Test synchronized multiprogram access to files.
 	  ** 0/ 4 tests/filesys/base/syn-read
-	  ** 0/ 4 tests/filesys/base/syn-write
-	  ** 0/ 2 tests/filesys/base/syn-remove
+	     4/ 4 tests/filesys/base/syn-write
+	     2/ 2 tests/filesys/base/syn-remove
 
 	- Section summary.
-	      8/ 13 tests passed
-	     16/ 30 points subtotal
+	     12/ 13 tests passed
+	     26/ 30 points subtotal
 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -168,9 +168,9 @@ run: wait(exec("multi-recurse 1")) returned -2: FAILED
 
 OUTPUT FROM tests/userprog/multi-recurse:
 
-Copying tests/userprog/multi-recurse into /tmp/lEM2cdoRaG.dsk...
-Writing command line to /tmp/zgvKqf5xma.dsk...
-qemu -hda /tmp/zgvKqf5xma.dsk -hdb /tmp/rM8en9i8xK.dsk -hdc /tmp/lEM2cdoRaG.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/multi-recurse into /tmp/zi9s5AKxQK.dsk...
+Writing command line to /tmp/BywEb7IfYB.dsk...
+qemu -hda /tmp/BywEb7IfYB.dsk -hdb /tmp/nZd3bjc83r.dsk -hdc /tmp/zi9s5AKxQK.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put multi-recurse run 'multi-recurse 15'
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -247,8 +247,8 @@ multi-recurse: exit(1)
 (multi-recurse) wait(exec("multi-recurse 14")) returned -2: FAILED
 multi-recurse: exit(1)
 Execution of 'multi-recurse 15' complete.
-Timer: 78 ticks
-Thread: 30 idle ticks, 34 kernel ticks, 14 user ticks
+Timer: 84 ticks
+Thread: 30 idle ticks, 40 kernel ticks, 14 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 669 reads, 170 writes
 hd1:0: 81 reads, 0 writes
@@ -259,61 +259,16 @@ Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-DETAILS OF tests/userprog/rox-child FAILURE:
-
-run: exec "child-rox 1": FAILED
-
-OUTPUT FROM tests/userprog/rox-child:
-
-Copying tests/userprog/rox-child into /tmp/39Nl6ZscKT.dsk...
-Copying tests/userprog/child-rox into /tmp/39Nl6ZscKT.dsk...
-Writing command line to /tmp/HzjROMgcWd.dsk...
-qemu -hda /tmp/HzjROMgcWd.dsk -hdb /tmp/gSeei1I1qT.dsk -hdc /tmp/39Nl6ZscKT.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put rox-child put child-rox run rox-child
-Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
-374 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 156 sector (78 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-Formatting file system...done.
-Boot complete.
-Putting 'rox-child' into the file system...
-Putting 'child-rox' into the file system...
-Executing 'rox-child':
-(rox-child) begin
-(rox-child) open "child-rox"
-(rox-child) read "child-rox"
-(rox-child) write "child-rox"
-(rox-child) exec "child-rox 1"
-load: child-rox 1: error loading executable
-child-rox: exit(-1)
-(rox-child) exec "child-rox 1": FAILED
-rox-child: exit(1)
-Execution of 'rox-child' complete.
-Timer: 80 ticks
-Thread: 30 idle ticks, 49 kernel ticks, 1 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 99 reads, 323 writes
-hd1:0: 156 reads, 0 writes
-Console: 1061 characters output
-Keyboard: 0 keys pressed
-Exception: 0 page faults
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
 DETAILS OF tests/userprog/rox-multichild FAILURE:
 
-run: exec "child-rox 5": FAILED
+run: wait for "child-rox": FAILED
 
 OUTPUT FROM tests/userprog/rox-multichild:
 
-Copying tests/userprog/rox-multichild into /tmp/xWXRC0REs3.dsk...
-Copying tests/userprog/child-rox into /tmp/xWXRC0REs3.dsk...
-Writing command line to /tmp/NQ0rdPwUv6.dsk...
-qemu -hda /tmp/NQ0rdPwUv6.dsk -hdb /tmp/zLFcNmYRoZ.dsk -hdc /tmp/xWXRC0REs3.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/rox-multichild into /tmp/CYkAXQgAhS.dsk...
+Copying tests/userprog/child-rox into /tmp/CYkAXQgAhS.dsk...
+Writing command line to /tmp/3h0z7v8Y3t.dsk...
+qemu -hda /tmp/3h0z7v8Y3t.dsk -hdb /tmp/Q1eMLAM60K.dsk -hdc /tmp/CYkAXQgAhS.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put rox-multichild put child-rox run rox-multichild
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -332,17 +287,41 @@ Executing 'rox-multichild':
 (rox-multichild) read "child-rox"
 (rox-multichild) write "child-rox"
 (rox-multichild) exec "child-rox 5"
-load: child-rox 5: error loading executable
-child-rox: exit(-1)
-(rox-multichild) exec "child-rox 5": FAILED
+(child-rox) begin
+(child-rox) try to write "child-rox"
+(child-rox) exec "child-rox 4"
+(child-rox) begin
+(child-rox) try to write "child-rox"
+(child-rox) exec "child-rox 3"
+(child-rox) begin
+(child-rox) try to write "child-rox"
+(child-rox) exec "child-rox 2"
+(child-rox) begin
+(child-rox) try to write "child-rox"
+(child-rox) exec "child-rox 1"
+(child-rox) begin
+(child-rox) try to write "child-rox"
+(child-rox) try to write "child-rox"
+(child-rox) end
+child-rox: exit(12)
+(child-rox) try to write "child-rox"
+(child-rox) end
+child-rox: exit(12)
+(child-rox) wait for "child-rox": FAILED
+child-rox: exit(1)
+(child-rox) wait for "child-rox": FAILED
+child-rox: exit(1)
+(child-rox) wait for "child-rox": FAILED
+child-rox: exit(1)
+(rox-multichild) wait for child: FAILED
 rox-multichild: exit(1)
 Execution of 'rox-multichild' complete.
-Timer: 74 ticks
-Thread: 30 idle ticks, 43 kernel ticks, 2 user ticks
+Timer: 86 ticks
+Thread: 30 idle ticks, 51 kernel ticks, 5 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 99 reads, 323 writes
+hd0:1: 293 reads, 323 writes
 hd1:0: 156 reads, 0 writes
-Console: 1121 characters output
+Console: 1779 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
@@ -351,25 +330,13 @@ Powering off...
 
 DETAILS OF tests/userprog/no-vm/multi-oom FAILURE:
 
-Kernel panic in run: PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc0107756 0xc010ae2f 0xc010aee9 0xc0101935 0xc0101b0b 0xc0106bc6 0xc010a1b7 0xc0109deb 0xc010997d 0xc0100e69
-Translation of call stack:
-0xc0107756: debug_panic (.../../lib/kernel/debug.c:34)
-0xc010ae2f: kill (.../userprog/exception.c:105)
-0xc010aee9: page_fault (.../userprog/exception.c:160)
-0xc0101935: intr_handler (..../threads/interrupt.c:361)
-0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
-0xc0106bc6: memcpy (...ild/../../lib/string.c:16)
-0xc010a1b7: setup_stack (...../userprog/process.c:567)
-0xc0109deb: load (...../userprog/process.c:397)
-0xc010997d: start_process (.../../userprog/process.c:87)
-0xc0100e69: kernel_thread (..../../threads/thread.c:476)
+run: crashed child should return -1.: FAILED
 
 OUTPUT FROM tests/userprog/no-vm/multi-oom:
 
-Copying tests/userprog/no-vm/multi-oom into /tmp/Yyt5rWZA6k.dsk...
-Writing command line to /tmp/QFQZxf7Aos.dsk...
-qemu -hda /tmp/QFQZxf7Aos.dsk -hdb /tmp/jvTLR5tP1C.dsk -hdc /tmp/Yyt5rWZA6k.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/no-vm/multi-oom into /tmp/w6J9QRFDgd.dsk...
+Writing command line to /tmp/co8Xixevgo.dsk...
+qemu -hda /tmp/co8Xixevgo.dsk -hdb /tmp/0kqmLVHCU1.dsk -hdc /tmp/w6J9QRFDgd.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put multi-oom run multi-oom
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -445,256 +412,8 @@ Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804817e
  esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
  cs=001b ds=0023 es=0023 ss=0023
 multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804817e
- cr2=c0000000 error=00000005
- eax=00000002 ebx=c0000000 ecx=df225b81 edx=df225b7f
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048177
- cr2=00000000 error=00000004
- eax=00000001 ebx=c0000000 ecx=d61f9421 edx=d61f9420
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048182
- cr2=c0000000 error=00000007
- eax=00000003 ebx=c0000000 ecx=d35bd954 edx=d35bd951
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048177
- cr2=00000000 error=00000004
- eax=00000001 ebx=c0000000 ecx=781c50e4 edx=781c50e3
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048177
- cr2=00000000 error=00000004
- eax=00000001 ebx=c0000000 ecx=1669da10 edx=1669da0f
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048182
- cr2=c0000000 error=00000007
- eax=00000003 ebx=c0000000 ecx=a9b17537 edx=a9b17534
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804817e
- cr2=c0000000 error=00000005
- eax=00000002 ebx=c0000000 ecx=7c730a08 edx=7c730a06
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048177
- cr2=00000000 error=00000004
- eax=00000001 ebx=c0000000 ecx=a9616da1 edx=a9616da0
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804816d
- cr2=00000000 error=00000006
- eax=00000000 ebx=c0000000 ecx=f4a478ed edx=f4a478ed
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048177
- cr2=00000000 error=00000004
- eax=00000001 ebx=c0000000 ecx=5bba4177 edx=5bba4176
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048177
- cr2=00000000 error=00000004
- eax=00000001 ebx=c0000000 ecx=f737833f edx=f737833e
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048177
- cr2=00000000 error=00000004
- eax=00000001 ebx=c0000000 ecx=f47150d6 edx=f47150d5
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048182
- cr2=c0000000 error=00000007
- eax=00000003 ebx=c0000000 ecx=e970177d edx=e970177a
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048182
- cr2=c0000000 error=00000007
- eax=00000003 ebx=c0000000 ecx=fcf35a3a edx=fcf35a37
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048182
- cr2=c0000000 error=00000007
- eax=00000003 ebx=c0000000 ecx=727aa97b edx=727aa978
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0: not present error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804816d
- cr2=00000000 error=00000006
- eax=00000000 ebx=c0000000 ecx=42e7a251 edx=42e7a251
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804817e
- cr2=c0000000 error=00000005
- eax=00000002 ebx=c0000000 ecx=c75a0756 edx=c75a0754
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804817e
- cr2=c0000000 error=00000005
- eax=00000002 ebx=c0000000 ecx=cda21275 edx=cda21273
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048177
- cr2=00000000 error=00000004
- eax=00000001 ebx=c0000000 ecx=a8fca93e edx=a8fca93d
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048182
- cr2=c0000000 error=00000007
- eax=00000003 ebx=c0000000 ecx=9178f01c edx=9178f019
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048177
- cr2=00000000 error=00000004
- eax=00000001 ebx=c0000000 ecx=311f5fce edx=311f5fcd
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0: not present error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804816d
- cr2=00000000 error=00000006
- eax=00000000 ebx=c0000000 ecx=f107ff7f edx=f107ff7f
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048177
- cr2=00000000 error=00000004
- eax=00000001 ebx=c0000000 ecx=91917b30 edx=91917b2f
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048177
- cr2=00000000 error=00000004
- eax=00000001 ebx=c0000000 ecx=7e49a0ca edx=7e49a0c9
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048182
- cr2=c0000000 error=00000007
- eax=00000003 ebx=c0000000 ecx=7fbd9c5b edx=7fbd9c58
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804817e
- cr2=c0000000 error=00000005
- eax=00000002 ebx=c0000000 ecx=e919c278 edx=e919c276
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(61)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
+(multi-oom) crashed child should return -1.: FAILED
+multi-oom: exit(1)
 multi-oom: exit(-1)
 multi-oom: exit(-1)
 multi-oom: exit(-1)
@@ -773,183 +492,6 @@ Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804816d
  eax=00000000 ebx=c0000000 ecx=5fe68ecb edx=5fe68ecb
  esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
  cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-(multi-oom) crashed child should return -1.: FAILED
-multi-oom: exit(1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048182
- cr2=c0000000 error=00000007
- eax=00000003 ebx=c0000000 ecx=7b0ead1c edx=7b0ead19
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048177
- cr2=00000000 error=00000004
- eax=00000001 ebx=c0000000 ecx=44d9b7df edx=44d9b7de
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804817e
- cr2=c0000000 error=00000005
- eax=00000002 ebx=c0000000 ecx=5518edf1 edx=5518edef
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804817e
- cr2=c0000000 error=00000005
- eax=00000002 ebx=c0000000 ecx=914cd31e edx=914cd31c
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804817e
- cr2=c0000000 error=00000005
- eax=00000002 ebx=c0000000 ecx=df225b81 edx=df225b7f
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048177
- cr2=00000000 error=00000004
- eax=00000001 ebx=c0000000 ecx=d61f9421 edx=d61f9420
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048182
- cr2=c0000000 error=00000007
- eax=00000003 ebx=c0000000 ecx=d35bd954 edx=d35bd951
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-Page fault at 0: not present error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048177
- cr2=00000000 error=00000004
- eax=00000001 ebx=c0000000 ecx=781c50e4 edx=781c50e3
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-(multi-oom) crashed child should return -1.: FAILED
-multi-oom: exit(1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804817e
- cr2=c0000000 error=00000005
- eax=00000002 ebx=c0000000 ecx=a73db9f4 edx=a73db9f2
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804817e
- cr2=c0000000 error=00000005
- eax=00000002 ebx=c0000000 ecx=a73db9f4 edx=a73db9f2
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804817e
- cr2=c0000000 error=00000005
- eax=00000002 ebx=c0000000 ecx=1285c261 edx=1285c25f
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0xc0000000: rights violation error reading page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804817e
- cr2=c0000000 error=00000005
- eax=00000002 ebx=c0000000 ecx=1285c261 edx=1285c25f
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
-multi-oom: exit(-1)
-Page fault at 0: not present error writing page in user context.
-multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804816d
- cr2=00000000 error=00000006
- eax=00000000 ebx=c0000000 ecx=5fe68ecb edx=5fe68ecb
- esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
- cs=001b ds=0023 es=0023 ss=0023
-multi-oom: exit(-1)
 multi-oom: exit(-1)
 Page fault at 0: not present error writing page in user context.
 multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
@@ -1177,10 +719,54 @@ Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048182
  esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
  cs=001b ds=0023 es=0023 ss=0023
 multi-oom: exit(-1)
-load: multi-oom 6 : open failed
 multi-oom: exit(-1)
-(multi-oom) crashed child should return -1.: FAILED
-multi-oom: exit(1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(7)
+multi-oom: exit(9)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+Page fault at 0xc0000000: rights violation error writing page in user context.
+multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048182
+ cr2=c0000000 error=00000007
+ eax=00000003 ebx=c0000000 ecx=727aa97b edx=727aa978
+ esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
+ cs=001b ds=0023 es=0023 ss=0023
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+Page fault at 0: not present error writing page in user context.
+multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804816d
+ cr2=00000000 error=00000006
+ eax=00000000 ebx=c0000000 ecx=42e7a251 edx=42e7a251
+ esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
+ cs=001b ds=0023 es=0023 ss=0023
+multi-oom: exit(-1)
+Page fault at 0xc0000000: rights violation error reading page in user context.
+multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804817e
+ cr2=c0000000 error=00000005
+ eax=00000002 ebx=c0000000 ecx=c75a0756 edx=c75a0754
+ esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
+ cs=001b ds=0023 es=0023 ss=0023
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(6)
 multi-oom: exit(5)
 multi-oom: exit(-1)
 multi-oom: exit(-1)
@@ -1192,130 +778,52 @@ multi-oom: exit(-1)
 multi-oom: exit(-1)
 multi-oom: exit(-1)
 multi-oom: exit(-1)
+Page fault at 0: not present error reading page in user context.
+multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048177
+ cr2=00000000 error=00000004
+ eax=00000001 ebx=c0000000 ecx=a8fca93e edx=a8fca93d
+ esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
+ cs=001b ds=0023 es=0023 ss=0023
+multi-oom: exit(-1)
+Page fault at 0xc0000000: rights violation error writing page in user context.
+multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048182
+ cr2=c0000000 error=00000007
+ eax=00000003 ebx=c0000000 ecx=9178f01c edx=9178f019
+ esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
+ cs=001b ds=0023 es=0023 ss=0023
 multi-oom: exit(-1)
 multi-oom: exit(-1)
 multi-oom: exit(-1)
 multi-oom: exit(-1)
-Page fault at 0xfffffff6: not present error writing page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0106bc6
- cr2=fffffff6 error=00000002
- eax=0000006d ebx=c01cb001 ecx=00000009 edx=ffffff01
- esi=fffffff6 edi=fffffff6 esp=c010f0c4 ebp=c0287e60
- cs=0008 ds=0010 es=0010 ss=0020
-Kernel PANIC at ../../userprog/exception.c:100 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc0107756 0xc010ae2f 0xc010aee9 0xc0101935 0xc0101b0b 0xc0106bc6 0xc010a1b7 0xc0109deb 0xc010997d 0xc0100e69.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 734 ticks
-Thread: 30 idle ticks, 77 kernel ticks, 627 user ticks
+multi-oom: exit(4)
+multi-oom: exit(3)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+multi-oom: exit(-1)
+Page fault at 0: not present error writing page in user context.
+multi-oom: dying due to interrupt 0x0e (#PF Page-Fault Exception).
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x804816d
+ cr2=00000000 error=00000006
+ eax=00000000 ebx=c0000000 ecx=f107ff7f edx=f107ff7f
+ esi=bffffff3 edi=0804ac43 esp=bfffff60 ebp=bfffff78
+ cs=001b ds=0023 es=0023 ss=0023
+multi-oom: exit(-1)
+(multi-oom) should have forked at least 30 times.: FAILED
+multi-oom: exit(1)
+Execution of 'multi-oom' complete.
+Timer: 435 ticks
+Thread: 30 idle ticks, 43 kernel ticks, 362 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 81014 reads, 178 writes
+hd0:1: 45851 reads, 178 writes
 hd1:0: 85 reads, 0 writes
-Console: 34791 characters output
+Console: 19662 characters output
 Keyboard: 0 keys pressed
-Exception: 76 page faults
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/filesys/base/sm-random FAILURE:
-
-run: 13 bytes read starting at offset 260 in "bazzle" differ from expected: FAILED
-
-OUTPUT FROM tests/filesys/base/sm-random:
-
-Copying tests/filesys/base/sm-random into /tmp/WHYaQ1w73P.dsk...
-Writing command line to /tmp/1XIyoM9hii.dsk...
-qemu -hda /tmp/1XIyoM9hii.dsk -hdb /tmp/CXODtfwS5w.dsk -hdc /tmp/WHYaQ1w73P.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put sm-random run sm-random
-Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
-374 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 78 sector (39 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-Formatting file system...done.
-Boot complete.
-Putting 'sm-random' into the file system...
-Executing 'sm-random':
-(sm-random) begin
-(sm-random) create "bazzle"
-(sm-random) open "bazzle"
-(sm-random) write "bazzle" in random order
-(sm-random) read "bazzle" in random order
-(sm-random) 13 bytes read starting at offset 260 in "bazzle" differ from expected.
-(sm-random) Data actually read:
-00000100              ea e4 de 88-ee b8 dd 38 8b ab 6a c9 |    .......8..j.|
-00000110  f3                                              |.               |
-(sm-random) Expected data:
-00000100              3d 0b d7 a0-43 42 4a cc 2b dd 3d d4 |    =...CBJ.+.=.|
-00000110  b6                                              |.               |
-(sm-random) 13 bytes read starting at offset 260 in "bazzle" differ from expected: FAILED
-sm-random: exit(1)
-Execution of 'sm-random' complete.
-Timer: 82 ticks
-Thread: 30 idle ticks, 38 kernel ticks, 14 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 211 reads, 295 writes
-hd1:0: 78 reads, 0 writes
-Console: 1460 characters output
-Keyboard: 0 keys pressed
-Exception: 0 page faults
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/filesys/base/lg-random FAILURE:
-
-run: 256 bytes read starting at offset 16896 in "bazzle" differ from expected: FAILED
-
-OUTPUT FROM tests/filesys/base/lg-random:
-
-Copying tests/filesys/base/lg-random into /tmp/72Lz8fXgJm.dsk...
-Writing command line to /tmp/WofCeI3sNF.dsk...
-qemu -hda /tmp/WofCeI3sNF.dsk -hdb /tmp/3wb0Kx8jpC.dsk -hdc /tmp/72Lz8fXgJm.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put lg-random run lg-random
-Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
-374 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 78 sector (39 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-Formatting file system...done.
-Boot complete.
-Putting 'lg-random' into the file system...
-Executing 'lg-random':
-(lg-random) begin
-(lg-random) create "bazzle"
-(lg-random) open "bazzle"
-(lg-random) write "bazzle" in random order
-(lg-random) read "bazzle" in random order
-(lg-random) 256 bytes read starting at offset 16896 in "bazzle" differ from expected.
-(lg-random) Showing first differing 64 bytes.
-(lg-random) Data actually read:
-00004200  ac 27 03 a8 28 37 ca e0-be 69 ca 8e 18 a5 8b 92 |.'..(7...i......|
-00004210  45 af 62 19 8b 6a 9a fc-cb 7a b3 86 e9 5b 84 42 |E.b..j...z...[.B|
-00004220  74 8a c7 cd 56 a2 a2 65-9c b5 ed f4 cd b2 ab ee |t...V..e........|
-00004230  4a 50 18 fd 6b f4 94 4b-5d 58 2a 96 79 11 20 71 |JP..k..K]X*.y. q|
-(lg-random) Expected data:
-00004200  0c 3e dc cf 69 b5 bc f4-e2 e3 13 b7 c7 00 db 3b |.>..i..........;|
-00004210  fd 46 27 91 97 cc cc ff-c5 a0 5b 95 62 47 ad 9a |.F'.......[.bG..|
-00004220  21 4a f4 6a 6b 62 e4 1f-19 68 74 d6 b1 08 d6 b0 |!J.jkb...ht.....|
-00004230  68 a3 6f 88 f9 31 30 cf-79 23 cd 1e ff 96 01 f8 |h.o..10.y#......|
-(lg-random) 256 bytes read starting at offset 16896 in "bazzle" differ from expected: FAILED
-lg-random: exit(1)
-Execution of 'lg-random' complete.
-Timer: 105 ticks
-Thread: 30 idle ticks, 32 kernel ticks, 43 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 389 reads, 618 writes
-hd1:0: 78 reads, 0 writes
-Console: 1821 characters output
-Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 42 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -1326,10 +834,10 @@ run: wait for child 10 of 10 returned -2 (expected 9): FAILED
 
 OUTPUT FROM tests/filesys/base/syn-read:
 
-Copying tests/filesys/base/syn-read into /tmp/VKl2MaPSyB.dsk...
-Copying tests/filesys/base/child-syn-read into /tmp/VKl2MaPSyB.dsk...
-Writing command line to /tmp/Wu7JnubDDb.dsk...
-qemu -hda /tmp/Wu7JnubDDb.dsk -hdb /tmp/qFR1ynMjqn.dsk -hdc /tmp/VKl2MaPSyB.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/syn-read into /tmp/RZsMLpmkbw.dsk...
+Copying tests/filesys/base/child-syn-read into /tmp/RZsMLpmkbw.dsk...
+Writing command line to /tmp/Cm9V4ANo93.dsk...
+qemu -hda /tmp/Cm9V4ANo93.dsk -hdb /tmp/rsL5ssv5HF.dsk -hdc /tmp/RZsMLpmkbw.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put syn-read put child-syn-read run syn-read
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1381,151 +889,12 @@ child-syn-read: exit(9)
 (syn-read) wait for child 10 of 10 returned -2 (expected 9): FAILED
 syn-read: exit(1)
 Execution of 'syn-read' complete.
-Timer: 146 ticks
-Thread: 30 idle ticks, 58 kernel ticks, 58 user ticks
+Timer: 135 ticks
+Thread: 30 idle ticks, 47 kernel ticks, 58 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 10783 reads, 340 writes
+hd0:1: 10782 reads, 340 writes
 hd1:0: 161 reads, 0 writes
 Console: 2334 characters output
-Keyboard: 0 keys pressed
-Exception: 0 page faults
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/filesys/base/syn-write FAILURE:
-
-run: 176 bytes read starting at offset 0 in "stuff" differ from expected: FAILED
-
-OUTPUT FROM tests/filesys/base/syn-write:
-
-Copying tests/filesys/base/syn-write into /tmp/xoKzk0WK3J.dsk...
-Copying tests/filesys/base/child-syn-wrt into /tmp/xoKzk0WK3J.dsk...
-Writing command line to /tmp/GzG6MUolL2.dsk...
-qemu -hda /tmp/GzG6MUolL2.dsk -hdb /tmp/Jnpq006fGc.dsk -hdc /tmp/xoKzk0WK3J.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put syn-write put child-syn-wrt run syn-write
-Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
-374 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 160 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-Formatting file system...done.
-Boot complete.
-Putting 'syn-write' into the file system...
-Putting 'child-syn-wrt' into the file system...
-Executing 'syn-write':
-(syn-write) begin
-(syn-write) create "stuff"
-(syn-write) exec child 1 of 10: "child-syn-wrt 0"
-child-syn-wrt: exit(0)
-(syn-write) exec child 2 of 10: "child-syn-wrt 1"
-child-syn-wrt: exit(1)
-(syn-write) exec child 3 of 10: "child-syn-wrt 2"
-child-syn-wrt: exit(2)
-(syn-write) exec child 4 of 10: "child-syn-wrt 3"
-child-syn-wrt: exit(3)
-(syn-write) exec child 5 of 10: "child-syn-wrt 4"
-child-syn-wrt: exit(4)
-(syn-write) exec child 6 of 10: "child-syn-wrt 5"
-child-syn-wrt: exit(5)
-(syn-write) exec child 7 of 10: "child-syn-wrt 6"
-child-syn-wrt: exit(6)
-(syn-write) exec child 8 of 10: "child-syn-wrt 7"
-child-syn-wrt: exit(7)
-(syn-write) exec child 9 of 10: "child-syn-wrt 8"
-child-syn-wrt: exit(8)
-(syn-write) exec child 10 of 10: "child-syn-wrt 9"
-child-syn-wrt: exit(9)
-(syn-write) wait for child 1 of 10 returned 0 (expected 0)
-(syn-write) wait for child 2 of 10 returned 1 (expected 1)
-(syn-write) wait for child 3 of 10 returned 2 (expected 2)
-(syn-write) wait for child 4 of 10 returned 3 (expected 3)
-(syn-write) wait for child 5 of 10 returned 4 (expected 4)
-(syn-write) wait for child 6 of 10 returned 5 (expected 5)
-(syn-write) wait for child 7 of 10 returned 6 (expected 6)
-(syn-write) wait for child 8 of 10 returned 7 (expected 7)
-(syn-write) wait for child 9 of 10 returned 8 (expected 8)
-(syn-write) wait for child 10 of 10 returned 9 (expected 9)
-(syn-write) open "stuff"
-(syn-write) read "stuff"
-(syn-write) 176 bytes read starting at offset 0 in "stuff" differ from expected.
-(syn-write) Showing first differing 64 bytes.
-(syn-write) Data actually read:
-00000000  00 00 09 88 6e d1 e4 c6-aa 99 0b 80 ea 57 70 a8 |....n........Wp.|
-00000010  7e 3e 82 cd 13 3a 8c c4-aa 72 48 82 c5 35 5a 5d |~>...:...rH..5Z]|
-00000020  aa d1 49 ef 7e fe 6c b7-bd ea 88 25 09 62 ca eb |..I.~.l....%.b..|
-00000030  69 86 b3 94 75 a1 b1 5e-9d 50 4e bd c4 31 ce 30 |i...u..^.PN..1.0|
-(syn-write) Expected data:
-00000000  de 18 89 41 a3 37 5d 3a-8a 06 1e 67 57 6e 92 6d |...A.7]:...gWn.m|
-00000010  c7 1a 7f a3 f0 cc eb 97-45 2b 4d 32 27 96 5f 9e |........E+M2'._.|
-00000020  a8 cc 75 07 6d 9f b9 c5-41 7a a5 cb 30 fc 22 19 |..u.m...Az..0.".|
-00000030  8b 34 98 2d bb 62 9e c0-4b 4f 8b 05 a0 71 08 50 |.4.-.b..KO...q.P|
-(syn-write) 176 bytes read starting at offset 0 in "stuff" differ from expected: FAILED
-syn-write: exit(1)
-Execution of 'syn-write' complete.
-Timer: 97 ticks
-Thread: 30 idle ticks, 47 kernel ticks, 20 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 565 reads, 364 writes
-hd1:0: 160 reads, 0 writes
-Console: 3138 characters output
-Keyboard: 0 keys pressed
-Exception: 0 page faults
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/filesys/base/syn-remove FAILURE:
-
-run: 110 bytes read starting at offset 0 in "deleteme" differ from expected: FAILED
-
-OUTPUT FROM tests/filesys/base/syn-remove:
-
-Copying tests/filesys/base/syn-remove into /tmp/VDklb1Pnfe.dsk...
-Writing command line to /tmp/5B0On6qRh7.dsk...
-qemu -hda /tmp/5B0On6qRh7.dsk -hdb /tmp/0EqBSQHLab.dsk -hdc /tmp/VDklb1Pnfe.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put syn-remove run syn-remove
-Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
-374 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 137 sector (68 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 77 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-Formatting file system...done.
-Boot complete.
-Putting 'syn-remove' into the file system...
-Executing 'syn-remove':
-(syn-remove) begin
-(syn-remove) create "deleteme"
-(syn-remove) open "deleteme"
-(syn-remove) remove "deleteme"
-(syn-remove) write "deleteme"
-(syn-remove) seek "deleteme" to 0
-(syn-remove) read "deleteme"
-(syn-remove) 110 bytes read starting at offset 0 in "deleteme" differ from expected.
-(syn-remove) Showing first differing 64 bytes.
-(syn-remove) Data actually read:
-00000000  89 41 a3 37 5d 3a 8a 06-1e 67 57 6e 92 6d c7 1a |.A.7]:...gWn.m..|
-00000010  7f a3 f0 cc eb 97 45 2b-4d 32 27 96 5f 9e a8 cc |......E+M2'._...|
-00000020  75 07 6d 9f b9 c5 41 7a-a5 cb 30 fc 22 19 8b 34 |u.m...Az..0."..4|
-00000030  98 2d bb 62 9e c0 4b 4f-8b 05 a0 71 08 50 92 a0 |.-.b..KO...q.P..|
-(syn-remove) Expected data:
-00000000  de 18 89 41 a3 37 5d 3a-8a 06 1e 67 57 6e 92 6d |...A.7]:...gWn.m|
-00000010  c7 1a 7f a3 f0 cc eb 97-45 2b 4d 32 27 96 5f 9e |........E+M2'._.|
-00000020  a8 cc 75 07 6d 9f b9 c5-41 7a a5 cb 30 fc 22 19 |..u.m...Az..0.".|
-00000030  8b 34 98 2d bb 62 9e c0-4b 4f 8b 05 a0 71 08 50 |.4.-.b..KO...q.P|
-(syn-remove) 110 bytes read starting at offset 0 in "deleteme" differ from expected: FAILED
-syn-remove: exit(1)
-Execution of 'syn-remove' complete.
-Timer: 71 ticks
-Thread: 30 idle ticks, 36 kernel ticks, 5 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 94 reads, 173 writes
-hd1:0: 77 reads, 0 writes
-Console: 1871 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

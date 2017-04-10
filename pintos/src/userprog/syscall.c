@@ -213,7 +213,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 						check_address(p+2);
 						acquire_file_lock();
 
-						file_seek(get_file_by_fd(&thread_current()->file_list,*(p+1))->file,*(p+1));
+						file_seek(get_file_by_fd(&thread_current()->file_list,*(p+1))->file,*(p+2));
 						release_file_lock();
 						break;
 

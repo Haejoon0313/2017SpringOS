@@ -1,6 +1,6 @@
-Copying tests/userprog/rox-simple into /tmp/Ok6gsEhM1B.dsk...
-Writing command line to /tmp/orTzpocxgT.dsk...
-qemu -hda /tmp/orTzpocxgT.dsk -hdb /tmp/jlUhVpqJLE.dsk -hdc /tmp/Ok6gsEhM1B.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/rox-simple into /tmp/f9dnlqHW3I.dsk...
+Writing command line to /tmp/1YOQwKssUe.dsk...
+qemu -hda /tmp/1YOQwKssUe.dsk -hdb /tmp/vTNB5KPZKX.dsk -hdc /tmp/f9dnlqHW3I.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put rox-simple run rox-simple
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -21,7 +21,7 @@ Executing 'rox-simple':
 rox-simple: exit(0)
 Execution of 'rox-simple' complete.
 Timer: 65 ticks
-Thread: 30 idle ticks, 34 kernel ticks, 1 user ticks
+Thread: 30 idle ticks, 33 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 62 reads, 154 writes
 hd1:0: 73 reads, 0 writes
