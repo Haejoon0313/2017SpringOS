@@ -65,9 +65,11 @@ syscall_handler (struct intr_frame *f UNUSED)
 						struct file * exec_file = filesys_open(restore_name);
 						
 						if(exec_file == NULL){
+								free(restore_name);
 								release_file_lock();
 								f->eax = -1;
 						}else{
+								free(restore_name);
 								file_close(exec_file);
 								release_file_lock();
 							//	tid_t ex_return = process_execute(filename);
@@ -161,6 +163,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 		case SYS_READ:{
 						check_address(p+1);
 						check_address(*(p+2));
+						//check_address(p+2);
 						check_address(p+3);
 						int i;
 						int read_fd = *(p+1);

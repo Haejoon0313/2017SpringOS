@@ -45,17 +45,19 @@ process_execute (const char *file_name)
 	fn = strtok_r(fn," ",&rest);
 	/* Create a new thread to execute FILE_NAME. */
   tid = thread_create (fn, PRI_DEFAULT, start_process, fn_copy);
-  free(fn);
+  //free(fn);
 	if (tid == TID_ERROR)
     palloc_free_page (fn_copy); 
   
-
-
+	free(fn);
+		
 	sema_down(&thread_current()->child_lock);
 
 	if(!thread_current()->load_success){
-		return -1;
+			//free(fn);
+			return -1;
 	}
+		//free(fn);
 		//printf("Execute! return exitcode : %d \n",tid);
 		return tid;
 	
@@ -120,7 +122,7 @@ int
 process_wait (tid_t child_tid) 
 {
 
-	//printf("!!child id that is passed to wait() : %d \n",child_tid);	
+	//printf("W!!child id that is passed to wait() : %d \n",child_tid);	
 
 	struct thread * curr = thread_current();
 	struct list_elem *temp_el;
@@ -134,25 +136,26 @@ process_wait (tid_t child_tid)
 		if(child_process->pid == child_tid){
 			cp = child_process;		
 			return_elem = temp_el;
-			//printf("G! wait child id : %d \n",child_tid);
+			//printf("G! wait child id : %d \n",cp->status);
 			}
 	}
 
 	//invalid or not a child check
 	if(!cp){
-		return -1;
+			//printf("ORPHAN!!! \n");
+			return -1;
 	}
 	//HOW to care about the wait call that is already waiting
 	curr->lock_child_id = cp->pid;
-	int return_status = cp->status;
+	
 	
 	if(!cp->is_wait)
 		sema_down(&thread_current()->child_lock);
 
-	//cp->is_wait = false;
+	int return_status = cp->status;	//cp->is_wait = false;
 	list_remove(return_elem);
 	free(cp);
-
+	//printf("WAIT_RETURN : %d \n",return_status);
 	return return_status;
 	}
 
@@ -171,8 +174,10 @@ process_exit (void)
 	printf("%s: exit(%d)\n",curr->name,exit_status);
 
 	acquire_file_lock();
-	if(!(curr->load ==NULL))	
+	if(!(curr->load ==NULL)){
 		file_close(curr->load);
+		
+	}
 	close_all_filelist(&curr->file_list);
 
 	release_file_lock();
