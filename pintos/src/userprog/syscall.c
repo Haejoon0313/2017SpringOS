@@ -63,7 +63,6 @@ syscall_handler (struct intr_frame *f UNUSED)
 						restore_name = strtok_r(restore_name," ",&rest);
 
 						struct file * exec_file = filesys_open(restore_name);
-					//	struct file * exec_file = filesys_open(filename);
 						
 						if(exec_file == NULL){
 								release_file_lock();
@@ -139,9 +138,11 @@ syscall_handler (struct intr_frame *f UNUSED)
 							struct open_file *open_f = malloc(sizeof(struct open_file));
 							open_f->file = my_file;
 							open_f->fd = thread_current()->fd_count;
+							//file_deny_write(open_f->file);
 							thread_current()->fd_count++;
 							list_push_back(&thread_current()->file_list, &open_f->elem);
 							f->eax = open_f->fd;
+
 						}
 						break;
 						}

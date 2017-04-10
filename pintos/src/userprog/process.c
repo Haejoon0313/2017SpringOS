@@ -171,8 +171,8 @@ process_exit (void)
 	printf("%s: exit(%d)\n",curr->name,exit_status);
 
 	acquire_file_lock();
-	
-	file_close(curr->load);
+	if(!(curr->load ==NULL))	
+		file_close(curr->load);
 	close_all_filelist(&curr->file_list);
 
 	release_file_lock();
@@ -294,8 +294,10 @@ load (const char *file_name, void (**eip) (void), void **esp)
   bool success = false;
   int i;
 
+	
   /* Allocate and activate page directory. */
-  t->pagedir = pagedir_create ();
+  acquire_file_lock();
+	t->pagedir = pagedir_create ();
   if (t->pagedir == NULL) 
     goto done;
   process_activate ();
@@ -309,7 +311,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
 	/* Open executable file. */
   
 	file = filesys_open (file_copy);
-
+	//file_deny_write(file);//add by chaehun
 	free(file_copy);
   
 	if (file == NULL) 
@@ -398,14 +400,16 @@ load (const char *file_name, void (**eip) (void), void **esp)
 }
   /* Start address. */
   *eip = (void (*) (void)) ehdr.e_entry;
-
+	thread_current()->load = file;
   success = true;
+	file_deny_write(file);//add by chaehun
+	
 
- done:
+	done:
   /* We arrive here whether the load is successful or not. */
- file_deny_write(file);//Deny write to files in load, an excutable file
- file_close (file);
-
+	//remove by chaehun
+ //file_close (file);
+	release_file_lock();
 
 	//hex_dump((uintptr_t)(PHYS_BASE - 200),(void **)(PHYS_BASE -200),130,true);
 
