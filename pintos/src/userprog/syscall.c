@@ -260,9 +260,9 @@ void check_address(void *addr){
 	}
 
 	//addreess mapping the virtual memory check
-	uint32_t *thread_pd = thread_current()->pagedir;
-	void *mapping_check = pagedir_get_page(thread_pd,addr);
-	if (mapping_check ==NULL){
+//	uint32_t *thread_pd = thread_current()->pagedir;
+	void *mapping_check = pagedir_get_page(thread_current()->pagedir, addr);
+	if (!mapping_check){
 		exit_process(-1);
 	}	
 }
@@ -289,9 +289,10 @@ void file_close_inlist(struct list* file_list, int fd){
 			if (open_f->fd == fd){
 				file_close(open_f->file);
 				list_remove(temp);
+				//free(open_f);
 			}
 	}
-	free(open_f);
+	//free(open_f);
 }
 
 
