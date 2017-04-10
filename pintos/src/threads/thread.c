@@ -202,7 +202,6 @@ thread_create (const char *name, int priority,
 	child_process->pid = t->tid;
 	child_process->is_wait = false;
 	child_process->status =t->exit_code;
-	//child_process->parent_process = thread_current();
 	list_push_back(&running_thread()->child_list,&child_process->elem);
 	
 
@@ -221,8 +220,6 @@ thread_create (const char *name, int priority,
   sf = alloc_frame (t, sizeof *sf);
   sf->eip = switch_entry;
 	
-	
-
 
   /* Add to run queue. */
   thread_unblock (t);
@@ -231,9 +228,7 @@ thread_create (const char *name, int priority,
 	if(thread_current()->priority<priority)
 			thread_yield();
 				
-	//}
   return tid;
-	//}
 }
 
 /* Puts the current thread to sleep.  It will not be scheduled
@@ -331,9 +326,9 @@ thread_exit (void)
 
 	/* Needs to free all the child process of current thread*/
 	struct thread * curr = thread_current();
-	while(!list_empty(&curr->child_list)){
+	while(!list_empty(&curr->child_list)){//for all the child threads of exit thread,
 		struct open_file *temp_file = list_entry(list_pop_front(&curr->child_list), struct child, elem);
-		free(temp_file);
+		free(temp_file);//free all the child struct
 	}
 
   /* Just set our status to dying and schedule another process.
@@ -522,7 +517,7 @@ init_thread (struct thread *t, const char *name, int priority)
 	list_init(&t->child_list);
 	t->parent_process = running_thread();
 	t->lock_child_id = 0;	
-	t->exit_code = -2;
+	t->exit_code = -2;//to indicate whether some threads set the exit status or not
 	sema_init(&t->child_lock,0);
 
 	t->fd_count = 2;

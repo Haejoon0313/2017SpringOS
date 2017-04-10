@@ -50,15 +50,14 @@ process_execute (const char *file_name)
     palloc_free_page (fn_copy); 
   
 	free(fn);
-		
+	
+	//wait for new thread to finish
 	sema_down(&thread_current()->child_lock);
 
+	//if current thread failed to load, return -1
 	if(!thread_current()->load_success){
-			//free(fn);
-			return -1;
+		return -1;
 	}
-		//free(fn);
-		//printf("Execute! return exitcode : %d \n",tid);
 		return tid;
 	
 }
@@ -75,7 +74,6 @@ start_process (void *f_name)
 
 	char *rest;
 	char *file_command;
-	//file_command = strtok_r(f_name," ",&rest);
 	
 
   /* Initialize interrupt frame and load executable. */
@@ -85,12 +83,14 @@ start_process (void *f_name)
   if_.eflags = FLAG_IF | FLAG_MBS;
 	//In tihs step, load ELF excutable file of user program.
  	
-	//printf("file name that passed to load() : %s \n",file_name);
 	success = load (file_name, &if_.eip, &if_.esp);
  
   /* If load failed, quit. */
   palloc_free_page (file_name);
-  if (!success)
+  
+	/*Always need to indicate the result of load, and unblock the parent thread by sema_up. 
+		If fail, exit */
+	if (!success)
 	{
 		thread_current()->parent_process->load_success = false;
 		sema_up(&thread_current()->parent_process->child_lock);
@@ -129,33 +129,32 @@ process_wait (tid_t child_tid)
 	struct child * cp = NULL;
 	struct list_elem * return_elem;
 
+	//For all the child threads of thread, search for child that has pid child_tid.
 	for(temp_el=list_begin(&curr->child_list) ; temp_el != list_end(&curr->child_list); temp_el = list_next(temp_el)){
 		
 		struct child *child_process = list_entry(temp_el,struct child, elem);
-		
 		if(child_process->pid == child_tid){
 			cp = child_process;		
 			return_elem = temp_el;
-			//printf("G! wait child id : %d \n",cp->status);
+
 			}
 	}
 
 	//invalid or not a child check
 	if(!cp){
-			//printf("ORPHAN!!! \n");
 			return -1;
 	}
-	//HOW to care about the wait call that is already waiting
+	//set the lock_child__id, to identify that which child procsss makes parent to wait.
 	curr->lock_child_id = cp->pid;
 	
-	
+	//if not already_waiting, let's wait!
 	if(!cp->is_wait)
 		sema_down(&thread_current()->child_lock);
 
-	int return_status = cp->status;	//cp->is_wait = false;
+	int return_status = cp->status;
+	//remove exit child from the child list of thread, and free child struct that allocated dynamically.
 	list_remove(return_elem);
 	free(cp);
-	//printf("WAIT_RETURN : %d \n",return_status);
 	return return_status;
 	}
 
@@ -167,18 +166,19 @@ process_exit (void)
   uint32_t *pd;
 	int exit_status = curr->exit_code;
 
+	//if exit status is default setting, exit with error code.
 	if(exit_status == -2){
 		exit_process(-1);
 	}
-	//exit_process(exit_status);
+	
 	printf("%s: exit(%d)\n",curr->name,exit_status);
 
 	acquire_file_lock();
 	if(!(curr->load ==NULL)){
-		file_close(curr->load);
+		file_close(curr->load);//close the load executable file of current thread that exit.
 		
 	}
-	close_all_filelist(&curr->file_list);
+	close_all_filelist(&curr->file_list);//close all the files obtained by current thread.
 
 	release_file_lock();
 
@@ -316,7 +316,6 @@ load (const char *file_name, void (**eip) (void), void **esp)
 	/* Open executable file. */
   
 	file = filesys_open (file_copy);
-	//file_deny_write(file);//add by chaehun
 	free(file_copy);
   
 	if (file == NULL) 
@@ -398,7 +397,6 @@ load (const char *file_name, void (**eip) (void), void **esp)
     }
 
   /* Set up stack. */
-	//printf("file name that passed to setup_stack : %s \n",file_name);
   if (!setup_stack (esp,file_name))
 	{  
 		goto done;
@@ -407,13 +405,12 @@ load (const char *file_name, void (**eip) (void), void **esp)
   *eip = (void (*) (void)) ehdr.e_entry;
 	thread_current()->load = file;
   success = true;
-	file_deny_write(file);//add by chaehun
+	file_deny_write(file);//deny the file that is owned by current thread.
 	
 
 	done:
   /* We arrive here whether the load is successful or not. */
-	//remove by chaehun
- //file_close (file);
+
 	release_file_lock();
 
 	//hex_dump((uintptr_t)(PHYS_BASE - 200),(void **)(PHYS_BASE -200),130,true);
@@ -546,10 +543,7 @@ setup_stack (void **esp,char * file_name)
 							*esp = PHYS_BASE;
 			}else
         palloc_free_page (kpage);
-    }
-//Implemented by 28
-	//printf("setup_stack function is now start! \n");
-;
+    };
 	char *token, *rest;
 	int argc = 0;
 	char * file_copy = malloc(strlen(file_name)+1);
@@ -560,51 +554,41 @@ setup_stack (void **esp,char * file_name)
 		argc++;//count the argument token numbers
 	
 	
-	//printf("argc count : %d \n",argc);
 
 	int *argv = calloc(argc,sizeof(int));
 	int i = 0;
-	//printf( "file name is : %s \n",file_name);
 	//STEP1. push command token to stack.
 	for(token = strtok_r(file_name," ",&rest); token != NULL; token =strtok_r(NULL," ",&rest)){
 		*esp = *esp - (strlen(token)+1);
 		memcpy(*esp,token,strlen(token)+1);
 		argv[i] = *esp;
 		i++;
-		//printf("argv[%d] value is %x \n",i-1,*esp);
-		//printf("command token string check : %s \n",token );
-
 	}
-	//printf("i count ! : %d \n",i);
-	
+
 
 	//STEP2. makes word_align
 	char align = (size_t)*esp % 4;
 	if(align != 0){
 		*esp = *esp - align;
 		memset(*esp, 0,  align);
-		//printf("word aligned : 0 \n");
 		
 	}
 
 	//STEP3. NULL pointer push. (Why?)
 	*esp -= sizeof(int);
 	memset(*esp,0,sizeof(int));
-	//printf("null pointer End \n");
 	
 	//STEP4. argv array value PUSH
 	i--;
 	for(i ; i >=0 ; i--){
 		*esp = *esp- sizeof(int);
-		memcpy(*esp,&argv[i],sizeof(int));//여기 이거 맞나??argv[i]같은데
-		//printf("argv[%d] address : %x\n",i,argv[i]);
+		memcpy(*esp,&argv[i],sizeof(int));
 	} 
 
 	//STEP5. remain part. argv,argc,return address push & free malloc if any
 	int argv_addr = *esp;
 	*esp -=  sizeof(int);
 	memcpy(*esp,&argv_addr,sizeof(int));
-	//printf("argv address : %x\n",&argv_addr);
 	*esp -=  sizeof(int);
 	memcpy(*esp,&argc,sizeof(int));
 	
@@ -617,7 +601,7 @@ setup_stack (void **esp,char * file_name)
 	free(file_copy);
 
 	//hex_dump((uintptr_t)(PHYS_BASE - 200),(void **)(PHYS_BASE -200),210,true);
-	//printf("setup stack function is end~! \n");
+
 //imple end
 
 	return success;

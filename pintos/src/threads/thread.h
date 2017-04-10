@@ -110,27 +110,30 @@ struct thread
 
 
 		/*Project2, member about user program */
-		bool load_success;
-		struct list child_list;
-
-		struct thread * parent_process;
+		bool load_success;									//identifier whether load() excutable file is success or not
 		
-		int exit_code;
+		struct list child_list;							//child process list
 
-		struct semaphore child_lock;
+		struct thread * parent_process;			//parent thread of this threads
+		
+		int exit_code;											//exit status of this current
 
-		int lock_child_id;
+		struct semaphore child_lock;				//for waiting child threads
 
-		struct list file_list;
+		int lock_child_id;									//thread id of child that block this thread
+
+		struct list file_list;	
 		int fd_count;
 		struct file *load;
 	};
-
+/*
+struct child, for list thread
+	 */
 struct child{
-		int pid;
-		bool is_wait;
-		int status;
-		struct list_elem elem;
+		int pid;														//child process tid
+		bool is_wait;												//identifier that whther this child struct makes parent wait or not
+		int status;													//for exit status save
+		struct list_elem elem;							//for list elem
 
 };
 
