@@ -11,6 +11,8 @@
 #define EXIT_ERROR = -1;
 static void syscall_handler (struct intr_frame *);
 
+// struct open_file needs to save file opened and file descriptor
+
 struct open_file{
 	struct file *file;
 	int fd;
@@ -83,6 +85,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 						f->eax =  process_wait(wait_pid);//handled by process_wait() function in userprog/process.c
 						break;
 		}
+
 		case SYS_CREATE:
 						{
 						check_address(*(p+1));
@@ -102,24 +105,24 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 						break;
 						}
+
 		case SYS_REMOVE:
-						check_address(p+1);
+						check_address(p+1); // check address valid
 				
 						acquire_file_lock();
 
 						if(filesys_remove(*(p+1)) == NULL){
-							f->eax = false;
+							f->eax = false; // no file return false
 						}else{
-							f->eax = true;
+							f->eax = true; // success return true
 						}
-
 						release_file_lock();
 
 						break;
 
 		case SYS_OPEN:
 						{
-						check_address(*(p+1));
+						check_address(*(p+1)); // check address valid
 
 						acquire_file_lock();
 
@@ -129,25 +132,25 @@ syscall_handler (struct intr_frame *f UNUSED)
 						release_file_lock();
 
 						if(my_file == NULL){
-							f->eax = -1;
+							f->eax = -1; // no file return -1
 						}else{
-							struct open_file *open_f = malloc(sizeof(struct open_file));
+							struct open_file *open_f = malloc(sizeof(struct open_file)); // malloc for open_file
 							open_f->file = my_file;
-							open_f->fd = thread_current()->fd_count;
-							thread_current()->fd_count++;
-							list_push_back(&thread_current()->file_list, &open_f->elem);
-							f->eax = open_f->fd;
-
+							open_f->fd = thread_current()->fd_count; // set fd as current thread fd_count
+							thread_current()->fd_count++; // set fd_count plus 1
+							list_push_back(&thread_current()->file_list, &open_f->elem); // add to file list
+							f->eax = open_f->fd; // return open_file fd
 						}
 						break;
 						}
+
 		case SYS_FILESIZE:
 						{
-						check_address(p+1);
+						check_address(p+1); //check address valid
 
 						acquire_file_lock();
 
-						f->eax = file_length(get_file_by_fd(&thread_current()->file_list,*(p+1))->file);
+						f->eax = file_length(get_file_by_fd(&thread_current()->file_list,*(p+1))->file); // find file in file_list by using fd, then get file_length
 
 						release_file_lock();
 
@@ -157,6 +160,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 						check_address(p+1);
 						check_address(*(p+2));
 						check_address(p+3);
+						// check address valid
 
 						int i;
 						int read_fd = *(p+1);
@@ -166,8 +170,8 @@ syscall_handler (struct intr_frame *f UNUSED)
 						//Read from keyboard using input_getc()
 						if(read_fd == 0){						
 										for(i=0; i<read_size ; i++){
-										read_buffer[i] = input_getc();
-										f->eax = read_size; 
+												read_buffer[i] = input_getc();
+												f->eax = read_size; 
 								}
 						//Read by open file.
 						}else{
@@ -182,11 +186,13 @@ syscall_handler (struct intr_frame *f UNUSED)
 								}
 						}
 						break;
-	}
+						}
+
 		case SYS_WRITE:
 						check_address(p+1);
 						check_address(p+3);
 						check_address(*(p+2));
+						// check address valid
 						unsigned write_size = *(p+3);
 						//writes to console case
 						if(*(p+1) ==1){
@@ -209,36 +215,35 @@ syscall_handler (struct intr_frame *f UNUSED)
 		case SYS_SEEK:
 						check_address(p+1);
 						check_address(p+2);
+						// check address valid
 						acquire_file_lock();
 
-						file_seek(get_file_by_fd(&thread_current()->file_list,*(p+1))->file,*(p+2));
+						file_seek(get_file_by_fd(&thread_current()->file_list,*(p+1))->file,*(p+2)); // find file in file_list by using fd, then do file_seek for (p+2) position
 						release_file_lock();
 						break;
 
 		case SYS_TELL:
-						check_address(p+1);
+						check_address(p+1); // check address valid
 
 						acquire_file_lock();
 
-						f->eax = file_tell(get_file_by_fd(&thread_current()->file_list,*(p+1))->file);
+						f->eax = file_tell(get_file_by_fd(&thread_current()->file_list,*(p+1))->file); // find file in file_list by using fd, then get file_tell
 
 						release_file_lock();
 
 						break;
 
 		case SYS_CLOSE:
-						check_address(p+1);
+						check_address(p+1); // check address valid
 						
 						acquire_file_lock();
 						
-						file_close_inlist(&thread_current()->file_list, *(p+1));
+						file_close_inlist(&thread_current()->file_list, *(p+1)); // remove file in file_list, then close file
 
 						release_file_lock();
 
 						break;
-
-	}
-				
+	}	
 }				
 
 /*
@@ -269,12 +274,12 @@ struct open_file* get_file_by_fd(struct list* file_list, int fd){
 		struct open_file *open_f;
 
 		for (temp = list_begin(file_list); temp != list_end(file_list); temp = list_next(temp)){
-				open_f = list_entry(temp, struct open_file, elem);
+				open_f = list_entry(temp, struct open_file, elem); // search in file_list
 				if (open_f->fd == fd){
-					return open_f;
+					return open_f; // if find right fd, return open_file struct
 				}
 		}
-		return NULL;
+		return NULL; // if cannot find fd, return NULL
 }
 
 void file_close_inlist(struct list* file_list, int fd){
@@ -282,19 +287,18 @@ void file_close_inlist(struct list* file_list, int fd){
 	struct open_file *open_f;
 
 	for (temp = list_begin(file_list); temp != list_end(file_list); temp = list_next(temp)){
-			open_f = list_entry(temp, struct open_file, elem);
+			open_f = list_entry(temp, struct open_file, elem); // search in file_list
 			if (open_f->fd == fd){
-				file_close(open_f->file);
-				list_remove(temp);
-				//free(open_f);
+				file_close(open_f->file); // if find right fd, file close
+				list_remove(temp); // remove element in list
 			}
 	}
-	//free(open_f);
-}
+} // if cannot find fd, do nothing
 
 
 /*
-EXIT syscall management function. Search all the child list of parent, and if there is 
+EXIT syscall management function. Search all the child list of parent, and if there is child  that thread wait, 
+save the status of child thread and exit.
 	 */
 void exit_process(int status){
 	struct list_elem *child_elem;

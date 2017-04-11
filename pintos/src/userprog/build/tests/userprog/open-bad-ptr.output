@@ -1,6 +1,6 @@
-Copying tests/userprog/open-bad-ptr into /tmp/9giLLay6er.dsk...
-Writing command line to /tmp/FWyoS6j4AO.dsk...
-qemu -hda /tmp/FWyoS6j4AO.dsk -hdb /tmp/Go6wR6kqLr.dsk -hdc /tmp/9giLLay6er.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/open-bad-ptr into /tmp/JgtN0PoLIY.dsk...
+Writing command line to /tmp/QoqpEcftSh.dsk...
+qemu -hda /tmp/QoqpEcftSh.dsk -hdb /tmp/ZXj5e3NQXX.dsk -hdc /tmp/JgtN0PoLIY.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put open-bad-ptr run open-bad-ptr
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -16,8 +16,8 @@ Executing 'open-bad-ptr':
 (open-bad-ptr) begin
 open-bad-ptr: exit(-1)
 Execution of 'open-bad-ptr' complete.
-Timer: 61 ticks
-Thread: 30 idle ticks, 30 kernel ticks, 1 user ticks
+Timer: 63 ticks
+Thread: 30 idle ticks, 33 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 154 writes
 hd1:0: 73 reads, 0 writes

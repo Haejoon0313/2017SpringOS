@@ -164,13 +164,13 @@ Functionality of base file system (tests/filesys/base/Rubric):
 
 DETAILS OF tests/userprog/no-vm/multi-oom FAILURE:
 
-run: TIMEOUT after 361 seconds of wall-clock time - load average: 0.00, 0.06, 0.04
+run: TIMEOUT after 980 seconds of wall-clock time - load average: 0.46, 0.69, 0.77
 
 OUTPUT FROM tests/userprog/no-vm/multi-oom:
 
-Copying tests/userprog/no-vm/multi-oom into /tmp/FqXZc2sF4I.dsk...
-Writing command line to /tmp/lLx75K8fe0.dsk...
-qemu -hda /tmp/lLx75K8fe0.dsk -hdb /tmp/ICpWCjPOJn.dsk -hdc /tmp/FqXZc2sF4I.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/no-vm/multi-oom into /tmp/XRpJIFoMAK.dsk...
+Writing command line to /tmp/ACrUmxoP2v.dsk...
+qemu -hda /tmp/ACrUmxoP2v.dsk -hdb /tmp/6eKefRLxWe.dsk -hdc /tmp/XRpJIFoMAK.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put multi-oom run multi-oom
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1123,4 +1123,4 @@ Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048177
  cs=001b ds=0023 es=0023 ss=0023
 multi-oom: exit(-1)
 
-TIMEOUT after 361 seconds of wall-clock time - load average: 0.00, 0.06, 0.04
+TIMEOUT after 980 seconds of wall-clock time - load average: 0.46, 0.69, 0.77

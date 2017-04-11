@@ -30,7 +30,6 @@ process_execute (const char *file_name)
 {
   char *fn_copy;
   tid_t tid;
-	char *f_name;
   char * fn;
 	/* Make a copy of FILE_NAME.
      Otherwise there's a race between the caller and load(). */
@@ -45,7 +44,7 @@ process_execute (const char *file_name)
 	fn = strtok_r(fn," ",&rest);
 	/* Create a new thread to execute FILE_NAME. */
   tid = thread_create (fn, PRI_DEFAULT, start_process, fn_copy);
-  //free(fn);
+  
 	if (tid == TID_ERROR)
     palloc_free_page (fn_copy); 
   
@@ -69,12 +68,7 @@ start_process (void *f_name)
 {
   char *file_name = f_name;
   struct intr_frame if_;
-  bool success;
-
-
-	char *rest;
-	char *file_command;
-	
+  bool success;	
 
   /* Initialize interrupt frame and load executable. */
   memset (&if_, 0, sizeof if_);
@@ -156,7 +150,7 @@ process_wait (tid_t child_tid)
 	list_remove(return_elem);
 	free(cp);
 	return return_status;
-	}
+}
 
 /* Free the current process's resources. */
 void
@@ -413,8 +407,6 @@ load (const char *file_name, void (**eip) (void), void **esp)
 
 	release_file_lock();
 
-	//hex_dump((uintptr_t)(PHYS_BASE - 200),(void **)(PHYS_BASE -200),130,true);
-
 	return success;
 }
 
@@ -523,6 +515,7 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
       zero_bytes -= page_zero_bytes;
       upage += PGSIZE;
     }
+
   return true;
 }
 
@@ -565,13 +558,11 @@ setup_stack (void **esp,char * file_name)
 		i++;
 	}
 
-
 	//STEP2. makes word_align
 	char align = (size_t)*esp % 4;
 	if(align != 0){
 		*esp = *esp - align;
 		memset(*esp, 0,  align);
-		
 	}
 
 	//STEP3. NULL pointer push. (Why?)
@@ -599,10 +590,6 @@ setup_stack (void **esp,char * file_name)
 
 	free(argv);
 	free(file_copy);
-
-	//hex_dump((uintptr_t)(PHYS_BASE - 200),(void **)(PHYS_BASE -200),210,true);
-
-//imple end
 
 	return success;
 }

@@ -204,8 +204,6 @@ thread_create (const char *name, int priority,
 	child_process->status =t->exit_code;
 	list_push_back(&running_thread()->child_list,&child_process->elem);
 	
-
-
   /* Stack frame for kernel_thread(). */
   kf = alloc_frame (t, sizeof *kf);
   kf->eip = NULL;
@@ -376,8 +374,7 @@ thread_set_priority (int new_priority)
   
 	if(!list_empty(&ready_list))
 	{
-		//priority를 변경시킴으로서, 현재의 thread가 최대 priority가 아닐때.
-		if(new_priority < list_entry(list_front(&ready_list),struct thread,elem)->priority){
+			if(new_priority < list_entry(list_front(&ready_list),struct thread,elem)->priority){
 				thread_yield();
 		}
 	}
