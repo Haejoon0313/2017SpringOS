@@ -17,6 +17,9 @@
 #include "threads/palloc.h"
 #include "threads/thread.h"
 #include "threads/vaddr.h"
+#include "../vm/page.h"
+#include "../vm/frame.h"
+#include "../vm/swap.h"
 
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
@@ -70,6 +73,11 @@ start_process (void *f_name)
   struct intr_frame if_;
   bool success;	
 
+	//pj4
+	struct thread *curr = thread_current();
+	page_init(&curr->sup_page_table);
+	
+
   /* Initialize interrupt frame and load executable. */
   memset (&if_, 0, sizeof if_);
   if_.gs = if_.fs = if_.es = if_.ds = if_.ss = SEL_UDSEG;
@@ -97,6 +105,7 @@ start_process (void *f_name)
      interrupt, implemented by intr_exit (in
      threads/intr-stubs.S).  Because intr_exit takes all of its
      arguments on the stack in the form of a `struct intr_frame',
+		 
      we just point the stack pointer (%esp) to our stack frame
      and jump to it. */
   asm volatile ("movl %0, %%esp; jmp intr_exit" : : "g" (&if_) : "memory");
@@ -296,10 +305,10 @@ load (const char *file_name, void (**eip) (void), void **esp)
 	
   /* Allocate and activate page directory. */
   acquire_file_lock();
-	t->pagedir = pagedir_create ();
+	t->pagedir = pagedir_create ();//create&return new page table.
   if (t->pagedir == NULL) 
     goto done;
-  process_activate ();
+  process_activate ();//load pagedir to CPU register
 	char * rest;
 
 	char * file_copy =  malloc(strlen(file_name)+1);
@@ -332,16 +341,16 @@ load (const char *file_name, void (**eip) (void), void **esp)
     }
 
   /* Read program headers. */
-  file_ofs = ehdr.e_phoff;
-  for (i = 0; i < ehdr.e_phnum; i++) 
+  file_ofs = ehdr.e_phoff; //e_phoff = Program header table's file ofs.
+	for (i = 0; i < ehdr.e_phnum; i++)//number of entries in the program header table
     {
       struct Elf32_Phdr phdr;
 
-      if (file_ofs < 0 || file_ofs > file_length (file))
+      if (file_ofs < 0 || file_ofs > file_length (file))//error case
         goto done;
-      file_seek (file, file_ofs);
+      file_seek (file, file_ofs);//change the read point into offset
 
-      if (file_read (file, &phdr, sizeof phdr) != sizeof phdr)
+      if (file_read (file, &phdr, sizeof phdr) != sizeof phdr)//read the header of file & save it into phdr.
         goto done;
       file_ofs += sizeof phdr;
       switch (phdr.p_type) 
@@ -350,7 +359,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
         case PT_NOTE:
         case PT_PHDR:
         case PT_STACK:
-        default:
+								default:
           /* Ignore this segment. */
           break;
         case PT_DYNAMIC:
@@ -361,9 +370,9 @@ load (const char *file_name, void (**eip) (void), void **esp)
           if (validate_segment (&phdr, file)) 
             {
               bool writable = (phdr.p_flags & PF_W) != 0;
-              uint32_t file_page = phdr.p_offset & ~PGMASK;
-              uint32_t mem_page = phdr.p_vaddr & ~PGMASK;
-              uint32_t page_offset = phdr.p_vaddr & PGMASK;
+              uint32_t file_page = phdr.p_offset & ~PGMASK;//location of file. p_offset means file offset where segment is located.
+              uint32_t mem_page = phdr.p_vaddr & ~PGMASK;//where to save the file in memory, by virtual address
+              uint32_t page_offset = phdr.p_vaddr & PGMASK;//p_vaddr = Virtual address of beginning of segment.
               uint32_t read_bytes, zero_bytes;
               if (phdr.p_filesz > 0)
                 {
@@ -372,6 +381,8 @@ load (const char *file_name, void (**eip) (void), void **esp)
                   read_bytes = page_offset + phdr.p_filesz;
                   zero_bytes = (ROUND_UP (page_offset + phdr.p_memsz, PGSIZE)
                                 - read_bytes);
+
+									//read_bytes + zero_bytes == 1 Pagesize(4096) always?
                 }
               else 
                 {
@@ -396,7 +407,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
 		goto done;
 }
   /* Start address. */
-  *eip = (void (*) (void)) ehdr.e_entry;
+  *eip = (void (*) (void)) ehdr.e_entry;//eip = Address to jump to in order to start program
 	thread_current()->load = file;
   success = true;
 	file_deny_write(file);//deny the file that is owned by current thread.
@@ -477,44 +488,82 @@ static bool
 load_segment (struct file *file, off_t ofs, uint8_t *upage,
               uint32_t read_bytes, uint32_t zero_bytes, bool writable) 
 {
+	
   ASSERT ((read_bytes + zero_bytes) % PGSIZE == 0);
   ASSERT (pg_ofs (upage) == 0);
   ASSERT (ofs % PGSIZE == 0);
 
   file_seek (file, ofs);
-  while (read_bytes > 0 || zero_bytes > 0) 
+  
+	off_t cur_ofs = ofs;
+	struct thread * curr = thread_current();
+
+	while (read_bytes > 0 || zero_bytes > 0) 
     {
       /* Do calculate how to fill this page.
          We will read PAGE_READ_BYTES bytes from FILE
          and zero the final PAGE_ZERO_BYTES bytes. */
-      size_t page_read_bytes = read_bytes < PGSIZE ? read_bytes : PGSIZE;
-      size_t page_zero_bytes = PGSIZE - page_read_bytes;
+      size_t page_read_bytes = read_bytes < PGSIZE ? read_bytes : PGSIZE;	//the number of bytes to read from the executable file.
+      size_t page_zero_bytes = PGSIZE - page_read_bytes;	//the number of bytes to initialize to zero fillowing the bytes read
 
+
+			//pj4
+			frame_table_lock_acquire();
+			void * kpage = frame_alloc(upage,PAL_ZERO);//allocate frame for upage, manage frame table etc.
+			page_insert(file, cur_ofs, upage, page_read_bytes, page_zero_bytes, writable);//Supplement page table manage
+			frame_table_lock_release();
+		
+			struct sup_pte * new_pte = get_sup_pte(&curr->sup_page_table,upage);//ERROR case management required???????????
+			
+			
+
+			if (file_read(file, kpage, page_read_bytes)!=(int)page_read_bytes)//write file contents into frame
+			{
+					frame_free(upage);
+					page_remove(&curr->sup_page_table,upage);
+					return false;
+			}
+     memset (kpage + page_read_bytes, 0, page_zero_bytes);//set rest of page into 0. Maybe for alignment of page?
+
+      /* Add the page to the process's address space. */
+      if (!install_page (upage, kpage, writable)) 
+        {
+          palloc_free_page (kpage);
+     		return false; 
+        }
+				
+			
+      /* Advance. */
+      read_bytes -= page_read_bytes;
+      zero_bytes -= page_zero_bytes;
+      upage += PGSIZE;
+			cur_ofs += PGSIZE;
+
+
+
+			/*Before Project4 VM part. Need to Remove later */
+			if(false){
       /* Get a page of memory. */
       uint8_t *kpage = palloc_get_page (PAL_USER);
       if (kpage == NULL)
         return false;
 
       /* Load this page. */
-      if (file_read (file, kpage, page_read_bytes) != (int) page_read_bytes)
+      if (file_read (file, kpage, page_read_bytes) != (int) page_read_bytes)//raed file & save it into KPAGE
         {
           palloc_free_page (kpage);
           return false; 
-        }
-      memset (kpage + page_read_bytes, 0, page_zero_bytes);
+       }
+      memset (kpage + page_read_bytes, 0, page_zero_bytes);//set rest of page into 0. Maybe for alignment of page?
 
       /* Add the page to the process's address space. */
       if (!install_page (upage, kpage, writable)) 
         {
           palloc_free_page (kpage);
           return false; 
-        }
+        }}
 
-      /* Advance. */
-      read_bytes -= page_read_bytes;
-      zero_bytes -= page_zero_bytes;
-      upage += PGSIZE;
-    }
+   }
 
   return true;
 }
@@ -527,6 +576,29 @@ setup_stack (void **esp,char * file_name)
   uint8_t *kpage;
   bool success = false;
 
+
+	frame_table_lock_acquire();
+	kpage = frame_alloc(((uint8_t *)PHYS_BASE) - PGSIZE, PAL_ZERO|PAL_USER);
+	if(kpage != NULL){
+			success = install_page(((uint8_t *) PHYS_BASE) - PGSIZE, kpage, true);
+			if (success)
+			{
+					*esp = PHYS_BASE;
+					page_insert(NULL,NULL, ((uint8 *)PHYS_BASE) - PGSIZE, NULL, NULL,true);
+
+					
+			}
+			else{
+					frame_free(((uint8_t *) PHYS_BASE) - PGSIZE);
+			}
+	}
+	frame_table_lock_release();
+
+
+
+	//Before pj4(VM). NEed to be removed later.
+/*
+	if(false){
   kpage = palloc_get_page (PAL_USER | PAL_ZERO);
   if (kpage != NULL) 
     {
@@ -536,7 +608,9 @@ setup_stack (void **esp,char * file_name)
 							*esp = PHYS_BASE;
 			}else
         palloc_free_page (kpage);
-    };
+    }};
+	*/
+
 	char *token, *rest;
 	int argc = 0;
 	char * file_copy = malloc(strlen(file_name)+1);
@@ -610,6 +684,6 @@ install_page (void *upage, void *kpage, bool writable){
 
   /* Verify that there's not already a page at that virtual
      address, then map our page there. */
-  return (pagedir_get_page (t->pagedir, upage) == NULL
-          && pagedir_set_page (t->pagedir, upage, kpage, writable));
+  return (pagedir_get_page (t->pagedir, upage) == NULL//To check that upage is not already mapped
+          && pagedir_set_page (t->pagedir, upage, kpage, writable));//from upage to kpage mapping insert into pagedir
 }

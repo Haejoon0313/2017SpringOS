@@ -121,7 +121,7 @@ kill (struct intr_frame *f)
    [IA32-v3a] section 5.15 "Exception and Interrupt Reference". */
 static void
 page_fault (struct intr_frame *f) 
-{
+ 	{
   bool not_present;  /* True: not-present page, false: writing r/o page. */
   bool write;        /* True: access was write, false: access was read. */
   bool user;         /* True: access by user, false: access by kernel. */
@@ -144,13 +144,14 @@ page_fault (struct intr_frame *f)
   page_fault_cnt++;
 
   /* Determine cause. */
-  not_present = (f->error_code & PF_P) == 0;
-  write = (f->error_code & PF_W) != 0;
-  user = (f->error_code & PF_U) != 0;
+  not_present = (f->error_code & PF_P) == 0;//page fault is because of not present?????
+  write = (f->error_code & PF_W) != 0;			//us it only for read??????
+  user = (f->error_code & PF_U) != 0;				//is it not user range?????
 
   /* To implement virtual memory, delete the rest of the function
      body, and replace it with code that brings in the page to
      which fault_addr refers. */
+	//Tips about pj4, page fault handler!
   printf ("Page fault at %p: %s error %s page in %s context.\n",
           fault_addr,
           not_present ? "not present" : "rights violation",

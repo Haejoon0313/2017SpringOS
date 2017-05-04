@@ -16,16 +16,16 @@ static void invalidate_pagedir (uint32_t *);
 uint32_t *
 pagedir_create (void) 
 {
-  uint32_t *pd = palloc_get_page (0);
+  uint32_t *pd = palloc_get_page (0);//Current pintos page table is only 1 page size, so allocate only one page.
   if (pd != NULL)
-    memcpy (pd, base_page_dir, PGSIZE);
+    memcpy (pd, base_page_dir, PGSIZE);//base_page_dir is only for kernel mapping??
   return pd;
 }
 
 /* Destroys page directory PD, freeing all the pages it
    references. */
 void
-pagedir_destroy (uint32_t *pd) 
+pagedir_destroy (uint32_t *pd) //page dir and each table remove
 {
   uint32_t *pde;
 
@@ -33,13 +33,13 @@ pagedir_destroy (uint32_t *pd)
     return;
 
   ASSERT (pd != base_page_dir);
-  for (pde = pd; pde < pd + pd_no (PHYS_BASE); pde++)
-    if (*pde & PTE_P) 
+  for (pde = pd; pde < pd + pd_no (PHYS_BASE); pde++)//pd_no means index of page dir.
+    if (*pde & PTE_P) //entry is not null AND present
       {
         uint32_t *pt = pde_get_pt (*pde);
         uint32_t *pte;
         
-        for (pte = pt; pte < pt + PGSIZE / sizeof *pte; pte++)
+        for (pte = pt; pte < pt + PGSIZE / sizeof *pte; pte++)//For each page table
           if (*pte & PTE_P) 
             palloc_free_page (pte_get_page (*pte));
         palloc_free_page (pt);
@@ -53,6 +53,7 @@ pagedir_destroy (uint32_t *pd)
    on CREATE.  If CREATE is true, then a new page table is
    created and a pointer into it is returned.  Otherwise, a null
    pointer is returned. */
+//return address of PTE for address VADDR in PD
 static uint32_t *
 lookup_page (uint32_t *pd, const void *vaddr, bool create)
 {

@@ -125,6 +125,12 @@ struct thread
 		struct list file_list;	
 		int fd_count;
 		struct file *load;
+
+
+		/*Project4, Virtual Memory Members */
+		struct hash sup_page_table;
+
+
 	};
 /*
 struct child, for list thread
