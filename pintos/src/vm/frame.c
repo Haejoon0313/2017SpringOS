@@ -10,8 +10,8 @@
 #include "vm/page.h"
 #include "vm/swap.h"
 
-struct list frame_table;
-struct lock frame_table_lock;
+static struct list frame_table;
+static struct lock frame_table_lock;
 
 void frame_table_init(void){
 				list_init(&frame_table);
@@ -64,10 +64,38 @@ void frame_free(void *upage){
 				}
 }
 
-
+/*Evict the frame in frame table, according to FIFO algorithm.
+ */
 void * frame_evict(enum palloc_flags flag){
-				return NULL;
+				struct list_elem * el;
+				struct fte * evict_fte;
+				struct sup_pte * spte;
+				
+				frame_table_lock_acquire();
+
+				el = list_begin(&frame_table);
+
+				/*Simple FIFO algorithm */
+			//	for (el ; el != list_end(&frame_table) ; el = list_next(el)){ //iteraion not need in FIFO algorithm.
+						evict_fte = list_entry(el, struct fte, elem);
+						void * upage = evict_fte->upage;
+						void * kpage = evict_fte->kpage;
+
+						spte = get_sup_pte(&evict_fte->origin_thread->sup_page_table, upage);
+						spte->swapped = true;
+						spte->swap_index = swap_out(kpage);
+
+						pagedir_clear_page(evict_fte->origin_thread->pagedir, upage);
+						palloc_free_page(kpage);
+						list_remove(el);
+						free(evict_fte);
+			//	}
+
+				frame_table_lock_release();
+
+				return palloc_get_page(PAL_USER | flag);
 }
+
 
 void frame_table_lock_acquire(void){
 				lock_acquire(&frame_table_lock);

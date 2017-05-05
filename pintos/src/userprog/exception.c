@@ -4,6 +4,10 @@
 #include "userprog/gdt.h"
 #include "threads/interrupt.h"
 #include "threads/thread.h"
+#include "vm/page.h"
+#include "vm/swap.h"
+#include "vm/frame.h"
+#include "userprog/pagedir.h"
 
 /* Number of page faults processed. */
 static long long page_fault_cnt;
@@ -152,7 +156,65 @@ page_fault (struct intr_frame *f)
      body, and replace it with code that brings in the page to
      which fault_addr refers. */
 	//Tips about pj4, page fault handler!
-  printf ("Page fault at %p: %s error %s page in %s context.\n",
+  
+	struct thread * curr = thread_current();
+	struct sup_pte * spte;
+	void * kpage;
+
+	frame_table_lock_acquire();
+
+	void * upage = page_round_down(fault_addr);
+
+  spte = get_sup_pte(&curr->sup_page_table,upage);
+	
+	if(not_present){
+					/*page fault is caused by SWAP */
+					if(spte!=NULL){
+							if (spte->swapped & !(pagedir_get_page(&curr->pagedir,spte->upage))){
+									kpage = frame_alloc(upage, PAL_ZERO);
+									swap_in(spte,kpage);
+					
+
+									bool swap_success = pagedir_set_page(&curr->pagedir, spte->upage, kpage, spte->writable);//여기 true로해야하나?
+									if (!swap_success){
+													frame_free(upage);
+													printf("Swap in pagefalut handler Failed!\n");
+													frame_table_lock_release();
+													goto fail;				
+									}
+									pagedir_set_access(&curr->pagedir, upage, true); ///##@#################이거 dirty도 해줘야 하나?
+				 					spte->swapped = false;
+									spte->loaded = true;
+					
+									frame_table_lock_release();
+									return;
+							}
+					}
+					
+					/*page fault is caused by Stack growth ISSUE */
+					else if(!user && is_user_vaddr(falut_addr) && ( (void *)(curr->esp -32)<=(void *) fault_addr )){
+									kpage = frame_alloc(upage, PAL_ZERO);
+
+									if( !(pagedir_get_page(curr->pagedir,upage))&& pagedir_set_page(curr->pagedir, upage, kpage, spte->writable)){
+													page_insert(NULL,NULL,upage,NULL,NULL,true);
+
+													frame_table_lock_release();
+													return;
+
+									}else{
+													frame_free(upage);
+													goto fail;
+
+									}
+					}
+	}
+	
+	if(not_present || user || write)
+					exit(-1);
+	
+fail:
+	frame_table_lock_release();
+	printf ("Page fault at %p: %s error %s page in %s context.\n",
           fault_addr,
           not_present ? "not present" : "rights violation",
           write ? "writing" : "reading",

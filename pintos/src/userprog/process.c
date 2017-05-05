@@ -185,6 +185,13 @@ process_exit (void)
 
 	release_file_lock();
 
+	//pj4 part
+	frame_table_lock_acquire();
+	page_table_remove(&curr->sup_page_table);
+	frame_table_lock_release();
+
+
+
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
   pd = curr->pagedir;
@@ -509,12 +516,11 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 
 			//pj4
 			frame_table_lock_acquire();
-			void * kpage = frame_alloc(upage,PAL_ZERO);//allocate frame for upage, manage frame table etc.
+			void * kpage = frame_alloc(upage,PAL_ZERO);//allocate frame for upage AND manage frame table etc.
 			page_insert(file, cur_ofs, upage, page_read_bytes, page_zero_bytes, writable);//Supplement page table manage
 			frame_table_lock_release();
 		
 			struct sup_pte * new_pte = get_sup_pte(&curr->sup_page_table,upage);//ERROR case management required???????????
-			
 			
 
 			if (file_read(file, kpage, page_read_bytes)!=(int)page_read_bytes)//write file contents into frame
@@ -528,16 +534,17 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
       /* Add the page to the process's address space. */
       if (!install_page (upage, kpage, writable)) 
         {
+					frame_free(upage);
           palloc_free_page (kpage);
      		return false; 
         }
 				
-			
       /* Advance. */
       read_bytes -= page_read_bytes;
       zero_bytes -= page_zero_bytes;
       upage += PGSIZE;
 			cur_ofs += PGSIZE;
+
 
 
 
@@ -584,9 +591,7 @@ setup_stack (void **esp,char * file_name)
 			if (success)
 			{
 					*esp = PHYS_BASE;
-					page_insert(NULL,NULL, ((uint8 *)PHYS_BASE) - PGSIZE, NULL, NULL,true);
-
-					
+					page_insert(NULL,NULL, ((uint8 *)PHYS_BASE) - PGSIZE, NULL, NULL,true);					
 			}
 			else{
 					frame_free(((uint8_t *) PHYS_BASE) - PGSIZE);
