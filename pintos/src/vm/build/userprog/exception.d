@@ -3,9 +3,9 @@ userprog/exception.o: ../../userprog/exception.c \
   ../../lib/stdio.h ../../lib/debug.h ../../lib/stdarg.h \
   ../../lib/stdbool.h ../../lib/stddef.h ../../lib/kernel/stdio.h \
   ../../userprog/gdt.h ../../threads/loader.h ../../threads/interrupt.h \
-  ../../threads/thread.h ../../lib/kernel/list.h ../../threads/synch.h \
-  ../../userprog/pagedir.h ../../vm/page.h ../../lib/kernel/hash.h \
-  ../../lib/kernel/list.h ../../filesys/file.h ../../filesys/off_t.h \
+  ../../threads/thread.h ../../lib/kernel/list.h ../../lib/kernel/hash.h \
+  ../../lib/kernel/list.h ../../threads/synch.h ../../userprog/pagedir.h \
+  ../../vm/page.h ../../filesys/file.h ../../filesys/off_t.h \
   ../../filesys/off_t.h ../../threads/palloc.h ../../threads/thread.h \
   ../../vm/swap.h ../../vm/page.h ../../vm/frame.h \
   ../../userprog/syscall.h ../../threads/vaddr.h ../../threads/loader.h

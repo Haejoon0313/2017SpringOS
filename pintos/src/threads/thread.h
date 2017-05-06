@@ -4,6 +4,7 @@
 #include <debug.h>
 #include <list.h>
 #include <stdint.h>
+#include <hash.h>
 #include "threads/synch.h"
 /* States in a thread's life cycle. */
 enum thread_status
@@ -126,10 +127,9 @@ struct thread
 		int fd_count;
 		struct file *load;
 
-
-		/*Project4, Virtual Memory Members */
-		struct hash * sup_page_table;
-
+#ifdef VM
+		struct hash sup_page_table;
+#endif
 
 	};
 /*

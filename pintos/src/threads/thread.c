@@ -16,6 +16,7 @@
 #endif
 #ifdef VM
 #include "vm/frame.h"
+#include <hash.h>
 #endif
 
 /* Random value for struct thread's `magic' member.

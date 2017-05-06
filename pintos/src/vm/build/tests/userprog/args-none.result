@@ -1,17 +1,1 @@
-FAIL
-Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc0107756 0xc0102acd 0xc010d9cd 0xc010b033 0xc0101935 0xc0101b0b 0xc01093aa 0xc0108fbb 0xc010d73d 0xc010a088 0xc0109e08 0xc01099a6 0xc0100e69
-Translation of call stack:
-0xc0107756: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0102acd: lock_acquire (...../../threads/synch.c:243)
-0xc010d9cd: frame_table_lock_acquire (...uild/../../vm/frame.c:103)
-0xc010b033: page_fault (.../../../threads/vaddr.h:39)
-0xc0101935: intr_handler (..../threads/interrupt.c:361)
-0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
-0xc01093aa: find_bucket (.../../lib/kernel/hash.c:308)
-0xc0108fbb: hash_insert (.../../lib/kernel/hash.c:101)
-0xc010d73d: page_insert (.../build/../../vm/page.c:40)
-0xc010a088: load_segment (...../userprog/process.c:523)
-0xc0109e08: load (...../userprog/process.c:401)
-0xc01099a6: start_process (.../../userprog/process.c:89)
-0xc0100e69: kernel_thread (..../../threads/thread.c:475)
+PASS

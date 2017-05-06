@@ -517,7 +517,7 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 #ifdef VM
 			frame_table_lock_acquire();
 			
-			void * kpage = frame_alloc(upage,PAL_ZERO);//allocate frame for upage AND manage frame table etc.
+			void * kpage = frame_alloc(upage,0);//allocate frame for upage AND manage frame table etc.
 			page_insert(file, cur_ofs, upage, page_read_bytes, page_zero_bytes, writable);//Supplement page table manage
 			
 			frame_table_lock_release();
@@ -526,7 +526,7 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 			
 			ASSERT(spte != NULL);
 
-			if (file_read(file, kpage, page_read_bytes)!=(int)page_read_bytes)//write file contents into frame
+			if (file_read(file, kpage, page_read_bytes) != (int)page_read_bytes)//write file contents into frame
 			{
 					frame_free(upage);
 					page_remove(&curr->sup_page_table,upage);

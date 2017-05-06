@@ -168,28 +168,28 @@ page_fault (struct intr_frame *f)
 	struct thread * curr = thread_current();
 	struct sup_pte * spte;
 	void * kpage;
-
-	frame_table_lock_acquire();
-
 	void * upage = pg_round_down(fault_addr);
 
   spte = get_sup_pte(&curr->sup_page_table,upage);
 	
 	if(not_present){
+					frame_table_lock_acquire();
 					/*page fault is caused by SWAP */
 					if(spte!=NULL){
 							if (spte->swapped && !(pagedir_get_page(curr->pagedir,spte->upage))){
-									kpage = frame_alloc(upage, PAL_ZERO);
+									
+								
+									kpage = frame_alloc(upage, 0);
 									swap_in(spte,kpage);
 					
 
-									bool swap_success = pagedir_set_page(curr->pagedir, spte->upage, kpage, spte->writable);//여기 true로해야하나?
+									bool swap_success = pagedir_set_page(curr->pagedir, spte->upage, kpage, true);//여기 spte->writable인가?
 
 									if (!swap_success){
 													frame_free(upage);
 													printf("Swap in pagefalut handler Failed!\n");
-													frame_table_lock_release();
-													goto fail;	
+													
+													
 									}
 									pagedir_set_accessed(&curr->pagedir, upage, true); ///##@#################이거 dirty도 해줘야 하나?
 				 					spte->swapped = false;
@@ -204,27 +204,42 @@ page_fault (struct intr_frame *f)
 									kpage = frame_alloc(upage, PAL_ZERO);
 									printf("Stack growth start\n");
 									if( !(pagedir_get_page(curr->pagedir,upage))&& pagedir_set_page(curr->pagedir, upage, kpage, spte->writable)){
+													
 													page_insert(NULL,NULL,upage,NULL,NULL,true);
-
 													frame_table_lock_release();
 													return;
 
 									}else{
 													frame_free(upage);
-													goto fail;
-
+													
+													
 									}
 					}
+					frame_table_lock_release();
 	}
 	
+if(not_present || user || write)
+	{
+//		PANIC("ERROR CASE in exception.c falut handler!\n");
+			exit_process(-1);
+	}	
+	
+	printf ("Page fault at %p: %s error %s page in %s context.\n",
+          fault_addr,
+          not_present ? "not present" : "rights violation",
+          write ? "writing" : "reading",
+          user ? "user" : "kernel");
+  kill (f);
+	
+
+fail:
+
 	if(not_present || user || write)
 	{
-		PANIC("ERROR CASE in exception.c falut handler!\n");
-		return;
-	}
+//		PANIC("ERROR CASE in exception.c falut handler!\n");
+			exit_process(-1);
+	}	
 	
-fail:
-	frame_table_lock_release();
 	printf ("Page fault at %p: %s error %s page in %s context.\n",
           fault_addr,
           not_present ? "not present" : "rights violation",

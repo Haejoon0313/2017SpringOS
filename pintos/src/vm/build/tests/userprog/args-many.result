@@ -1,12 +1,1 @@
-FAIL
-Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc0107756 0xc0102acd 0xc010d9e1 0xc010d887 0xc010a05e 0xc0109e08 0xc01099a6 0xc0100e69
-Translation of call stack:
-0xc0107756: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0102acd: lock_acquire (...../../threads/synch.c:243)
-0xc010d9e1: frame_table_lock_acquire (...uild/../../vm/frame.c:109)
-0xc010d887: frame_alloc (...build/../../vm/frame.c:30)
-0xc010a05e: load_segment (...../userprog/process.c:520)
-0xc0109e08: load (...../userprog/process.c:401)
-0xc01099a6: start_process (.../../userprog/process.c:89)
-0xc0100e69: kernel_thread (..../../threads/thread.c:475)
+PASS

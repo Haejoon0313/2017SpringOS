@@ -1,0 +1,35 @@
+Copying tests/vm/mmap-inherit into /tmp/6XZdmUnywd.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/6XZdmUnywd.dsk...
+Copying tests/vm/child-inherit into /tmp/6XZdmUnywd.dsk...
+Writing command line to /tmp/MKRiJhVg9e.dsk...
+qemu -hda /tmp/MKRiJhVg9e.dsk -hdb /tmp/EWRhNQ2Y0E.dsk -hdc /tmp/6XZdmUnywd.dsk -hdd /tmp/2DFdyIBsny.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-inherit put sample.txt put child-inherit run mmap-inherit
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  9,817,600 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 154 sector (77 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-inherit' into the file system...
+Putting 'sample.txt' into the file system...
+Putting 'child-inherit' into the file system...
+Executing 'mmap-inherit':
+(mmap-inherit) begin
+(mmap-inherit) open "sample.txt"
+(mmap-inherit) mmap "sample.txt"
+mmap-inherit: exit(-1)
+Execution of 'mmap-inherit' complete.
+Timer: 67 ticks
+Thread: 29 idle ticks, 38 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 127 reads, 320 writes
+hd1:0: 154 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1102 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...

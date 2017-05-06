@@ -24,8 +24,8 @@ void page_table_remove(struct hash * page_table){
 }
 
 bool page_insert(struct file * file, off_t file_ofs, uint8_t * upage, uint32_t read_bytes, uint32_t zero_bytes, bool writable){
-				struct sup_pte * sup_pte = malloc(sizeof(sup_pte));
-				struct thread * t = thread_current();
+				struct sup_pte * sup_pte = (struct sup_pte *)malloc(sizeof(struct sup_pte));
+//				struct thread * t = thread_current();
 
 				sup_pte->file = file;
 				sup_pte->upage = upage;
@@ -36,7 +36,7 @@ bool page_insert(struct file * file, off_t file_ofs, uint8_t * upage, uint32_t r
 				sup_pte->swapped = false;
 				sup_pte->loaded = true;
 
-				if(hash_insert(t->sup_page_table, &sup_pte->elem)==NULL){
+				if(hash_insert(&thread_current()->sup_page_table, &sup_pte->elem)==NULL){
 								return true;
 				}else{
 								free(sup_pte);

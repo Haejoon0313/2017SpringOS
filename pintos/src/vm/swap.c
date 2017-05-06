@@ -72,14 +72,8 @@ void swap_in (struct sup_pte * spte, void * kpage){
 		swap_set(swap_idx, false);
 
 		for(sector_cnt = 0 ; sector_cnt < PGSIZE / DISK_SECTOR_SIZE ; sector_cnt++)
-				disk_read(swap_disk, (swap_idx * PGSIZE/DISK_SECTOR_SIZE) + sector_cnt , kpage);
+				disk_read(swap_disk, (swap_idx * PGSIZE/DISK_SECTOR_SIZE) + sector_cnt , kpage + (sector_cnt*DISK_SECTOR_SIZE));
 		
 		lock_release(&swap_lock);
 
 }
-
-
-
-
-
-

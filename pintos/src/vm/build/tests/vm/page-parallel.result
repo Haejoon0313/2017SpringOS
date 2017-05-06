@@ -1,0 +1,24 @@
+FAIL
+Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010da26 0xc010b057 0xc0101935 0xc0101b0b 0xcccccccc 0xc0109088 0xc010d7d9 0xc010d9ca 0xc010d8ee 0xc010b099 0xc0101935 0xc0101b0b 0x804a045
+Translation of call stack:
+In kernel.o:
+0xc0107756: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0102acd: lock_acquire (...../../threads/synch.c:243)
+0xc010da26: frame_table_lock_acquire (...uild/../../vm/frame.c:101)
+0xc010b057: page_fault (.../userprog/exception.c:178)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+0xcccccccc: (unknown)
+0xc0109088: hash_find (.../../lib/kernel/hash.c:134)
+0xc010d7d9: get_sup_pte (.../build/../../vm/page.c:55)
+0xc010d9ca: frame_evict (...build/../../vm/frame.c:77)
+0xc010d8ee: frame_alloc (...build/../../vm/frame.c:30)
+0xc010b099: page_fault (.../userprog/exception.c:182)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/page-parallel:
+0x0804a045: exec (.../../lib/user/syscall.c:81)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.

@@ -24,19 +24,17 @@ void frame_table_init(void){
 void * frame_alloc(void * upage, enum palloc_flags flag){
 				
 				void * kpage = palloc_get_page(PAL_USER | flag);
+				struct fte * fte;
 
-							if(kpage == NULL){
+				if(kpage == NULL){
 								kpage = frame_evict(flag);
+				}
 
-								frame_table_lock_release();
-				}else{
-								struct fte * fte = malloc(sizeof(fte));
-								fte->origin_thread = thread_current();
-								fte->upage = upage;
-								fte->kpage = kpage;
-								list_push_back(&frame_table, &fte->elem);
-
-							}
+				fte = (struct fte *)malloc(sizeof(struct fte));
+				fte->origin_thread = thread_current();
+				fte->upage = upage;
+				fte->kpage = kpage;
+				list_push_back(&frame_table, &fte->elem);
 
 				return kpage;//return kernel virtual address, pointing frame
 }
