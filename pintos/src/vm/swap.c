@@ -27,15 +27,15 @@ swap_init(){
 }
 
 /*ASSERT that current swap_idx is !value. Then, flip it into VALUE boolean. */
+/*
 void swap_set(uint32_t swap_idx, bool value){
 		ASSERT(bitmap_test(swap_table, !value));
-
 		lock_acquire(&swap_lock);
 		bitmap_set(swap_table, swap_idx, value);
 		lock_release(&swap_lock);
 
 }
-
+*/
 /* When memory is full, Find victim page and Write it into disk
 	 by call the function swap out(kpage).
 	 victim page is pointed by KPAGE.
@@ -69,7 +69,8 @@ void swap_in (struct sup_pte * spte, void * kpage){
 		lock_acquire(&swap_lock);
 		swap_idx = spte->swap_index;		
 	
-		swap_set(swap_idx, false);
+		//swap_set(swap_idx, false);
+		bitmap_set (swap_table, swap_idx, false);
 
 		for(sector_cnt = 0 ; sector_cnt < PGSIZE / DISK_SECTOR_SIZE ; sector_cnt++)
 				disk_read(swap_disk, (swap_idx * PGSIZE/DISK_SECTOR_SIZE) + sector_cnt , kpage + (sector_cnt*DISK_SECTOR_SIZE));

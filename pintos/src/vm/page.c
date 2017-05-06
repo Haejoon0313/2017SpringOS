@@ -49,7 +49,7 @@ struct sup_pte * get_sup_pte(struct hash * page_table, void * upage){
 				struct hash_elem * e;
 
 				temp_sup_pte.upage = upage;
-				e = hash_find(page_table, &temp_sup_pte.elem);
+				e = hash_find(page_table, &(temp_sup_pte.elem));
 
 				if(e == NULL){
 								return NULL;

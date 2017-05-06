@@ -191,7 +191,7 @@ page_fault (struct intr_frame *f)
 													
 													
 									}
-									pagedir_set_accessed(&curr->pagedir, upage, true); ///##@#################이거 dirty도 해줘야 하나?
+									pagedir_set_accessed(curr->pagedir, upage, true); ///##@#################이거 dirty도 해줘야 하나?
 				 					spte->swapped = false;
 									ASSERT(spte->loaded);
 									frame_table_lock_release();
