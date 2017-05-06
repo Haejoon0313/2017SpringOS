@@ -6,12 +6,14 @@
 #include "threads/thread.h"
 
 #ifdef VM
+#include <stdint.h>
+#include "userprog/pagedir.h"
 #include "vm/page.h"
 #include "vm/swap.h"
 #include "vm/frame.h"
+#include "userprog/syscall.h"
+#include "threads/vaddr.h"
 #endif
-
-#include "userprog/pagedir.h"
 
 /* Number of page faults processed. */
 static long long page_fault_cnt;
@@ -169,7 +171,7 @@ page_fault (struct intr_frame *f)
 
 	frame_table_lock_acquire();
 
-	void * upage = page_round_down(fault_addr);
+	void * upage = pg_round_down(fault_addr);
 
   spte = get_sup_pte(&curr->sup_page_table,upage);
 	
@@ -182,25 +184,25 @@ page_fault (struct intr_frame *f)
 					
 
 									bool swap_success = pagedir_set_page(curr->pagedir, spte->upage, kpage, spte->writable);//여기 true로해야하나?
+
 									if (!swap_success){
 													frame_free(upage);
 													printf("Swap in pagefalut handler Failed!\n");
 													frame_table_lock_release();
-													goto fail;				
+													goto fail;	
 									}
-									pagedir_set_access(&curr->pagedir, upage, true); ///##@#################이거 dirty도 해줘야 하나?
+									pagedir_set_accessed(&curr->pagedir, upage, true); ///##@#################이거 dirty도 해줘야 하나?
 				 					spte->swapped = false;
-									spte->loaded = true;
-					
+									ASSERT(spte->loaded);
 									frame_table_lock_release();
 									return;
 							}
 					}
 					
-					/*page fault is caused by Stack growth ISSUE */
-					else if(!user && is_user_vaddr(falut_addr) && ( (void *)(curr->esp -32)<=(void *) fault_addr )){
+					/*page fault is caused by Stack growth ISSUE*/
+					else if(!user && is_user_vaddr(fault_addr) &&  (void *)f->esp -32<= fault_addr ){
 									kpage = frame_alloc(upage, PAL_ZERO);
-
+									printf("Stack growth start\n");
 									if( !(pagedir_get_page(curr->pagedir,upage))&& pagedir_set_page(curr->pagedir, upage, kpage, spte->writable)){
 													page_insert(NULL,NULL,upage,NULL,NULL,true);
 
@@ -216,7 +218,10 @@ page_fault (struct intr_frame *f)
 	}
 	
 	if(not_present || user || write)
-					exit(-1);
+	{
+		PANIC("ERROR CASE in exception.c falut handler!\n");
+		return;
+	}
 	
 fail:
 	frame_table_lock_release();

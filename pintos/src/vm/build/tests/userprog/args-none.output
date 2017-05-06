@@ -1,0 +1,31 @@
+Copying tests/userprog/args-none into /tmp/KJPtYRq7uT.dsk...
+Writing command line to /tmp/srTeUlHG3b.dsk...
+qemu -hda /tmp/srTeUlHG3b.dsk -hdb /tmp/V9JXDWYL0N.dsk -hdc /tmp/KJPtYRq7uT.dsk -hdd /tmp/S6OHmVRmlf.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put args-none run args-none
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  61,132,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 72 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'args-none' into the file system...
+Executing 'args-none':
+Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010d9cd 0xc010b033 0xc0101935 0xc0101b0b 0xc01093aa 0xc0108fbb 0xc010d73d 0xc010a088 0xc0109e08 0xc01099a6 0xc0100e69.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 69 ticks
+Thread: 30 idle ticks, 39 kernel ticks, 0 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 35 reads, 152 writes
+hd1:0: 72 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1241 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...

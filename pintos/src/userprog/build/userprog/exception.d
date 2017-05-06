@@ -4,6 +4,4 @@ userprog/exception.o: ../../userprog/exception.c \
   ../../lib/stdbool.h ../../lib/stddef.h ../../lib/kernel/stdio.h \
   ../../userprog/gdt.h ../../threads/loader.h ../../threads/interrupt.h \
   ../../threads/thread.h ../../lib/kernel/list.h ../../threads/synch.h \
-  ../../vm/page.h ../../threads/palloc.h ../../threads/thread.h \
-  ../../vm/swap.h ../../vm/page.h ../../vm/frame.h \
   ../../userprog/pagedir.h

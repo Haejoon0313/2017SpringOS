@@ -13,4 +13,5 @@ threads/init.o: ../../threads/init.c ../../threads/init.h \
   ../../userprog/syscall.h ../../userprog/tss.h ../../devices/disk.h \
   ../../lib/inttypes.h ../../filesys/filesys.h ../../filesys/off_t.h \
   ../../filesys/fsutil.h ../../vm/swap.h ../../vm/page.h \
-  ../../threads/palloc.h ../../threads/thread.h
+  ../../lib/kernel/hash.h ../../lib/kernel/list.h ../../filesys/file.h \
+  ../../filesys/off_t.h ../../threads/palloc.h ../../threads/thread.h

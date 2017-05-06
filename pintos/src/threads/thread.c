@@ -110,7 +110,7 @@ thread_init (void)
 	list_init (&sleeping_list);
 
 	#ifdef VM
-		frame_init();
+		frame_table_init();
 	#endif
 
 	lock_init(&file_lock);

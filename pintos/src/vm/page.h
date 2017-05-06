@@ -1,5 +1,10 @@
+#ifndef VM_PAGE_H
+#define VM_PAGE_H
+
 #include <list.h>
 #include <hash.h>
+#include "filesys/file.h"
+#include "filesys/off_t.h"
 #include "threads/palloc.h"
 #include "threads/thread.h"
 
@@ -24,3 +29,5 @@ void page_table_remove(struct hash * page_table);
 bool page_insert(struct file * file, off_t file_ofs, uint8_t * upage, uint32_t read_bytes, uint32_t zero_bytes, bool writable);
 struct sup_pte * get_sup_pte(struct hash * page_table, void * upage);
 bool page_remove(struct hash * page_table, void * upage);
+
+#endif

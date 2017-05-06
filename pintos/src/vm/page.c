@@ -81,7 +81,7 @@ bool page_less(const struct hash_elem * a, const struct hash_elem * b, void * au
 				struct sup_pte * pte_a = hash_entry(a, struct sup_pte, elem);
 				struct sup_pte * pte_b = hash_entry(b, struct sup_pte, elem);
 
-				return a->upage < b->upage;
+				return pte_a->upage < pte_b->upage;
 }
 
 static void page_table_free(struct hash_elem * e, void * aux UNUSED){

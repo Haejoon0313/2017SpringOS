@@ -25,21 +25,18 @@ void * frame_alloc(void * upage, enum palloc_flags flag){
 				
 				void * kpage = palloc_get_page(PAL_USER | flag);
 
-				frame_table_lock_acquire();
-
-				if(kpage == NULL){
+							if(kpage == NULL){
 								kpage = frame_evict(flag);
 
 								frame_table_lock_release();
 				}else{
 								struct fte * fte = malloc(sizeof(fte));
-								fte->thread = thread_current();
+								fte->origin_thread = thread_current();
 								fte->upage = upage;
 								fte->kpage = kpage;
 								list_push_back(&frame_table, &fte->elem);
 
-								frame_table_lock_release();
-				}
+							}
 
 				return kpage;//return kernel virtual address, pointing frame
 }
@@ -51,12 +48,12 @@ void * frame_alloc(void * upage, enum palloc_flags flag){
 	 */
 void frame_free(void *upage){
 				struct fte *temp_frame;
-
-				for(struct list_elem *e = list_begin(&frame_table) ; e != list_end(&frame_table) ; e = list_next(el)){
+				struct list_elem *e = NULL;
+				for(e = list_begin(&frame_table) ; e != list_end(&frame_table) ; e = list_next(e)){
 								temp_frame = list_entry(e,struct fte, elem);
 								
-								if(fte->upage == upage){
-												palloc_free_page(fte->kpage);
+								if(temp_frame->upage == upage){
+												palloc_free_page(temp_frame->kpage);
 												list_remove(e);
 												free(temp_frame);
 												break;
@@ -70,8 +67,6 @@ void * frame_evict(enum palloc_flags flag){
 				struct list_elem * el;
 				struct fte * evict_fte;
 				struct sup_pte * spte;
-				
-				frame_table_lock_acquire();
 
 				el = list_begin(&frame_table);
 
@@ -82,6 +77,8 @@ void * frame_evict(enum palloc_flags flag){
 						void * kpage = evict_fte->kpage;
 
 						spte = get_sup_pte(&evict_fte->origin_thread->sup_page_table, upage);
+						
+						/*swap out the first entry of Frame table */
 						spte->swapped = true;
 						spte->swap_index = swap_out(kpage);
 
@@ -94,8 +91,9 @@ void * frame_evict(enum palloc_flags flag){
 			
 			//	}
 
-				frame_table_lock_release();
 
+						//void * new_frame = palloc_get_page(PAL_USER | flag);
+			
 				return palloc_get_page(PAL_USER | flag);
 }
 

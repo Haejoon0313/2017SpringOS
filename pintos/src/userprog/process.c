@@ -18,9 +18,9 @@
 #include "threads/thread.h"
 #include "threads/vaddr.h"
 #ifdef VM
-#include "../vm/page.h"
-#include "../vm/frame.h"
-#include "../vm/swap.h"
+#include "vm/page.h"
+#include "vm/frame.h"
+#include "vm/swap.h"
 #endif
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
@@ -76,7 +76,7 @@ start_process (void *f_name)
 
 	#ifdef VM
 	struct thread *curr = thread_current();
-	page_init(&curr->sup_page_table);
+	page_table_init(&curr->sup_page_table);
 	#endif
 
   /* Initialize interrupt frame and load executable. */
@@ -526,7 +526,6 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 			
 			ASSERT(spte != NULL);
 
-
 			if (file_read(file, kpage, page_read_bytes)!=(int)page_read_bytes)//write file contents into frame
 			{
 					frame_free(upage);
@@ -539,7 +538,7 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
       if (!install_page (upage, kpage, writable)) 
         {
 					frame_free(upage);
-					page_remove(&cirr->sup_page_table,upage);	
+					page_remove(&curr->sup_page_table,upage);	
           return false; 
         }
 #else
@@ -597,7 +596,8 @@ setup_stack (void **esp,char * file_name)
 			if (success)
 			{
 					*esp = PHYS_BASE;
-					page_insert(NULL,NULL, ((uint8 *)PHYS_BASE) - PGSIZE, NULL, NULL,true);					
+					ASSERT(page_insert(NULL,NULL, ((uint8_t *)PHYS_BASE) - PGSIZE, NULL, NULL,true));
+			
 			}
 			else{
 					frame_free(((uint8_t *) PHYS_BASE) - PGSIZE);
@@ -609,7 +609,7 @@ setup_stack (void **esp,char * file_name)
 #else
 	//Before pj4(VM). NEed to be removed later.
 
-	if(false){
+	
   kpage = palloc_get_page (PAL_USER | PAL_ZERO);
   if (kpage != NULL) 
     {
@@ -619,7 +619,7 @@ setup_stack (void **esp,char * file_name)
 							*esp = PHYS_BASE;
 			}else
         palloc_free_page (kpage);
-    }};
+    };
 #endif
 
 	char *token, *rest;
