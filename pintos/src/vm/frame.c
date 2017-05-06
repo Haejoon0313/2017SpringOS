@@ -85,10 +85,13 @@ void * frame_evict(enum palloc_flags flag){
 						spte->swapped = true;
 						spte->swap_index = swap_out(kpage);
 
-						pagedir_clear_page(evict_fte->origin_thread->pagedir, upage);
-						palloc_free_page(kpage);
-						list_remove(el);
-						free(evict_fte);
+						pagedir_clear_page(evict_fte->origin_thread->pagedir, upage);						
+						frame_free(upage);
+
+					//	palloc_free_page(kpage);
+					//	list_remove(el);
+					//	free(evict_fte);
+			
 			//	}
 
 				frame_table_lock_release();

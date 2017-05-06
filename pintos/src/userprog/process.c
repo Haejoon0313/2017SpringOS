@@ -17,10 +17,11 @@
 #include "threads/palloc.h"
 #include "threads/thread.h"
 #include "threads/vaddr.h"
+#ifdef VM
 #include "../vm/page.h"
 #include "../vm/frame.h"
 #include "../vm/swap.h"
-
+#endif
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
 
@@ -73,10 +74,10 @@ start_process (void *f_name)
   struct intr_frame if_;
   bool success;	
 
-	//pj4
+	#ifdef VM
 	struct thread *curr = thread_current();
 	page_init(&curr->sup_page_table);
-	
+	#endif
 
   /* Initialize interrupt frame and load executable. */
   memset (&if_, 0, sizeof if_);
@@ -185,12 +186,11 @@ process_exit (void)
 
 	release_file_lock();
 
-	//pj4 part
+	#ifdef VM
 	frame_table_lock_acquire();
 	page_table_remove(&curr->sup_page_table);
 	frame_table_lock_release();
-
-
+	#endif
 
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
@@ -514,14 +514,18 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
       size_t page_zero_bytes = PGSIZE - page_read_bytes;	//the number of bytes to initialize to zero fillowing the bytes read
 
 
-			//pj4
+#ifdef VM
 			frame_table_lock_acquire();
+			
 			void * kpage = frame_alloc(upage,PAL_ZERO);//allocate frame for upage AND manage frame table etc.
 			page_insert(file, cur_ofs, upage, page_read_bytes, page_zero_bytes, writable);//Supplement page table manage
+			
 			frame_table_lock_release();
 		
-			struct sup_pte * new_pte = get_sup_pte(&curr->sup_page_table,upage);//ERROR case management required???????????
+			struct sup_pte * spte = get_sup_pte(&curr->sup_page_table,upage);//ERROR case management required???????????
 			
+			ASSERT(spte != NULL);
+
 
 			if (file_read(file, kpage, page_read_bytes)!=(int)page_read_bytes)//write file contents into frame
 			{
@@ -535,21 +539,13 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
       if (!install_page (upage, kpage, writable)) 
         {
 					frame_free(upage);
-          palloc_free_page (kpage);
-     		return false; 
+					page_remove(&cirr->sup_page_table,upage);	
+          return false; 
         }
-				
-      /* Advance. */
-      read_bytes -= page_read_bytes;
-      zero_bytes -= page_zero_bytes;
-      upage += PGSIZE;
-			cur_ofs += PGSIZE;
-
-
-
+#else
 
 			/*Before Project4 VM part. Need to Remove later */
-			if(false){
+			
       /* Get a page of memory. */
       uint8_t *kpage = palloc_get_page (PAL_USER);
       if (kpage == NULL)
@@ -568,7 +564,17 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
         {
           palloc_free_page (kpage);
           return false; 
-        }}
+        }
+
+
+#endif
+
+      /* Advance. */
+      read_bytes -= page_read_bytes;
+      zero_bytes -= page_zero_bytes;
+      upage += PGSIZE;
+			cur_ofs += PGSIZE;
+
 
    }
 
@@ -580,12 +586,12 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 static bool
 setup_stack (void **esp,char * file_name) 
 {
-  uint8_t *kpage;
+  void * kpage;
   bool success = false;
-
-
+#ifdef VM
 	frame_table_lock_acquire();
-	kpage = frame_alloc(((uint8_t *)PHYS_BASE) - PGSIZE, PAL_ZERO|PAL_USER);
+	kpage = frame_alloc(((uint8_t *)PHYS_BASE) - PGSIZE, PAL_ZERO);
+
 	if(kpage != NULL){
 			success = install_page(((uint8_t *) PHYS_BASE) - PGSIZE, kpage, true);
 			if (success)
@@ -600,9 +606,9 @@ setup_stack (void **esp,char * file_name)
 	frame_table_lock_release();
 
 
-
+#else
 	//Before pj4(VM). NEed to be removed later.
-/*
+
 	if(false){
   kpage = palloc_get_page (PAL_USER | PAL_ZERO);
   if (kpage != NULL) 
@@ -614,7 +620,7 @@ setup_stack (void **esp,char * file_name)
 			}else
         palloc_free_page (kpage);
     }};
-	*/
+#endif
 
 	char *token, *rest;
 	int argc = 0;

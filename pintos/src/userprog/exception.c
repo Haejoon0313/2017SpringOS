@@ -4,9 +4,13 @@
 #include "userprog/gdt.h"
 #include "threads/interrupt.h"
 #include "threads/thread.h"
+
+#ifdef VM
 #include "vm/page.h"
 #include "vm/swap.h"
 #include "vm/frame.h"
+#endif
+
 #include "userprog/pagedir.h"
 
 /* Number of page faults processed. */
@@ -156,7 +160,9 @@ page_fault (struct intr_frame *f)
      body, and replace it with code that brings in the page to
      which fault_addr refers. */
 	//Tips about pj4, page fault handler!
-  
+
+
+#ifdef VM
 	struct thread * curr = thread_current();
 	struct sup_pte * spte;
 	void * kpage;
@@ -170,12 +176,12 @@ page_fault (struct intr_frame *f)
 	if(not_present){
 					/*page fault is caused by SWAP */
 					if(spte!=NULL){
-							if (spte->swapped & !(pagedir_get_page(&curr->pagedir,spte->upage))){
+							if (spte->swapped && !(pagedir_get_page(curr->pagedir,spte->upage))){
 									kpage = frame_alloc(upage, PAL_ZERO);
 									swap_in(spte,kpage);
 					
 
-									bool swap_success = pagedir_set_page(&curr->pagedir, spte->upage, kpage, spte->writable);//여기 true로해야하나?
+									bool swap_success = pagedir_set_page(curr->pagedir, spte->upage, kpage, spte->writable);//여기 true로해야하나?
 									if (!swap_success){
 													frame_free(upage);
 													printf("Swap in pagefalut handler Failed!\n");
@@ -220,5 +226,16 @@ fail:
           write ? "writing" : "reading",
           user ? "user" : "kernel");
   kill (f);
+
+
+#else
+	printf ("Page fault at %p: %s error %s page in %s context.\n",
+          fault_addr,
+          not_present ? "not present" : "rights violation",
+          write ? "writing" : "reading",
+          user ? "user" : "kernel");
+  kill (f);
+#endif
+
 }
 

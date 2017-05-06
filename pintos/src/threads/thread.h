@@ -128,7 +128,7 @@ struct thread
 
 
 		/*Project4, Virtual Memory Members */
-		struct hash sup_page_table;
+		struct hash * sup_page_table;
 
 
 	};

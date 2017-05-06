@@ -15,6 +15,9 @@
 #include "vm/frame.h"
 #include "vm/page.h"
 
+/*data struct for swap disk */
+static struct bitmap * swap_table;
+static struct lock swap_lock;
 
 void
 swap_init(){

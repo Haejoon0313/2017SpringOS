@@ -10,12 +10,11 @@ struct sup_pte
 				uint32_t zero_bytes;
 				bool writable;
 				struct hash_elem elem;
-
-			
+	
 				off_t file_ofs;
-				bool swapped;
-				bool loaded;
-				int swap_index;
+				bool swapped; //initially false
+				bool loaded;	//initially true
+			  uint32_t swap_index;
 };
 
 void page_table_init(struct hash * page_table);
