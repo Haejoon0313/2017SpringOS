@@ -1,7 +1,7 @@
-Copying tests/vm/page-parallel into /tmp/T2b6H8Hozo.dsk...
-Copying tests/vm/child-linear into /tmp/T2b6H8Hozo.dsk...
-Writing command line to /tmp/jDS0LZd0sf.dsk...
-qemu -hda /tmp/jDS0LZd0sf.dsk -hdb /tmp/oONPsbv1vz.dsk -hdc /tmp/T2b6H8Hozo.dsk -hdd /tmp/uEugTz5kTL.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-parallel into /tmp/lPl9RpHMFv.dsk...
+Copying tests/vm/child-linear into /tmp/lPl9RpHMFv.dsk...
+Writing command line to /tmp/qZk0cQuZFC.dsk...
+qemu -hda /tmp/qZk0cQuZFC.dsk -hdb /tmp/PkGOpsYQLg.dsk -hdc /tmp/lPl9RpHMFv.dsk -hdd /tmp/qJ35LnenNs.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-parallel put child-linear run page-parallel
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -20,15 +20,25 @@ Executing 'page-parallel':
 (page-parallel) exec "child-linear"
 (page-parallel) exec "child-linear"
 child-linear: exit(66)
-Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc0107756 0xc0102acd 0xc010da26 0xc010b057 0xc0101935 0xc0101b0b 0xcccccccc 0xc0109088 0xc010d7d9 0xc010d9ca 0xc010d8ee 0xc010b099 0xc0101935 0xc0101b0b 0x804a045Kernel PANIC recursion at ../../threads/synch.c:242 in lock_acquire().
-Timer: 393 ticks
-Thread: 30 idle ticks, 62 kernel ticks, 301 user ticks
+child-linear: exit(66)
+(page-parallel) exec "child-linear"
+(page-parallel) exec "child-linear"
+child-linear: exit(66)
+child-linear: exit(66)
+(page-parallel) wait for child 0
+(page-parallel) wait for child 1
+(page-parallel) wait for child 2
+(page-parallel) wait for child 3
+(page-parallel) end
+page-parallel: exit(0)
+Execution of 'page-parallel' complete.
+Timer: 747 ticks
+Thread: 30 idle ticks, 53 kernel ticks, 664 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 164 reads, 308 writes
+hd0:1: 242 reads, 308 writes
 hd1:0: 149 reads, 0 writes
-hd1:1: 1128 reads, 2376 writes
-Console: 1386 characters output
+hd1:1: 4240 reads, 6656 writes
+Console: 1378 characters output
 Keyboard: 0 keys pressed
-Exception: 144 page faults
+Exception: 530 page faults
 Powering off...

@@ -14,9 +14,9 @@ struct fte
 };
 
 void frame_table_init(void);
-void * frame_alloc(void * upage, enum palloc_flags flag);
+void * frame_alloc(void * upage, enum palloc_flags);
 void frame_free(void * upage);
-void * frame_evict(enum palloc_flags flag);
+void * frame_evict(enum palloc_flags);
 void frame_table_lock_acquire(void);
 void frame_table_lock_release(void);
 

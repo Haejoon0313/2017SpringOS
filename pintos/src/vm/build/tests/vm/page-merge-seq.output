@@ -1,0 +1,72 @@
+Copying tests/vm/page-merge-seq into /tmp/BHI2cJJ0B7.dsk...
+Copying tests/vm/child-sort into /tmp/BHI2cJJ0B7.dsk...
+Writing command line to /tmp/lnXbogOEu4.dsk...
+qemu -hda /tmp/lnXbogOEu4.dsk -hdb /tmp/qdLlPXD95e.dsk -hdc /tmp/BHI2cJJ0B7.dsk -hdd /tmp/rPePxnHES0.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put page-merge-seq put child-sort run page-merge-seq
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  65,433,600 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-seq' into the file system...
+Putting 'child-sort' into the file system...
+Executing 'page-merge-seq':
+(page-merge-seq) begin
+(page-merge-seq) init
+(page-merge-seq) sort chunk 0
+child-sort: exit(123)
+(page-merge-seq) sort chunk 1
+child-sort: exit(123)
+(page-merge-seq) sort chunk 2
+child-sort: exit(123)
+(page-merge-seq) sort chunk 3
+child-sort: exit(123)
+(page-merge-seq) sort chunk 4
+child-sort: exit(123)
+(page-merge-seq) sort chunk 5
+child-sort: exit(123)
+(page-merge-seq) sort chunk 6
+child-sort: exit(123)
+(page-merge-seq) sort chunk 7
+child-sort: exit(123)
+(page-merge-seq) sort chunk 8
+child-sort: exit(123)
+(page-merge-seq) sort chunk 9
+child-sort: exit(123)
+(page-merge-seq) sort chunk 10
+child-sort: exit(123)
+(page-merge-seq) sort chunk 11
+child-sort: exit(123)
+(page-merge-seq) sort chunk 12
+child-sort: exit(123)
+(page-merge-seq) sort chunk 13
+child-sort: exit(123)
+(page-merge-seq) sort chunk 14
+child-sort: exit(123)
+(page-merge-seq) sort chunk 15
+child-sort: exit(123)
+(page-merge-seq) merge
+(page-merge-seq) verify
+(page-merge-seq) success, buf_idx=1,032,192
+(page-merge-seq) end
+page-merge-seq: exit(0)
+Kernel PANIC at ../../vm/swap.c:33 in swap_set(): assertion `bitmap_test(swap_table, !value)' failed.
+Call stack: 0xc0107756 0xc010daaf 0xc010d860 0xc0108f3f 0xc0108f89 0xc010d6f0 0xc0109b43 0xc0100c58 0xc010b909 0xc010b34b 0xc0101935 0xc0101b0b 0x804a3a3 0x8048ac8.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 950 ticks
+Thread: 30 idle ticks, 67 kernel ticks, 853 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 5023 reads, 4478 writes
+hd1:0: 153 reads, 0 writes
+hd1:1: 4528 reads, 5624 writes
+Console: 2348 characters output
+Keyboard: 0 keys pressed
+Exception: 566 page faults
+Powering off...

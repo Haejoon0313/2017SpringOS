@@ -50,7 +50,7 @@ void frame_free(void *upage){
 				for(e = list_begin(&frame_table) ; e != list_end(&frame_table) ; e = list_next(e)){
 								temp_frame = list_entry(e,struct fte, elem);
 								
-								if(temp_frame->upage == upage){
+								if(temp_frame->kpage == upage){
 												palloc_free_page(temp_frame->kpage);
 												list_remove(e);
 												free(temp_frame);
@@ -70,27 +70,23 @@ void * frame_evict(enum palloc_flags flag){
 
 				/*Simple FIFO algorithm */
 			//	for (el ; el != list_end(&frame_table) ; el = list_next(el)){ //iteraion not need in FIFO algorithm.
-						evict_fte = list_entry(el, struct fte, elem);
-						void * upage = evict_fte->upage;
-						void * kpage = evict_fte->kpage;
+				evict_fte = list_entry(el, struct fte, elem);
+				void * upage = evict_fte->upage;
+				void * kpage = evict_fte->kpage;
 
-						spte = get_sup_pte(&evict_fte->origin_thread->sup_page_table, upage);
+				spte = get_sup_pte(&(evict_fte->origin_thread->sup_page_table), upage);
 						
 						/*swap out the first entry of Frame table */
-						spte->swapped = true;
-						spte->swap_index = swap_out(kpage);
-
-						pagedir_clear_page(evict_fte->origin_thread->pagedir, upage);						
-						frame_free(upage);
-
-					//	palloc_free_page(kpage);
-					//	list_remove(el);
-					//	free(evict_fte);
-			
-			//	}
-
-
-						//void * new_frame = palloc_get_page(PAL_USER | flag);
+				spte->swapped = true;
+				spte->swap_index = swap_out(kpage);
+				
+				pagedir_clear_page(evict_fte->origin_thread->pagedir, upage);						
+				//frame_free(upage);
+				
+				//pagedir_clear_page(evict_fte->origin_thread->pagedir, upage);
+				palloc_free_page(kpage);
+				list_remove(el);
+				free(evict_fte);
 			
 				return palloc_get_page(PAL_USER | flag);
 }

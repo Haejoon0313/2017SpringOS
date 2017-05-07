@@ -5,6 +5,7 @@
 #include "threads/thread.h"
 #include "threads/vaddr.h"
 #include <bitmap.h>
+#include <debug.h>
 #include "devices/disk.h"
 #include "userprog/exception.h"
 #include "userprog/pagedir.h"
@@ -27,7 +28,7 @@ swap_init(){
 }
 
 /*ASSERT that current swap_idx is !value. Then, flip it into VALUE boolean. */
-/*
+
 void swap_set(uint32_t swap_idx, bool value){
 		ASSERT(bitmap_test(swap_table, !value));
 		lock_acquire(&swap_lock);
@@ -35,7 +36,7 @@ void swap_set(uint32_t swap_idx, bool value){
 		lock_release(&swap_lock);
 
 }
-*/
+
 /* When memory is full, Find victim page and Write it into disk
 	 by call the function swap out(kpage).
 	 victim page is pointed by KPAGE.

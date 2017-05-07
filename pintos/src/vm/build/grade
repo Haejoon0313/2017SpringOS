@@ -1,0 +1,1734 @@
+TOTAL TESTING SCORE: 51.4%
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+SUMMARY BY TEST SET
+
+Test Set                                      Pts Max  % Ttl  % Max
+--------------------------------------------- --- --- ------ ------
+tests/vm/Rubric.functionality                  11/ 55  10.0%/ 50.0%
+tests/vm/Rubric.robustness                     12/ 28   6.4%/ 15.0%
+tests/userprog/Rubric.functionality           108/108  10.0%/ 10.0%
+tests/userprog/Rubric.robustness               88/ 88   5.0%/  5.0%
+tests/filesys/base/Rubric                      30/ 30  20.0%/ 20.0%
+--------------------------------------------- --- --- ------ ------
+Total                                                  51.4%/100.0%
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+SUMMARY OF INDIVIDUAL TESTS
+
+Functionality of virtual memory subsystem (tests/vm/Rubric.functionality):
+	- Test stack growth.
+	  ** 0/ 3 tests/vm/pt-grow-stack
+	  ** 0/ 3 tests/vm/pt-grow-stk-sc
+	  ** 0/ 3 tests/vm/pt-big-stk-obj
+	  ** 0/ 3 tests/vm/pt-grow-pusha
+
+	- Test paging behavior.
+	     3/ 3 tests/vm/page-linear
+	     3/ 3 tests/vm/page-parallel
+	     3/ 3 tests/vm/page-shuffle
+	  ** 0/ 4 tests/vm/page-merge-seq
+	  ** 0/ 4 tests/vm/page-merge-par
+	  ** 0/ 4 tests/vm/page-merge-mm
+	  ** 0/ 4 tests/vm/page-merge-stk
+
+	- Test "mmap" system call.
+	  ** 0/ 2 tests/vm/mmap-read
+	  ** 0/ 2 tests/vm/mmap-write
+	  ** 0/ 2 tests/vm/mmap-shuffle
+
+	  ** 0/ 2 tests/vm/mmap-twice
+
+	     2/ 2 tests/vm/mmap-unmap
+	  ** 0/ 1 tests/vm/mmap-exit
+
+	  ** 0/ 3 tests/vm/mmap-clean
+
+	  ** 0/ 2 tests/vm/mmap-close
+	  ** 0/ 2 tests/vm/mmap-remove
+
+	- Section summary.
+	      4/ 20 tests passed
+	     11/ 55 points subtotal
+
+Robustness of virtual memory subsystem (tests/vm/Rubric.robustness):
+	- Test robustness of page table support.
+	     2/ 2 tests/vm/pt-bad-addr
+	     3/ 3 tests/vm/pt-bad-read
+	     2/ 2 tests/vm/pt-write-code
+	  ** 0/ 3 tests/vm/pt-write-code2
+	     4/ 4 tests/vm/pt-grow-bad
+
+	- Test robustness of "mmap" system call.
+	  ** 0/ 1 tests/vm/mmap-bad-fd
+	  ** 0/ 1 tests/vm/mmap-inherit
+	  ** 0/ 1 tests/vm/mmap-null
+	     1/ 1 tests/vm/mmap-zero
+
+	  ** 0/ 2 tests/vm/mmap-misalign
+
+	  ** 0/ 2 tests/vm/mmap-over-code
+	  ** 0/ 2 tests/vm/mmap-over-data
+	  ** 0/ 2 tests/vm/mmap-over-stk
+	  ** 0/ 2 tests/vm/mmap-overlap
+
+
+	- Section summary.
+	      5/ 14 tests passed
+	     12/ 28 points subtotal
+
+Functionality of system calls (tests/userprog/Rubric.functionality):
+	- Test argument passing on Pintos command line.
+	     3/ 3 tests/userprog/args-none
+	     3/ 3 tests/userprog/args-single
+	     3/ 3 tests/userprog/args-multiple
+	     3/ 3 tests/userprog/args-many
+	     3/ 3 tests/userprog/args-dbl-space
+
+	- Test "create" system call.
+	     3/ 3 tests/userprog/create-empty
+	     3/ 3 tests/userprog/create-long
+	     3/ 3 tests/userprog/create-normal
+	     3/ 3 tests/userprog/create-exists
+
+	- Test "open" system call.
+	     3/ 3 tests/userprog/open-missing
+	     3/ 3 tests/userprog/open-normal
+	     3/ 3 tests/userprog/open-twice
+
+	- Test "read" system call.
+	     3/ 3 tests/userprog/read-normal
+	     3/ 3 tests/userprog/read-zero
+
+	- Test "write" system call.
+	     3/ 3 tests/userprog/write-normal
+	     3/ 3 tests/userprog/write-zero
+
+	- Test "close" system call.
+	     3/ 3 tests/userprog/close-normal
+
+	- Test "exec" system call.
+	     5/ 5 tests/userprog/exec-once
+	     5/ 5 tests/userprog/exec-multiple
+	     5/ 5 tests/userprog/exec-arg
+
+	- Test "wait" system call.
+	     5/ 5 tests/userprog/wait-simple
+	     5/ 5 tests/userprog/wait-twice
+
+	- Test "exit" system call.
+	     5/ 5 tests/userprog/exit
+
+	- Test "halt" system call.
+	     3/ 3 tests/userprog/halt
+
+	- Test recursive execution of user programs.
+	    15/15 tests/userprog/multi-recurse
+
+	- Test read-only executable feature.
+	     3/ 3 tests/userprog/rox-simple
+	     3/ 3 tests/userprog/rox-child
+	     3/ 3 tests/userprog/rox-multichild
+
+	- Section summary.
+	     28/ 28 tests passed
+	    108/108 points subtotal
+
+Robustness of system calls (tests/userprog/Rubric.robustness):
+	- Test robustness of file descriptor handling.
+	     2/ 2 tests/userprog/close-stdin
+	     2/ 2 tests/userprog/close-stdout
+	     2/ 2 tests/userprog/close-bad-fd
+	     2/ 2 tests/userprog/close-twice
+	     2/ 2 tests/userprog/read-bad-fd
+	     2/ 2 tests/userprog/read-stdout
+	     2/ 2 tests/userprog/write-bad-fd
+	     2/ 2 tests/userprog/write-stdin
+	     2/ 2 tests/userprog/multi-child-fd
+
+	- Test robustness of pointer handling.
+	     3/ 3 tests/userprog/create-bad-ptr
+	     3/ 3 tests/userprog/exec-bad-ptr
+	     3/ 3 tests/userprog/open-bad-ptr
+	     3/ 3 tests/userprog/read-bad-ptr
+	     3/ 3 tests/userprog/write-bad-ptr
+
+	- Test robustness of buffer copying across page boundaries.
+	     3/ 3 tests/userprog/create-bound
+	     3/ 3 tests/userprog/open-boundary
+	     3/ 3 tests/userprog/read-boundary
+	     3/ 3 tests/userprog/write-boundary
+
+	- Test handling of null pointer and empty strings.
+	     2/ 2 tests/userprog/create-null
+	     2/ 2 tests/userprog/open-null
+	     2/ 2 tests/userprog/open-empty
+
+	- Test robustness of system call implementation.
+	     3/ 3 tests/userprog/sc-bad-arg
+	     3/ 3 tests/userprog/sc-bad-sp
+	     5/ 5 tests/userprog/sc-boundary
+	     5/ 5 tests/userprog/sc-boundary-2
+
+	- Test robustness of "exec" and "wait" system calls.
+	     5/ 5 tests/userprog/exec-missing
+	     5/ 5 tests/userprog/wait-bad-pid
+	     5/ 5 tests/userprog/wait-killed
+
+	- Test robustness of exception handling.
+	     1/ 1 tests/userprog/bad-read
+	     1/ 1 tests/userprog/bad-write
+	     1/ 1 tests/userprog/bad-jump
+	     1/ 1 tests/userprog/bad-read2
+	     1/ 1 tests/userprog/bad-write2
+	     1/ 1 tests/userprog/bad-jump2
+
+	- Section summary.
+	     34/ 34 tests passed
+	     88/ 88 points subtotal
+
+Functionality of base file system (tests/filesys/base/Rubric):
+	- Test basic support for small files.
+	     1/ 1 tests/filesys/base/sm-create
+	     2/ 2 tests/filesys/base/sm-full
+	     2/ 2 tests/filesys/base/sm-random
+	     2/ 2 tests/filesys/base/sm-seq-block
+	     3/ 3 tests/filesys/base/sm-seq-random
+
+	- Test basic support for large files.
+	     1/ 1 tests/filesys/base/lg-create
+	     2/ 2 tests/filesys/base/lg-full
+	     2/ 2 tests/filesys/base/lg-random
+	     2/ 2 tests/filesys/base/lg-seq-block
+	     3/ 3 tests/filesys/base/lg-seq-random
+
+	- Test synchronized multiprogram access to files.
+	     4/ 4 tests/filesys/base/syn-read
+	     4/ 4 tests/filesys/base/syn-write
+	     2/ 2 tests/filesys/base/syn-remove
+
+	- Section summary.
+	     13/ 13 tests passed
+	     30/ 30 points subtotal
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/pt-grow-stack FAILURE:
+
+Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010da01 0xc010b047 0xc0101935 0xc0101b0b 0xc010b1c2 0xc0101935 0xc0101b0b 0x80480ab 0x8048883 0x80488b0
+Translation of call stack:
+In kernel.o:
+0xc0107756: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0102acd: lock_acquire (...../../threads/synch.c:243)
+0xc010da01: frame_table_lock_acquire (...build/../../vm/frame.c:97)
+0xc010b047: page_fault (.../userprog/exception.c:175)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+0xc010b1c2: page_fault (.../userprog/exception.c:209)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/pt-grow-stack:
+0x080480ab: test_main (...sts/vm/pt-grow-stack.c:16)
+0x08048883: main (...ild/../../tests/main.c:13)
+0x080488b0: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
+
+OUTPUT FROM tests/vm/pt-grow-stack:
+
+Copying tests/vm/pt-grow-stack into /tmp/2xs7hEF4RS.dsk...
+Writing command line to /tmp/ROkMcWSWAf.dsk...
+qemu -hda /tmp/ROkMcWSWAf.dsk -hdb /tmp/xFlvkuB9F5.dsk -hdc /tmp/2xs7hEF4RS.dsk -hdd /tmp/M4RKlr2hcU.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put pt-grow-stack run pt-grow-stack
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 81 sector (40 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'pt-grow-stack' into the file system...
+Executing 'pt-grow-stack':
+(pt-grow-stack) begin
+Stack growth start
+Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010da01 0xc010b047 0xc0101935 0xc0101b0b 0xc010b1c2 0xc0101935 0xc0101b0b 0x80480ab 0x8048883 0x80488b0.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 71 ticks
+Thread: 30 idle ticks, 41 kernel ticks, 0 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 67 reads, 170 writes
+hd1:0: 81 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1284 characters output
+Keyboard: 0 keys pressed
+Exception: 2 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/pt-grow-stk-sc FAILURE:
+
+Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010da01 0xc010b047 0xc0101935 0xc0101b0b 0xc010b1c2 0xc0101935 0xc0101b0b 0x80480c3 0x80487d7 0x8048804
+Translation of call stack:
+In kernel.o:
+0xc0107756: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0102acd: lock_acquire (...../../threads/synch.c:243)
+0xc010da01: frame_table_lock_acquire (...build/../../vm/frame.c:97)
+0xc010b047: page_fault (.../userprog/exception.c:175)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+0xc010b1c2: page_fault (.../userprog/exception.c:209)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/pt-grow-stk-sc:
+0x080480c3: test_main (...ts/vm/pt-grow-stk-sc.c:21)
+0x080487d7: main (...ild/../../tests/main.c:13)
+0x08048804: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
+
+OUTPUT FROM tests/vm/pt-grow-stk-sc:
+
+Copying tests/vm/pt-grow-stk-sc into /tmp/uUJCzhCbfp.dsk...
+Writing command line to /tmp/o7hqBgYPgv.dsk...
+qemu -hda /tmp/o7hqBgYPgv.dsk -hdb /tmp/4H4qQN6dgO.dsk -hdc /tmp/uUJCzhCbfp.dsk -hdd /tmp/pBoTz9ylhr.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put pt-grow-stk-sc run pt-grow-stk-sc
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'pt-grow-stk-sc' into the file system...
+Executing 'pt-grow-stk-sc':
+(pt-grow-stk-sc) begin
+Stack growth start
+Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010da01 0xc010b047 0xc0101935 0xc0101b0b 0xc010b1c2 0xc0101935 0xc0101b0b 0x80480c3 0x80487d7 0x8048804.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 65 ticks
+Thread: 30 idle ticks, 34 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 67 reads, 160 writes
+hd1:0: 76 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1289 characters output
+Keyboard: 0 keys pressed
+Exception: 2 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/pt-big-stk-obj FAILURE:
+
+Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010da01 0xc010b047 0xc0101935 0xc0101b0b 0xc010b1c2 0xc0101935 0xc0101b0b 0x80480ab 0x8048883 0x80488b0
+Translation of call stack:
+In kernel.o:
+0xc0107756: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0102acd: lock_acquire (...../../threads/synch.c:243)
+0xc010da01: frame_table_lock_acquire (...build/../../vm/frame.c:97)
+0xc010b047: page_fault (.../userprog/exception.c:175)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+0xc010b1c2: page_fault (.../userprog/exception.c:209)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/pt-big-stk-obj:
+0x080480ab: test_main (...ts/vm/pt-big-stk-obj.c:16)
+0x08048883: main (...ild/../../tests/main.c:13)
+0x080488b0: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
+
+OUTPUT FROM tests/vm/pt-big-stk-obj:
+
+Copying tests/vm/pt-big-stk-obj into /tmp/7rHee22ZBv.dsk...
+Writing command line to /tmp/AsBKPWLmhc.dsk...
+qemu -hda /tmp/AsBKPWLmhc.dsk -hdb /tmp/0mve9gVBsc.dsk -hdc /tmp/7rHee22ZBv.dsk -hdd /tmp/mTbOsqiKKx.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put pt-big-stk-obj run pt-big-stk-obj
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 81 sector (40 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'pt-big-stk-obj' into the file system...
+Executing 'pt-big-stk-obj':
+(pt-big-stk-obj) begin
+Stack growth start
+Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010da01 0xc010b047 0xc0101935 0xc0101b0b 0xc010b1c2 0xc0101935 0xc0101b0b 0x80480ab 0x8048883 0x80488b0.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 75 ticks
+Thread: 30 idle ticks, 44 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 67 reads, 170 writes
+hd1:0: 81 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1289 characters output
+Keyboard: 0 keys pressed
+Exception: 2 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/pt-grow-pusha FAILURE:
+
+Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010da01 0xc010b047 0xc0101935 0xc0101b0b 0xc010b1c2 0xc0101935 0xc0101b0b 0x80480ab 0x804868f 0x80486bc
+Translation of call stack:
+In kernel.o:
+0xc0107756: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0102acd: lock_acquire (...../../threads/synch.c:243)
+0xc010da01: frame_table_lock_acquire (...build/../../vm/frame.c:97)
+0xc010b047: page_fault (.../userprog/exception.c:175)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+0xc010b1c2: page_fault (.../userprog/exception.c:209)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/pt-grow-pusha:
+0x080480ab: test_main (...sts/vm/pt-grow-pusha.c:14)
+0x0804868f: main (...ild/../../tests/main.c:13)
+0x080486bc: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
+
+OUTPUT FROM tests/vm/pt-grow-pusha:
+
+Copying tests/vm/pt-grow-pusha into /tmp/8sCajXZ332.dsk...
+Writing command line to /tmp/i0RHZmEz6V.dsk...
+qemu -hda /tmp/i0RHZmEz6V.dsk -hdb /tmp/caNZTxSFCR.dsk -hdc /tmp/8sCajXZ332.dsk -hdd /tmp/GkvYQmIYnj.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put pt-grow-pusha run pt-grow-pusha
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 73 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'pt-grow-pusha' into the file system...
+Executing 'pt-grow-pusha':
+(pt-grow-pusha) begin
+Stack growth start
+Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010da01 0xc010b047 0xc0101935 0xc0101b0b 0xc010b1c2 0xc0101935 0xc0101b0b 0x80480ab 0x804868f 0x80486bc.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 66 ticks
+Thread: 30 idle ticks, 35 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 58 reads, 154 writes
+hd1:0: 73 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1284 characters output
+Keyboard: 0 keys pressed
+Exception: 2 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/page-merge-seq FAILURE:
+
+Kernel panic in run: PANIC at ../../vm/swap.c:33 in swap_set(): assertion `bitmap_test(swap_table, !value)' failed.
+Call stack: 0xc0107756 0xc010daaf 0xc010d860 0xc0108f3f 0xc0108f89 0xc010d6f0 0xc0109b43 0xc0100c58 0xc010b909 0xc010b34b 0xc0101935 0xc0101b0b 0x804a3a3 0x8048ac8
+Translation of call stack:
+In kernel.o:
+0xc0107756: debug_panic (.../../lib/kernel/debug.c:34)
+0xc010daaf: swap_set (.../build/../../vm/swap.c:34)
+0xc010d860: page_table_free (...build/../../vm/page.c:100)
+0xc0108f3f: hash_clear (..../../lib/kernel/hash.c:67)
+0xc0108f89: hash_destroy (..../../lib/kernel/hash.c:91)
+0xc010d6f0: page_table_remove (.../build/../../vm/page.c:24)
+0xc0109b43: process_exit (...../userprog/process.c:192)
+0xc0100c58: thread_exit (..../../threads/thread.c:334)
+0xc010b909: close_all_filelist (...../userprog/syscall.c:333)
+0xc010b34b: syscall_handler (.../../userprog/syscall.c:52)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/page-merge-seq:
+0x0804a3a3: exit (.../../lib/user/syscall.c:74)
+0x08048ac8: random_init (...ild/../../lib/random.c:35)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
+
+OUTPUT FROM tests/vm/page-merge-seq:
+
+Copying tests/vm/page-merge-seq into /tmp/BHI2cJJ0B7.dsk...
+Copying tests/vm/child-sort into /tmp/BHI2cJJ0B7.dsk...
+Writing command line to /tmp/lnXbogOEu4.dsk...
+qemu -hda /tmp/lnXbogOEu4.dsk -hdb /tmp/qdLlPXD95e.dsk -hdc /tmp/BHI2cJJ0B7.dsk -hdd /tmp/rPePxnHES0.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put page-merge-seq put child-sort run page-merge-seq
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  65,433,600 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-seq' into the file system...
+Putting 'child-sort' into the file system...
+Executing 'page-merge-seq':
+(page-merge-seq) begin
+(page-merge-seq) init
+(page-merge-seq) sort chunk 0
+child-sort: exit(123)
+(page-merge-seq) sort chunk 1
+child-sort: exit(123)
+(page-merge-seq) sort chunk 2
+child-sort: exit(123)
+(page-merge-seq) sort chunk 3
+child-sort: exit(123)
+(page-merge-seq) sort chunk 4
+child-sort: exit(123)
+(page-merge-seq) sort chunk 5
+child-sort: exit(123)
+(page-merge-seq) sort chunk 6
+child-sort: exit(123)
+(page-merge-seq) sort chunk 7
+child-sort: exit(123)
+(page-merge-seq) sort chunk 8
+child-sort: exit(123)
+(page-merge-seq) sort chunk 9
+child-sort: exit(123)
+(page-merge-seq) sort chunk 10
+child-sort: exit(123)
+(page-merge-seq) sort chunk 11
+child-sort: exit(123)
+(page-merge-seq) sort chunk 12
+child-sort: exit(123)
+(page-merge-seq) sort chunk 13
+child-sort: exit(123)
+(page-merge-seq) sort chunk 14
+child-sort: exit(123)
+(page-merge-seq) sort chunk 15
+child-sort: exit(123)
+(page-merge-seq) merge
+(page-merge-seq) verify
+(page-merge-seq) success, buf_idx=1,032,192
+(page-merge-seq) end
+page-merge-seq: exit(0)
+Kernel PANIC at ../../vm/swap.c:33 in swap_set(): assertion `bitmap_test(swap_table, !value)' failed.
+Call stack: 0xc0107756 0xc010daaf 0xc010d860 0xc0108f3f 0xc0108f89 0xc010d6f0 0xc0109b43 0xc0100c58 0xc010b909 0xc010b34b 0xc0101935 0xc0101b0b 0x804a3a3 0x8048ac8.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 950 ticks
+Thread: 30 idle ticks, 67 kernel ticks, 853 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 5023 reads, 4478 writes
+hd1:0: 153 reads, 0 writes
+hd1:1: 4528 reads, 5624 writes
+Console: 2348 characters output
+Keyboard: 0 keys pressed
+Exception: 566 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/page-merge-par FAILURE:
+
+Kernel panic in run: PANIC at ../../vm/swap.c:33 in swap_set(): assertion `bitmap_test(swap_table, !value)' failed.
+Call stack: 0xc0107756 0xc010daaf 0xc010d860 0xc0108f3f 0xc0108f89 0xc010d6f0 0xc0109b43 0xc0100c58 0xc010b909 0xc010b34b 0xc0101935 0xc0101b0b 0x804a463 0x8048b84
+Translation of call stack:
+In kernel.o:
+0xc0107756: debug_panic (.../../lib/kernel/debug.c:34)
+0xc010daaf: swap_set (.../build/../../vm/swap.c:34)
+0xc010d860: page_table_free (...build/../../vm/page.c:100)
+0xc0108f3f: hash_clear (..../../lib/kernel/hash.c:67)
+0xc0108f89: hash_destroy (..../../lib/kernel/hash.c:91)
+0xc010d6f0: page_table_remove (.../build/../../vm/page.c:24)
+0xc0109b43: process_exit (...../userprog/process.c:192)
+0xc0100c58: thread_exit (..../../threads/thread.c:334)
+0xc010b909: close_all_filelist (...../userprog/syscall.c:333)
+0xc010b34b: syscall_handler (.../../userprog/syscall.c:52)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/page-merge-par:
+0x0804a463: exit (.../../lib/user/syscall.c:74)
+0x08048b84: random_init (...ild/../../lib/random.c:35)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
+
+OUTPUT FROM tests/vm/page-merge-par:
+
+Copying tests/vm/page-merge-par into /tmp/gcBvVjcN2u.dsk...
+Copying tests/vm/child-sort into /tmp/gcBvVjcN2u.dsk...
+Writing command line to /tmp/IhBKXxBvJC.dsk...
+qemu -hda /tmp/IhBKXxBvJC.dsk -hdb /tmp/mgsVn0uPWF.dsk -hdc /tmp/gcBvVjcN2u.dsk -hdd /tmp/Zkr9aYKicZ.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 155 sector (77 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-par' into the file system...
+Putting 'child-sort' into the file system...
+Executing 'page-merge-par':
+(page-merge-par) begin
+(page-merge-par) init
+(page-merge-par) sort chunk 0
+(page-merge-par) sort chunk 1
+child-sort: exit(123)
+(page-merge-par) sort chunk 2
+child-sort: exit(123)
+(page-merge-par) sort chunk 3
+child-sort: exit(123)
+(page-merge-par) sort chunk 4
+child-sort: exit(123)
+(page-merge-par) sort chunk 5
+child-sort: exit(123)
+(page-merge-par) sort chunk 6
+child-sort: exit(123)
+(page-merge-par) sort chunk 7
+child-sort: exit(123)
+(page-merge-par) wait for child 0
+child-sort: exit(123)
+(page-merge-par) wait for child 1
+(page-merge-par) wait for child 2
+(page-merge-par) wait for child 3
+(page-merge-par) wait for child 4
+(page-merge-par) wait for child 5
+(page-merge-par) wait for child 6
+(page-merge-par) wait for child 7
+(page-merge-par) merge
+(page-merge-par) verify
+(page-merge-par) success, buf_idx=1,048,576
+(page-merge-par) end
+page-merge-par: exit(0)
+Kernel PANIC at ../../vm/swap.c:33 in swap_set(): assertion `bitmap_test(swap_table, !value)' failed.
+Call stack: 0xc0107756 0xc010daaf 0xc010d860 0xc0108f3f 0xc0108f89 0xc010d6f0 0xc0109b43 0xc0100c58 0xc010b909 0xc010b34b 0xc0101935 0xc0101b0b 0x804a463 0x8048b84.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 1170 ticks
+Thread: 30 idle ticks, 59 kernel ticks, 1081 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 4920 reads, 6496 writes
+hd1:0: 155 reads, 0 writes
+hd1:1: 4584 reads, 5744 writes
+Console: 2200 characters output
+Keyboard: 0 keys pressed
+Exception: 573 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/page-merge-mm FAILURE:
+
+Kernel panic in run: PANIC at ../../vm/swap.c:33 in swap_set(): assertion `bitmap_test(swap_table, !value)' failed.
+Call stack: 0xc0107756 0xc010daaf 0xc010d860 0xc0108f3f 0xc0108f89 0xc010d6f0 0xc0109b43 0xc0100c58 0xc010b909 0xc010b34b 0xc0101935 0xc0101b0b 0x804a463 0x80486af 0x8048282 0x8048442 0x80480ba 0x8048b4f 0x8048b7c
+Translation of call stack:
+In kernel.o:
+0xc0107756: debug_panic (.../../lib/kernel/debug.c:34)
+0xc010daaf: swap_set (.../build/../../vm/swap.c:34)
+0xc010d860: page_table_free (...build/../../vm/page.c:100)
+0xc0108f3f: hash_clear (..../../lib/kernel/hash.c:67)
+0xc0108f89: hash_destroy (..../../lib/kernel/hash.c:91)
+0xc010d6f0: page_table_remove (.../build/../../vm/page.c:24)
+0xc0109b43: process_exit (...../userprog/process.c:192)
+0xc0100c58: thread_exit (..../../threads/thread.c:334)
+0xc010b909: close_all_filelist (...../userprog/syscall.c:333)
+0xc010b34b: syscall_handler (.../../userprog/syscall.c:52)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/page-merge-mm:
+0x0804a463: exit (.../../lib/user/syscall.c:74)
+0x080486af: swap (...uild/../../tests/lib.c:53)
+0x08048282: sort_chunks (...ts/vm/parallel-merge.c:74)
+0x08048442: parallel_merge (...s/vm/parallel-merge.c:147)
+0x080480ba: test_main (...ests/vm/page-merge-mm.c:8)
+0x08048b4f: main (...ild/../../tests/main.c:13)
+0x08048b7c: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
+
+OUTPUT FROM tests/vm/page-merge-mm:
+
+Copying tests/vm/page-merge-mm into /tmp/vTJe7Pbeky.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/vTJe7Pbeky.dsk...
+Writing command line to /tmp/dzaUbO6dTf.dsk...
+qemu -hda /tmp/dzaUbO6dTf.dsk -hdb /tmp/BWuf6uItbX.dsk -hdc /tmp/vTJe7Pbeky.dsk -hdd /tmp/HZaN2iuXH0.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 160 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-mm' into the file system...
+Putting 'child-qsort-mm' into the file system...
+Executing 'page-merge-mm':
+(page-merge-mm) begin
+(page-merge-mm) init
+(page-merge-mm) sort chunk 0
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 1
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 2
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 3
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 4
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 5
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 6
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 7
+child-qsort-mm: exit(-1)
+(page-merge-mm) wait for child 0
+(page-merge-mm) wait for child 0: FAILED
+page-merge-mm: exit(1)
+Kernel PANIC at ../../vm/swap.c:33 in swap_set(): assertion `bitmap_test(swap_table, !value)' failed.
+Call stack: 0xc0107756 0xc010daaf 0xc010d860 0xc0108f3f 0xc0108f89 0xc010d6f0 0xc0109b43 0xc0100c58 0xc010b909 0xc010b34b 0xc0101935 0xc0101b0b 0x804a463 0x80486af 0x8048282 0x8048442 0x80480ba 0x8048b4f 0x8048b7c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 721 ticks
+Thread: 30 idle ticks, 49 kernel ticks, 642 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 772 reads, 4458 writes
+hd1:0: 160 reads, 0 writes
+hd1:1: 2088 reads, 3296 writes
+Console: 1954 characters output
+Keyboard: 0 keys pressed
+Exception: 269 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/page-merge-stk FAILURE:
+
+Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010da01 0xc010b047 0xc0101935 0xc0101b0b 0xc010b1c2 0xc0101935 0xc0101b0b 0x80480c5 0x804899c
+Translation of call stack:
+In kernel.o:
+0xc0107756: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0102acd: lock_acquire (...../../threads/synch.c:243)
+0xc010da01: frame_table_lock_acquire (...build/../../vm/frame.c:97)
+0xc010b047: page_fault (.../userprog/exception.c:175)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+0xc010b1c2: page_fault (.../userprog/exception.c:209)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/page-merge-stk:
+0x080480c5: init (...ts/vm/parallel-merge.c:24)
+0x0804899c: check_file (...ild/../../tests/lib.c:157)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
+
+OUTPUT FROM tests/vm/page-merge-stk:
+
+Copying tests/vm/page-merge-stk into /tmp/14bhiUDrwE.dsk...
+Copying tests/vm/child-qsort into /tmp/14bhiUDrwE.dsk...
+Writing command line to /tmp/m3g9gk5jFz.dsk...
+qemu -hda /tmp/m3g9gk5jFz.dsk -hdb /tmp/ymfY2FFOc2.dsk -hdc /tmp/14bhiUDrwE.dsk -hdd /tmp/yFTO9Oc6YP.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put page-merge-stk put child-qsort run page-merge-stk
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 160 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-stk' into the file system...
+Putting 'child-qsort' into the file system...
+Executing 'page-merge-stk':
+(page-merge-stk) begin
+(page-merge-stk) init
+(page-merge-stk) sort chunk 0
+Stack growth start
+Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010da01 0xc010b047 0xc0101935 0xc0101b0b 0xc010b1c2 0xc0101935 0xc0101b0b 0x80480c5 0x804899c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 418 ticks
+Thread: 30 idle ticks, 51 kernel ticks, 337 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 158 reads, 846 writes
+hd1:0: 160 reads, 0 writes
+hd1:1: 2088 reads, 3304 writes
+Console: 1405 characters output
+Keyboard: 0 keys pressed
+Exception: 263 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-read FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (mmap-read) begin
+  (mmap-read) open "sample.txt"
+  (mmap-read) mmap "sample.txt"
+  (mmap-read) end
+Differences in `diff -u' format:
+  (mmap-read) begin
+  (mmap-read) open "sample.txt"
+  (mmap-read) mmap "sample.txt"
+- (mmap-read) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/mmap-read:
+
+Copying tests/vm/mmap-read into /tmp/klV1f8T9Da.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/klV1f8T9Da.dsk...
+Writing command line to /tmp/c6Mr0vK2wM.dsk...
+qemu -hda /tmp/c6Mr0vK2wM.dsk -hdb /tmp/fepU75WyBE.dsk -hdc /tmp/klV1f8T9Da.dsk -hdd /tmp/8mzsLCX7j7.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-read put sample.txt run mmap-read
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 79 sector (39 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-read' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-read':
+(mmap-read) begin
+(mmap-read) open "sample.txt"
+(mmap-read) mmap "sample.txt"
+mmap-read: exit(-1)
+Execution of 'mmap-read' complete.
+Timer: 78 ticks
+Thread: 30 idle ticks, 47 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 98 reads, 168 writes
+hd1:0: 79 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1007 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-write FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (mmap-write) begin
+  (mmap-write) create "sample.txt"
+  (mmap-write) open "sample.txt"
+  (mmap-write) mmap "sample.txt"
+  (mmap-write) compare read data against written data
+  (mmap-write) end
+Differences in `diff -u' format:
+  (mmap-write) begin
+  (mmap-write) create "sample.txt"
+  (mmap-write) open "sample.txt"
+  (mmap-write) mmap "sample.txt"
+- (mmap-write) compare read data against written data
+- (mmap-write) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/mmap-write:
+
+Copying tests/vm/mmap-write into /tmp/piwqQOMnSV.dsk...
+Writing command line to /tmp/PLaaQJGa0Z.dsk...
+qemu -hda /tmp/PLaaQJGa0Z.dsk -hdb /tmp/biI9QO4mGF.dsk -hdc /tmp/piwqQOMnSV.dsk -hdd /tmp/PNb6unPd11.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+mmap-write: exit(-1)
+Execution of 'mmap-write' complete.
+Timer: 68 ticks
+Thread: 30 idle ticks, 35 kernel ticks, 3 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 93 reads, 166 writes
+hd1:0: 76 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 989 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-shuffle FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (mmap-shuffle) begin
+  (mmap-shuffle) create "buffer"
+  (mmap-shuffle) open "buffer"
+  (mmap-shuffle) mmap "buffer"
+  (mmap-shuffle) init: cksum=3115322833
+  (mmap-shuffle) shuffle 0: cksum=1691062564
+  (mmap-shuffle) shuffle 1: cksum=1973575879
+  (mmap-shuffle) shuffle 2: cksum=1647619479
+  (mmap-shuffle) shuffle 3: cksum=96566261
+  (mmap-shuffle) shuffle 4: cksum=3885786467
+  (mmap-shuffle) shuffle 5: cksum=3022003332
+  (mmap-shuffle) shuffle 6: cksum=3614934266
+  (mmap-shuffle) shuffle 7: cksum=2704001777
+  (mmap-shuffle) shuffle 8: cksum=735775156
+  (mmap-shuffle) shuffle 9: cksum=1864109763
+  (mmap-shuffle) end
+Differences in `diff -u' format:
+  (mmap-shuffle) begin
+  (mmap-shuffle) create "buffer"
+  (mmap-shuffle) open "buffer"
+  (mmap-shuffle) mmap "buffer"
+- (mmap-shuffle) init: cksum=3115322833
+- (mmap-shuffle) shuffle 0: cksum=1691062564
+- (mmap-shuffle) shuffle 1: cksum=1973575879
+- (mmap-shuffle) shuffle 2: cksum=1647619479
+- (mmap-shuffle) shuffle 3: cksum=96566261
+- (mmap-shuffle) shuffle 4: cksum=3885786467
+- (mmap-shuffle) shuffle 5: cksum=3022003332
+- (mmap-shuffle) shuffle 6: cksum=3614934266
+- (mmap-shuffle) shuffle 7: cksum=2704001777
+- (mmap-shuffle) shuffle 8: cksum=735775156
+- (mmap-shuffle) shuffle 9: cksum=1864109763
+- (mmap-shuffle) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/mmap-shuffle:
+
+Copying tests/vm/mmap-shuffle into /tmp/x8PXwnVF0o.dsk...
+Writing command line to /tmp/etK7gDGhGe.dsk...
+qemu -hda /tmp/etK7gDGhGe.dsk -hdb /tmp/YrijMITewd.dsk -hdc /tmp/x8PXwnVF0o.dsk -hdd /tmp/wMz9tNPex3.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-shuffle run mmap-shuffle
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 81 sector (40 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-shuffle' into the file system...
+Executing 'mmap-shuffle':
+(mmap-shuffle) begin
+(mmap-shuffle) create "buffer"
+(mmap-shuffle) open "buffer"
+(mmap-shuffle) mmap "buffer"
+mmap-shuffle: exit(-1)
+Execution of 'mmap-shuffle' complete.
+Timer: 121 ticks
+Thread: 30 idle ticks, 52 kernel ticks, 39 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 95 reads, 430 writes
+hd1:0: 81 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 999 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-twice FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (mmap-twice) begin
+  (mmap-twice) open "sample.txt" #0
+  (mmap-twice) mmap "sample.txt" #0 at 0x10000000
+  (mmap-twice) open "sample.txt" #1
+  (mmap-twice) mmap "sample.txt" #1 at 0x20000000
+  (mmap-twice) compare mmap'd file 0 against data
+  (mmap-twice) compare mmap'd file 1 against data
+  (mmap-twice) end
+Differences in `diff -u' format:
+  (mmap-twice) begin
+  (mmap-twice) open "sample.txt" #0
+  (mmap-twice) mmap "sample.txt" #0 at 0x10000000
+  (mmap-twice) open "sample.txt" #1
+  (mmap-twice) mmap "sample.txt" #1 at 0x20000000
+  (mmap-twice) compare mmap'd file 0 against data
+- (mmap-twice) compare mmap'd file 1 against data
+- (mmap-twice) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/mmap-twice:
+
+Copying tests/vm/mmap-twice into /tmp/tsUNppIROd.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/tsUNppIROd.dsk...
+Writing command line to /tmp/BRFDRRYjpj.dsk...
+qemu -hda /tmp/BRFDRRYjpj.dsk -hdb /tmp/dxyQtGWqIa.dsk -hdc /tmp/tsUNppIROd.dsk -hdd /tmp/nSxBGT4n8T.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-twice put sample.txt run mmap-twice
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 79 sector (39 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-twice' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-twice':
+(mmap-twice) begin
+(mmap-twice) open "sample.txt" #0
+(mmap-twice) mmap "sample.txt" #0 at 0x10000000
+(mmap-twice) open "sample.txt" #1
+(mmap-twice) mmap "sample.txt" #1 at 0x20000000
+(mmap-twice) compare mmap'd file 0 against data
+mmap-twice: exit(-1)
+Execution of 'mmap-twice' complete.
+Timer: 68 ticks
+Thread: 30 idle ticks, 37 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 101 reads, 168 writes
+hd1:0: 79 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1167 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-exit FAILURE:
+
+run: wait for child (should return 0): FAILED
+
+OUTPUT FROM tests/vm/mmap-exit:
+
+Copying tests/vm/mmap-exit into /tmp/xeeDabJDhR.dsk...
+Copying tests/vm/child-mm-wrt into /tmp/xeeDabJDhR.dsk...
+Writing command line to /tmp/qTUyQhSPAh.dsk...
+qemu -hda /tmp/qTUyQhSPAh.dsk -hdb /tmp/5QNmjALHID.dsk -hdc /tmp/xeeDabJDhR.dsk -hdd /tmp/UAInmenri2.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-exit put child-mm-wrt run mmap-exit
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 150 sector (75 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-exit' into the file system...
+Putting 'child-mm-wrt' into the file system...
+Executing 'mmap-exit':
+(mmap-exit) begin
+(child-mm-wrt) begin
+(child-mm-wrt) create "sample.txt"
+(child-mm-wrt) open "sample.txt"
+(child-mm-wrt) mmap "sample.txt"
+child-mm-wrt: exit(-1)
+(mmap-exit) wait for child (should return 0): FAILED
+mmap-exit: exit(1)
+Execution of 'mmap-exit' complete.
+Timer: 88 ticks
+Thread: 30 idle ticks, 55 kernel ticks, 3 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 162 reads, 316 writes
+hd1:0: 150 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1151 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-clean FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (mmap-clean) begin
+  (mmap-clean) open "sample.txt"
+  (mmap-clean) mmap "sample.txt"
+  (mmap-clean) write "sample.txt"
+  (mmap-clean) munmap "sample.txt"
+  (mmap-clean) seek "sample.txt"
+  (mmap-clean) read "sample.txt"
+  (mmap-clean) file change was retained after munmap
+  (mmap-clean) end
+Differences in `diff -u' format:
+  (mmap-clean) begin
+  (mmap-clean) open "sample.txt"
+  (mmap-clean) mmap "sample.txt"
+- (mmap-clean) write "sample.txt"
+- (mmap-clean) munmap "sample.txt"
+- (mmap-clean) seek "sample.txt"
+- (mmap-clean) read "sample.txt"
+- (mmap-clean) file change was retained after munmap
+- (mmap-clean) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/mmap-clean:
+
+Copying tests/vm/mmap-clean into /tmp/FRGrGMchww.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/FRGrGMchww.dsk...
+Writing command line to /tmp/q5rPhow2pE.dsk...
+qemu -hda /tmp/q5rPhow2pE.dsk -hdb /tmp/drVR4hYQFq.dsk -hdc /tmp/FRGrGMchww.dsk -hdd /tmp/PEiqsxcGwk.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-clean put sample.txt run mmap-clean
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 80 sector (40 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-clean' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-clean':
+(mmap-clean) begin
+(mmap-clean) open "sample.txt"
+(mmap-clean) mmap "sample.txt"
+mmap-clean: exit(-1)
+Execution of 'mmap-clean' complete.
+Timer: 70 ticks
+Thread: 30 idle ticks, 40 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 100 reads, 170 writes
+hd1:0: 80 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1017 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-close FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (mmap-close) begin
+  (mmap-close) open "sample.txt"
+  (mmap-close) mmap "sample.txt"
+  (mmap-close) end
+Differences in `diff -u' format:
+  (mmap-close) begin
+  (mmap-close) open "sample.txt"
+  (mmap-close) mmap "sample.txt"
+- (mmap-close) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/mmap-close:
+
+Copying tests/vm/mmap-close into /tmp/IFRtNZtatx.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/IFRtNZtatx.dsk...
+Writing command line to /tmp/HveFI0hQrO.dsk...
+qemu -hda /tmp/HveFI0hQrO.dsk -hdb /tmp/prF2Qcykn4.dsk -hdc /tmp/IFRtNZtatx.dsk -hdd /tmp/oe38HlDzR2.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-close put sample.txt run mmap-close
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 79 sector (39 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-close' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-close':
+(mmap-close) begin
+(mmap-close) open "sample.txt"
+(mmap-close) mmap "sample.txt"
+mmap-close: exit(-1)
+Execution of 'mmap-close' complete.
+Timer: 70 ticks
+Thread: 30 idle ticks, 39 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 98 reads, 168 writes
+hd1:0: 79 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1016 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-remove FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (mmap-remove) begin
+  (mmap-remove) open "sample.txt"
+  (mmap-remove) mmap "sample.txt"
+  (mmap-remove) remove "sample.txt"
+  (mmap-remove) try to open "sample.txt"
+  (mmap-remove) create "another"
+  (mmap-remove) end
+Differences in `diff -u' format:
+  (mmap-remove) begin
+  (mmap-remove) open "sample.txt"
+  (mmap-remove) mmap "sample.txt"
+  (mmap-remove) remove "sample.txt"
+  (mmap-remove) try to open "sample.txt"
+  (mmap-remove) create "another"
+- (mmap-remove) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/mmap-remove:
+
+Copying tests/vm/mmap-remove into /tmp/4EMfE94AOm.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/4EMfE94AOm.dsk...
+Writing command line to /tmp/FcZEEs5Inh.dsk...
+qemu -hda /tmp/FcZEEs5Inh.dsk -hdb /tmp/TOhi0PzgYI.dsk -hdc /tmp/4EMfE94AOm.dsk -hdd /tmp/Qwzel4CGXS.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-remove put sample.txt run mmap-remove
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 79 sector (39 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-remove' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-remove':
+(mmap-remove) begin
+(mmap-remove) open "sample.txt"
+(mmap-remove) mmap "sample.txt"
+(mmap-remove) remove "sample.txt"
+(mmap-remove) try to open "sample.txt"
+(mmap-remove) create "another"
+mmap-remove: exit(-1)
+Execution of 'mmap-remove' complete.
+Timer: 76 ticks
+Thread: 30 idle ticks, 38 kernel ticks, 8 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 145 reads, 255 writes
+hd1:0: 79 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1130 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/pt-write-code2 FAILURE:
+
+Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010129b 0xc0109b06 0xc0100c58 0xc010b909 0xc010b256 0xc0101935 0xc0101b0b 0xc0106bc6 0xc010ce39 0xc010c2fe 0xc010b625 0xc0101935 0xc0101b0b 0x804a091 0x80480e7 0x80486d3 0x8048700
+Translation of call stack:
+In kernel.o:
+0xc0107756: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0102acd: lock_acquire (...../../threads/synch.c:243)
+0xc010129b: acquire_file_lock (..../../threads/thread.c:647)
+0xc0109b06: process_exit (...../userprog/process.c:181)
+0xc0100c58: thread_exit (..../../threads/thread.c:334)
+0xc010b909: close_all_filelist (...../userprog/syscall.c:333)
+0xc010b256: page_fault (.../userprog/exception.c:232)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+0xc0106bc6: memcpy (...ild/../../lib/string.c:16)
+0xc010ce39: inode_read_at (...../../filesys/inode.c:243)
+0xc010c2fe: file_read (...d/../../filesys/file.c:72)
+0xc010b625: syscall_handler (...../userprog/syscall.c:184)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/pt-write-code2:
+0x0804a091: read (...../lib/user/syscall.c:117)
+0x080480e7: test_main (...s/vm/pt-write-code-2.c:14)
+0x080486d3: main (...ild/../../tests/main.c:13)
+0x08048700: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
+
+OUTPUT FROM tests/vm/pt-write-code2:
+
+Copying tests/vm/pt-write-code2 into /tmp/i3tTf6LrBl.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/i3tTf6LrBl.dsk...
+Writing command line to /tmp/ngKcBUS01x.dsk...
+qemu -hda /tmp/ngKcBUS01x.dsk -hdb /tmp/Rxcv9dAbde.dsk -hdc /tmp/i3tTf6LrBl.dsk -hdd /tmp/grkRVmQLE0.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put pt-write-code2 put sample.txt run pt-write-code2
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  52,377,600 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'pt-write-code2' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'pt-write-code2':
+(pt-write-code2) begin
+(pt-write-code2) open "sample.txt"
+pt-write-code2: exit(-1)
+Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010129b 0xc0109b06 0xc0100c58 0xc010b909 0xc010b256 0xc0101935 0xc0101b0b 0xc0106bc6 0xc010ce39 0xc010c2fe 0xc010b625 0xc0101935 0xc0101b0b 0x804a091 0x80480e7 0x80486d3 0x8048700.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 62 ticks
+Thread: 30 idle ticks, 31 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 91 reads, 162 writes
+hd1:0: 76 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1466 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-bad-fd FAILURE:
+
+run: try to mmap invalid fd: FAILED
+
+OUTPUT FROM tests/vm/mmap-bad-fd:
+
+Copying tests/vm/mmap-bad-fd into /tmp/zncyCOt8JY.dsk...
+Writing command line to /tmp/fQqFcnUZRD.dsk...
+qemu -hda /tmp/fQqFcnUZRD.dsk -hdb /tmp/xnF6lcNuct.dsk -hdc /tmp/zncyCOt8JY.dsk -hdd /tmp/bJuqwbLjgI.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-bad-fd run mmap-bad-fd
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 73 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-bad-fd' into the file system...
+Executing 'mmap-bad-fd':
+(mmap-bad-fd) begin
+(mmap-bad-fd) try to mmap invalid fd
+(mmap-bad-fd) try to mmap invalid fd: FAILED
+mmap-bad-fd: exit(1)
+Execution of 'mmap-bad-fd' complete.
+Timer: 75 ticks
+Thread: 30 idle ticks, 44 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 59 reads, 154 writes
+hd1:0: 73 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 982 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-inherit FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (mmap-inherit) begin
+  (mmap-inherit) open "sample.txt"
+  (mmap-inherit) mmap "sample.txt"
+  (mmap-inherit) exec "child-inherit"
+  (child-inherit) begin
+  child-inherit: exit(-1)
+  (mmap-inherit) checking that mmap'd file still has same data
+  (mmap-inherit) end
+  mmap-inherit: exit(0)
+Differences in `diff -u' format:
+  (mmap-inherit) begin
+  (mmap-inherit) open "sample.txt"
+  (mmap-inherit) mmap "sample.txt"
+- (mmap-inherit) exec "child-inherit"
+- (child-inherit) begin
+- child-inherit: exit(-1)
+- (mmap-inherit) checking that mmap'd file still has same data
+- (mmap-inherit) end
+- mmap-inherit: exit(0)
++ mmap-inherit: exit(-1)
+
+(User fault messages are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/mmap-inherit:
+
+Copying tests/vm/mmap-inherit into /tmp/AlizFPK0Zx.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/AlizFPK0Zx.dsk...
+Copying tests/vm/child-inherit into /tmp/AlizFPK0Zx.dsk...
+Writing command line to /tmp/laOaRVdzVY.dsk...
+qemu -hda /tmp/laOaRVdzVY.dsk -hdb /tmp/CGnb4v2rwH.dsk -hdc /tmp/AlizFPK0Zx.dsk -hdd /tmp/URFPN9KcaQ.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-inherit put sample.txt put child-inherit run mmap-inherit
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 154 sector (77 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-inherit' into the file system...
+Putting 'sample.txt' into the file system...
+Putting 'child-inherit' into the file system...
+Executing 'mmap-inherit':
+(mmap-inherit) begin
+(mmap-inherit) open "sample.txt"
+(mmap-inherit) mmap "sample.txt"
+mmap-inherit: exit(-1)
+Execution of 'mmap-inherit' complete.
+Timer: 91 ticks
+Thread: 30 idle ticks, 59 kernel ticks, 2 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 127 reads, 320 writes
+hd1:0: 154 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1103 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-null FAILURE:
+
+run: try to mmap at address 0: FAILED
+
+OUTPUT FROM tests/vm/mmap-null:
+
+Copying tests/vm/mmap-null into /tmp/HsctTiVjuf.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/HsctTiVjuf.dsk...
+Writing command line to /tmp/IrH7y1Gz2P.dsk...
+qemu -hda /tmp/IrH7y1Gz2P.dsk -hdb /tmp/V5SzNESb2X.dsk -hdc /tmp/HsctTiVjuf.dsk -hdd /tmp/CkP4ZZAvw9.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-null put sample.txt run mmap-null
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-null' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-null':
+(mmap-null) begin
+(mmap-null) open "sample.txt"
+(mmap-null) try to mmap at address 0
+(mmap-null) try to mmap at address 0: FAILED
+mmap-null: exit(1)
+Execution of 'mmap-null' complete.
+Timer: 74 ticks
+Thread: 30 idle ticks, 43 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 90 reads, 162 writes
+hd1:0: 76 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1058 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-misalign FAILURE:
+
+run: try to mmap at misaligned address: FAILED
+
+OUTPUT FROM tests/vm/mmap-misalign:
+
+Copying tests/vm/mmap-misalign into /tmp/BQ1IGQpVxR.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/BQ1IGQpVxR.dsk...
+Writing command line to /tmp/KTaSo12VeD.dsk...
+qemu -hda /tmp/KTaSo12VeD.dsk -hdb /tmp/Ul2ls1357X.dsk -hdc /tmp/BQ1IGQpVxR.dsk -hdd /tmp/tR7tiqfWUH.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-misalign put sample.txt run mmap-misalign
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-misalign' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-misalign':
+(mmap-misalign) begin
+(mmap-misalign) open "sample.txt"
+(mmap-misalign) try to mmap at misaligned address
+(mmap-misalign) try to mmap at misaligned address: FAILED
+mmap-misalign: exit(1)
+Execution of 'mmap-misalign' complete.
+Timer: 75 ticks
+Thread: 30 idle ticks, 43 kernel ticks, 2 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 90 reads, 162 writes
+hd1:0: 76 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1116 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-over-code FAILURE:
+
+run: try to mmap over code segment: FAILED
+
+OUTPUT FROM tests/vm/mmap-over-code:
+
+Copying tests/vm/mmap-over-code into /tmp/pGqFuqqn2L.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/pGqFuqqn2L.dsk...
+Writing command line to /tmp/wzA3BqctXF.dsk...
+qemu -hda /tmp/wzA3BqctXF.dsk -hdb /tmp/EbbX1SRTzS.dsk -hdc /tmp/pGqFuqqn2L.dsk -hdd /tmp/doNoXi1a5u.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-over-code put sample.txt run mmap-over-code
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-over-code' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-over-code':
+(mmap-over-code) begin
+(mmap-over-code) open "sample.txt"
+(mmap-over-code) try to mmap over code segment
+(mmap-over-code) try to mmap over code segment: FAILED
+mmap-over-code: exit(1)
+Execution of 'mmap-over-code' complete.
+Timer: 66 ticks
+Thread: 30 idle ticks, 35 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 90 reads, 162 writes
+hd1:0: 76 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1118 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-over-data FAILURE:
+
+run: try to mmap over data segment: FAILED
+
+OUTPUT FROM tests/vm/mmap-over-data:
+
+Copying tests/vm/mmap-over-data into /tmp/7h6FW5x0au.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/7h6FW5x0au.dsk...
+Writing command line to /tmp/POUmRpqKGa.dsk...
+qemu -hda /tmp/POUmRpqKGa.dsk -hdb /tmp/YRJNK6vNkO.dsk -hdc /tmp/7h6FW5x0au.dsk -hdd /tmp/GgssiLKJsg.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-over-data put sample.txt run mmap-over-data
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 77 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-over-data' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-over-data':
+(mmap-over-data) begin
+(mmap-over-data) open "sample.txt"
+(mmap-over-data) try to mmap over data segment
+(mmap-over-data) try to mmap over data segment: FAILED
+mmap-over-data: exit(1)
+Execution of 'mmap-over-data' complete.
+Timer: 66 ticks
+Thread: 30 idle ticks, 34 kernel ticks, 2 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 90 reads, 164 writes
+hd1:0: 77 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1118 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-over-stk FAILURE:
+
+run: try to mmap over stack segment: FAILED
+
+OUTPUT FROM tests/vm/mmap-over-stk:
+
+Copying tests/vm/mmap-over-stk into /tmp/iB4sreG0D1.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/iB4sreG0D1.dsk...
+Writing command line to /tmp/CwZ8PxVcO5.dsk...
+qemu -hda /tmp/CwZ8PxVcO5.dsk -hdb /tmp/gpJB3VefAb.dsk -hdc /tmp/iB4sreG0D1.dsk -hdd /tmp/u2MGOj8DhK.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-over-stk put sample.txt run mmap-over-stk
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-over-stk' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-over-stk':
+(mmap-over-stk) begin
+(mmap-over-stk) open "sample.txt"
+(mmap-over-stk) try to mmap over stack segment
+(mmap-over-stk) try to mmap over stack segment: FAILED
+mmap-over-stk: exit(1)
+Execution of 'mmap-over-stk' complete.
+Timer: 68 ticks
+Thread: 30 idle ticks, 37 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 90 reads, 162 writes
+hd1:0: 76 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1110 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-overlap FAILURE:
+
+run: try to mmap "zeros" again: FAILED
+
+OUTPUT FROM tests/vm/mmap-overlap:
+
+Copying tests/vm/mmap-overlap into /tmp/5uYmev81AK.dsk...
+Copying tests/vm/zeros into /tmp/5uYmev81AK.dsk...
+Writing command line to /tmp/oK0Fefh26o.dsk...
+qemu -hda /tmp/oK0Fefh26o.dsk -hdb /tmp/XoaR65gyRD.dsk -hdc /tmp/5uYmev81AK.dsk -hdd /tmp/ljDzWiZZlv.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-overlap put zeros run mmap-overlap
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 89 sector (44 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-overlap' into the file system...
+Putting 'zeros' into the file system...
+Executing 'mmap-overlap':
+(mmap-overlap) begin
+(mmap-overlap) open "zeros" once
+(mmap-overlap) mmap "zeros"
+(mmap-overlap) open "zeros" again
+(mmap-overlap) try to mmap "zeros" again
+(mmap-overlap) try to mmap "zeros" again: FAILED
+mmap-overlap: exit(1)
+Execution of 'mmap-overlap' complete.
+Timer: 73 ticks
+Thread: 30 idle ticks, 42 kernel ticks, 1 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 100 reads, 188 writes
+hd1:0: 89 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1143 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...

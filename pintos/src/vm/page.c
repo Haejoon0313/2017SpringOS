@@ -92,5 +92,10 @@ static void page_table_free(struct hash_elem * e, void * aux UNUSED){
 								frame_free(pagedir_get_page(t->pagedir, sup_pte->upage));
 								pagedir_clear_page(t->pagedir, sup_pte->upage);
 				}
+
+				//아래 두줄은 지워져야 할수도
+				if(sup_pte->swapped)
+								swap_set(sup_pte->swap_index, false);
+
 				free(sup_pte);
 }

@@ -1,0 +1,54 @@
+Copying tests/vm/page-merge-mm into /tmp/vTJe7Pbeky.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/vTJe7Pbeky.dsk...
+Writing command line to /tmp/dzaUbO6dTf.dsk...
+qemu -hda /tmp/dzaUbO6dTf.dsk -hdb /tmp/BWuf6uItbX.dsk -hdc /tmp/vTJe7Pbeky.dsk -hdd /tmp/HZaN2iuXH0.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 160 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-mm' into the file system...
+Putting 'child-qsort-mm' into the file system...
+Executing 'page-merge-mm':
+(page-merge-mm) begin
+(page-merge-mm) init
+(page-merge-mm) sort chunk 0
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 1
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 2
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 3
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 4
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 5
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 6
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 7
+child-qsort-mm: exit(-1)
+(page-merge-mm) wait for child 0
+(page-merge-mm) wait for child 0: FAILED
+page-merge-mm: exit(1)
+Kernel PANIC at ../../vm/swap.c:33 in swap_set(): assertion `bitmap_test(swap_table, !value)' failed.
+Call stack: 0xc0107756 0xc010daaf 0xc010d860 0xc0108f3f 0xc0108f89 0xc010d6f0 0xc0109b43 0xc0100c58 0xc010b909 0xc010b34b 0xc0101935 0xc0101b0b 0x804a463 0x80486af 0x8048282 0x8048442 0x80480ba 0x8048b4f 0x8048b7c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 721 ticks
+Thread: 30 idle ticks, 49 kernel ticks, 642 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 772 reads, 4458 writes
+hd1:0: 160 reads, 0 writes
+hd1:1: 2088 reads, 3296 writes
+Console: 1954 characters output
+Keyboard: 0 keys pressed
+Exception: 269 page faults
+Powering off...

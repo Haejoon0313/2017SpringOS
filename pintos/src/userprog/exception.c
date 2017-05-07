@@ -170,10 +170,10 @@ page_fault (struct intr_frame *f)
 	void * kpage;
 	void * upage = pg_round_down(fault_addr);
 
-  spte = get_sup_pte(&curr->sup_page_table,upage);
-	
-	if(not_present){
+	if(not_present && is_user_vaddr(fault_addr)){
 					frame_table_lock_acquire();
+  				spte = get_sup_pte(&curr->sup_page_table,upage);
+	
 					/*page fault is caused by SWAP */
 					if(spte!=NULL){
 							if (spte->swapped && !(pagedir_get_page(curr->pagedir,spte->upage))){
@@ -184,26 +184,31 @@ page_fault (struct intr_frame *f)
 					
 
 									bool swap_success = pagedir_set_page(curr->pagedir, spte->upage, kpage, true);//여기 spte->writable인가?
-
-									if (!swap_success){
+									bool set_success = pagedir_get_page(curr->pagedir,spte->upage);
+									if (!swap_success||!set_success){
 													frame_free(upage);
 													printf("Swap in pagefalut handler Failed!\n");
 													
 													
-									}
+									}else{
 									pagedir_set_accessed(curr->pagedir, upage, true); ///##@#################이거 dirty도 해줘야 하나?
 				 					spte->swapped = false;
 									ASSERT(spte->loaded);
 									frame_table_lock_release();
 									return;
+									}
 							}
 					}
 					
 					/*page fault is caused by Stack growth ISSUE*/
-					else if(!user && is_user_vaddr(fault_addr) &&  (void *)f->esp -32<= fault_addr ){
+					else if(f->esp -32<= fault_addr ){
 									kpage = frame_alloc(upage, PAL_ZERO);
 									printf("Stack growth start\n");
-									if( !(pagedir_get_page(curr->pagedir,upage))&& pagedir_set_page(curr->pagedir, upage, kpage, spte->writable)){
+
+									bool stack_get = pagedir_get_page(curr->pagedir,upage);
+									bool stack_set = pagedir_set_page(curr->pagedir, upage, kpage, spte->writable);
+
+									if(stack_get && stack_set ){
 													
 													page_insert(NULL,NULL,upage,NULL,NULL,true);
 													frame_table_lock_release();
@@ -231,21 +236,6 @@ if(not_present || user || write)
           user ? "user" : "kernel");
   kill (f);
 	
-
-fail:
-
-	if(not_present || user || write)
-	{
-//		PANIC("ERROR CASE in exception.c falut handler!\n");
-			exit_process(-1);
-	}	
-	
-	printf ("Page fault at %p: %s error %s page in %s context.\n",
-          fault_addr,
-          not_present ? "not present" : "rights violation",
-          write ? "writing" : "reading",
-          user ? "user" : "kernel");
-  kill (f);
 
 
 #else
