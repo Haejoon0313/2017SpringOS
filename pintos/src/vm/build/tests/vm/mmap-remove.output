@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-remove into /tmp/4EMfE94AOm.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/4EMfE94AOm.dsk...
-Writing command line to /tmp/FcZEEs5Inh.dsk...
-qemu -hda /tmp/FcZEEs5Inh.dsk -hdb /tmp/TOhi0PzgYI.dsk -hdc /tmp/4EMfE94AOm.dsk -hdd /tmp/Qwzel4CGXS.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-remove into /tmp/562r3TlAC5.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/562r3TlAC5.dsk...
+Writing command line to /tmp/plDvwKSKTM.dsk...
+qemu -hda /tmp/plDvwKSKTM.dsk -hdb /tmp/wXcOngoHKe.dsk -hdc /tmp/562r3TlAC5.dsk -hdd /tmp/fTF3HyKDhU.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-remove put sample.txt run mmap-remove
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -24,13 +24,13 @@ Executing 'mmap-remove':
 (mmap-remove) create "another"
 mmap-remove: exit(-1)
 Execution of 'mmap-remove' complete.
-Timer: 76 ticks
-Thread: 30 idle ticks, 38 kernel ticks, 8 user ticks
+Timer: 80 ticks
+Thread: 30 idle ticks, 38 kernel ticks, 12 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 145 reads, 255 writes
 hd1:0: 79 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1130 characters output
+Console: 1131 characters output
 Keyboard: 0 keys pressed
 Exception: 1 page faults
 Powering off...

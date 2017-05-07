@@ -1,6 +1,6 @@
-Copying tests/vm/pt-big-stk-obj into /tmp/7rHee22ZBv.dsk...
-Writing command line to /tmp/AsBKPWLmhc.dsk...
-qemu -hda /tmp/AsBKPWLmhc.dsk -hdb /tmp/0mve9gVBsc.dsk -hdc /tmp/7rHee22ZBv.dsk -hdd /tmp/mTbOsqiKKx.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/pt-big-stk-obj into /tmp/cGUFFMWTfO.dsk...
+Writing command line to /tmp/geMF4BoDpY.dsk...
+qemu -hda /tmp/geMF4BoDpY.dsk -hdb /tmp/uU2rut14R6.dsk -hdc /tmp/cGUFFMWTfO.dsk -hdd /tmp/y9h4g3uEj6.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put pt-big-stk-obj run pt-big-stk-obj
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -15,19 +15,17 @@ Boot complete.
 Putting 'pt-big-stk-obj' into the file system...
 Executing 'pt-big-stk-obj':
 (pt-big-stk-obj) begin
-Stack growth start
-Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc0107756 0xc0102acd 0xc010da01 0xc010b047 0xc0101935 0xc0101b0b 0xc010b1c2 0xc0101935 0xc0101b0b 0x80480ab 0x8048883 0x80488b0.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 75 ticks
-Thread: 30 idle ticks, 44 kernel ticks, 1 user ticks
+(pt-big-stk-obj) cksum: 3256410166
+(pt-big-stk-obj) end
+pt-big-stk-obj: exit(0)
+Execution of 'pt-big-stk-obj' complete.
+Timer: 63 ticks
+Thread: 30 idle ticks, 32 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 170 writes
 hd1:0: 81 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1289 characters output
+Console: 977 characters output
 Keyboard: 0 keys pressed
-Exception: 2 page faults
+Exception: 16 page faults
 Powering off...

@@ -1,7 +1,7 @@
-Copying tests/vm/page-merge-par into /tmp/gcBvVjcN2u.dsk...
-Copying tests/vm/child-sort into /tmp/gcBvVjcN2u.dsk...
-Writing command line to /tmp/IhBKXxBvJC.dsk...
-qemu -hda /tmp/IhBKXxBvJC.dsk -hdb /tmp/mgsVn0uPWF.dsk -hdc /tmp/gcBvVjcN2u.dsk -hdd /tmp/Zkr9aYKicZ.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-merge-par into /tmp/ELizG6HImj.dsk...
+Copying tests/vm/child-sort into /tmp/ELizG6HImj.dsk...
+Writing command line to /tmp/tPS2P259ig.dsk...
+qemu -hda /tmp/tPS2P259ig.dsk -hdb /tmp/XLPKkH2d0Z.dsk -hdc /tmp/ELizG6HImj.dsk -hdd /tmp/miPVfC8684.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -47,18 +47,14 @@ child-sort: exit(123)
 (page-merge-par) success, buf_idx=1,048,576
 (page-merge-par) end
 page-merge-par: exit(0)
-Kernel PANIC at ../../vm/swap.c:33 in swap_set(): assertion `bitmap_test(swap_table, !value)' failed.
-Call stack: 0xc0107756 0xc010daaf 0xc010d860 0xc0108f3f 0xc0108f89 0xc010d6f0 0xc0109b43 0xc0100c58 0xc010b909 0xc010b34b 0xc0101935 0xc0101b0b 0x804a463 0x8048b84.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 1170 ticks
-Thread: 30 idle ticks, 59 kernel ticks, 1081 user ticks
+Execution of 'page-merge-par' complete.
+Timer: 1281 ticks
+Thread: 30 idle ticks, 56 kernel ticks, 1196 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 4920 reads, 6496 writes
 hd1:0: 155 reads, 0 writes
 hd1:1: 4584 reads, 5744 writes
-Console: 2200 characters output
+Console: 1819 characters output
 Keyboard: 0 keys pressed
 Exception: 573 page faults
 Powering off...

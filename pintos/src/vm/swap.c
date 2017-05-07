@@ -30,7 +30,7 @@ swap_init(){
 /*ASSERT that current swap_idx is !value. Then, flip it into VALUE boolean. */
 
 void swap_set(uint32_t swap_idx, bool value){
-		ASSERT(bitmap_test(swap_table, !value));
+		ASSERT(bitmap_test(swap_table, swap_idx));
 		lock_acquire(&swap_lock);
 		bitmap_set(swap_table, swap_idx, value);
 		lock_release(&swap_lock);

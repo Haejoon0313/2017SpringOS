@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-shuffle into /tmp/x8PXwnVF0o.dsk...
-Writing command line to /tmp/etK7gDGhGe.dsk...
-qemu -hda /tmp/etK7gDGhGe.dsk -hdb /tmp/YrijMITewd.dsk -hdc /tmp/x8PXwnVF0o.dsk -hdd /tmp/wMz9tNPex3.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-shuffle into /tmp/ZJ39UfjBCu.dsk...
+Writing command line to /tmp/2fCxuXnZgO.dsk...
+qemu -hda /tmp/2fCxuXnZgO.dsk -hdb /tmp/L85knJSsCN.dsk -hdc /tmp/ZJ39UfjBCu.dsk -hdd /tmp/3QXNTtug3Y.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-shuffle run mmap-shuffle
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -20,13 +20,13 @@ Executing 'mmap-shuffle':
 (mmap-shuffle) mmap "buffer"
 mmap-shuffle: exit(-1)
 Execution of 'mmap-shuffle' complete.
-Timer: 121 ticks
-Thread: 30 idle ticks, 52 kernel ticks, 39 user ticks
+Timer: 93 ticks
+Thread: 30 idle ticks, 35 kernel ticks, 28 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 95 reads, 430 writes
 hd1:0: 81 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 999 characters output
+Console: 998 characters output
 Keyboard: 0 keys pressed
 Exception: 1 page faults
 Powering off...

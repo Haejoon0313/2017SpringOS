@@ -1,6 +1,6 @@
-Copying tests/userprog/create-bad-ptr into /tmp/jOnxAqionc.dsk...
-Writing command line to /tmp/9Cj1HvyGIV.dsk...
-qemu -hda /tmp/9Cj1HvyGIV.dsk -hdb /tmp/3S08x9vNrS.dsk -hdc /tmp/jOnxAqionc.dsk -hdd /tmp/4jIZ81DF51.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/create-bad-ptr into /tmp/otwgVBAmoV.dsk...
+Writing command line to /tmp/0phftIKScK.dsk...
+qemu -hda /tmp/0phftIKScK.dsk -hdb /tmp/fiwuaDC92L.dsk -hdc /tmp/otwgVBAmoV.dsk -hdd /tmp/USSVkjPWeW.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put create-bad-ptr run create-bad-ptr
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -17,8 +17,8 @@ Executing 'create-bad-ptr':
 (create-bad-ptr) begin
 create-bad-ptr: exit(-1)
 Execution of 'create-bad-ptr' complete.
-Timer: 76 ticks
-Thread: 30 idle ticks, 45 kernel ticks, 1 user ticks
+Timer: 70 ticks
+Thread: 30 idle ticks, 39 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 154 writes
 hd1:0: 73 reads, 0 writes

@@ -1,7 +1,7 @@
-Copying tests/vm/page-merge-stk into /tmp/14bhiUDrwE.dsk...
-Copying tests/vm/child-qsort into /tmp/14bhiUDrwE.dsk...
-Writing command line to /tmp/m3g9gk5jFz.dsk...
-qemu -hda /tmp/m3g9gk5jFz.dsk -hdb /tmp/ymfY2FFOc2.dsk -hdc /tmp/14bhiUDrwE.dsk -hdd /tmp/yFTO9Oc6YP.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-merge-stk into /tmp/3notcKtI1R.dsk...
+Copying tests/vm/child-qsort into /tmp/3notcKtI1R.dsk...
+Writing command line to /tmp/CNALEKdKlK.dsk...
+qemu -hda /tmp/CNALEKdKlK.dsk -hdb /tmp/phmFTBbykK.dsk -hdc /tmp/3notcKtI1R.dsk -hdd /tmp/rXneVKXG0f.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-merge-stk put child-qsort run page-merge-stk
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -19,19 +19,42 @@ Executing 'page-merge-stk':
 (page-merge-stk) begin
 (page-merge-stk) init
 (page-merge-stk) sort chunk 0
-Stack growth start
-Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc0107756 0xc0102acd 0xc010da01 0xc010b047 0xc0101935 0xc0101b0b 0xc010b1c2 0xc0101935 0xc0101b0b 0x80480c5 0x804899c.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 418 ticks
-Thread: 30 idle ticks, 51 kernel ticks, 337 user ticks
+(page-merge-stk) sort chunk 1
+child-qsort: exit(72)
+(page-merge-stk) sort chunk 2
+(page-merge-stk) sort chunk 3
+child-qsort: exit(72)
+child-qsort: exit(72)
+(page-merge-stk) sort chunk 4
+child-qsort: exit(72)
+(page-merge-stk) sort chunk 5
+child-qsort: exit(72)
+(page-merge-stk) sort chunk 6
+child-qsort: exit(72)
+(page-merge-stk) sort chunk 7
+child-qsort: exit(72)
+(page-merge-stk) wait for child 0
+(page-merge-stk) wait for child 1
+(page-merge-stk) wait for child 2
+(page-merge-stk) wait for child 3
+(page-merge-stk) wait for child 4
+(page-merge-stk) wait for child 5
+(page-merge-stk) wait for child 6
+child-qsort: exit(72)
+(page-merge-stk) wait for child 7
+(page-merge-stk) merge
+(page-merge-stk) verify
+(page-merge-stk) success, buf_idx=1,048,576
+(page-merge-stk) end
+page-merge-stk: exit(0)
+Execution of 'page-merge-stk' complete.
+Timer: 1117 ticks
+Thread: 30 idle ticks, 59 kernel ticks, 1028 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 158 reads, 846 writes
+hd0:1: 4928 reads, 6506 writes
 hd1:0: 160 reads, 0 writes
-hd1:1: 2088 reads, 3304 writes
-Console: 1405 characters output
+hd1:1: 4584 reads, 5744 writes
+Console: 1821 characters output
 Keyboard: 0 keys pressed
-Exception: 263 page faults
+Exception: 829 page faults
 Powering off...

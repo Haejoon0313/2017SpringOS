@@ -6,6 +6,7 @@
 #include "threads/thread.h"
 
 #ifdef VM
+#include <debug.h>
 #include <stdint.h>
 #include "userprog/pagedir.h"
 #include "vm/page.h"
@@ -15,6 +16,7 @@
 #include "threads/vaddr.h"
 #endif
 
+#define STACK_LIMIT  (1<<23)//8MB size
 /* Number of page faults processed. */
 static long long page_fault_cnt;
 
@@ -166,16 +168,40 @@ page_fault (struct intr_frame *f)
 
 #ifdef VM
 	struct thread * curr = thread_current();
-	struct sup_pte * spte;
+	struct sup_pte * spte=NULL;
 	void * kpage;
 	void * upage = pg_round_down(fault_addr);
 
 	if(not_present && is_user_vaddr(fault_addr)){
+  				spte = get_sup_pte(&curr->sup_page_table,upage);					
 					frame_table_lock_acquire();
-  				spte = get_sup_pte(&curr->sup_page_table,upage);
+
+
+
+					
+					/*page fault is caused by Stack growth ISSUE*/
+					if(spte==NULL){
+						if(f->esp -32<= fault_addr){// && fault_addr >= PHYS_BASE - STACK_LLMIT){//&&(fault_addr >= PHYS_BASE - STACK_LIMIT)) {
+										kpage = frame_alloc(upage, PAL_ZERO);
+										bool stack_get = pagedir_get_page(curr->pagedir,upage);
+										bool stack_set = pagedir_set_page(curr->pagedir, upage, kpage, true);
+	
+												if(!stack_get && stack_set ){
+								
+															page_insert(NULL,NULL,upage,NULL,NULL,true);
+															frame_table_lock_release();
+															return;
+
+									
+											}else{
+													frame_free(upage);
+									}
+						}
+					}
+
 	
 					/*page fault is caused by SWAP */
-					if(spte!=NULL){
+				else{
 							if (spte->swapped && !(pagedir_get_page(curr->pagedir,spte->upage))){
 									
 								
@@ -199,28 +225,7 @@ page_fault (struct intr_frame *f)
 									}
 							}
 					}
-					
-					/*page fault is caused by Stack growth ISSUE*/
-					else if(f->esp -32<= fault_addr ){
-									kpage = frame_alloc(upage, PAL_ZERO);
-									printf("Stack growth start\n");
-
-									bool stack_get = pagedir_get_page(curr->pagedir,upage);
-									bool stack_set = pagedir_set_page(curr->pagedir, upage, kpage, spte->writable);
-
-									if(stack_get && stack_set ){
-													
-													page_insert(NULL,NULL,upage,NULL,NULL,true);
-													frame_table_lock_release();
-													return;
-
-									}else{
-													frame_free(upage);
-													
-													
-									}
-					}
-					frame_table_lock_release();
+				frame_table_lock_release();
 	}
 	
 if(not_present || user || write)
