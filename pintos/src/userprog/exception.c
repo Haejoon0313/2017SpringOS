@@ -173,67 +173,57 @@ page_fault (struct intr_frame *f)
 	void * upage = pg_round_down(fault_addr);
 
 	if(not_present && is_user_vaddr(fault_addr)){
-  				spte = get_sup_pte(&curr->sup_page_table,upage);					
 					frame_table_lock_acquire();
-
-
+  				spte = get_sup_pte(&curr->sup_page_table,upage);
 
 					
 					/*page fault is caused by Stack growth ISSUE*/
 					if(spte==NULL){
-						if(f->esp -32<= fault_addr){// && fault_addr >= PHYS_BASE - STACK_LLMIT){//&&(fault_addr >= PHYS_BASE - STACK_LIMIT)) {
+						if(f->esp -32<= fault_addr){
 										kpage = frame_alloc(upage, PAL_ZERO);
 										bool stack_get = pagedir_get_page(curr->pagedir,upage);
-										bool stack_set = pagedir_set_page(curr->pagedir, upage, kpage, true);
+										bool stack_set = pagedir_set_page(curr->pagedir, upage, kpage, not_present);
 	
-												if(!stack_get && stack_set ){
-								
-															page_insert(NULL,NULL,upage,NULL,NULL,true);
-															frame_table_lock_release();
-															return;
-
-									
-											}else{
-													frame_free(upage);
-									}
+										if(!stack_get && stack_set ){
+														page_insert(NULL,NULL,upage,NULL,NULL,true);
+														frame_table_lock_release();
+														return;
+										}else{
+														frame_free(kpage);
+										}
 						}
 					}
 
-	
 					/*page fault is caused by SWAP */
-				else{
-							if (spte->swapped && !(pagedir_get_page(curr->pagedir,spte->upage))){
+					else{
+									if (spte->swapped && !(pagedir_get_page(curr->pagedir,spte->upage))){
 									
 								
 									kpage = frame_alloc(upage, 0);
 									swap_in(spte,kpage);
 					
 
-									bool swap_success = pagedir_set_page(curr->pagedir, spte->upage, kpage, true);//여기 spte->writable인가?
+									bool swap_success = pagedir_set_page(curr->pagedir, upage, kpage, not_present);
 									bool set_success = pagedir_get_page(curr->pagedir,spte->upage);
 									if (!swap_success||!set_success){
-													frame_free(upage);
+													frame_free(kpage);
 													printf("Swap in pagefalut handler Failed!\n");
 													
 													
 									}else{
-									pagedir_set_accessed(curr->pagedir, upage, true); ///##@#################이거 dirty도 해줘야 하나?
-				 					spte->swapped = false;
-									ASSERT(spte->loaded);
-									frame_table_lock_release();
-									return;
+													pagedir_set_accessed(curr->pagedir, upage, true);
+													spte->swapped = false;
+													ASSERT(spte->loaded);
+													frame_table_lock_release();
+													return;
 									}
 							}
 					}
-				frame_table_lock_release();
+					frame_table_lock_release();
 	}
-	
-if(not_present || user || write)
-	{
-//		PANIC("ERROR CASE in exception.c falut handler!\n");
-			exit_process(-1);
-	}	
-	
+
+	exit_process(-1);
+
 	printf ("Page fault at %p: %s error %s page in %s context.\n",
           fault_addr,
           not_present ? "not present" : "rights violation",

@@ -179,10 +179,12 @@ syscall_handler (struct intr_frame *f UNUSED)
 								if(read_file==NULL){
 												f->eax = -1;
 								}else{
-										acquire_file_lock();
 										//read file and return the bytes actually read.
-										f->eax= file_read(read_file->file,read_buffer,read_size);
-										release_file_lock();
+										if(!is_user_vaddr(read_buffer)){
+														f->eax = -1;
+										}else{
+														f->eax= file_read(read_file->file,read_buffer,read_size);
+										}
 								}
 						}
 						break;

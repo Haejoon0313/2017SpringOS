@@ -69,7 +69,6 @@ void * frame_evict(enum palloc_flags flag){
 				el = list_begin(&frame_table);
 
 				/*Simple FIFO algorithm */
-			//	for (el ; el != list_end(&frame_table) ; el = list_next(el)){ //iteraion not need in FIFO algorithm.
 				evict_fte = list_entry(el, struct fte, elem);
 				void * upage = evict_fte->upage;
 				void * kpage = evict_fte->kpage;
@@ -80,10 +79,8 @@ void * frame_evict(enum palloc_flags flag){
 				spte->swapped = true;
 				spte->swap_index = swap_out(kpage);
 				
-				pagedir_clear_page(evict_fte->origin_thread->pagedir, upage);						
-				//frame_free(upage);
+				pagedir_clear_page(evict_fte->origin_thread->pagedir, upage);
 				
-				//pagedir_clear_page(evict_fte->origin_thread->pagedir, upage);
 				palloc_free_page(kpage);
 				list_remove(el);
 				free(evict_fte);

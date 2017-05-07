@@ -600,7 +600,7 @@ setup_stack (void **esp,char * file_name)
 			
 			}
 			else{
-					frame_free(((uint8_t *) PHYS_BASE) - PGSIZE);
+					frame_free(kpage);
 			}
 	}
 	frame_table_lock_release();

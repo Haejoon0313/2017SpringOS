@@ -23,8 +23,6 @@ swap_init(){
 		struct disk *swap_disk = disk_get(1,1);
 		swap_table = bitmap_create(disk_size(swap_disk) * DISK_SECTOR_SIZE / PGSIZE);//disk_size() may return the # of sector.
 		
-	//	ASSERT(!swap_table);
-
 }
 
 /*ASSERT that current swap_idx is !value. Then, flip it into VALUE boolean. */
@@ -70,7 +68,6 @@ void swap_in (struct sup_pte * spte, void * kpage){
 		lock_acquire(&swap_lock);
 		swap_idx = spte->swap_index;		
 	
-		//swap_set(swap_idx, false);
 		bitmap_set (swap_table, swap_idx, false);
 
 		for(sector_cnt = 0 ; sector_cnt < PGSIZE / DISK_SECTOR_SIZE ; sector_cnt++)

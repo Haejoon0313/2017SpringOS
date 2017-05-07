@@ -25,7 +25,6 @@ void page_table_remove(struct hash * page_table){
 
 bool page_insert(struct file * file, off_t file_ofs, uint8_t * upage, uint32_t read_bytes, uint32_t zero_bytes, bool writable){
 				struct sup_pte * sup_pte = (struct sup_pte *)malloc(sizeof(struct sup_pte));
-//				struct thread * t = thread_current();
 
 				sup_pte->file = file;
 				sup_pte->upage = upage;
@@ -93,7 +92,6 @@ static void page_table_free(struct hash_elem * e, void * aux UNUSED){
 								pagedir_clear_page(t->pagedir, sup_pte->upage);
 				}
 
-				//아래 두줄은 지워져야 할수도
 				if(sup_pte->swapped)
 								swap_set(sup_pte->swap_index, false);
 
