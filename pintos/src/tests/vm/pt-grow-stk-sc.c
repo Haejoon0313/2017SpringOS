@@ -16,8 +16,9 @@ test_main (void)
   int handle;
   int slen = strlen (sample);
   char buf2[65536];
-
+	int idx= 32768;
   /* Write file via write(). */
+//	CHECK (true,"sizeof sample.txt : %d",slen);
   CHECK (create ("sample.txt", slen), "create \"sample.txt\"");
   CHECK ((handle = open ("sample.txt")) > 1, "open \"sample.txt\"");
   CHECK (write (handle, sample, slen) == slen, "write \"sample.txt\"");
@@ -25,8 +26,11 @@ test_main (void)
 
   /* Read back via read(). */
   CHECK ((handle = open ("sample.txt")) > 1, "2nd open \"sample.txt\"");
-  CHECK (read (handle, buf2 + 32768, slen) == slen, "read \"sample.txt\"");
+  
+//	CHECK (true, "read start");
+	CHECK (read (handle, buf2 + idx, slen) == slen, "read \"sample.txt\"");
+//	CHECK (true, "read end");
 
-  CHECK (!memcmp (sample, buf2 + 32768, slen), "compare written data against read data");
+  CHECK (!memcmp (sample, buf2 + idx, slen), "compare written data against read data");
   close (handle);
 }

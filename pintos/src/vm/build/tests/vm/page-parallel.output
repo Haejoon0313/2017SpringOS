@@ -1,0 +1,44 @@
+Copying tests/vm/page-parallel into /tmp/obwUHxsn7i.dsk...
+Copying tests/vm/child-linear into /tmp/obwUHxsn7i.dsk...
+Writing command line to /tmp/YeepT6a9ds.dsk...
+qemu -hda /tmp/YeepT6a9ds.dsk -hdb /tmp/A3NEB1qaC1.dsk -hdc /tmp/obwUHxsn7i.dsk -hdd /tmp/y23Uram0ec.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put page-parallel put child-linear run page-parallel
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  52,377,600 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 149 sector (74 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'page-parallel' into the file system...
+Putting 'child-linear' into the file system...
+Executing 'page-parallel':
+(page-parallel) begin
+(page-parallel) exec "child-linear"
+(page-parallel) exec "child-linear"
+child-linear: exit(66)
+child-linear: exit(66)
+(page-parallel) exec "child-linear"
+(page-parallel) exec "child-linear"
+child-linear: exit(66)
+(page-parallel) wait for child 0
+(page-parallel) wait for child 1
+(page-parallel) wait for child 2
+child-linear: exit(66)
+(page-parallel) wait for child 3
+(page-parallel) end
+page-parallel: exit(0)
+Execution of 'page-parallel' complete.
+Timer: 667 ticks
+Thread: 30 idle ticks, 53 kernel ticks, 584 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 242 reads, 308 writes
+hd1:0: 149 reads, 0 writes
+hd1:1: 3888 reads, 5104 writes
+Console: 1378 characters output
+Keyboard: 0 keys pressed
+Exception: 486 page faults
+Powering off...

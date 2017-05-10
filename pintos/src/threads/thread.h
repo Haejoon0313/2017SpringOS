@@ -131,6 +131,7 @@ struct thread
 		struct hash sup_page_table;
 #endif
 
+		void * exception_esp;
 	};
 /*
 struct child, for list thread

@@ -23,6 +23,38 @@ struct open_file* get_file_by_fd(struct list* file_list, int fd);
 void file_close_inlist(struct list* file_list, int fd);
 void check_address(void *addr);
 
+
+
+
+/*
+CHECK address validation in 3 case, and thread_exit if invalid ptr
+	 */
+void check_address(void *addr){
+
+	/*PART1. Address validation part*/
+	//NULL pointer check
+	if(!addr){
+		exit_process(-1);
+	}
+
+	//user address boundary check
+	if (!is_user_vaddr(addr)){
+		exit_process(-1);
+	}
+
+	//addreess mapping the virtual memory check
+	void *mapping_check = pagedir_get_page(thread_current()->pagedir, addr);
+	if (!mapping_check)
+					mapping_check = pagedir_get_page(thread_current()->pagedir, addr);
+	//mapping_check = true;
+	if (mapping_check==NULL){
+					exit_process(-1);
+	}	
+}
+
+
+
+
 void
 syscall_init (void) 
 {
@@ -35,6 +67,7 @@ syscall_handler (struct intr_frame *f UNUSED)
   //interrupt frame stack accessing address(ESP) 
 	int *p = f->esp;
 
+	thread_current()->exception_esp = f->esp;
 	//address validation check
 	check_address(p);
  
@@ -158,13 +191,15 @@ syscall_handler (struct intr_frame *f UNUSED)
 						}
 		case SYS_READ:{
 						check_address(p+1);
-						check_address(*(p+2));
+						if((*(p+2)==NULL) || !is_user_vaddr(*(p+2)))
+								exit_process(-1);						
+						//check_address(*(p+2));
 						check_address(p+3);
 						// check address valid
 
 						int i;
 						int read_fd = *(p+1);
-						uint8_t* read_buffer = *(p+2);
+						uint32_t* read_buffer = *(p+2);
 						unsigned read_size = *(p+3);
 						
 						//Read from keyboard using input_getc()
@@ -175,6 +210,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 								}
 						//Read by open file.
 						}else{
+								//printf("syscall read \n");	
 								struct open_file * read_file = get_file_by_fd(&thread_current()->file_list,read_fd);
 								if(read_file==NULL){
 												f->eax = -1;
@@ -183,7 +219,10 @@ syscall_handler (struct intr_frame *f UNUSED)
 										if(!is_user_vaddr(read_buffer)){
 														f->eax = -1;
 										}else{
-														f->eax= file_read(read_file->file,read_buffer,read_size);
+														
+														int file_size;
+														file_size = file_read(read_file->file,read_buffer,read_size);
+														f->eax = file_size;
 										}
 								}
 						}
@@ -247,30 +286,6 @@ syscall_handler (struct intr_frame *f UNUSED)
 						break;
 	}	
 }				
-
-/*
-CHECK address validation in 3 case, and thread_exit if invalid ptr
-	 */
-void check_address(void *addr){
-
-	/*PART1. Address validation part*/
-	//NULL pointer check
-	if(!addr){
-		exit_process(-1);
-	}
-
-	//user address boundary check
-	if (!is_user_vaddr(addr)){
-		exit_process(-1);
-	}
-
-	//addreess mapping the virtual memory check
-	void *mapping_check = pagedir_get_page(thread_current()->pagedir, addr);
-	if (!mapping_check){
-		exit_process(-1);
-	}	
-}
-
 struct open_file* get_file_by_fd(struct list* file_list, int fd){
 		struct list_elem *temp;
 		struct open_file *open_f;

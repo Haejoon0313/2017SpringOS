@@ -155,7 +155,10 @@ page_fault (struct intr_frame *f)
   /* Count page faults. */
   page_fault_cnt++;
 
-  /* Determine cause. */
+	//printf("pf cnt : %d \n",page_fault_cnt);
+	//printf("fault addr : %x \n",fault_addr);
+  
+	/* Determine cause. */
   not_present = (f->error_code & PF_P) == 0;//page fault is because of not present?????
   write = (f->error_code & PF_W) != 0;			//us it only for read??????
   user = (f->error_code & PF_U) != 0;				//is it not user range?????
@@ -170,22 +173,30 @@ page_fault (struct intr_frame *f)
 	struct thread * curr = thread_current();
 	struct sup_pte * spte=NULL;
 	void * kpage;
-	void * upage = pg_round_down(fault_addr);
+	void * upage;// = pg_round_down(fault_addr);
 
-	if(not_present && is_user_vaddr(fault_addr)){
+	//printf("pf invitation~\n");
+	if((not_present) && is_user_vaddr(fault_addr)){
 					frame_table_lock_acquire();
-  				spte = get_sup_pte(&curr->sup_page_table,upage);
+  				upage = pg_round_down(fault_addr);
+					spte = get_sup_pte(&curr->sup_page_table,upage);
 
-					
+
 					/*page fault is caused by Stack growth ISSUE*/
 					if(spte==NULL){
-						if(f->esp -32<= fault_addr){
-										kpage = frame_alloc(upage, PAL_ZERO);
-										bool stack_get = pagedir_get_page(curr->pagedir,upage);
+									if(!user){
+										f->esp = curr->exception_esp;
+									}
+									/* MAX stack size =8MB */                      /*For PUSHA instruction */				
+									if(fault_addr >= PHYS_BASE - (1<<23) && (uint8_t *)f->esp -32<= (uint8_t *)fault_addr){
+									kpage = frame_alloc(upage, PAL_ZERO);
+								
+										bool stack_get = (pagedir_get_page(curr->pagedir,upage)==NULL);
 										bool stack_set = pagedir_set_page(curr->pagedir, upage, kpage, not_present);
 	
-										if(!stack_get && stack_set ){
+										if(stack_get && stack_set ){
 														page_insert(NULL,NULL,upage,NULL,NULL,true);
+														//printf("stack allocation finish\n");
 														frame_table_lock_release();
 														return;
 										}else{
@@ -207,7 +218,7 @@ page_fault (struct intr_frame *f)
 									bool set_success = pagedir_get_page(curr->pagedir,spte->upage);
 									if (!swap_success||!set_success){
 													frame_free(kpage);
-													printf("Swap in pagefalut handler Failed!\n");
+	//												printf("Swap in pagefalut handler Failed!\n");
 													
 													
 									}else{
@@ -221,16 +232,13 @@ page_fault (struct intr_frame *f)
 					}
 					frame_table_lock_release();
 	}
+//if(write||user||not_present)
+//			printf("fuck\n");
 
+//	printf("Why exit??\n");
 	exit_process(-1);
 
-	printf ("Page fault at %p: %s error %s page in %s context.\n",
-          fault_addr,
-          not_present ? "not present" : "rights violation",
-          write ? "writing" : "reading",
-          user ? "user" : "kernel");
-  kill (f);
-	
+
 
 
 #else

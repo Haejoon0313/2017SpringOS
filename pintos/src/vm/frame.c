@@ -29,13 +29,13 @@ void * frame_alloc(void * upage, enum palloc_flags flag){
 				if(kpage == NULL){
 								kpage = frame_evict(flag);
 				}
-
-				fte = (struct fte *)malloc(sizeof(struct fte));
-				fte->origin_thread = thread_current();
-				fte->upage = upage;
-				fte->kpage = kpage;
-				list_push_back(&frame_table, &fte->elem);
-
+				if(kpage != NULL){
+					fte = (struct fte *)malloc(sizeof(struct fte));
+					fte->origin_thread = thread_current();
+					fte->upage = upage;
+					fte->kpage = kpage;
+					list_push_back(&frame_table, &fte->elem);
+				}
 				return kpage;//return kernel virtual address, pointing frame
 }
 
