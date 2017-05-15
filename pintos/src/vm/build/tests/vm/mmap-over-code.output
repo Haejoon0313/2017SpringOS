@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-over-code into /tmp/hS5BuymQnL.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/hS5BuymQnL.dsk...
-Writing command line to /tmp/prrAXyuFb5.dsk...
-qemu -hda /tmp/prrAXyuFb5.dsk -hdb /tmp/3ZjI7q4zLk.dsk -hdc /tmp/hS5BuymQnL.dsk -hdd /tmp/6NPdxxlxLc.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-over-code into /tmp/0Qo1b7ydQv.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/0Qo1b7ydQv.dsk...
+Writing command line to /tmp/OWPydZ40T7.dsk...
+qemu -hda /tmp/OWPydZ40T7.dsk -hdb /tmp/Hrdzz7XLYd.dsk -hdc /tmp/0Qo1b7ydQv.dsk -hdd /tmp/Qdh0xIw8Eb.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-over-code put sample.txt run mmap-over-code
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -22,13 +22,13 @@ Executing 'mmap-over-code':
 (mmap-over-code) try to mmap over code segment: FAILED
 mmap-over-code: exit(1)
 Execution of 'mmap-over-code' complete.
-Timer: 81 ticks
-Thread: 30 idle ticks, 49 kernel ticks, 2 user ticks
+Timer: 69 ticks
+Thread: 30 idle ticks, 36 kernel ticks, 3 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 162 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1118 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 4 page faults
 Powering off...

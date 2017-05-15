@@ -1,6 +1,6 @@
-Copying tests/vm/pt-grow-stk-sc into /tmp/qXSdzJpxZP.dsk...
-Writing command line to /tmp/DPPObHi1mH.dsk...
-qemu -hda /tmp/DPPObHi1mH.dsk -hdb /tmp/c51CL5LCiL.dsk -hdc /tmp/qXSdzJpxZP.dsk -hdd /tmp/Km7PhX2QQD.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/pt-grow-stk-sc into /tmp/qnUZCMO3kQ.dsk...
+Writing command line to /tmp/xcD2cIAH12.dsk...
+qemu -hda /tmp/xcD2cIAH12.dsk -hdb /tmp/zSpwL3eaO5.dsk -hdc /tmp/qnUZCMO3kQ.dsk -hdd /tmp/9WiB2cKAIt.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put pt-grow-stk-sc run pt-grow-stk-sc
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -24,13 +24,13 @@ Executing 'pt-grow-stk-sc':
 (pt-grow-stk-sc) end
 pt-grow-stk-sc: exit(0)
 Execution of 'pt-grow-stk-sc' complete.
-Timer: 76 ticks
-Thread: 30 idle ticks, 41 kernel ticks, 6 user ticks
+Timer: 75 ticks
+Thread: 30 idle ticks, 39 kernel ticks, 6 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 100 reads, 168 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1181 characters output
 Keyboard: 0 keys pressed
-Exception: 3 page faults
+Exception: 8 page faults
 Powering off...

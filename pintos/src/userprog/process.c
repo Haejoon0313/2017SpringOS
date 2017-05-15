@@ -389,8 +389,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
                   zero_bytes = (ROUND_UP (page_offset + phdr.p_memsz, PGSIZE)
                                 - read_bytes);
 
-									//read_bytes + zero_bytes == 1 Pagesize(4096) always?
-                }
+				       }
               else 
                 {
                   /* Entirely zero.
@@ -516,12 +515,18 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 
 #ifdef VM
 			frame_table_lock_acquire();
+			page_insert(file, cur_ofs, upage, page_read_bytes, page_zero_bytes, writable);//Supplement page table manage
+	
+			struct sup_pte * spte = get_sup_pte(&curr->sup_page_table,upage);
+			ASSERT(spte != NULL);
+			/*Lazy loading now. Initially file segment is lot loaded to memory, so spte->loaded is false.*/
+			spte->loaded = false;
+			frame_table_lock_release();
+
+	/*	
 			
 			void * kpage = frame_alloc(upage,0);//allocate frame for upage AND manage frame table etc.
-			page_insert(file, cur_ofs, upage, page_read_bytes, page_zero_bytes, writable);//Supplement page table manage
 			
-			frame_table_lock_release();
-		
 			struct sup_pte * spte = get_sup_pte(&curr->sup_page_table,upage);//ERROR case management required???????????
 			
 			ASSERT(spte != NULL);
@@ -534,13 +539,14 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 			}
      memset (kpage + page_read_bytes, 0, page_zero_bytes);//set rest of page into 0. Maybe for alignment of page?
 
-      /* Add the page to the process's address space. */
+    	// Add the page to the process's address space. 
       if (!install_page (upage, kpage, writable)) 
         {
 					frame_free(upage);
 					page_remove(&curr->sup_page_table,upage);	
           return false; 
         }
+				*/
 #else
 
 			/*Before Project4 VM part. Need to Remove later */
@@ -587,6 +593,7 @@ setup_stack (void **esp,char * file_name)
 {
   void * kpage;
   bool success = false;
+	struct thread * curr = thread_current();
 #ifdef VM
 	frame_table_lock_acquire();
 	kpage = frame_alloc(((uint8_t *)PHYS_BASE) - PGSIZE, PAL_ZERO);
@@ -596,8 +603,7 @@ setup_stack (void **esp,char * file_name)
 			if (success)
 			{
 					*esp = PHYS_BASE;
-					ASSERT(page_insert(NULL,NULL, ((uint8_t *)PHYS_BASE) - PGSIZE, NULL, NULL,true));
-			
+					page_insert(NULL,NULL, ((uint8_t *)PHYS_BASE) - PGSIZE, NULL, NULL,true);
 			}
 			else{
 					frame_free(kpage);

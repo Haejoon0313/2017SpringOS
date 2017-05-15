@@ -33,7 +33,7 @@ bool page_insert(struct file * file, off_t file_ofs, uint8_t * upage, uint32_t r
 				sup_pte->writable=writable;
 				sup_pte->file_ofs = file_ofs;
 				sup_pte->swapped = false;
-				sup_pte->loaded = true;
+				sup_pte->loaded = true; //Now lazy loading, so initially false;
 
 				if(hash_insert(&thread_current()->sup_page_table, &sup_pte->elem)==NULL){
 								return true;

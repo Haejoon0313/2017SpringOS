@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-unmap into /tmp/sgtizPkHM8.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/sgtizPkHM8.dsk...
-Writing command line to /tmp/RxTVJaPAd6.dsk...
-qemu -hda /tmp/RxTVJaPAd6.dsk -hdb /tmp/gJrDDh4zCg.dsk -hdc /tmp/sgtizPkHM8.dsk -hdd /tmp/rzoyZKtWn5.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-unmap into /tmp/MJOb4Ksbek.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/MJOb4Ksbek.dsk...
+Writing command line to /tmp/4Pglc6zNis.dsk...
+qemu -hda /tmp/4Pglc6zNis.dsk -hdb /tmp/NSgJy0jJ0R.dsk -hdc /tmp/MJOb4Ksbek.dsk -hdd /tmp/ZqCCO5yClr.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-unmap put sample.txt run mmap-unmap
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -21,13 +21,13 @@ Executing 'mmap-unmap':
 (mmap-unmap) mmap "sample.txt"
 mmap-unmap: exit(-1)
 Execution of 'mmap-unmap' complete.
-Timer: 64 ticks
-Thread: 30 idle ticks, 33 kernel ticks, 1 user ticks
+Timer: 73 ticks
+Thread: 30 idle ticks, 41 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 97 reads, 166 writes
 hd1:0: 78 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1016 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 6 page faults
 Powering off...

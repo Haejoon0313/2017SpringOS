@@ -1,12 +1,12 @@
-Copying tests/vm/mmap-misalign into /tmp/NWi7WNe6bF.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/NWi7WNe6bF.dsk...
-Writing command line to /tmp/FyQCG1KZNF.dsk...
-qemu -hda /tmp/FyQCG1KZNF.dsk -hdb /tmp/fRB0t7MFzE.dsk -hdc /tmp/NWi7WNe6bF.dsk -hdd /tmp/MgYkvEbbUH.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-misalign into /tmp/OGxhk3jRcQ.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/OGxhk3jRcQ.dsk...
+Writing command line to /tmp/KKQwm25fOu.dsk...
+qemu -hda /tmp/KKQwm25fOu.dsk -hdb /tmp/m2E7VShvX6.dsk -hdc /tmp/OGxhk3jRcQ.dsk -hdd /tmp/hz9swHULG5.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-misalign put sample.txt run mmap-misalign
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
 373 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
+Calibrating timer...  55,603,200 loops/s.
 hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
@@ -22,13 +22,13 @@ Executing 'mmap-misalign':
 (mmap-misalign) try to mmap at misaligned address: FAILED
 mmap-misalign: exit(1)
 Execution of 'mmap-misalign' complete.
-Timer: 70 ticks
-Thread: 30 idle ticks, 38 kernel ticks, 2 user ticks
+Timer: 72 ticks
+Thread: 30 idle ticks, 40 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 162 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1116 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 4 page faults
 Powering off...

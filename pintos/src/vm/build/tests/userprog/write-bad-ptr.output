@@ -1,7 +1,7 @@
-Copying tests/userprog/write-bad-ptr into /tmp/74Bvsnq0KP.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/74Bvsnq0KP.dsk...
-Writing command line to /tmp/nuut9KM4nQ.dsk...
-qemu -hda /tmp/nuut9KM4nQ.dsk -hdb /tmp/5icnoupCr3.dsk -hdc /tmp/74Bvsnq0KP.dsk -hdd /tmp/bGQm7rB7jR.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/write-bad-ptr into /tmp/J5fX6ssOCp.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/J5fX6ssOCp.dsk...
+Writing command line to /tmp/8Hkhm7Rgqa.dsk...
+qemu -hda /tmp/8Hkhm7Rgqa.dsk -hdb /tmp/cJHva13DcX.dsk -hdc /tmp/J5fX6ssOCp.dsk -hdd /tmp/ltpKBRcVPf.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put write-bad-ptr put sample.txt run write-bad-ptr
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -21,12 +21,12 @@ Executing 'write-bad-ptr':
 write-bad-ptr: exit(-1)
 Execution of 'write-bad-ptr' complete.
 Timer: 70 ticks
-Thread: 30 idle ticks, 40 kernel ticks, 1 user ticks
+Thread: 30 idle ticks, 39 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 160 writes
 hd1:0: 75 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1009 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 4 page faults
 Powering off...

@@ -1,7 +1,7 @@
-Copying tests/userprog/read-normal into /tmp/vW9dVzlDDC.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/vW9dVzlDDC.dsk...
-Writing command line to /tmp/Mk3Da78jMX.dsk...
-qemu -hda /tmp/Mk3Da78jMX.dsk -hdb /tmp/hIUZJA4QjP.dsk -hdc /tmp/vW9dVzlDDC.dsk -hdd /tmp/pjS4ck39to.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/read-normal into /tmp/S8IqECbkR8.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/S8IqECbkR8.dsk...
+Writing command line to /tmp/qsMIm6vust.dsk...
+qemu -hda /tmp/qsMIm6vust.dsk -hdb /tmp/1goJHHO8Xr.dsk -hdc /tmp/S8IqECbkR8.dsk -hdd /tmp/DxaeAi4HoY.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put read-normal put sample.txt run read-normal
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -23,13 +23,13 @@ Executing 'read-normal':
 (read-normal) end
 read-normal: exit(0)
 Execution of 'read-normal' complete.
-Timer: 68 ticks
-Thread: 30 idle ticks, 36 kernel ticks, 2 user ticks
+Timer: 72 ticks
+Thread: 30 idle ticks, 40 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 97 reads, 162 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1108 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 5 page faults
 Powering off...

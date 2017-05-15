@@ -13,6 +13,7 @@
 #include "vm/swap.h"
 #include "vm/frame.h"
 #include "userprog/syscall.h"
+#include "userprog/process.h"
 #include "threads/vaddr.h"
 #endif
 
@@ -22,7 +23,7 @@ static long long page_fault_cnt;
 
 static void kill (struct intr_frame *);
 static void page_fault (struct intr_frame *);
-
+static bool install_page(void *upage, void * kapge, bool writable);
 /* Registers handlers for interrupts that can be caused by user
    programs.
 
@@ -155,9 +156,6 @@ page_fault (struct intr_frame *f)
   /* Count page faults. */
   page_fault_cnt++;
 
-	//printf("pf cnt : %d \n",page_fault_cnt);
-	//printf("fault addr : %x \n",fault_addr);
-  
 	/* Determine cause. */
   not_present = (f->error_code & PF_P) == 0;//page fault is because of not present?????
   write = (f->error_code & PF_W) != 0;			//us it only for read??????
@@ -171,71 +169,160 @@ page_fault (struct intr_frame *f)
 
 #ifdef VM
 	struct thread * curr = thread_current();
-	struct sup_pte * spte=NULL;
+	struct sup_pte * spte = NULL;
 	void * kpage;
-	void * upage;// = pg_round_down(fault_addr);
+	void * upage=NULL;
+	
+	//printf("[#]fault addr : %x \n",fault_addr);
+ 	//printf("[#]pf cnt : %d \n",page_fault_cnt);
 
-	//printf("pf invitation~\n");
-	if((not_present) && is_user_vaddr(fault_addr)){
+	if(not_present &&is_user_vaddr(fault_addr)){
 					frame_table_lock_acquire();
   				upage = pg_round_down(fault_addr);
 					spte = get_sup_pte(&curr->sup_page_table,upage);
 
+					
 
-					/*page fault is caused by Stack growth ISSUE*/
+					/*page fault is caused by STACK GROWTH*/
 					if(spte==NULL){
+
 									if(!user){
 										f->esp = curr->exception_esp;
 									}
 									/* MAX stack size =8MB */                      /*For PUSHA instruction */				
 									if(fault_addr >= PHYS_BASE - (1<<23) && (uint8_t *)f->esp -32<= (uint8_t *)fault_addr){
-									kpage = frame_alloc(upage, PAL_ZERO);
+										kpage = frame_alloc(upage, PAL_ZERO);
 								
-										bool stack_get = (pagedir_get_page(curr->pagedir,upage)==NULL);
-										bool stack_set = pagedir_set_page(curr->pagedir, upage, kpage, not_present);
-	
-										if(stack_get && stack_set ){
+										bool stack_check = pagedir_get_page(curr->pagedir,upage);
+										bool stack_set = pagedir_set_page(curr->pagedir, upage, kpage, true);
+										
+										if((stack_check !=NULL) || !stack_set){
+														frame_free(kpage);
+										}else{
 														page_insert(NULL,NULL,upage,NULL,NULL,true);
-														//printf("stack allocation finish\n");
 														frame_table_lock_release();
 														return;
-										}else{
-														frame_free(kpage);
 										}
-						}
+							}
 					}
 
-					/*page fault is caused by SWAP */
-					else{
-									if (spte->swapped && !(pagedir_get_page(curr->pagedir,spte->upage))){
+					/*page fault is caused by swap or lazy loading */					
+					else{ 
+									/*page fault is caused by SWAP */									
+									if(spte->swapped&& spte->loaded && spte->swapped && !(pagedir_get_page(curr->pagedir,spte->upage))) {
+											kpage = frame_alloc(upage, PAL_ZERO);
+											swap_in(spte,kpage);
+							
+											bool swap_success = pagedir_set_page(curr->pagedir, upage, kpage, true);
+											bool set_success = pagedir_get_page(curr->pagedir,spte->upage);
+											if ((swap_success!=NULL) || !set_success){
+														frame_free(kpage);													
+														
+										 }else{
+														pagedir_set_dirty(curr->pagedir, upage,true);
+														pagedir_set_accessed(curr->pagedir, upage, true);
+														spte->swapped = false;
+														ASSERT(spte->loaded);
+														frame_table_lock_release();
+														return;
+										 }}
+									/*page fault is caused by LAZY LOADING*/
+									else if(!spte->loaded){
 									
-								
-									kpage = frame_alloc(upage, 0);
-									swap_in(spte,kpage);
-					
+											/*Check the correctness of load page size */
+											if( !(spte->file ==NULL)){
+														ASSERT(spte->read_bytes + spte->zero_bytes == PGSIZE);
+											}
 
-									bool swap_success = pagedir_set_page(curr->pagedir, upage, kpage, not_present);
-									bool set_success = pagedir_get_page(curr->pagedir,spte->upage);
-									if (!swap_success||!set_success){
-													frame_free(kpage);
-	//												printf("Swap in pagefalut handler Failed!\n");
-													
-													
-									}else{
-													pagedir_set_accessed(curr->pagedir, upage, true);
-													spte->swapped = false;
-													ASSERT(spte->loaded);
-													frame_table_lock_release();
-													return;
+													/*CASE 1. All non-zero page  */
+											if (spte->read_bytes == PGSIZE){
+														void *kpage = frame_alloc(upage,0);
+														
+														struct sup_pte * spte = get_sup_pte(&curr->sup_page_table,upage);
+														ASSERT(spte != NULL);
+
+														if(file_read_at(spte->file, kpage, spte->read_bytes,spte->file_ofs) != (int) spte->read_bytes){
+																		frame_free(upage);
+																		frame_table_lock_release();
+																		release_file_lock();
+																		return false;
+														}
+											
+														bool null_check = pagedir_get_page(curr->pagedir,spte->upage);
+														bool set_success = pagedir_set_page(curr->pagedir, upage, kpage, spte->writable);
+												
+														if((null_check!=NULL) || !set_success){
+																		frame_free(upage);
+																		frame_table_lock_release();
+																		page_remove(&curr->sup_page_table, upage);
+																		return false;
+														}
+
+														spte->loaded = true;
+														pagedir_set_accessed(curr->pagedir, upage, true);
+														frame_table_lock_release();
+														return;
+											}
+
+											/*CASE 2. All zeroed page */
+											else if(spte->zero_bytes == PGSIZE){
+														void *kpage = frame_alloc(upage,PAL_ZERO);
+														
+														struct sup_pte * spte = get_sup_pte(&curr->sup_page_table,upage);
+														ASSERT(spte != NULL);
+									
+														bool null_check = pagedir_get_page(curr->pagedir,spte->upage);
+														bool set_success = pagedir_set_page(curr->pagedir, upage, kpage, spte->writable);
+												
+														if((null_check!=NULL) || !set_success){
+																		frame_free(upage);
+																		frame_table_lock_release();
+																		page_remove(&curr->sup_page_table, upage);
+																		return false;
+														}
+														
+														spte->loaded = true;
+														pagedir_set_accessed(curr->pagedir, upage, true);
+														frame_table_lock_release();
+														return;
+											}
+
+											/*CASE 3. Partial page */
+											else {
+														void * kpage = frame_alloc(upage,0);
+														
+														struct sup_pte * spte = get_sup_pte(&curr->sup_page_table, upage);
+
+														ASSERT(spte->file != NULL);
+														ASSERT(kpage != NULL);
+
+														if (file_read_at(spte->file, kpage, spte->read_bytes,spte->file_ofs) != (int) spte->read_bytes){
+																		frame_free(upage);
+																		frame_table_lock_release();
+																		return false;
+														}
+														
+														memset(kpage + spte->read_bytes, 0 ,spte->zero_bytes);
+														
+														bool null_check = pagedir_get_page(curr->pagedir,spte->upage);
+														bool set_success = pagedir_set_page(curr->pagedir, upage, kpage, spte->writable);
+												
+														if((null_check!=NULL) || !set_success){															
+																		frame_free(upage);
+																		frame_table_lock_release();
+																		return false;
+														}
+
+														spte->loaded = true;
+														pagedir_set_accessed(curr->pagedir, upage, true);
+														frame_table_lock_release();
+														return;
+											}
 									}
-							}
 					}
 					frame_table_lock_release();
 	}
-//if(write||user||not_present)
-//			printf("fuck\n");
 
-//	printf("Why exit??\n");
 	exit_process(-1);
 
 

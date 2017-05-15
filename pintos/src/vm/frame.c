@@ -65,6 +65,7 @@ void * frame_evict(enum palloc_flags flag){
 				struct list_elem * el;
 				struct fte * evict_fte;
 				struct sup_pte * spte;
+				bool is_dirty;
 
 				el = list_begin(&frame_table);
 
@@ -74,11 +75,20 @@ void * frame_evict(enum palloc_flags flag){
 				void * kpage = evict_fte->kpage;
 
 				spte = get_sup_pte(&(evict_fte->origin_thread->sup_page_table), upage);
-						
-						/*swap out the first entry of Frame table */
-				spte->swapped = true;
-				spte->swap_index = swap_out(kpage);
 				
+				is_dirty = pagedir_is_dirty(evict_fte->origin_thread->pagedir,upage);
+
+				if(is_dirty){//written, so saved at swap disk
+				/*swap out the first entry of Frame table */
+								spte->swapped = true;
+								ASSERT(spte->loaded);
+								spte->swap_index = swap_out(kpage);
+				}
+				else{//read_only data, so just remove
+								spte->loaded = false;
+								
+
+				}
 				pagedir_clear_page(evict_fte->origin_thread->pagedir, upage);
 				
 				palloc_free_page(kpage);

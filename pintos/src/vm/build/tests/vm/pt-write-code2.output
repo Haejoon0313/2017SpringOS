@@ -1,7 +1,7 @@
-Copying tests/vm/pt-write-code2 into /tmp/hvmNVG4Yfj.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/hvmNVG4Yfj.dsk...
-Writing command line to /tmp/aKb3IXjVbL.dsk...
-qemu -hda /tmp/aKb3IXjVbL.dsk -hdb /tmp/AlwVy7mn2B.dsk -hdc /tmp/hvmNVG4Yfj.dsk -hdd /tmp/t5iA1nhYaZ.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/pt-write-code2 into /tmp/hCEGp6K9Vk.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/hCEGp6K9Vk.dsk...
+Writing command line to /tmp/GcZzT0MqC0.dsk...
+qemu -hda /tmp/GcZzT0MqC0.dsk -hdb /tmp/LK2tCv8eSt.dsk -hdc /tmp/hCEGp6K9Vk.dsk -hdd /tmp/Gx8gWVlYsz.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put pt-write-code2 put sample.txt run pt-write-code2
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -21,12 +21,12 @@ Executing 'pt-write-code2':
 pt-write-code2: exit(-1)
 Execution of 'pt-write-code2' complete.
 Timer: 75 ticks
-Thread: 30 idle ticks, 43 kernel ticks, 2 user ticks
+Thread: 30 idle ticks, 44 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 91 reads, 162 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1017 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 5 page faults
 Powering off...

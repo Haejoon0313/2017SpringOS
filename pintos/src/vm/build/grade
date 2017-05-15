@@ -222,10 +222,10 @@ run: wait for child 0: FAILED
 
 OUTPUT FROM tests/vm/page-merge-mm:
 
-Copying tests/vm/page-merge-mm into /tmp/YhSwvahOX0.dsk...
-Copying tests/vm/child-qsort-mm into /tmp/YhSwvahOX0.dsk...
-Writing command line to /tmp/sTolncL04w.dsk...
-qemu -hda /tmp/sTolncL04w.dsk -hdb /tmp/hbqUwbIc4s.dsk -hdc /tmp/YhSwvahOX0.dsk -hdd /tmp/9cOA0abcgN.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-merge-mm into /tmp/iBQ1XoaU1v.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/iBQ1XoaU1v.dsk...
+Writing command line to /tmp/WQF8RC1w3V.dsk...
+qemu -hda /tmp/WQF8RC1w3V.dsk -hdb /tmp/KMnuETVTwO.dsk -hdc /tmp/iBQ1XoaU1v.dsk -hdd /tmp/CAp9KEbn4O.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -262,15 +262,15 @@ child-qsort-mm: exit(-1)
 (page-merge-mm) wait for child 0: FAILED
 page-merge-mm: exit(1)
 Execution of 'page-merge-mm' complete.
-Timer: 843 ticks
-Thread: 30 idle ticks, 53 kernel ticks, 760 user ticks
+Timer: 479 ticks
+Thread: 30 idle ticks, 58 kernel ticks, 391 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 772 reads, 4458 writes
+hd0:1: 708 reads, 4458 writes
 hd1:0: 160 reads, 0 writes
-hd1:1: 2088 reads, 3296 writes
-Console: 1522 characters output
+hd1:1: 0 reads, 0 writes
+Console: 1516 characters output
 Keyboard: 0 keys pressed
-Exception: 269 page faults
+Exception: 294 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -294,10 +294,10 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-read:
 
-Copying tests/vm/mmap-read into /tmp/0qV86bvTiI.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/0qV86bvTiI.dsk...
-Writing command line to /tmp/veYrHUYKz1.dsk...
-qemu -hda /tmp/veYrHUYKz1.dsk -hdb /tmp/BV2EDxIX7l.dsk -hdc /tmp/0qV86bvTiI.dsk -hdd /tmp/4BfloFg7K1.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-read into /tmp/0WnpCWgoPt.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/0WnpCWgoPt.dsk...
+Writing command line to /tmp/sItxnnBqoz.dsk...
+qemu -hda /tmp/sItxnnBqoz.dsk -hdb /tmp/qDtOxVstFq.dsk -hdc /tmp/0WnpCWgoPt.dsk -hdd /tmp/Mxovoe0dtN.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-read put sample.txt run mmap-read
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -317,15 +317,15 @@ Executing 'mmap-read':
 (mmap-read) mmap "sample.txt"
 mmap-read: exit(-1)
 Execution of 'mmap-read' complete.
-Timer: 66 ticks
-Thread: 30 idle ticks, 35 kernel ticks, 1 user ticks
+Timer: 72 ticks
+Thread: 30 idle ticks, 40 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 98 reads, 168 writes
 hd1:0: 79 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1007 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 6 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -353,9 +353,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-write:
 
-Copying tests/vm/mmap-write into /tmp/JDThlX3079.dsk...
-Writing command line to /tmp/b82SXAQMpD.dsk...
-qemu -hda /tmp/b82SXAQMpD.dsk -hdb /tmp/pXfkLp8zoi.dsk -hdc /tmp/JDThlX3079.dsk -hdd /tmp/eHB7SvHG2e.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-write into /tmp/Ql8TumcDTA.dsk...
+Writing command line to /tmp/116cqcXcS0.dsk...
+qemu -hda /tmp/116cqcXcS0.dsk -hdb /tmp/5xOrCDDFfC.dsk -hdc /tmp/Ql8TumcDTA.dsk -hdd /tmp/Y9ojLUmiyj.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-write run mmap-write
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -375,15 +375,15 @@ Executing 'mmap-write':
 (mmap-write) mmap "sample.txt"
 mmap-write: exit(-1)
 Execution of 'mmap-write' complete.
-Timer: 65 ticks
-Thread: 29 idle ticks, 33 kernel ticks, 3 user ticks
+Timer: 69 ticks
+Thread: 30 idle ticks, 37 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 93 reads, 166 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 989 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 6 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -431,9 +431,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-shuffle:
 
-Copying tests/vm/mmap-shuffle into /tmp/epEG09nmU9.dsk...
-Writing command line to /tmp/4DY4zk1AIi.dsk...
-qemu -hda /tmp/4DY4zk1AIi.dsk -hdb /tmp/M1oyzIDkUq.dsk -hdc /tmp/epEG09nmU9.dsk -hdd /tmp/Vvbhgq2BKN.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-shuffle into /tmp/IkC7MwzHaA.dsk...
+Writing command line to /tmp/84YJOxUVsn.dsk...
+qemu -hda /tmp/84YJOxUVsn.dsk -hdb /tmp/YjTFsHnR9V.dsk -hdc /tmp/IkC7MwzHaA.dsk -hdd /tmp/8n1Qh09oeG.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-shuffle run mmap-shuffle
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -453,15 +453,15 @@ Executing 'mmap-shuffle':
 (mmap-shuffle) mmap "buffer"
 mmap-shuffle: exit(-1)
 Execution of 'mmap-shuffle' complete.
-Timer: 100 ticks
-Thread: 30 idle ticks, 45 kernel ticks, 25 user ticks
+Timer: 97 ticks
+Thread: 30 idle ticks, 42 kernel ticks, 25 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 95 reads, 430 writes
 hd1:0: 81 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 999 characters output
+Console: 998 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 6 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -493,10 +493,10 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-twice:
 
-Copying tests/vm/mmap-twice into /tmp/zg3tfwFdcl.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/zg3tfwFdcl.dsk...
-Writing command line to /tmp/qaSUBzHDMN.dsk...
-qemu -hda /tmp/qaSUBzHDMN.dsk -hdb /tmp/cgkAYRlrqu.dsk -hdc /tmp/zg3tfwFdcl.dsk -hdd /tmp/hiST7olfov.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-twice into /tmp/AJ03oC0PJx.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/AJ03oC0PJx.dsk...
+Writing command line to /tmp/rL8ImsxfGa.dsk...
+qemu -hda /tmp/rL8ImsxfGa.dsk -hdb /tmp/n2s8xJr9hg.dsk -hdc /tmp/AJ03oC0PJx.dsk -hdd /tmp/VhkvetHa70.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-twice put sample.txt run mmap-twice
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -519,15 +519,15 @@ Executing 'mmap-twice':
 (mmap-twice) compare mmap'd file 0 against data
 mmap-twice: exit(-1)
 Execution of 'mmap-twice' complete.
-Timer: 66 ticks
-Thread: 30 idle ticks, 35 kernel ticks, 1 user ticks
+Timer: 75 ticks
+Thread: 30 idle ticks, 43 kernel ticks, 3 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 101 reads, 168 writes
 hd1:0: 79 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1167 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 6 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -538,10 +538,10 @@ run: wait for child (should return 0): FAILED
 
 OUTPUT FROM tests/vm/mmap-exit:
 
-Copying tests/vm/mmap-exit into /tmp/aCezEtJRhQ.dsk...
-Copying tests/vm/child-mm-wrt into /tmp/aCezEtJRhQ.dsk...
-Writing command line to /tmp/LRn9sLOVDB.dsk...
-qemu -hda /tmp/LRn9sLOVDB.dsk -hdb /tmp/x2CaJ6lUNl.dsk -hdc /tmp/aCezEtJRhQ.dsk -hdd /tmp/tLFpnpTuhA.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-exit into /tmp/oUyLdXyNRm.dsk...
+Copying tests/vm/child-mm-wrt into /tmp/oUyLdXyNRm.dsk...
+Writing command line to /tmp/kGdL6HBMEG.dsk...
+qemu -hda /tmp/kGdL6HBMEG.dsk -hdb /tmp/Wk8HOczbGE.dsk -hdc /tmp/oUyLdXyNRm.dsk -hdd /tmp/Kmhq5KP62b.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-exit put child-mm-wrt run mmap-exit
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -565,15 +565,15 @@ child-mm-wrt: exit(-1)
 (mmap-exit) wait for child (should return 0): FAILED
 mmap-exit: exit(1)
 Execution of 'mmap-exit' complete.
-Timer: 93 ticks
-Thread: 30 idle ticks, 59 kernel ticks, 4 user ticks
+Timer: 87 ticks
+Thread: 30 idle ticks, 53 kernel ticks, 4 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 162 reads, 316 writes
 hd1:0: 150 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1151 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 11 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -607,10 +607,10 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-clean:
 
-Copying tests/vm/mmap-clean into /tmp/XtQPpICxx5.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/XtQPpICxx5.dsk...
-Writing command line to /tmp/xyqsrhU673.dsk...
-qemu -hda /tmp/xyqsrhU673.dsk -hdb /tmp/FhmzCZiRUa.dsk -hdc /tmp/XtQPpICxx5.dsk -hdd /tmp/6LWkKeu1ib.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-clean into /tmp/qikIXw6yaH.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/qikIXw6yaH.dsk...
+Writing command line to /tmp/tix9D3AMZZ.dsk...
+qemu -hda /tmp/tix9D3AMZZ.dsk -hdb /tmp/jRqLAcfbHL.dsk -hdc /tmp/qikIXw6yaH.dsk -hdd /tmp/rUe2WTsp4v.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-clean put sample.txt run mmap-clean
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -630,15 +630,15 @@ Executing 'mmap-clean':
 (mmap-clean) mmap "sample.txt"
 mmap-clean: exit(-1)
 Execution of 'mmap-clean' complete.
-Timer: 65 ticks
-Thread: 30 idle ticks, 34 kernel ticks, 1 user ticks
+Timer: 72 ticks
+Thread: 30 idle ticks, 40 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 100 reads, 170 writes
 hd1:0: 80 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1017 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 6 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -662,10 +662,10 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-close:
 
-Copying tests/vm/mmap-close into /tmp/IrWzDu4mBZ.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/IrWzDu4mBZ.dsk...
-Writing command line to /tmp/o1QmuZcg9w.dsk...
-qemu -hda /tmp/o1QmuZcg9w.dsk -hdb /tmp/VNdg4QUXjI.dsk -hdc /tmp/IrWzDu4mBZ.dsk -hdd /tmp/DMc2PugsyQ.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-close into /tmp/8JTXod0RoC.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/8JTXod0RoC.dsk...
+Writing command line to /tmp/6dyyCulYmv.dsk...
+qemu -hda /tmp/6dyyCulYmv.dsk -hdb /tmp/HcbUREdZES.dsk -hdc /tmp/8JTXod0RoC.dsk -hdd /tmp/1jTufxp6Xj.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-close put sample.txt run mmap-close
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -685,15 +685,15 @@ Executing 'mmap-close':
 (mmap-close) mmap "sample.txt"
 mmap-close: exit(-1)
 Execution of 'mmap-close' complete.
-Timer: 65 ticks
-Thread: 30 idle ticks, 34 kernel ticks, 1 user ticks
+Timer: 69 ticks
+Thread: 30 idle ticks, 38 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 98 reads, 168 writes
 hd1:0: 79 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1016 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 6 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -723,10 +723,10 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-remove:
 
-Copying tests/vm/mmap-remove into /tmp/ikGZJfHHNk.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/ikGZJfHHNk.dsk...
-Writing command line to /tmp/YtTPfWwWj9.dsk...
-qemu -hda /tmp/YtTPfWwWj9.dsk -hdb /tmp/SwYy0VYAKj.dsk -hdc /tmp/ikGZJfHHNk.dsk -hdd /tmp/afe6ZqwYaF.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-remove into /tmp/DHmI92MRqC.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/DHmI92MRqC.dsk...
+Writing command line to /tmp/R3hbgfkDuH.dsk...
+qemu -hda /tmp/R3hbgfkDuH.dsk -hdb /tmp/IT5PWCKaXr.dsk -hdc /tmp/DHmI92MRqC.dsk -hdd /tmp/NK8iXdRiyU.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-remove put sample.txt run mmap-remove
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -749,15 +749,15 @@ Executing 'mmap-remove':
 (mmap-remove) create "another"
 mmap-remove: exit(-1)
 Execution of 'mmap-remove' complete.
-Timer: 87 ticks
-Thread: 30 idle ticks, 47 kernel ticks, 10 user ticks
+Timer: 76 ticks
+Thread: 30 idle ticks, 36 kernel ticks, 10 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 145 reads, 255 writes
 hd1:0: 79 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1131 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 6 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -768,9 +768,9 @@ run: try to mmap invalid fd: FAILED
 
 OUTPUT FROM tests/vm/mmap-bad-fd:
 
-Copying tests/vm/mmap-bad-fd into /tmp/J1SyurtHyY.dsk...
-Writing command line to /tmp/rv5QWyXCnn.dsk...
-qemu -hda /tmp/rv5QWyXCnn.dsk -hdb /tmp/svwRuCSGVr.dsk -hdc /tmp/J1SyurtHyY.dsk -hdd /tmp/NZPGDV478R.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-bad-fd into /tmp/MgtLB9F3lw.dsk...
+Writing command line to /tmp/yEWiKKku5x.dsk...
+qemu -hda /tmp/yEWiKKku5x.dsk -hdb /tmp/bqlYD6N8wY.dsk -hdc /tmp/MgtLB9F3lw.dsk -hdd /tmp/8Ip9UOzE46.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-bad-fd run mmap-bad-fd
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -789,15 +789,15 @@ Executing 'mmap-bad-fd':
 (mmap-bad-fd) try to mmap invalid fd: FAILED
 mmap-bad-fd: exit(1)
 Execution of 'mmap-bad-fd' complete.
-Timer: 63 ticks
-Thread: 30 idle ticks, 32 kernel ticks, 1 user ticks
+Timer: 71 ticks
+Thread: 30 idle ticks, 39 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 154 writes
 hd1:0: 73 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 982 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 4 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -832,11 +832,11 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-inherit:
 
-Copying tests/vm/mmap-inherit into /tmp/l1TLsPCc7L.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/l1TLsPCc7L.dsk...
-Copying tests/vm/child-inherit into /tmp/l1TLsPCc7L.dsk...
-Writing command line to /tmp/rtADk4btzU.dsk...
-qemu -hda /tmp/rtADk4btzU.dsk -hdb /tmp/hfJWbvz0Qx.dsk -hdc /tmp/l1TLsPCc7L.dsk -hdd /tmp/J7jaxM4ydb.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-inherit into /tmp/lVkuHio5X0.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/lVkuHio5X0.dsk...
+Copying tests/vm/child-inherit into /tmp/lVkuHio5X0.dsk...
+Writing command line to /tmp/zlOghaYQRe.dsk...
+qemu -hda /tmp/zlOghaYQRe.dsk -hdb /tmp/F49WZ1cuKc.dsk -hdc /tmp/lVkuHio5X0.dsk -hdd /tmp/lQBlctZGke.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-inherit put sample.txt put child-inherit run mmap-inherit
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -857,15 +857,15 @@ Executing 'mmap-inherit':
 (mmap-inherit) mmap "sample.txt"
 mmap-inherit: exit(-1)
 Execution of 'mmap-inherit' complete.
-Timer: 77 ticks
-Thread: 30 idle ticks, 47 kernel ticks, 1 user ticks
+Timer: 89 ticks
+Thread: 30 idle ticks, 57 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 127 reads, 320 writes
 hd1:0: 154 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1103 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 6 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -876,10 +876,10 @@ run: try to mmap at address 0: FAILED
 
 OUTPUT FROM tests/vm/mmap-null:
 
-Copying tests/vm/mmap-null into /tmp/I2GzOtQGRn.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/I2GzOtQGRn.dsk...
-Writing command line to /tmp/FVgbbU4xHl.dsk...
-qemu -hda /tmp/FVgbbU4xHl.dsk -hdb /tmp/fuFelZee5m.dsk -hdc /tmp/I2GzOtQGRn.dsk -hdd /tmp/XlZzmNHUY9.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-null into /tmp/4TfHrz31Zc.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/4TfHrz31Zc.dsk...
+Writing command line to /tmp/qFMzmLqCJK.dsk...
+qemu -hda /tmp/qFMzmLqCJK.dsk -hdb /tmp/fvyktoi3CC.dsk -hdc /tmp/4TfHrz31Zc.dsk -hdd /tmp/NxQOvMAEAj.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-null put sample.txt run mmap-null
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -900,15 +900,15 @@ Executing 'mmap-null':
 (mmap-null) try to mmap at address 0: FAILED
 mmap-null: exit(1)
 Execution of 'mmap-null' complete.
-Timer: 72 ticks
-Thread: 30 idle ticks, 40 kernel ticks, 2 user ticks
+Timer: 69 ticks
+Thread: 30 idle ticks, 37 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 162 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1058 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 4 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -919,15 +919,15 @@ run: try to mmap at misaligned address: FAILED
 
 OUTPUT FROM tests/vm/mmap-misalign:
 
-Copying tests/vm/mmap-misalign into /tmp/NWi7WNe6bF.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/NWi7WNe6bF.dsk...
-Writing command line to /tmp/FyQCG1KZNF.dsk...
-qemu -hda /tmp/FyQCG1KZNF.dsk -hdb /tmp/fRB0t7MFzE.dsk -hdc /tmp/NWi7WNe6bF.dsk -hdd /tmp/MgYkvEbbUH.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-misalign into /tmp/OGxhk3jRcQ.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/OGxhk3jRcQ.dsk...
+Writing command line to /tmp/KKQwm25fOu.dsk...
+qemu -hda /tmp/KKQwm25fOu.dsk -hdb /tmp/m2E7VShvX6.dsk -hdc /tmp/OGxhk3jRcQ.dsk -hdd /tmp/hz9swHULG5.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-misalign put sample.txt run mmap-misalign
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
 373 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
+Calibrating timer...  55,603,200 loops/s.
 hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
@@ -943,15 +943,15 @@ Executing 'mmap-misalign':
 (mmap-misalign) try to mmap at misaligned address: FAILED
 mmap-misalign: exit(1)
 Execution of 'mmap-misalign' complete.
-Timer: 70 ticks
-Thread: 30 idle ticks, 38 kernel ticks, 2 user ticks
+Timer: 72 ticks
+Thread: 30 idle ticks, 40 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 162 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1116 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 4 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -962,10 +962,10 @@ run: try to mmap over code segment: FAILED
 
 OUTPUT FROM tests/vm/mmap-over-code:
 
-Copying tests/vm/mmap-over-code into /tmp/hS5BuymQnL.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/hS5BuymQnL.dsk...
-Writing command line to /tmp/prrAXyuFb5.dsk...
-qemu -hda /tmp/prrAXyuFb5.dsk -hdb /tmp/3ZjI7q4zLk.dsk -hdc /tmp/hS5BuymQnL.dsk -hdd /tmp/6NPdxxlxLc.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-over-code into /tmp/0Qo1b7ydQv.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/0Qo1b7ydQv.dsk...
+Writing command line to /tmp/OWPydZ40T7.dsk...
+qemu -hda /tmp/OWPydZ40T7.dsk -hdb /tmp/Hrdzz7XLYd.dsk -hdc /tmp/0Qo1b7ydQv.dsk -hdd /tmp/Qdh0xIw8Eb.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-over-code put sample.txt run mmap-over-code
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -986,15 +986,15 @@ Executing 'mmap-over-code':
 (mmap-over-code) try to mmap over code segment: FAILED
 mmap-over-code: exit(1)
 Execution of 'mmap-over-code' complete.
-Timer: 81 ticks
-Thread: 30 idle ticks, 49 kernel ticks, 2 user ticks
+Timer: 69 ticks
+Thread: 30 idle ticks, 36 kernel ticks, 3 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 162 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1118 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 4 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -1005,10 +1005,10 @@ run: try to mmap over data segment: FAILED
 
 OUTPUT FROM tests/vm/mmap-over-data:
 
-Copying tests/vm/mmap-over-data into /tmp/mrXTXiDzQN.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/mrXTXiDzQN.dsk...
-Writing command line to /tmp/O2UFFCv04C.dsk...
-qemu -hda /tmp/O2UFFCv04C.dsk -hdb /tmp/iIZ4ykNcC4.dsk -hdc /tmp/mrXTXiDzQN.dsk -hdd /tmp/8d1tQHPcCE.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-over-data into /tmp/DYLgcBF8gU.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/DYLgcBF8gU.dsk...
+Writing command line to /tmp/8UyvHdT5VH.dsk...
+qemu -hda /tmp/8UyvHdT5VH.dsk -hdb /tmp/IN5xscMlrH.dsk -hdc /tmp/DYLgcBF8gU.dsk -hdd /tmp/sRbJGjnU3Q.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-over-data put sample.txt run mmap-over-data
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1029,15 +1029,15 @@ Executing 'mmap-over-data':
 (mmap-over-data) try to mmap over data segment: FAILED
 mmap-over-data: exit(1)
 Execution of 'mmap-over-data' complete.
-Timer: 77 ticks
-Thread: 30 idle ticks, 45 kernel ticks, 2 user ticks
+Timer: 74 ticks
+Thread: 30 idle ticks, 41 kernel ticks, 3 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 164 writes
 hd1:0: 77 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1118 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 4 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -1048,10 +1048,10 @@ run: try to mmap over stack segment: FAILED
 
 OUTPUT FROM tests/vm/mmap-over-stk:
 
-Copying tests/vm/mmap-over-stk into /tmp/IU12ZBcdNA.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/IU12ZBcdNA.dsk...
-Writing command line to /tmp/UUGGv1priO.dsk...
-qemu -hda /tmp/UUGGv1priO.dsk -hdb /tmp/Uy8OieAOSK.dsk -hdc /tmp/IU12ZBcdNA.dsk -hdd /tmp/AZAXNTZRqx.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-over-stk into /tmp/fX4F55KcQ9.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/fX4F55KcQ9.dsk...
+Writing command line to /tmp/ywt1YWcExG.dsk...
+qemu -hda /tmp/ywt1YWcExG.dsk -hdb /tmp/ZgH0oxAMvO.dsk -hdc /tmp/fX4F55KcQ9.dsk -hdd /tmp/3LscDaUR5w.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-over-stk put sample.txt run mmap-over-stk
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1072,15 +1072,15 @@ Executing 'mmap-over-stk':
 (mmap-over-stk) try to mmap over stack segment: FAILED
 mmap-over-stk: exit(1)
 Execution of 'mmap-over-stk' complete.
-Timer: 83 ticks
-Thread: 30 idle ticks, 52 kernel ticks, 2 user ticks
+Timer: 71 ticks
+Thread: 30 idle ticks, 39 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 162 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1110 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 4 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -1091,10 +1091,10 @@ run: try to mmap "zeros" again: FAILED
 
 OUTPUT FROM tests/vm/mmap-overlap:
 
-Copying tests/vm/mmap-overlap into /tmp/UvyoWUwr9D.dsk...
-Copying tests/vm/zeros into /tmp/UvyoWUwr9D.dsk...
-Writing command line to /tmp/jhhnaGhLbE.dsk...
-qemu -hda /tmp/jhhnaGhLbE.dsk -hdb /tmp/TlkOpO0Kn1.dsk -hdc /tmp/UvyoWUwr9D.dsk -hdd /tmp/hxrPL1sQN9.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-overlap into /tmp/0uhpGREDW2.dsk...
+Copying tests/vm/zeros into /tmp/0uhpGREDW2.dsk...
+Writing command line to /tmp/y0S8h4IuaN.dsk...
+qemu -hda /tmp/y0S8h4IuaN.dsk -hdb /tmp/CiENeNMNku.dsk -hdc /tmp/0uhpGREDW2.dsk -hdd /tmp/qCA0tPk2Ih.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-overlap put zeros run mmap-overlap
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -1117,13 +1117,13 @@ Executing 'mmap-overlap':
 (mmap-overlap) try to mmap "zeros" again: FAILED
 mmap-overlap: exit(1)
 Execution of 'mmap-overlap' complete.
-Timer: 65 ticks
-Thread: 30 idle ticks, 33 kernel ticks, 2 user ticks
+Timer: 77 ticks
+Thread: 30 idle ticks, 46 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 100 reads, 188 writes
 hd1:0: 89 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1143 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 5 page faults
 Powering off...

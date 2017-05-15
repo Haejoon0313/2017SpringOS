@@ -17,28 +17,29 @@ Elf32_Word	process.c	/^typedef uint32_t Elf32_Word, Elf32_Addr, Elf32_Off;$/;"	t
 GRAN_BYTE	gdt.c	/^    GRAN_BYTE = 0,              \/* Limit has 1-byte granularity. *\/$/;"	e	enum:seg_granularity	file:
 GRAN_PAGE	gdt.c	/^    GRAN_PAGE = 1               \/* Limit has 4 kB granularity. *\/$/;"	e	enum:seg_granularity	file:
 NO_RETURN	process.c	/^static thread_func start_process NO_RETURN;$/;"	v	file:
-PE32Ax	process.c	222;"	d	file:
-PE32Hx	process.c	224;"	d	file:
-PE32Ox	process.c	223;"	d	file:
-PE32Wx	process.c	221;"	d	file:
+PE32Ax	process.c	238;"	d	file:
+PE32Hx	process.c	240;"	d	file:
+PE32Ox	process.c	239;"	d	file:
+PE32Wx	process.c	237;"	d	file:
 PF_P	exception.h	5;"	d
-PF_R	process.c	274;"	d	file:
+PF_R	process.c	290;"	d	file:
 PF_U	exception.h	7;"	d
 PF_W	exception.h	6;"	d
-PF_W	process.c	273;"	d	file:
-PF_X	process.c	272;"	d	file:
-PT_DYNAMIC	process.c	264;"	d	file:
-PT_INTERP	process.c	265;"	d	file:
-PT_LOAD	process.c	263;"	d	file:
-PT_NOTE	process.c	266;"	d	file:
-PT_NULL	process.c	262;"	d	file:
-PT_PHDR	process.c	268;"	d	file:
-PT_SHLIB	process.c	267;"	d	file:
-PT_STACK	process.c	269;"	d	file:
+PF_W	process.c	289;"	d	file:
+PF_X	process.c	288;"	d	file:
+PT_DYNAMIC	process.c	280;"	d	file:
+PT_INTERP	process.c	281;"	d	file:
+PT_LOAD	process.c	279;"	d	file:
+PT_NOTE	process.c	282;"	d	file:
+PT_NULL	process.c	278;"	d	file:
+PT_PHDR	process.c	284;"	d	file:
+PT_SHLIB	process.c	283;"	d	file:
+PT_STACK	process.c	285;"	d	file:
 SEL_CNT	gdt.h	11;"	d
 SEL_TSS	gdt.h	10;"	d
 SEL_UCSEG	gdt.h	8;"	d
 SEL_UDSEG	gdt.h	9;"	d
+STACK_LIMIT	exception.c	20;"	d	file:
 USERPROG_EXCEPTION_H	exception.h	2;"	d
 USERPROG_GDT_H	gdt.h	2;"	d
 USERPROG_PAGEDIR_H	pagedir.h	2;"	d
@@ -119,7 +120,7 @@ page_fault_cnt	exception.c	/^static long long page_fault_cnt;$/;"	v	file:
 pagedir_activate	pagedir.c	/^pagedir_activate (uint32_t *pd) $/;"	f
 pagedir_clear_page	pagedir.c	/^pagedir_clear_page (uint32_t *pd, void *upage) $/;"	f
 pagedir_create	pagedir.c	/^pagedir_create (void) $/;"	f
-pagedir_destroy	pagedir.c	/^pagedir_destroy (uint32_t *pd) $/;"	f
+pagedir_destroy	pagedir.c	/^pagedir_destroy (uint32_t *pd) \/\/page dir and each table remove$/;"	f
 pagedir_get_page	pagedir.c	/^pagedir_get_page (uint32_t *pd, const void *uaddr) $/;"	f
 pagedir_is_accessed	pagedir.c	/^pagedir_is_accessed (uint32_t *pd, const void *vpage) $/;"	f
 pagedir_is_dirty	pagedir.c	/^pagedir_is_dirty (uint32_t *pd, const void *vpage) $/;"	f

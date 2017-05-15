@@ -1,6 +1,6 @@
-Copying tests/filesys/base/lg-seq-block into /tmp/Kn55dQewpq.dsk...
-Writing command line to /tmp/WVeGvsJnTx.dsk...
-qemu -hda /tmp/WVeGvsJnTx.dsk -hdb /tmp/i8f3mX8NLM.dsk -hdc /tmp/Kn55dQewpq.dsk -hdd /tmp/KsRJd3CjuY.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/lg-seq-block into /tmp/b369pnBqK6.dsk...
+Writing command line to /tmp/dzomWlTO37.dsk...
+qemu -hda /tmp/dzomWlTO37.dsk -hdb /tmp/NAi6CCuLE8.dsk -hdc /tmp/b369pnBqK6.dsk -hdd /tmp/a8lfswWrst.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put lg-seq-block run lg-seq-block
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -25,13 +25,13 @@ Executing 'lg-seq-block':
 (lg-seq-block) end
 lg-seq-block: exit(0)
 Execution of 'lg-seq-block' complete.
-Timer: 118 ticks
-Thread: 30 idle ticks, 34 kernel ticks, 54 user ticks
+Timer: 117 ticks
+Thread: 30 idle ticks, 39 kernel ticks, 48 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 531 reads, 607 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1172 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 23 page faults
 Powering off...
