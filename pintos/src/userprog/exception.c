@@ -212,10 +212,11 @@ page_fault (struct intr_frame *f)
 									if(spte->swapped&& spte->loaded && spte->swapped && !(pagedir_get_page(curr->pagedir,spte->upage))) {
 											kpage = frame_alloc(upage, PAL_ZERO);
 											swap_in(spte,kpage);
-							
-											bool swap_success = pagedir_set_page(curr->pagedir, upage, kpage, true);
-											bool set_success = pagedir_get_page(curr->pagedir,spte->upage);
-											if ((swap_success!=NULL) || !set_success){
+
+											bool swap_check = pagedir_get_page(curr->pagedir,spte->upage);						
+											bool swap_set = pagedir_set_page(curr->pagedir, upage, kpage, true);
+
+											if ( (swap_check !=NULL) || !swap_set){
 														frame_free(kpage);													
 														
 										 }else{
@@ -230,9 +231,7 @@ page_fault (struct intr_frame *f)
 									else if(!spte->loaded){
 									
 											/*Check the correctness of load page size */
-											if( !(spte->file ==NULL)){
-														ASSERT(spte->read_bytes + spte->zero_bytes == PGSIZE);
-											}
+											ASSERT(spte->read_bytes + spte->zero_bytes == PGSIZE);
 
 													/*CASE 1. All non-zero page  */
 											if (spte->read_bytes == PGSIZE){
@@ -322,6 +321,7 @@ page_fault (struct intr_frame *f)
 					}
 					frame_table_lock_release();
 	}
+
 
 	exit_process(-1);
 

@@ -1,6 +1,6 @@
-Copying tests/userprog/create-normal into /tmp/M4pSbQ5tlS.dsk...
-Writing command line to /tmp/KYMPWHfusl.dsk...
-qemu -hda /tmp/KYMPWHfusl.dsk -hdb /tmp/IP6vBRZvtt.dsk -hdc /tmp/M4pSbQ5tlS.dsk -hdd /tmp/NWhZ7kikhv.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/create-normal into /tmp/0E1NGritPH.dsk...
+Writing command line to /tmp/8CMoPtCawg.dsk...
+qemu -hda /tmp/8CMoPtCawg.dsk -hdb /tmp/jUs2hCnnu6.dsk -hdc /tmp/0E1NGritPH.dsk -hdd /tmp/Ynv8jrACIU.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put create-normal run create-normal
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -19,8 +19,8 @@ Executing 'create-normal':
 (create-normal) end
 create-normal: exit(0)
 Execution of 'create-normal' complete.
-Timer: 75 ticks
-Thread: 30 idle ticks, 43 kernel ticks, 3 user ticks
+Timer: 71 ticks
+Thread: 30 idle ticks, 39 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 81 reads, 158 writes
 hd1:0: 73 reads, 0 writes
