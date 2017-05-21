@@ -7,6 +7,7 @@
 #include "../filesys/filesys.h"
 #include "../filesys/file.h"
 #include "userprog/process.h"
+#include "vm/page.h"
 #define ARG_MAX = 3;
 #define EXIT_ERROR = -1;
 static void syscall_handler (struct intr_frame *);
@@ -284,6 +285,129 @@ syscall_handler (struct intr_frame *f UNUSED)
 						release_file_lock();
 
 						break;
+#ifdef VM
+		case SYS_MMAP:
+						{
+										/*
+						check_address(p+1);
+						check_address(p+2);
+						check_address(*(p+2));
+*/
+						int fd = *(p+1);
+						uint8_t * addr = *(p+2);
+
+						/*address == 0 case*/
+						if(addr==0)
+						{	
+							printf("wrong1\n");
+							f->eax= MAP_FAILED;
+							break;
+						}
+						/*address is not page-aligned*/
+						if(pg_ofs(addr)!=0){
+							printf("wrong1\n");							
+							f->eax = MAP_FAILED;
+							break;
+						}
+						/*fd==0 or 1 means the console I?O case */
+						if((fd==0)||(fd==1)){
+							printf("wring4\n");
+							f->eax=MAP_FAILED;
+							break;
+						}
+						
+						struct thread * curr = thread_current();
+
+						struct open_file * mmap_open_file = get_file_by_fd(&curr->file_list,fd);
+						struct file * mmap_file = mmap_open_file->file;
+						
+						size_t read_bytes =  file_length(mmap_file);
+						off_t cur_ofs = 0;
+						size_t remain_read_bytes = read_bytes;
+						mapid_t map_id = curr->mmap_count;
+						
+						if(read_bytes == 0){
+										f->eax = MAP_FAILED;
+										break;
+						};
+
+						frame_table_lock_acquire();
+						
+						while(remain_read_bytes >0)
+						{								
+								/*Actual read bytes */
+								size_t page_read_bytes = (remain_read_bytes >= PGSIZE ? PGSIZE : remain_read_bytes);
+
+								page_insert(mmap_file, cur_ofs, addr , page_read_bytes, PGSIZE-page_read_bytes, true);
+								
+//								ASSERT(insert_success);//How to manage the unmmaped case DOTO the range overlap of another page??
+
+								struct sup_pte * spte = get_sup_pte(&curr->sup_page_table,addr);
+									
+								ASSERT(spte);
+								spte->mmap_id = map_id;
+								spte->loaded = false;
+
+								remain_read_bytes -= page_read_bytes;
+								cur_ofs += PGSIZE;
+								list_push_back(&curr->mmap_list,&spte->list_elem);
+								addr += PGSIZE;
+						}
+						frame_table_lock_release();
+						curr->mmap_count++;
+						f->eax = map_id;
+
+						printf("[sys]mmap end\n");
+						break;
+						}
+
+		case SYS_MUNMAP:
+						{
+						check_address(p+1);
+						printf("[sys]upmap syscall arrive\n");
+						int munmap_id = *(p+1);
+						struct thread * curr = thread_current();
+						struct list_elem * el = NULL;
+						frame_table_lock_acquire();
+
+						for(el = list_front(&curr->mmap_list) ;el != list_end(&curr->mmap_list) ;  el = list_next(el) ){
+								struct sup_pte * spte = list_entry(el,struct sup_pte, list_elem);
+								if(munmap_id < spte->mmap_id){
+												break;
+								}
+								if(munmap_id == spte->mmap_id){
+										printf("unmap start!\n");
+										/*now, Find a removing munmap file */
+										list_remove(&spte->list_elem);//remove from mmap list
+										void * kpage = pagedir_get_page(curr->pagedir,spte->upage);
+										if(kpage !=NULL){//spte->load????????????
+												ASSERT(spte->loaded);
+
+												/*If file is dirty, rewrite it to file, not swap disk. */
+												if(pagedir_is_dirty(curr->pagedir, spte->upage)){
+														acquire_file_lock();
+														file_write_at(spte->file,spte->upage,spte->read_bytes,spte->file_ofs);
+														release_file_lock();
+												}
+//												struct sup_pte * spte = get_sup_pte(curr->pagedir, spte->upage);
+
+												pagedir_clear_page(curr->pagedir,spte->upage);
+												page_remove(&curr->sup_page_table, spte->upage);
+												free(spte);
+												frame_free(kpage);
+								}
+										else{
+												page_remove(&curr->sup_page_table, spte->upage);
+												free(spte);
+								}
+								}
+						}
+						printf("[sys]unmap syscall end\n");
+						frame_table_lock_release();																				
+						printf("[sys]unmap syscall end\n");
+						break;						
+						}
+#endif
 	}	
 }				
 struct open_file* get_file_by_fd(struct list* file_list, int fd){

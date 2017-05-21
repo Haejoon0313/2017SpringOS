@@ -4,7 +4,9 @@ userprog/syscall.o: ../../userprog/syscall.c ../../userprog/syscall.h \
   ../../lib/kernel/stdio.h ../../lib/syscall-nr.h \
   ../../threads/interrupt.h ../../threads/thread.h \
   ../../lib/kernel/list.h ../../lib/kernel/hash.h ../../lib/kernel/list.h \
-  ../../threads/synch.h ../../userprog/../threads/vaddr.h \
-  ../../threads/loader.h ../../userprog/../filesys/filesys.h \
-  ../../filesys/off_t.h ../../userprog/../filesys/file.h \
-  ../../userprog/process.h
+  ../../threads/synch.h ../../lib/string.h ../../userprog/syscall.h \
+  ../../userprog/../threads/vaddr.h ../../threads/loader.h \
+  ../../userprog/../filesys/filesys.h ../../filesys/off_t.h \
+  ../../userprog/../filesys/file.h ../../userprog/process.h \
+  ../../vm/page.h ../../filesys/file.h ../../filesys/off_t.h \
+  ../../threads/palloc.h ../../threads/thread.h ../../userprog/syscall.h

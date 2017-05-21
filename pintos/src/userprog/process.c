@@ -77,6 +77,11 @@ start_process (void *f_name)
 	#ifdef VM
 	struct thread *curr = thread_current();
 	page_table_init(&curr->sup_page_table);
+	curr->mmap_count= 0;
+	list_init(&curr->mmap_list);
+
+
+
 	#endif
 
   /* Initialize interrupt frame and load executable. */

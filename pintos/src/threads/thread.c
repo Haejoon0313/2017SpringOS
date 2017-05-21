@@ -525,7 +525,9 @@ init_thread (struct thread *t, const char *name, int priority)
 	t->exit_code = -2;//to indicate whether some threads set the exit status or not
 	sema_init(&t->child_lock,0);
 
+//	t->mmap_count = 0;
 	t->fd_count = 2;
+//	list_init(&t->mmap_list);
 	list_init(&t->file_list);
 	t->load = NULL;
 }

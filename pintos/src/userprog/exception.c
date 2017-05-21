@@ -168,6 +168,7 @@ page_fault (struct intr_frame *f)
 
 
 #ifdef VM
+	printf("1");
 	struct thread * curr = thread_current();
 	struct sup_pte * spte = NULL;
 	void * kpage;
@@ -175,17 +176,17 @@ page_fault (struct intr_frame *f)
 	
 	//printf("[#]fault addr : %x \n",fault_addr);
  	//printf("[#]pf cnt : %d \n",page_fault_cnt);
-
+	
 	if(not_present &&is_user_vaddr(fault_addr)){
 					frame_table_lock_acquire();
   				upage = pg_round_down(fault_addr);
 					spte = get_sup_pte(&curr->sup_page_table,upage);
 
-					
+				
+
 
 					/*page fault is caused by STACK GROWTH*/
 					if(spte==NULL){
-
 									if(!user){
 										f->esp = curr->exception_esp;
 									}
@@ -207,7 +208,8 @@ page_fault (struct intr_frame *f)
 					}
 
 					/*page fault is caused by swap or lazy loading */					
-					else{ 
+					else{
+									printf("2\n");
 									/*page fault is caused by SWAP */									
 									if(spte->swapped&& spte->loaded && spte->swapped && !(pagedir_get_page(curr->pagedir,spte->upage))) {
 											kpage = frame_alloc(upage, PAL_ZERO);
@@ -229,14 +231,16 @@ page_fault (struct intr_frame *f)
 										 }}
 									/*page fault is caused by LAZY LOADING*/
 									else if(!spte->loaded){
-									
 											/*Check the correctness of load page size */
 											ASSERT(spte->read_bytes + spte->zero_bytes == PGSIZE);
-
-													/*CASE 1. All non-zero page  */
+											if(spte->mmap_id >=0)		
+													printf("[exception]mmap case arrive\n");													
+											
+											/*CASE 1. All non-zero page  */
 											if (spte->read_bytes == PGSIZE){
+														printf("456\n");
 														void *kpage = frame_alloc(upage,0);
-														
+														printf("123\n");
 														struct sup_pte * spte = get_sup_pte(&curr->sup_page_table,upage);
 														ASSERT(spte != NULL);
 
@@ -322,7 +326,7 @@ page_fault (struct intr_frame *f)
 					frame_table_lock_release();
 	}
 
-
+	printf("WHY?\n");
 	exit_process(-1);
 
 

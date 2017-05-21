@@ -77,17 +77,25 @@ void * frame_evict(enum palloc_flags flag){
 				spte = get_sup_pte(&(evict_fte->origin_thread->sup_page_table), upage);
 				
 				is_dirty = pagedir_is_dirty(evict_fte->origin_thread->pagedir,upage);
-
-				if(is_dirty){//written, so saved at swap disk
-				/*swap out the first entry of Frame table */
-								spte->swapped = true;
-								ASSERT(spte->loaded);
-								spte->swap_index = swap_out(kpage);
+				
+				if(spte->mmap_id == -1){
+						if(is_dirty){//written, so saved at swap disk
+						/*swap out the first entry of Frame table */
+										spte->swapped = true;
+										ASSERT(spte->loaded);
+										spte->swap_index = swap_out(kpage);
+						}
+						else{//read_only data, so just remove
+										spte->loaded = false;
+						}
 				}
-				else{//read_only data, so just remove
-								spte->loaded = false;
-								
-
+				else{//mmap file case
+						if(is_dirty){
+								acquire_file_lock();
+								file_write_at(spte->file,spte->upage,spte->read_bytes,spte->file_ofs);
+								release_file_lock();
+						}
+						spte->loaded = false;
 				}
 				pagedir_clear_page(evict_fte->origin_thread->pagedir, upage);
 				

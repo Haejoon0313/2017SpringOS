@@ -6,6 +6,8 @@
 #include <stdint.h>
 #include <hash.h>
 #include "threads/synch.h"
+#include "string.h"
+#include "userprog/syscall.h"
 /* States in a thread's life cycle. */
 enum thread_status
   {
@@ -129,9 +131,12 @@ struct thread
 
 #ifdef VM
 		struct hash sup_page_table;
+		struct list mmap_list;
 #endif
-
+		mapid_t  mmap_count;
 		void * exception_esp;
+
+
 	};
 /*
 struct child, for list thread

@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-read into /tmp/e7BG39mTkR.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/e7BG39mTkR.dsk...
-Writing command line to /tmp/cTpRvjD0M1.dsk...
-qemu -hda /tmp/cTpRvjD0M1.dsk -hdb /tmp/14sdUkCy0F.dsk -hdc /tmp/e7BG39mTkR.dsk -hdd /tmp/Ai1kfMcXzh.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-read into /tmp/OTeYEzBfHU.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/OTeYEzBfHU.dsk...
+Writing command line to /tmp/tHgcUFg0P7.dsk...
+qemu -hda /tmp/tHgcUFg0P7.dsk -hdb /tmp/RVo0EXUoUk.dsk -hdc /tmp/OTeYEzBfHU.dsk -hdd /tmp/piaOVUUQo0.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-read put sample.txt run mmap-read
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -16,18 +16,37 @@ Boot complete.
 Putting 'mmap-read' into the file system...
 Putting 'sample.txt' into the file system...
 Executing 'mmap-read':
+12
+456
+123
+12
+12
+12
+12
+456
+123
 (mmap-read) begin
 (mmap-read) open "sample.txt"
 (mmap-read) mmap "sample.txt"
+[sys]mmap end
+12
+[exception]mmap case arrive
+[sys]upmap syscall arrive
+unmap start!
+1WHY?
 mmap-read: exit(-1)
-Execution of 'mmap-read' complete.
-Timer: 74 ticks
-Thread: 30 idle ticks, 42 kernel ticks, 2 user ticks
+Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010e1a8 0xc0109b50 0xc0100c58 0xc010bfb3 0xc010b5e1 0xc0101935 0xc0101b0b 0xc010bd4c 0xc0101935 0xc0101b0b 0x804a1b1 0x8048190 0x8048783 0x80487b0.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 69 ticks
+Thread: 30 idle ticks, 37 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 98 reads, 168 writes
+hd0:1: 100 reads, 168 writes
 hd1:0: 79 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1007 characters output
+Console: 1550 characters output
 Keyboard: 0 keys pressed
-Exception: 6 page faults
+Exception: 7 page faults
 Powering off...

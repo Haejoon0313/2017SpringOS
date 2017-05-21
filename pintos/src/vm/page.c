@@ -34,6 +34,7 @@ bool page_insert(struct file * file, off_t file_ofs, uint8_t * upage, uint32_t r
 				sup_pte->file_ofs = file_ofs;
 				sup_pte->swapped = false;
 				sup_pte->loaded = true; //Now lazy loading, so initially false;
+				sup_pte->mmap_id = MAP_FAILED;
 
 				if(hash_insert(&thread_current()->sup_page_table, &sup_pte->elem)==NULL){
 								return true;
@@ -86,9 +87,18 @@ bool page_less(const struct hash_elem * a, const struct hash_elem * b, void * au
 static void page_table_free(struct hash_elem * e, void * aux UNUSED){
 				struct sup_pte * sup_pte = hash_entry(e, struct sup_pte, elem);
 				struct thread * t = thread_current();
+				void * kpage = pagedir_get_page(t->pagedir,sup_pte->upage);
+				if(sup_pte->mmap_id >=0){
+						if(pagedir_is_dirty(t->pagedir,sup_pte->upage)){
+								acquire_file_lock();
+								file_write_at(sup_pte->file,sup_pte->upage,sup_pte->read_bytes,sup_pte->file_ofs);
+								release_file_lock();
+						}
+						list_remove(&sup_pte->list_elem);
+				}
 
 				if(sup_pte->loaded == true){
-								frame_free(pagedir_get_page(t->pagedir, sup_pte->upage));
+								frame_free(kpage);
 								pagedir_clear_page(t->pagedir, sup_pte->upage);
 				}
 
