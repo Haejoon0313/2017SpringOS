@@ -1,6 +1,6 @@
-Copying tests/userprog/bad-write2 into /tmp/I30waBkZGe.dsk...
-Writing command line to /tmp/S5CjS7QeYq.dsk...
-qemu -hda /tmp/S5CjS7QeYq.dsk -hdb /tmp/v4c02P2XvV.dsk -hdc /tmp/I30waBkZGe.dsk -hdd /tmp/np24499l2U.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/bad-write2 into /tmp/Kto8A0ULym.dsk...
+Writing command line to /tmp/RgyiCQhqjg.dsk...
+qemu -hda /tmp/RgyiCQhqjg.dsk -hdb /tmp/IpUghr521T.dsk -hdc /tmp/Kto8A0ULym.dsk -hdd /tmp/KUxMNgARF7.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put bad-write2 run bad-write2
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -17,8 +17,8 @@ Executing 'bad-write2':
 (bad-write2) begin
 bad-write2: exit(-1)
 Execution of 'bad-write2' complete.
-Timer: 69 ticks
-Thread: 30 idle ticks, 38 kernel ticks, 1 user ticks
+Timer: 67 ticks
+Thread: 30 idle ticks, 36 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 154 writes
 hd1:0: 73 reads, 0 writes

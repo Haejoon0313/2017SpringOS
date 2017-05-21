@@ -1,11 +1,11 @@
-Copying tests/vm/mmap-shuffle into /tmp/NWaGKfTjJF.dsk...
-Writing command line to /tmp/3DMdYD5k8f.dsk...
-qemu -hda /tmp/3DMdYD5k8f.dsk -hdb /tmp/Q4kLKt5cvQ.dsk -hdc /tmp/NWaGKfTjJF.dsk -hdd /tmp/91Uny1lrcJ.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-shuffle into /tmp/OzHDv6RvE2.dsk...
+Writing command line to /tmp/pfVp9Yqdt6.dsk...
+qemu -hda /tmp/pfVp9Yqdt6.dsk -hdb /tmp/VD3iBxooWq.dsk -hdc /tmp/OzHDv6RvE2.dsk -hdd /tmp/SSmTTVSBQr.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-shuffle run mmap-shuffle
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
 373 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
+Calibrating timer...  53,145,600 loops/s.
 hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 81 sector (40 kB) disk, model "QEMU HARDDISK", serial "QM00003"
@@ -32,10 +32,10 @@ Executing 'mmap-shuffle':
 (mmap-shuffle) end
 mmap-shuffle: exit(0)
 Execution of 'mmap-shuffle' complete.
-Timer: 204 ticks
-Thread: 30 idle ticks, 59 kernel ticks, 116 user ticks
+Timer: 210 ticks
+Thread: 30 idle ticks, 60 kernel ticks, 120 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 351 reads, 443 writes
+hd0:1: 351 reads, 430 writes
 hd1:0: 81 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1484 characters output

@@ -1,4 +1,4 @@
-TOTAL TESTING SCORE: 88.4%
+TOTAL TESTING SCORE: 92.1%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -6,13 +6,13 @@ SUMMARY BY TEST SET
 
 Test Set                                      Pts Max  % Ttl  % Max
 --------------------------------------------- --- --- ------ ------
-tests/vm/Rubric.functionality                  47/ 55  42.7%/ 50.0%
+tests/vm/Rubric.functionality                  51/ 55  46.4%/ 50.0%
 tests/vm/Rubric.robustness                     20/ 28  10.7%/ 15.0%
 tests/userprog/Rubric.functionality           108/108  10.0%/ 10.0%
 tests/userprog/Rubric.robustness               88/ 88   5.0%/  5.0%
 tests/filesys/base/Rubric                      30/ 30  20.0%/ 20.0%
 --------------------------------------------- --- --- ------ ------
-Total                                                  88.4%/100.0%
+Total                                                  92.1%/100.0%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -31,7 +31,7 @@ Functionality of virtual memory subsystem (tests/vm/Rubric.functionality):
 	     3/ 3 tests/vm/page-shuffle
 	     4/ 4 tests/vm/page-merge-seq
 	     4/ 4 tests/vm/page-merge-par
-	  ** 0/ 4 tests/vm/page-merge-mm
+	     4/ 4 tests/vm/page-merge-mm
 	     4/ 4 tests/vm/page-merge-stk
 
 	- Test "mmap" system call.
@@ -50,8 +50,8 @@ Functionality of virtual memory subsystem (tests/vm/Rubric.functionality):
 	  ** 0/ 2 tests/vm/mmap-remove
 
 	- Section summary.
-	     17/ 20 tests passed
-	     47/ 55 points subtotal
+	     18/ 20 tests passed
+	     51/ 55 points subtotal
 
 Robustness of virtual memory subsystem (tests/vm/Rubric.robustness):
 	- Test robustness of page table support.
@@ -216,84 +216,16 @@ Functionality of base file system (tests/filesys/base/Rubric):
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-DETAILS OF tests/vm/page-merge-mm FAILURE:
-
-run: bad value 1 in byte 3558: FAILED
-
-OUTPUT FROM tests/vm/page-merge-mm:
-
-Copying tests/vm/page-merge-mm into /tmp/9u25P9LmYW.dsk...
-Copying tests/vm/child-qsort-mm into /tmp/9u25P9LmYW.dsk...
-Writing command line to /tmp/m8XtSi1Kkx.dsk...
-qemu -hda /tmp/m8XtSi1Kkx.dsk -hdb /tmp/eBOb2mmNfT.dsk -hdc /tmp/9u25P9LmYW.dsk -hdd /tmp/KwQhWrIChE.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
-Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
-373 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 160 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Formatting file system...done.
-Boot complete.
-Putting 'page-merge-mm' into the file system...
-Putting 'child-qsort-mm' into the file system...
-Executing 'page-merge-mm':
-(page-merge-mm) begin
-(page-merge-mm) init
-(page-merge-mm) sort chunk 0
-(page-merge-mm) sort chunk 1
-child-qsort-mm: exit(80)
-(page-merge-mm) sort chunk 2
-child-qsort-mm: exit(80)
-(page-merge-mm) sort chunk 3
-child-qsort-mm: exit(80)
-(page-merge-mm) sort chunk 4
-child-qsort-mm: exit(80)
-(page-merge-mm) sort chunk 5
-child-qsort-mm: exit(80)
-(page-merge-mm) sort chunk 6
-child-qsort-mm: exit(80)
-(page-merge-mm) sort chunk 7
-child-qsort-mm: exit(80)
-(page-merge-mm) wait for child 0
-(page-merge-mm) wait for child 1
-(page-merge-mm) wait for child 2
-(page-merge-mm) wait for child 3
-(page-merge-mm) wait for child 4
-(page-merge-mm) wait for child 5
-child-qsort-mm: exit(80)
-(page-merge-mm) wait for child 6
-(page-merge-mm) wait for child 7
-(page-merge-mm) merge
-(page-merge-mm) verify
-(page-merge-mm) bad value 1 in byte 3558: FAILED
-page-merge-mm: exit(1)
-Execution of 'page-merge-mm' complete.
-Timer: 1528 ticks
-Thread: 30 idle ticks, 77 kernel ticks, 1421 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 4881 reads, 6506 writes
-hd1:0: 160 reads, 0 writes
-hd1:1: 296 reads, 1456 writes
-Console: 1808 characters output
-Keyboard: 0 keys pressed
-Exception: 845 page faults
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
 DETAILS OF tests/vm/mmap-close FAILURE:
 
 run: TIMEOUT after 60 seconds of host CPU time
 
 OUTPUT FROM tests/vm/mmap-close:
 
-Copying tests/vm/mmap-close into /tmp/VJ8oeFp2Zs.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/VJ8oeFp2Zs.dsk...
-Writing command line to /tmp/ZXtZvbXmLt.dsk...
-qemu -hda /tmp/ZXtZvbXmLt.dsk -hdb /tmp/rfGpPLJuyC.dsk -hdc /tmp/VJ8oeFp2Zs.dsk -hdd /tmp/14FlsAc9Xl.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-close into /tmp/idLVGP03Ze.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/idLVGP03Ze.dsk...
+Writing command line to /tmp/3bcrZ67zTU.dsk...
+qemu -hda /tmp/3bcrZ67zTU.dsk -hdb /tmp/rZTSWSmsf8.dsk -hdc /tmp/idLVGP03Ze.dsk -hdd /tmp/BIeX0C8fUD.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-close put sample.txt run mmap-close
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -322,10 +254,10 @@ run: TIMEOUT after 60 seconds of host CPU time
 
 OUTPUT FROM tests/vm/mmap-remove:
 
-Copying tests/vm/mmap-remove into /tmp/Oy35kNRZEZ.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/Oy35kNRZEZ.dsk...
-Writing command line to /tmp/bQUxlZJgap.dsk...
-qemu -hda /tmp/bQUxlZJgap.dsk -hdb /tmp/mq7ffNdjej.dsk -hdc /tmp/Oy35kNRZEZ.dsk -hdd /tmp/QPVfxTnteU.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-remove into /tmp/2OfpObkUhC.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/2OfpObkUhC.dsk...
+Writing command line to /tmp/X26fVdspng.dsk...
+qemu -hda /tmp/X26fVdspng.dsk -hdb /tmp/uXdd8mYxkP.dsk -hdc /tmp/2OfpObkUhC.dsk -hdd /tmp/cNqHKFJbzz.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-remove put sample.txt run mmap-remove
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -357,15 +289,15 @@ run: try to mmap over code segment: FAILED
 
 OUTPUT FROM tests/vm/mmap-over-code:
 
-Copying tests/vm/mmap-over-code into /tmp/2WJ7lEu2Ck.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/2WJ7lEu2Ck.dsk...
-Writing command line to /tmp/6nKqQ43z9C.dsk...
-qemu -hda /tmp/6nKqQ43z9C.dsk -hdb /tmp/8FWmeFTayo.dsk -hdc /tmp/2WJ7lEu2Ck.dsk -hdd /tmp/silwpBzJOr.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-over-code into /tmp/IY0HAv1tyz.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/IY0HAv1tyz.dsk...
+Writing command line to /tmp/gnIhNLmezB.dsk...
+qemu -hda /tmp/gnIhNLmezB.dsk -hdb /tmp/DJDCsdBiv2.dsk -hdc /tmp/IY0HAv1tyz.dsk -hdd /tmp/8CCFkksrne.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-over-code put sample.txt run mmap-over-code
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
 373 pages available in user pool.
-Calibrating timer...  78,131,200 loops/s.
+Calibrating timer...  78,540,800 loops/s.
 hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
@@ -381,8 +313,8 @@ Executing 'mmap-over-code':
 (mmap-over-code) try to mmap over code segment: FAILED
 mmap-over-code: exit(1)
 Execution of 'mmap-over-code' complete.
-Timer: 88 ticks
-Thread: 30 idle ticks, 56 kernel ticks, 2 user ticks
+Timer: 77 ticks
+Thread: 30 idle ticks, 46 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 162 writes
 hd1:0: 76 reads, 0 writes
@@ -400,10 +332,10 @@ run: try to mmap over data segment: FAILED
 
 OUTPUT FROM tests/vm/mmap-over-data:
 
-Copying tests/vm/mmap-over-data into /tmp/9kgoSUx118.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/9kgoSUx118.dsk...
-Writing command line to /tmp/FFPOi74oi6.dsk...
-qemu -hda /tmp/FFPOi74oi6.dsk -hdb /tmp/NgqRoVjDTC.dsk -hdc /tmp/9kgoSUx118.dsk -hdd /tmp/4k9WYl15Up.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-over-data into /tmp/GYR1gh1EGp.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/GYR1gh1EGp.dsk...
+Writing command line to /tmp/P5mtGGvWAD.dsk...
+qemu -hda /tmp/P5mtGGvWAD.dsk -hdb /tmp/0FnI2b6I8k.dsk -hdc /tmp/GYR1gh1EGp.dsk -hdd /tmp/JJBdLQlskC.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-over-data put sample.txt run mmap-over-data
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -424,8 +356,8 @@ Executing 'mmap-over-data':
 (mmap-over-data) try to mmap over data segment: FAILED
 mmap-over-data: exit(1)
 Execution of 'mmap-over-data' complete.
-Timer: 86 ticks
-Thread: 30 idle ticks, 54 kernel ticks, 2 user ticks
+Timer: 74 ticks
+Thread: 30 idle ticks, 42 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 164 writes
 hd1:0: 77 reads, 0 writes
@@ -440,23 +372,23 @@ Powering off...
 DETAILS OF tests/vm/mmap-over-stk FAILURE:
 
 Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc0107756 0xc0102acd 0xc010e0f8 0xc010af78 0xc0101935 0xc0101b0b 0xc010c991 0xc010de86 0xc0108f3f 0xc0108f89 0xc010dd00 0xc0109b5e 0xc0100c58 0xc010bf10 0xc010b6cb 0xc0101935 0xc0101b0b 0x804a003 0x804824f 0x804810a 0x80486ef 0x804871c
+Call stack: 0xc0107756 0xc0102acd 0xc010e108 0xc010af78 0xc0101935 0xc0101b0b 0xc010c9a1 0xc010de96 0xc0108f3f 0xc0108f89 0xc010dd10 0xc0109b5e 0xc0100c58 0xc010bf27 0xc010b6cb 0xc0101935 0xc0101b0b 0x804a003 0x804824f 0x804810a 0x80486ef 0x804871c
 Translation of call stack:
 In kernel.o:
 0xc0107756: debug_panic (.../../lib/kernel/debug.c:34)
 0xc0102acd: lock_acquire (...../../threads/synch.c:243)
-0xc010e0f8: frame_table_lock_acquire (...uild/../../vm/frame.c:112)
+0xc010e108: frame_table_lock_acquire (...uild/../../vm/frame.c:112)
 0xc010af78: page_fault (.../../../threads/vaddr.h:39)
 0xc0101935: intr_handler (..../threads/interrupt.c:361)
 0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
-0xc010c991: file_write_at (.../../../filesys/file.c:113)
-0xc010de86: page_table_free (.../build/../../vm/page.c:96)
+0xc010c9a1: file_write_at (.../../../filesys/file.c:113)
+0xc010de96: page_table_free (.../build/../../vm/page.c:96)
 0xc0108f3f: hash_clear (..../../lib/kernel/hash.c:67)
 0xc0108f89: hash_destroy (..../../lib/kernel/hash.c:91)
-0xc010dd00: page_table_remove (.../build/../../vm/page.c:24)
+0xc010dd10: page_table_remove (.../build/../../vm/page.c:24)
 0xc0109b5e: process_exit (...../userprog/process.c:197)
 0xc0100c58: thread_exit (..../../threads/thread.c:334)
-0xc010bf10: close_all_filelist (...../userprog/syscall.c:466)
+0xc010bf27: close_all_filelist (...../userprog/syscall.c:473)
 0xc010b6cb: syscall_handler (.../../userprog/syscall.c:86)
 0xc0101935: intr_handler (..../threads/interrupt.c:361)
 0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
@@ -472,10 +404,10 @@ translations will be misleading.
 
 OUTPUT FROM tests/vm/mmap-over-stk:
 
-Copying tests/vm/mmap-over-stk into /tmp/EkldP7EdQn.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/EkldP7EdQn.dsk...
-Writing command line to /tmp/IeHvub6AdB.dsk...
-qemu -hda /tmp/IeHvub6AdB.dsk -hdb /tmp/a5ZnODNm40.dsk -hdc /tmp/EkldP7EdQn.dsk -hdd /tmp/WFqDGVcBKY.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-over-stk into /tmp/1Zmu4X0us4.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/1Zmu4X0us4.dsk...
+Writing command line to /tmp/GViPyfytBn.dsk...
+qemu -hda /tmp/GViPyfytBn.dsk -hdb /tmp/2uzflqYjdZ.dsk -hdc /tmp/1Zmu4X0us4.dsk -hdd /tmp/b0IyBAuOVA.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-over-stk put sample.txt run mmap-over-stk
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -496,12 +428,12 @@ Executing 'mmap-over-stk':
 (mmap-over-stk) try to mmap over stack segment: FAILED
 mmap-over-stk: exit(1)
 Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc0107756 0xc0102acd 0xc010e0f8 0xc010af78 0xc0101935 0xc0101b0b 0xc010c991 0xc010de86 0xc0108f3f 0xc0108f89 0xc010dd00 0xc0109b5e 0xc0100c58 0xc010bf10 0xc010b6cb 0xc0101935 0xc0101b0b 0x804a003 0x804824f 0x804810a 0x80486ef 0x804871c.
+Call stack: 0xc0107756 0xc0102acd 0xc010e108 0xc010af78 0xc0101935 0xc0101b0b 0xc010c9a1 0xc010de96 0xc0108f3f 0xc0108f89 0xc010dd10 0xc0109b5e 0xc0100c58 0xc010bf27 0xc010b6cb 0xc0101935 0xc0101b0b 0x804a003 0x804824f 0x804810a 0x80486ef 0x804871c.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 86 ticks
-Thread: 30 idle ticks, 54 kernel ticks, 2 user ticks
+Timer: 77 ticks
+Thread: 30 idle ticks, 44 kernel ticks, 3 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 162 writes
 hd1:0: 76 reads, 0 writes
@@ -519,10 +451,10 @@ run: try to mmap "zeros" again: FAILED
 
 OUTPUT FROM tests/vm/mmap-overlap:
 
-Copying tests/vm/mmap-overlap into /tmp/J4DMLXt9SJ.dsk...
-Copying tests/vm/zeros into /tmp/J4DMLXt9SJ.dsk...
-Writing command line to /tmp/stLcLHjXhf.dsk...
-qemu -hda /tmp/stLcLHjXhf.dsk -hdb /tmp/gQLHYtIqkv.dsk -hdc /tmp/J4DMLXt9SJ.dsk -hdd /tmp/Dbw5ldot8K.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-overlap into /tmp/GV2ViW0tQx.dsk...
+Copying tests/vm/zeros into /tmp/GV2ViW0tQx.dsk...
+Writing command line to /tmp/Wc6mTeJmUx.dsk...
+qemu -hda /tmp/Wc6mTeJmUx.dsk -hdb /tmp/7QAlNaQvBp.dsk -hdc /tmp/GV2ViW0tQx.dsk -hdd /tmp/2fefJi8IB6.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-overlap put zeros run mmap-overlap
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -545,8 +477,8 @@ Executing 'mmap-overlap':
 (mmap-overlap) try to mmap "zeros" again: FAILED
 mmap-overlap: exit(1)
 Execution of 'mmap-overlap' complete.
-Timer: 85 ticks
-Thread: 30 idle ticks, 53 kernel ticks, 3 user ticks
+Timer: 95 ticks
+Thread: 30 idle ticks, 63 kernel ticks, 3 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 100 reads, 188 writes
 hd1:0: 89 reads, 0 writes

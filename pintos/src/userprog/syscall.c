@@ -318,6 +318,13 @@ syscall_handler (struct intr_frame *f UNUSED)
 						struct open_file * mmap_open_file = get_file_by_fd(&curr->file_list,fd);
 						struct file * mmap_file = mmap_open_file->file;
 						
+						if(mmap_open_file == NULL)
+						{
+										f->eax = MAP_FAILED;
+										break;
+						
+						}
+
 						size_t read_bytes =  file_length(mmap_file);
 						off_t cur_ofs = 0;
 						size_t remain_read_bytes = read_bytes;

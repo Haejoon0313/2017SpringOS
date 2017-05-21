@@ -1,6 +1,6 @@
-Copying tests/userprog/close-bad-fd into /tmp/C3BOKHkaLj.dsk...
-Writing command line to /tmp/B5gLkVXLgq.dsk...
-qemu -hda /tmp/B5gLkVXLgq.dsk -hdb /tmp/xWCg2yTCSK.dsk -hdc /tmp/C3BOKHkaLj.dsk -hdd /tmp/AfFLmezzP8.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/close-bad-fd into /tmp/z1ckRTCt88.dsk...
+Writing command line to /tmp/UmfvPnlV4k.dsk...
+qemu -hda /tmp/UmfvPnlV4k.dsk -hdb /tmp/aOnSsmmMur.dsk -hdc /tmp/z1ckRTCt88.dsk -hdd /tmp/5bUhRA6Nop.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put close-bad-fd run close-bad-fd
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -18,8 +18,8 @@ Executing 'close-bad-fd':
 (close-bad-fd) end
 close-bad-fd: exit(0)
 Execution of 'close-bad-fd' complete.
-Timer: 72 ticks
-Thread: 30 idle ticks, 41 kernel ticks, 1 user ticks
+Timer: 76 ticks
+Thread: 30 idle ticks, 45 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 58 reads, 154 writes
 hd1:0: 73 reads, 0 writes

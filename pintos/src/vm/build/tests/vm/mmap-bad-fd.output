@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-bad-fd into /tmp/B3DobYW5i6.dsk...
-Writing command line to /tmp/KyX3GuE9zs.dsk...
-qemu -hda /tmp/KyX3GuE9zs.dsk -hdb /tmp/cxNbRKII8z.dsk -hdc /tmp/B3DobYW5i6.dsk -hdd /tmp/PIxYaZkkx8.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-bad-fd into /tmp/OGSgEgRUvs.dsk...
+Writing command line to /tmp/cLrFNldVb7.dsk...
+qemu -hda /tmp/cLrFNldVb7.dsk -hdb /tmp/7rkplC1NPX.dsk -hdc /tmp/OGSgEgRUvs.dsk -hdd /tmp/xLifa9YNS3.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-bad-fd run mmap-bad-fd
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -18,8 +18,8 @@ Executing 'mmap-bad-fd':
 (mmap-bad-fd) try to mmap invalid fd
 mmap-bad-fd: exit(-1)
 Execution of 'mmap-bad-fd' complete.
-Timer: 76 ticks
-Thread: 30 idle ticks, 44 kernel ticks, 2 user ticks
+Timer: 85 ticks
+Thread: 30 idle ticks, 53 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 154 writes
 hd1:0: 73 reads, 0 writes

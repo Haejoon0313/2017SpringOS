@@ -1,11 +1,11 @@
-Copying tests/vm/pt-grow-bad into /tmp/BU8P93H1vQ.dsk...
-Writing command line to /tmp/4ESS5hSwra.dsk...
-qemu -hda /tmp/4ESS5hSwra.dsk -hdb /tmp/rzj3qQw06A.dsk -hdc /tmp/BU8P93H1vQ.dsk -hdd /tmp/AxlJMb9TYl.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/pt-grow-bad into /tmp/chS0ZXl0kJ.dsk...
+Writing command line to /tmp/cpGsVN1ngC.dsk...
+qemu -hda /tmp/cpGsVN1ngC.dsk -hdb /tmp/6JIv7cBUII.dsk -hdc /tmp/chS0ZXl0kJ.dsk -hdd /tmp/HkA8MyVdhj.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put pt-grow-bad run pt-grow-bad
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
 373 pages available in user pool.
-Calibrating timer...  52,377,600 loops/s.
+Calibrating timer...  78,540,800 loops/s.
 hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 73 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
@@ -17,8 +17,8 @@ Executing 'pt-grow-bad':
 (pt-grow-bad) begin
 pt-grow-bad: exit(-1)
 Execution of 'pt-grow-bad' complete.
-Timer: 69 ticks
-Thread: 30 idle ticks, 38 kernel ticks, 1 user ticks
+Timer: 82 ticks
+Thread: 30 idle ticks, 50 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 58 reads, 154 writes
 hd1:0: 73 reads, 0 writes
