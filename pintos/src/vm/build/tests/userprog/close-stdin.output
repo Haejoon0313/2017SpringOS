@@ -1,6 +1,6 @@
-Copying tests/userprog/close-stdin into /tmp/igUQcmkWsX.dsk...
-Writing command line to /tmp/7dRBHibvQc.dsk...
-qemu -hda /tmp/7dRBHibvQc.dsk -hdb /tmp/mWLQQLGZpc.dsk -hdc /tmp/igUQcmkWsX.dsk -hdd /tmp/oHSuYWc981.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/close-stdin into /tmp/ck4lc7maZa.dsk...
+Writing command line to /tmp/WlpXw5o8Ta.dsk...
+qemu -hda /tmp/WlpXw5o8Ta.dsk -hdb /tmp/5vQWFyYSII.dsk -hdc /tmp/ck4lc7maZa.dsk -hdd /tmp/7Qr9TZv0hK.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put close-stdin run close-stdin
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -18,8 +18,8 @@ Executing 'close-stdin':
 (close-stdin) end
 close-stdin: exit(0)
 Execution of 'close-stdin' complete.
-Timer: 66 ticks
-Thread: 30 idle ticks, 35 kernel ticks, 1 user ticks
+Timer: 67 ticks
+Thread: 30 idle ticks, 36 kernel ticks, 1 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 58 reads, 154 writes
 hd1:0: 73 reads, 0 writes

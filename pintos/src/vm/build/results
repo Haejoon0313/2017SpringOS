@@ -79,7 +79,7 @@ pass tests/vm/page-shuffle
 pass tests/vm/mmap-read
 FAIL tests/vm/mmap-close
 pass tests/vm/mmap-unmap
-FAIL tests/vm/mmap-overlap
+pass tests/vm/mmap-overlap
 pass tests/vm/mmap-twice
 pass tests/vm/mmap-write
 pass tests/vm/mmap-exit
@@ -89,9 +89,9 @@ pass tests/vm/mmap-clean
 pass tests/vm/mmap-inherit
 pass tests/vm/mmap-misalign
 pass tests/vm/mmap-null
-FAIL tests/vm/mmap-over-code
-FAIL tests/vm/mmap-over-data
-FAIL tests/vm/mmap-over-stk
+pass tests/vm/mmap-over-code
+pass tests/vm/mmap-over-data
+pass tests/vm/mmap-over-stk
 FAIL tests/vm/mmap-remove
 pass tests/vm/mmap-zero
 pass tests/filesys/base/lg-create

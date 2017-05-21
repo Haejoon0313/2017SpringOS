@@ -336,18 +336,24 @@ syscall_handler (struct intr_frame *f UNUSED)
 						};
 
 						frame_table_lock_acquire();
-						
+						bool insert_success;
+						bool is_over = false;
 						while(remain_read_bytes >0)
 						{								
 								/*Actual read bytes */
 								size_t page_read_bytes = (remain_read_bytes >= PGSIZE ? PGSIZE : remain_read_bytes);
 
-								page_insert(mmap_file, cur_ofs, addr , page_read_bytes, PGSIZE-page_read_bytes, true);
-								
-//								ASSERT(insert_success);//How to manage the unmmaped case DOTO the range overlap of another page??
+								bool insert_success = page_insert(mmap_file, cur_ofs, addr , page_read_bytes, PGSIZE-page_read_bytes, true);
+
+								if(!insert_success){
+									//curr->mmap_count--;
+									//frame_table_lock_release();
+									is_over = true;
+									break;
+								}
 
 								struct sup_pte * spte = get_sup_pte(&curr->sup_page_table,addr);
-									
+								
 								ASSERT(spte);
 								spte->mmap_id = map_id;
 								spte->loaded = false;
@@ -358,9 +364,12 @@ syscall_handler (struct intr_frame *f UNUSED)
 								addr += PGSIZE;
 						}
 						frame_table_lock_release();
-						curr->mmap_count++;
-						f->eax = map_id;
-
+						if(is_over)
+										f->eax = MAP_FAILED;
+						else{
+										curr->mmap_count++;
+										f->eax = map_id;
+						}
 						//printf("[sys]mmap end\n");
 						break;
 						}

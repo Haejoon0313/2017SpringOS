@@ -1,6 +1,6 @@
-Copying tests/vm/pt-grow-bad into /tmp/chS0ZXl0kJ.dsk...
-Writing command line to /tmp/cpGsVN1ngC.dsk...
-qemu -hda /tmp/cpGsVN1ngC.dsk -hdb /tmp/6JIv7cBUII.dsk -hdc /tmp/chS0ZXl0kJ.dsk -hdd /tmp/HkA8MyVdhj.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/pt-grow-bad into /tmp/E91UvNcp29.dsk...
+Writing command line to /tmp/Y1zh51DbRN.dsk...
+qemu -hda /tmp/Y1zh51DbRN.dsk -hdb /tmp/aRKjDmCQ9t.dsk -hdc /tmp/E91UvNcp29.dsk -hdd /tmp/i77Jg6h0yR.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put pt-grow-bad run pt-grow-bad
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -17,8 +17,8 @@ Executing 'pt-grow-bad':
 (pt-grow-bad) begin
 pt-grow-bad: exit(-1)
 Execution of 'pt-grow-bad' complete.
-Timer: 82 ticks
-Thread: 30 idle ticks, 50 kernel ticks, 2 user ticks
+Timer: 73 ticks
+Thread: 30 idle ticks, 41 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 58 reads, 154 writes
 hd1:0: 73 reads, 0 writes

@@ -1,7 +1,7 @@
-Copying tests/vm/page-merge-stk into /tmp/WuBCkJd9bM.dsk...
-Copying tests/vm/child-qsort into /tmp/WuBCkJd9bM.dsk...
-Writing command line to /tmp/y9xAOG4kwV.dsk...
-qemu -hda /tmp/y9xAOG4kwV.dsk -hdb /tmp/9Ko797JYml.dsk -hdc /tmp/WuBCkJd9bM.dsk -hdd /tmp/MlDM9TL6HV.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-merge-stk into /tmp/O0XbAyzCjU.dsk...
+Copying tests/vm/child-qsort into /tmp/O0XbAyzCjU.dsk...
+Writing command line to /tmp/eGZ8qIo89Q.dsk...
+qemu -hda /tmp/eGZ8qIo89Q.dsk -hdb /tmp/Sijf6ZO6zL.dsk -hdc /tmp/O0XbAyzCjU.dsk -hdd /tmp/h6mcnsS3kE.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-merge-stk put child-qsort run page-merge-stk
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -48,13 +48,13 @@ child-qsort: exit(72)
 (page-merge-stk) end
 page-merge-stk: exit(0)
 Execution of 'page-merge-stk' complete.
-Timer: 1428 ticks
-Thread: 30 idle ticks, 60 kernel ticks, 1338 user ticks
+Timer: 990 ticks
+Thread: 30 idle ticks, 63 kernel ticks, 897 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 4889 reads, 6506 writes
 hd1:0: 160 reads, 0 writes
 hd1:1: 432 reads, 1592 writes
-Console: 1820 characters output
+Console: 1818 characters output
 Keyboard: 0 keys pressed
 Exception: 862 page faults
 Powering off...

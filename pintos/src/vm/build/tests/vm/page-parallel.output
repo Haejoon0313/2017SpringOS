@@ -1,7 +1,7 @@
-Copying tests/vm/page-parallel into /tmp/9EeW72y0IN.dsk...
-Copying tests/vm/child-linear into /tmp/9EeW72y0IN.dsk...
-Writing command line to /tmp/ofPP95J1Ll.dsk...
-qemu -hda /tmp/ofPP95J1Ll.dsk -hdb /tmp/wcKfl1Hk3K.dsk -hdc /tmp/9EeW72y0IN.dsk -hdd /tmp/MkS8LW2U7Y.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-parallel into /tmp/FNsrvs2eue.dsk...
+Copying tests/vm/child-linear into /tmp/FNsrvs2eue.dsk...
+Writing command line to /tmp/9Ech11zzUQ.dsk...
+qemu -hda /tmp/9Ech11zzUQ.dsk -hdb /tmp/gWM5q6LS6A.dsk -hdc /tmp/FNsrvs2eue.dsk -hdd /tmp/bm6PwXfzHu.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-parallel put child-linear run page-parallel
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -21,24 +21,24 @@ Executing 'page-parallel':
 (page-parallel) exec "child-linear"
 (page-parallel) exec "child-linear"
 (page-parallel) exec "child-linear"
+child-linear: exit(66)
+child-linear: exit(66)
+child-linear: exit(66)
 (page-parallel) wait for child 0
-child-linear: exit(66)
-child-linear: exit(66)
-child-linear: exit(66)
-child-linear: exit(66)
 (page-parallel) wait for child 1
 (page-parallel) wait for child 2
 (page-parallel) wait for child 3
+child-linear: exit(66)
 (page-parallel) end
 page-parallel: exit(0)
 Execution of 'page-parallel' complete.
-Timer: 1560 ticks
-Thread: 30 idle ticks, 84 kernel ticks, 1446 user ticks
+Timer: 1002 ticks
+Thread: 30 idle ticks, 52 kernel ticks, 921 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 308 reads, 308 writes
+hd0:1: 332 reads, 308 writes
 hd1:0: 149 reads, 0 writes
-hd1:1: 7200 reads, 7200 writes
-Console: 1380 characters output
+hd1:1: 9952 reads, 9952 writes
+Console: 1379 characters output
 Keyboard: 0 keys pressed
-Exception: 1953 page faults
+Exception: 2300 page faults
 Powering off...

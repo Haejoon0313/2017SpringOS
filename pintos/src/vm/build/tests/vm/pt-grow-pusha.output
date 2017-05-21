@@ -1,6 +1,6 @@
-Copying tests/vm/pt-grow-pusha into /tmp/IJM3uOdmMl.dsk...
-Writing command line to /tmp/Ei9yWxLAzG.dsk...
-qemu -hda /tmp/Ei9yWxLAzG.dsk -hdb /tmp/SVqWzApimt.dsk -hdc /tmp/IJM3uOdmMl.dsk -hdd /tmp/pdl2JLnQWc.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/pt-grow-pusha into /tmp/lewGgzmxDA.dsk...
+Writing command line to /tmp/4txOU2KphM.dsk...
+qemu -hda /tmp/4txOU2KphM.dsk -hdb /tmp/EWuQ4vnkjH.dsk -hdc /tmp/lewGgzmxDA.dsk -hdd /tmp/6ZvWqIkgt7.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put pt-grow-pusha run pt-grow-pusha
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
@@ -18,8 +18,8 @@ Executing 'pt-grow-pusha':
 (pt-grow-pusha) end
 pt-grow-pusha: exit(0)
 Execution of 'pt-grow-pusha' complete.
-Timer: 72 ticks
-Thread: 30 idle ticks, 41 kernel ticks, 1 user ticks
+Timer: 74 ticks
+Thread: 30 idle ticks, 42 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 58 reads, 154 writes
 hd1:0: 73 reads, 0 writes
