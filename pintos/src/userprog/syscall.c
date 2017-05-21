@@ -299,19 +299,16 @@ syscall_handler (struct intr_frame *f UNUSED)
 						/*address == 0 case*/
 						if(addr==0)
 						{	
-							printf("wrong1\n");
 							f->eax= MAP_FAILED;
 							break;
 						}
 						/*address is not page-aligned*/
 						if(pg_ofs(addr)!=0){
-							printf("wrong1\n");							
 							f->eax = MAP_FAILED;
 							break;
 						}
 						/*fd==0 or 1 means the console I?O case */
 						if((fd==0)||(fd==1)){
-							printf("wring4\n");
 							f->eax=MAP_FAILED;
 							break;
 						}
@@ -357,14 +354,14 @@ syscall_handler (struct intr_frame *f UNUSED)
 						curr->mmap_count++;
 						f->eax = map_id;
 
-						printf("[sys]mmap end\n");
+						//printf("[sys]mmap end\n");
 						break;
 						}
 
 		case SYS_MUNMAP:
 						{
 						check_address(p+1);
-						printf("[sys]upmap syscall arrive\n");
+						//printf("[sys]upmap syscall arrive\n");
 						int munmap_id = *(p+1);
 						struct thread * curr = thread_current();
 						struct list_elem * el = NULL;
@@ -372,15 +369,12 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 						for(el = list_front(&curr->mmap_list) ;el != list_end(&curr->mmap_list) ;  el = list_next(el) ){
 								struct sup_pte * spte = list_entry(el,struct sup_pte, list_elem);
-								if(munmap_id < spte->mmap_id){
-												break;
-								}
 								if(munmap_id == spte->mmap_id){
-										printf("unmap start!\n");
+
 										/*now, Find a removing munmap file */
 										list_remove(&spte->list_elem);//remove from mmap list
 										void * kpage = pagedir_get_page(curr->pagedir,spte->upage);
-										if(kpage !=NULL){//spte->load????????????
+										if(kpage !=NULL){
 												ASSERT(spte->loaded);
 
 												/*If file is dirty, rewrite it to file, not swap disk. */
@@ -389,22 +383,20 @@ syscall_handler (struct intr_frame *f UNUSED)
 														file_write_at(spte->file,spte->upage,spte->read_bytes,spte->file_ofs);
 														release_file_lock();
 												}
-//												struct sup_pte * spte = get_sup_pte(curr->pagedir, spte->upage);
-
 												pagedir_clear_page(curr->pagedir,spte->upage);
 												page_remove(&curr->sup_page_table, spte->upage);
-												free(spte);
+												//free(spte);
 												frame_free(kpage);
 								}
 										else{
 												page_remove(&curr->sup_page_table, spte->upage);
-												free(spte);
+												//free(spte);
 								}
 								}
 						}
-						printf("[sys]unmap syscall end\n");
+						//printf("[sys]unmap syscall end\n");
 						frame_table_lock_release();																				
-						printf("[sys]unmap syscall end\n");
+						//printf("[sys]unmap syscall end\n");
 						break;						
 						}
 #endif

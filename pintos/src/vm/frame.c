@@ -78,7 +78,7 @@ void * frame_evict(enum palloc_flags flag){
 				
 				is_dirty = pagedir_is_dirty(evict_fte->origin_thread->pagedir,upage);
 				
-				if(spte->mmap_id == -1){
+				if(spte->mmap_id == MAP_FAILED){
 						if(is_dirty){//written, so saved at swap disk
 						/*swap out the first entry of Frame table */
 										spte->swapped = true;

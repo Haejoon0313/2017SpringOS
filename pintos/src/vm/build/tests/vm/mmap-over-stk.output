@@ -1,0 +1,38 @@
+Copying tests/vm/mmap-over-stk into /tmp/EkldP7EdQn.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/EkldP7EdQn.dsk...
+Writing command line to /tmp/IeHvub6AdB.dsk...
+qemu -hda /tmp/IeHvub6AdB.dsk -hdb /tmp/a5ZnODNm40.dsk -hdc /tmp/EkldP7EdQn.dsk -hdd /tmp/WFqDGVcBKY.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put mmap-over-stk put sample.txt run mmap-over-stk
+Pintos booting with 4,096 kB RAM...
+374 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-over-stk' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-over-stk':
+(mmap-over-stk) begin
+(mmap-over-stk) open "sample.txt"
+(mmap-over-stk) try to mmap over stack segment
+(mmap-over-stk) try to mmap over stack segment: FAILED
+mmap-over-stk: exit(1)
+Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010e0f8 0xc010af78 0xc0101935 0xc0101b0b 0xc010c991 0xc010de86 0xc0108f3f 0xc0108f89 0xc010dd00 0xc0109b5e 0xc0100c58 0xc010bf10 0xc010b6cb 0xc0101935 0xc0101b0b 0x804a003 0x804824f 0x804810a 0x80486ef 0x804871c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 86 ticks
+Thread: 30 idle ticks, 54 kernel ticks, 2 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 90 reads, 162 writes
+hd1:0: 76 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1592 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...

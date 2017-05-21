@@ -88,19 +88,18 @@ static void page_table_free(struct hash_elem * e, void * aux UNUSED){
 				struct sup_pte * sup_pte = hash_entry(e, struct sup_pte, elem);
 				struct thread * t = thread_current();
 				void * kpage = pagedir_get_page(t->pagedir,sup_pte->upage);
-				if(sup_pte->mmap_id >=0){
+				if(kpage!=NULL && sup_pte->mmap_id != MAP_FAILED)
+				{
 						if(pagedir_is_dirty(t->pagedir,sup_pte->upage)){
-								acquire_file_lock();
 								file_write_at(sup_pte->file,sup_pte->upage,sup_pte->read_bytes,sup_pte->file_ofs);
-								release_file_lock();
 						}
 						list_remove(&sup_pte->list_elem);
 				}
 
-				if(sup_pte->loaded == true){
-								frame_free(kpage);
-								pagedir_clear_page(t->pagedir, sup_pte->upage);
-				}
+				if(kpage!=NULL){
+							pagedir_clear_page(t->pagedir, sup_pte->upage);
+							frame_free(kpage);
+							}
 
 				if(sup_pte->swapped)
 								swap_set(sup_pte->swap_index, false);

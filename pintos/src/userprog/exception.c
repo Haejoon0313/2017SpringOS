@@ -168,7 +168,6 @@ page_fault (struct intr_frame *f)
 
 
 #ifdef VM
-	printf("1");
 	struct thread * curr = thread_current();
 	struct sup_pte * spte = NULL;
 	void * kpage;
@@ -209,8 +208,7 @@ page_fault (struct intr_frame *f)
 
 					/*page fault is caused by swap or lazy loading */					
 					else{
-									printf("2\n");
-									/*page fault is caused by SWAP */									
+												/*page fault is caused by SWAP */									
 									if(spte->swapped&& spte->loaded && spte->swapped && !(pagedir_get_page(curr->pagedir,spte->upage))) {
 											kpage = frame_alloc(upage, PAL_ZERO);
 											swap_in(spte,kpage);
@@ -233,14 +231,10 @@ page_fault (struct intr_frame *f)
 									else if(!spte->loaded){
 											/*Check the correctness of load page size */
 											ASSERT(spte->read_bytes + spte->zero_bytes == PGSIZE);
-											if(spte->mmap_id >=0)		
-													printf("[exception]mmap case arrive\n");													
-											
+
 											/*CASE 1. All non-zero page  */
 											if (spte->read_bytes == PGSIZE){
-														printf("456\n");
 														void *kpage = frame_alloc(upage,0);
-														printf("123\n");
 														struct sup_pte * spte = get_sup_pte(&curr->sup_page_table,upage);
 														ASSERT(spte != NULL);
 
@@ -325,8 +319,10 @@ page_fault (struct intr_frame *f)
 					}
 					frame_table_lock_release();
 	}
-
-	printf("WHY?\n");
+//	else// if(!not_present)
+//					printf("why present? %x \n",fault_addr);
+//			
+//	printf("WHY exit?\n");
 	exit_process(-1);
 
 

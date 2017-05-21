@@ -1,0 +1,31 @@
+FAIL
+Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010e0f8 0xc010af78 0xc0101935 0xc0101b0b 0xc010c991 0xc010de86 0xc0108f3f 0xc0108f89 0xc010dd00 0xc0109b5e 0xc0100c58 0xc010bf10 0xc010b6cb 0xc0101935 0xc0101b0b 0x804a003 0x804824f 0x804810a 0x80486ef 0x804871c
+Translation of call stack:
+In kernel.o:
+0xc0107756: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0102acd: lock_acquire (...../../threads/synch.c:243)
+0xc010e0f8: frame_table_lock_acquire (...uild/../../vm/frame.c:112)
+0xc010af78: page_fault (.../../../threads/vaddr.h:39)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+0xc010c991: file_write_at (.../../../filesys/file.c:113)
+0xc010de86: page_table_free (.../build/../../vm/page.c:96)
+0xc0108f3f: hash_clear (..../../lib/kernel/hash.c:67)
+0xc0108f89: hash_destroy (..../../lib/kernel/hash.c:91)
+0xc010dd00: page_table_remove (.../build/../../vm/page.c:24)
+0xc0109b5e: process_exit (...../userprog/process.c:197)
+0xc0100c58: thread_exit (..../../threads/thread.c:334)
+0xc010bf10: close_all_filelist (...../userprog/syscall.c:466)
+0xc010b6cb: syscall_handler (.../../userprog/syscall.c:86)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/mmap-over-stk:
+0x0804a003: exit (.../../lib/user/syscall.c:74)
+0x0804824f: swap (...uild/../../tests/lib.c:53)
+0x0804810a: test_main (...sts/vm/mmap-over-stk.c:18)
+0x080486ef: main (...ild/../../tests/main.c:13)
+0x0804871c: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
