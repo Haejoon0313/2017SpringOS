@@ -279,6 +279,7 @@ bitmap_none (const struct bitmap *b, size_t start, size_t cnt)
   return !bitmap_contains (b, start, cnt, true);
 }
 
+
 /* Returns true if every bit in B between START and START + CNT,
    exclusive, is set to true, and false otherwise. */
 bool

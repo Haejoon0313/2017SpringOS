@@ -288,11 +288,11 @@ syscall_handler (struct intr_frame *f UNUSED)
 #ifdef VM
 		case SYS_MMAP:
 						{
-										/*
+										
 						check_address(p+1);
 						check_address(p+2);
-						check_address(*(p+2));
-*/
+						//check_address(*(p+2));
+
 						int fd = *(p+1);
 						uint8_t * addr = *(p+2);
 
@@ -302,27 +302,25 @@ syscall_handler (struct intr_frame *f UNUSED)
 							f->eax= MAP_FAILED;
 							break;
 						}
-						/*address is not page-aligned*/
+						/*address is not page-aligned case*/
 						if(pg_ofs(addr)!=0){
 							f->eax = MAP_FAILED;
 							break;
 						}
-						/*fd==0 or 1 means the console I?O case */
+						/*fd==0 or 1 means the console I/O case */
 						if((fd==0)||(fd==1)){
 							f->eax=MAP_FAILED;
 							break;
 						}
 						
 						struct thread * curr = thread_current();
-
 						struct open_file * mmap_open_file = get_file_by_fd(&curr->file_list,fd);
 						struct file * mmap_file = mmap_open_file->file;
-						
+						/*mmap fiel is null case */
 						if(mmap_open_file == NULL)
 						{
 										f->eax = MAP_FAILED;
 										break;
-						
 						}
 
 						size_t read_bytes =  file_length(mmap_file);
@@ -337,7 +335,8 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 						frame_table_lock_acquire();
 						bool insert_success;
-						bool is_over = false;
+						bool is_fail = false;
+						/*insert mmap file into supplemental page table */
 						while(remain_read_bytes >0)
 						{								
 								/*Actual read bytes */
@@ -345,10 +344,9 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 								bool insert_success = page_insert(file_reopen(mmap_file), cur_ofs, addr , page_read_bytes, PGSIZE-page_read_bytes, true);
 
+								/*mmap file insert to supplemental page table is failed*/
 								if(!insert_success){
-									//curr->mmap_count--;
-									//frame_table_lock_release();
-									is_over = true;
+									is_fail = true;
 									break;
 								}
 
@@ -364,13 +362,12 @@ syscall_handler (struct intr_frame *f UNUSED)
 								addr += PGSIZE;
 						}
 						frame_table_lock_release();
-						if(is_over)
+						if(is_fail)
 										f->eax = MAP_FAILED;
 						else{
 										curr->mmap_count++;
 										f->eax = map_id;
 						}
-						//printf("[sys]mmap end\n");
 						break;
 						}
 
@@ -386,12 +383,11 @@ syscall_handler (struct intr_frame *f UNUSED)
 								struct sup_pte * spte = list_entry(el,struct sup_pte, list_elem);
 								if(munmap_id == spte->mmap_id){
 
-										/*now, Find a removing munmap file */
+										/*now, removing munmap file */
 										list_remove(&spte->list_elem);//remove from mmap list
 										void * kpage = pagedir_get_page(curr->pagedir,spte->upage);
 										if(kpage !=NULL){
 												ASSERT(spte->loaded);
-
 												/*If file is dirty, rewrite it to file, not swap disk. */
 												if(pagedir_is_dirty(curr->pagedir, spte->upage)){
 														acquire_file_lock();
@@ -400,18 +396,14 @@ syscall_handler (struct intr_frame *f UNUSED)
 												}
 												pagedir_clear_page(curr->pagedir,spte->upage);
 												page_remove(&curr->sup_page_table, spte->upage);
-												//free(spte);
 												frame_free(kpage);
 								}
 										else{
 												page_remove(&curr->sup_page_table, spte->upage);
-												//free(spte);
 								}
 								}
 						}
-						//printf("[sys]unmap syscall end\n");
-						frame_table_lock_release();																				
-						//printf("[sys]unmap syscall end\n");
+						frame_table_lock_release();
 						break;						
 						}
 #endif

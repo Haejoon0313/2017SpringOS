@@ -180,10 +180,6 @@ page_fault (struct intr_frame *f)
 					frame_table_lock_acquire();
   				upage = pg_round_down(fault_addr);
 					spte = get_sup_pte(&curr->sup_page_table,upage);
-
-				
-
-
 					/*page fault is caused by STACK GROWTH*/
 					if(spte==NULL){
 									if(!user){
@@ -213,10 +209,10 @@ page_fault (struct intr_frame *f)
 											kpage = frame_alloc(upage, PAL_ZERO);
 											swap_in(spte,kpage);
 
-											bool swap_check = pagedir_get_page(curr->pagedir,spte->upage);						
+											bool swap_check = pagedir_get_page(curr->pagedir,spte->upage)==NULL;						
 											bool swap_set = pagedir_set_page(curr->pagedir, upage, kpage, true);
 
-											if ( (swap_check !=NULL) || !swap_set){
+											if ( !swap_check || !swap_set){
 														frame_free(kpage);													
 														
 										 }else{
@@ -246,10 +242,10 @@ page_fault (struct intr_frame *f)
 																		return false;
 														}
 											
-														bool null_check = pagedir_get_page(curr->pagedir,spte->upage);
+														bool null_check = pagedir_get_page(curr->pagedir,spte->upage)==NULL;
 														bool set_success = pagedir_set_page(curr->pagedir, upage, kpage, spte->writable);
 												
-														if((null_check!=NULL) || !set_success){
+														if( !null_check || !set_success){
 																		frame_free(upage);
 																		frame_table_lock_release();
 																		page_remove(&curr->sup_page_table, upage);
@@ -269,10 +265,10 @@ page_fault (struct intr_frame *f)
 														struct sup_pte * spte = get_sup_pte(&curr->sup_page_table,upage);
 														ASSERT(spte != NULL);
 									
-														bool null_check = pagedir_get_page(curr->pagedir,spte->upage);
+														bool null_check = pagedir_get_page(curr->pagedir,spte->upage)==NULL;
 														bool set_success = pagedir_set_page(curr->pagedir, upage, kpage, spte->writable);
 												
-														if((null_check!=NULL) || !set_success){
+														if(!null_check || !set_success){
 																		frame_free(upage);
 																		frame_table_lock_release();
 																		page_remove(&curr->sup_page_table, upage);
@@ -302,10 +298,10 @@ page_fault (struct intr_frame *f)
 														
 														memset(kpage + spte->read_bytes, 0 ,spte->zero_bytes);
 														
-														bool null_check = pagedir_get_page(curr->pagedir,spte->upage);
+														bool null_check = pagedir_get_page(curr->pagedir,spte->upage)==NULL;
 														bool set_success = pagedir_set_page(curr->pagedir, upage, kpage, spte->writable);
 												
-														if((null_check!=NULL) || !set_success){															
+														if(!null_check || !set_success){															
 																		frame_free(upage);
 																		frame_table_lock_release();
 																		return false;
