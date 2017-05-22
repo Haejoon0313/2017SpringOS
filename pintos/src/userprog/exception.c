@@ -189,10 +189,10 @@ page_fault (struct intr_frame *f)
 									if(fault_addr >= PHYS_BASE - (1<<23) && (uint8_t *)f->esp -32<= (uint8_t *)fault_addr){
 										kpage = frame_alloc(upage, PAL_ZERO);
 								
-										bool stack_check = pagedir_get_page(curr->pagedir,upage);
+										bool stack_check = pagedir_get_page(curr->pagedir,upage)==NULL;
 										bool stack_set = pagedir_set_page(curr->pagedir, upage, kpage, true);
 										
-										if((stack_check !=NULL) || !stack_set){
+										if(!stack_check || !stack_set){
 														frame_free(kpage);
 										}else{
 														page_insert(NULL,NULL,upage,NULL,NULL,true);
