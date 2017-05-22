@@ -229,6 +229,7 @@ page_fault (struct intr_frame *f)
 										 }}
 									/*page fault is caused by LAZY LOADING*/
 									else if(!spte->loaded){
+											
 											/*Check the correctness of load page size */
 											ASSERT(spte->read_bytes + spte->zero_bytes == PGSIZE);
 
@@ -287,13 +288,13 @@ page_fault (struct intr_frame *f)
 											/*CASE 3. Partial page */
 											else {
 														void * kpage = frame_alloc(upage,0);
-														
+														ASSERT(kpage);	
 														struct sup_pte * spte = get_sup_pte(&curr->sup_page_table, upage);
 
 														ASSERT(spte->file != NULL);
 														ASSERT(kpage != NULL);
-
-														if (file_read_at(spte->file, kpage, spte->read_bytes,spte->file_ofs) != (int) spte->read_bytes){
+														int read_size =file_read_at(spte->file, kpage, spte->read_bytes,spte->file_ofs);
+														if (read_size != (int) spte->read_bytes){
 																		frame_free(upage);
 																		frame_table_lock_release();
 																		return false;
@@ -319,10 +320,6 @@ page_fault (struct intr_frame *f)
 					}
 					frame_table_lock_release();
 	}
-//	else// if(!not_present)
-//					printf("why present? %x \n",fault_addr);
-//			
-//	printf("WHY exit?\n");
 	exit_process(-1);
 
 

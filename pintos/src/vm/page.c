@@ -95,7 +95,6 @@ static void page_table_free(struct hash_elem * e, void * aux UNUSED){
 						}
 						list_remove(&sup_pte->list_elem);
 				}
-
 				if(kpage!=NULL){
 							pagedir_clear_page(t->pagedir, sup_pte->upage);
 							frame_free(kpage);

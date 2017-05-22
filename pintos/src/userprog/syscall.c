@@ -343,7 +343,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 								/*Actual read bytes */
 								size_t page_read_bytes = (remain_read_bytes >= PGSIZE ? PGSIZE : remain_read_bytes);
 
-								bool insert_success = page_insert(mmap_file, cur_ofs, addr , page_read_bytes, PGSIZE-page_read_bytes, true);
+								bool insert_success = page_insert(file_reopen(mmap_file), cur_ofs, addr , page_read_bytes, PGSIZE-page_read_bytes, true);
 
 								if(!insert_success){
 									//curr->mmap_count--;
@@ -377,7 +377,6 @@ syscall_handler (struct intr_frame *f UNUSED)
 		case SYS_MUNMAP:
 						{
 						check_address(p+1);
-						//printf("[sys]upmap syscall arrive\n");
 						int munmap_id = *(p+1);
 						struct thread * curr = thread_current();
 						struct list_elem * el = NULL;
