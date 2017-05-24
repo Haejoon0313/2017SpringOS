@@ -131,8 +131,7 @@ int
 process_wait (tid_t child_tid) 
 {
 
-	//printf("W!!child id that is passed to wait() : %d \n",child_tid);	
-
+	
 	struct thread * curr = thread_current();
 	struct list_elem *temp_el;
 	struct child * cp = NULL;
@@ -431,7 +430,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
 
 	return success;
 }
-
+
 /* load() helpers. */
 
 static bool install_page (void *upage, void *kpage, bool writable);
@@ -554,7 +553,7 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 				*/
 #else
 
-			/*Before Project4 VM part. Need to Remove later */
+			/*Before Project3 VM part. Need to Remove later */
 			
       /* Get a page of memory. */
       uint8_t *kpage = palloc_get_page (PAL_USER);

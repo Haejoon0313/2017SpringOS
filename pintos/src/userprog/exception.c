@@ -173,9 +173,6 @@ page_fault (struct intr_frame *f)
 	void * kpage;
 	void * upage=NULL;
 	
-	//printf("[#]fault addr : %x \n",fault_addr);
- 	//printf("[#]pf cnt : %d \n",page_fault_cnt);
-	
 	if(not_present &&is_user_vaddr(fault_addr)){
 					frame_table_lock_acquire();
   				upage = pg_round_down(fault_addr);

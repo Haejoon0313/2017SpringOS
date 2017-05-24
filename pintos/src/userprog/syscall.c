@@ -47,7 +47,7 @@ void check_address(void *addr){
 	void *mapping_check = pagedir_get_page(thread_current()->pagedir, addr);
 	if (!mapping_check)
 					mapping_check = pagedir_get_page(thread_current()->pagedir, addr);
-	//mapping_check = true;
+
 	if (mapping_check==NULL){
 					exit_process(-1);
 	}	
@@ -211,7 +211,6 @@ syscall_handler (struct intr_frame *f UNUSED)
 								}
 						//Read by open file.
 						}else{
-								//printf("syscall read \n");	
 								struct open_file * read_file = get_file_by_fd(&thread_current()->file_list,read_fd);
 								if(read_file==NULL){
 												f->eax = -1;
@@ -291,7 +290,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 										
 						check_address(p+1);
 						check_address(p+2);
-						//check_address(*(p+2));
+
 
 						int fd = *(p+1);
 						uint8_t * addr = *(p+2);
