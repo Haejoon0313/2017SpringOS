@@ -313,6 +313,7 @@ page_fault (struct intr_frame *f)
 					}
 					frame_table_lock_release();
 	}
+//	printf("123\n");
 	exit_process(-1);
 
 

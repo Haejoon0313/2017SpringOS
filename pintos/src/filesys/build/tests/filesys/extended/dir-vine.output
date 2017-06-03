@@ -1,0 +1,33 @@
+Copying tests/filesys/extended/dir-vine into /tmp/KuVtiSHVpw.dsk...
+Copying tests/filesys/extended/tar into /tmp/KuVtiSHVpw.dsk...
+Writing command line to /tmp/GxDrqS99Yz.dsk...
+qemu -hda /tmp/GxDrqS99Yz.dsk -hdb tmp.dsk -hdc /tmp/KuVtiSHVpw.dsk -hdd /tmp/FLy4jMK6x1.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put dir-vine put tar run dir-vine
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 163 sector (81 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'dir-vine' into the file system...
+Putting 'tar' into the file system...
+Executing 'dir-vine':
+(dir-vine) begin
+(dir-vine) creating many levels of files and directories...
+(dir-vine) created files and directories only to level 0: FAILED
+dir-vine: exit(1)
+Execution of 'dir-vine' complete.
+Timer: 77 ticks
+Thread: 30 idle ticks, 44 kernel ticks, 3 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 48 reads, 335 writes
+hd1:0: 163 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1052 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...

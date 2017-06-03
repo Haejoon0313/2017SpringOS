@@ -1,0 +1,188 @@
+Copying tests/userprog/args-many into /tmp/IBQPp7mpyQ.dsk...
+Writing command line to /tmp/FoOX7zR6dN.dsk...
+qemu -hda /tmp/FoOX7zR6dN.dsk -hdb /tmp/rtHIOsgGQc.dsk -hdc /tmp/IBQPp7mpyQ.dsk -hdd /tmp/LBpw6LIRXb.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put args-many run 'args-many a b c d e f g h i j k l m n o p q r s t u v'
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 72 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107766 0xc0102add 0xc010e5d8 0xc010af88 0xc0101945 0xc0101b1b 0 0xc0109098 0xc010e204 0xc010afa6 0xc0101945 0xc0101b1b 0xc010dfa4 0xc010d571 0xc010ca4f 0xc0108e6a 0xc010c8b5 0xc010c595 0xc010c435 0xc01000b9.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/synch.c:242 in lock_acquire().
+123
+main: exit(-1)
+123
+main: exit(-1)
+123
+main: exit(-1)
+123
+main: exit(-1)
+Kernel command line: -q -f put args-many run 'args-many a b c d e f g h i j k l m n o p q r s t u v'
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 72 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107766 0xc0102add 0xc010e5d8 0xc010af88 0xc0101945 0xc0101b1b 0 0xc0109098 0xc010e204 0xc010afa6 0xc0101945 0xc0101b1b 0xc010dfa4 0xc010d571 0xc010ca4f 0xc0108e6a 0xc010c8b5 0xc010c595 0xc010c435 0xc01000b9.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/synch.c:242 in lock_acquire().
+123
+main: exit(-1)
+123
+main: exit(-1)
+123
+main: exit(-1)
+123
+main: exit(-1)
+Kernel command line: -q -f put args-many run 'args-many a b c d e f g h i j k l m n o p q r s t u v'
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 72 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107766 0xc0102add 0xc010e5d8 0xc010af88 0xc0101945 0xc0101b1b 0 0xc0109098 0xc010e204 0xc010afa6 0xc0101945 0xc0101b1b 0xc010dfa4 0xc010d571 0xc010ca4f 0xc0108e6a 0xc010c8b5 0xc010c595 0xc010c435 0xc01000b9.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/synch.c:242 in lock_acquire().
+123
+main: exit(-1)
+123
+main: exit(-1)
+123
+main: exit(-1)
+123
+main: exit(-1)
+Kernel command line: -q -f put args-many run 'args-many a b c d e f g h i j k l m n o p q r s t u v'
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 72 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107766 0xc0102add 0xc010e5d8 0xc010af88 0xc0101945 0xc0101b1b 0 0xc0109098 0xc010e204 0xc010afa6 0xc0101945 0xc0101b1b 0xc010dfa4 0xc010d571 0xc010ca4f 0xc0108e6a 0xc010c8b5 0xc010c595 0xc010c435 0xc01000b9.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/synch.c:242 in lock_acquire().
+123
+main: exit(-1)
+123
+main: exit(-1)
+123
+main: exit(-1)
+123
+main: exit(-1)
+Kernel command line: -q -f put args-many run 'args-many a b c d e f g h i j k l m n o p q r s t u v'
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 72 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107766 0xc0102add 0xc010e5d8 0xc010af88 0xc0101945 0xc0101b1b 0 0xc0109098 0xc010e204 0xc010afa6 0xc0101945 0xc0101b1b 0xc010dfa4 0xc010d571 0xc010ca4f 0xc0108e6a 0xc010c8b5 0xc010c595 0xc010c435 0xc01000b9.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/synch.c:242 in lock_acquire().
+123
+main: exit(-1)
+123
+main: exit(-1)
+123
+main: exit(-1)
+123
+main: exit(-1)
+Kernel command line: -q -f put args-many run 'args-many a b c d e f g h i j k l m n o p q r s t u v'
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 72 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107766 0xc0102add 0xc010e5d8 0xc010af88 0xc0101945 0xc0101b1b 0 0xc0109098 0xc010e204 0xc010afa6 0xc0101945 0xc0101b1b 0xc010dfa4 0xc010d571 0xc010ca4f 0xc0108e6a 0xc010c8b5 0xc010c595 0xc010c435 0xc01000b9.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/synch.c:242 in lock_acquire().
+123
+main: exit(-1)
+123
+main: exit(-1)
+123
+main: exit(-1)
+123
+main: exit(-1)
+Kernel command line: -q -f put args-many run 'args-many a b c d e f g h i j k l m n o p q r s t u v'
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 72 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107766 0xc0102add 0xc010e5d8 0xc010af88 0xc0101945 0xc0101b1b 0 0xc0109098 0xc010e204 0xc010afa6 0xc0101945 0xc0101b1b 0xc010dfa4 0xc010d571 0xc010ca4f 0xc0108e6a 0xc010c8b5 0xc010c595 0xc010c435 0xc01000b9.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/synch.c:242 in lock_acquire().
+123
+main: exit(-1)
+123
+main: exit(-1)
+123
+main: exit(-1)
+123
+main: exit(-1)
+Kernel command line: -q -f put args-many run 'args-many a b c d e f g h i j k l m n o p q r s t u v'
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 72 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107766 0xc0102add 0xc010e5d8 0xc010af88 0xc0101945 0xc0101b1b 0 0xc0109098 0xc010e204 0xc010afa6 0xc0101945 0xc0101b1b 0xc010dfa4 0xc010d571 0xc010ca4f 0xc0108e6a 0xc010c8b5 0xc010c595 0xc010c435 0xc01000b9.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/synch.c:242 in lock_acquire().
+123
+main: exit(-1)
+123
+main: exit(-1)
+123
+main: exit(-1)
+123
+main: exit(-1)
+Simulation terminated due to kernel panic.

@@ -6,9 +6,18 @@
 #include "filesys/filesys.h"
 #include "filesys/free-map.h"
 #include "threads/malloc.h"
+#include "filesys/cache.h"
+#include "threads/synch.h"
+#include "threads/thread.h"
 
 /* Identifies an inode. */
 #define INODE_MAGIC 0x494e4f44
+
+
+/*To save previous project code */
+bool pintos4 = true;
+
+
 
 /* On-disk inode.
    Must be exactly DISK_SECTOR_SIZE bytes long. */
@@ -39,6 +48,11 @@ struct inode
     struct inode_disk data;             /* Inode content. */
   };
 
+
+
+
+/*If we need to read POS position of file, which sector do we need to read?
+ byte_to_sector translate the pos to sector. =>Which sector is indicated by byte.*/
 /* Returns the disk sector that contains byte offset POS within
    INODE.
    Returns -1 if INODE does not contain data for a byte at offset
@@ -89,14 +103,15 @@ inode_create (disk_sector_t sector, off_t length)
       disk_inode->magic = INODE_MAGIC;
       if (free_map_allocate (sectors, &disk_inode->start))
         {
-          disk_write (filesys_disk, sector, disk_inode);
+					disk_write (filesys_disk, sector, disk_inode);
           if (sectors > 0) 
             {
               static char zeros[DISK_SECTOR_SIZE];
               size_t i;
               
-              for (i = 0; i < sectors; i++) 
-                disk_write (filesys_disk, disk_inode->start + i, zeros); 
+              for (i = 0; i < sectors; i++){
+									disk_write (filesys_disk, disk_inode->start + i, zeros); 
+							}
             }
           success = true; 
         } 
@@ -137,7 +152,8 @@ inode_open (disk_sector_t sector)
   inode->open_cnt = 1;
   inode->deny_write_cnt = 0;
   inode->removed = false;
-  disk_read (filesys_disk, inode->sector, &inode->data);
+
+	disk_read (filesys_disk, inode->sector, &inode->data);
   return inode;
 }
 
@@ -208,43 +224,56 @@ inode_read_at (struct inode *inode, void *buffer_, off_t size, off_t offset)
     {
       /* Disk sector to read, starting byte offset within sector. */
       disk_sector_t sector_idx = byte_to_sector (inode, offset);
-      int sector_ofs = offset % DISK_SECTOR_SIZE;
+      int sector_ofs = offset % DISK_SECTOR_SIZE;//remain sector size(ex : 0.5sector).
 
-      /* Bytes left in inode, bytes left in sector, lesser of the two. */
+      /* Bytes left in inode, bytes left in sector, lesser of the two. 전체 file과, 하나의 sector에서, 남은 부분(앞으로 읽을수도 있음) */
       off_t inode_left = inode_length (inode) - offset;
       int sector_left = DISK_SECTOR_SIZE - sector_ofs;
       int min_left = inode_left < sector_left ? inode_left : sector_left;
 
       /* Number of bytes to actually copy out of this sector. */
       int chunk_size = size < min_left ? size : min_left;
-      if (chunk_size <= 0)
-        break;
-
+      if (chunk_size <= 0){
+							break;
+			}
+			/*Before project4 filesys part. Substitute into cache read.*/
+			if(!pintos4){
       if (sector_ofs == 0 && chunk_size == DISK_SECTOR_SIZE) 
         {
           /* Read full sector directly into caller's buffer. */
           disk_read (filesys_disk, sector_idx, buffer + bytes_read); 
         }
-      else 
+      else /*read의 마지막 경우 / size가 딱 안나누어 떨어질 경우*/
         {
           /* Read sector into bounce buffer, then partially copy
              into caller's buffer. */
           if (bounce == NULL) 
             {
               bounce = malloc (DISK_SECTOR_SIZE);
+
+						
               if (bounce == NULL)
                 break;
             }
           disk_read (filesys_disk, sector_idx, bounce);
           memcpy (buffer + bytes_read, bounce + sector_ofs, chunk_size);
         }
-      
+			}
+
+			if(pintos4){
+			cache_read(sector_idx, buffer + bytes_read, sector_ofs, chunk_size);
+			struct cache * read_cache =  find_cache(sector_idx);
+			ASSERT(read_cache != NULL);
+			read_cache->open_cnt--;
+			/*need read_ahead later??*/
+			}
+
       /* Advance. */
       size -= chunk_size;
       offset += chunk_size;
       bytes_read += chunk_size;
     }
-  free (bounce);
+  //free (bounce);
 
   return bytes_read;
 }
@@ -262,8 +291,6 @@ inode_write_at (struct inode *inode, const void *buffer_, off_t size,
   off_t bytes_written = 0;
   uint8_t *bounce = NULL;
 
-  if (inode->deny_write_cnt)
-    return 0;
 
   while (size > 0) 
     {
@@ -276,20 +303,24 @@ inode_write_at (struct inode *inode, const void *buffer_, off_t size,
       int sector_left = DISK_SECTOR_SIZE - sector_ofs;
       int min_left = inode_left < sector_left ? inode_left : sector_left;
 
-      /* Number of bytes to actually write into this sector. */
+			
+			/* Number of bytes to actually write into this sector. */
       int chunk_size = size < min_left ? size : min_left;
-      if (chunk_size <= 0)
-        break;
-
-      if (sector_ofs == 0 && chunk_size == DISK_SECTOR_SIZE) 
+      if (chunk_size <= 0){
+	        break;
+			}
+		
+			/*before pj4part */
+			if(!pintos4){
+      if (sector_ofs == 0 && chunk_size == DISK_SECTOR_SIZE)
         {
           /* Write full sector directly to disk. */
-          disk_write (filesys_disk, sector_idx, buffer + bytes_written); 
+          disk_write (filesys_disk, sector_idx, buffer + bytes_written);
         }
-      else 
+      else
         {
           /* We need a bounce buffer. */
-          if (bounce == NULL) 
+          if (bounce == NULL)
             {
               bounce = malloc (DISK_SECTOR_SIZE);
               if (bounce == NULL)
@@ -299,20 +330,27 @@ inode_write_at (struct inode *inode, const void *buffer_, off_t size,
           /* If the sector contains data before or after the chunk
              we're writing, then we need to read in the sector
              first.  Otherwise we start with a sector of all zeros. */
-          if (sector_ofs > 0 || chunk_size < sector_left) 
+          if (sector_ofs > 0 || chunk_size < sector_left)
             disk_read (filesys_disk, sector_idx, bounce);
           else
             memset (bounce, 0, DISK_SECTOR_SIZE);
           memcpy (bounce + sector_ofs, buffer + bytes_written, chunk_size);
-          disk_write (filesys_disk, sector_idx, bounce); 
+          disk_write (filesys_disk, sector_idx, bounce);
         }
+			}
 
+
+			if(pintos4){
+			cache_write(sector_idx, buffer + bytes_written, sector_ofs, chunk_size);
+			struct cache* write_cache = find_cache(sector_idx);
+			write_cache->open_cnt--;
+			}
       /* Advance. */
       size -= chunk_size;
       offset += chunk_size;
       bytes_written += chunk_size;
     }
-  free (bounce);
+  //free (bounce);
 
   return bytes_written;
 }

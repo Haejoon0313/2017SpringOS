@@ -7,7 +7,9 @@
 #include "filesys/inode.h"
 #include "filesys/directory.h"
 #include "devices/disk.h"
-
+#include "filesys/cache.h"
+#include <list.h>
+//#include "filesys/cache.h"
 /* The disk that contains the file system. */
 struct disk *filesys_disk;
 
@@ -24,6 +26,8 @@ filesys_init (bool format)
 
   inode_init ();
   free_map_init ();
+	cache_init();
+	//list_init(&cache_list);
 
   if (format) 
     do_format ();
@@ -36,7 +40,9 @@ filesys_init (bool format)
 void
 filesys_done (void) 
 {
-  free_map_close ();
+	destroy_cache_list();	
+	free_map_close ();
+
 }
 
 /* Creates a file named NAME with the given INITIAL_SIZE.
@@ -67,6 +73,7 @@ filesys_create (const char *name, off_t initial_size)
 struct file *
 filesys_open (const char *name)
 {
+//	printf("[a]file name : %s. I'm in filesys_open \n",name);
   struct dir *dir = dir_open_root ();
   struct inode *inode = NULL;
 
@@ -74,6 +81,8 @@ filesys_open (const char *name)
     dir_lookup (dir, name, &inode);
   dir_close (dir);
 
+//	if(inode==NULL)
+//					printf("WHAT the hell the dir is? I'm in filesys.c\n");
   return file_open (inode);
 }
 

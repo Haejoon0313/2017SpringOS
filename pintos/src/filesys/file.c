@@ -17,6 +17,8 @@ struct file
 struct file *
 file_open (struct inode *inode) 
 {
+//	if(inode==NULL)
+//					printf("[f]inode in file_open is NULL!\n");
   struct file *file = calloc (1, sizeof *file);
   if (inode != NULL && file != NULL)
     {
@@ -27,6 +29,7 @@ file_open (struct inode *inode)
     }
   else
     {
+//			printf("[f]file open failed!\n");
       inode_close (inode);
       free (file);
       return NULL; 
@@ -110,6 +113,7 @@ off_t
 file_write_at (struct file *file, const void *buffer, off_t size,
                off_t file_ofs) 
 {
+	//printf("[fw]write buffer contents : %s \n",buffer);
   return inode_write_at (file->inode, buffer, size, file_ofs);
 }
 

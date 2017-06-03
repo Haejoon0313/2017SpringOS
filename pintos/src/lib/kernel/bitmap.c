@@ -358,7 +358,11 @@ bool
 bitmap_write (const struct bitmap *b, struct file *file)
 {
   off_t size = byte_cnt (b->bit_cnt);
-  return file_write_at (file, b->bits, size, 0) == size;
+//	printf("[b]bitmap size : %d ~~~~~~~~~~~~~~~~~~~~~\n",size);
+	int write_size = file_write_at (file, b->bits, size, 0);
+//	printf("[b]write size : %d, max size is : %d \n",write_size,size);
+
+	return size==write_size;
 }
 #endif /* FILESYS */
 

@@ -1,0 +1,34 @@
+#ifdef FILESYSS_CACHE_H
+#define FILESYS_CACHE_H
+
+#include <list.h>
+#include "threads/synch.h"
+#include "devices/disk.h"
+
+#define CACHE_MAX_SECTOR_NO 64
+#define frequency_of_writeback 500
+struct cache{
+				uint8_t buffer[DISK_SECTOR_SIZE]; /*data of cache */
+				disk_sector_t sector_idx;					/*Sector No. */
+				bool dirty;												/*is dirty cache? */
+				bool current_use;									/*cache is currently used?*/
+				struct list_elem el;							/*list element */
+	
+};
+
+struct list cache_list;
+struct lock cache_lock;
+
+void cache_init();
+
+bool write_behind(disk_sector_t sec_no );/*if cache is dirty, write it back to disk */
+
+struct cache* get_block_in_cache(disk_sector_t sec_no);/*search and return cache*/
+
+struct cache* cache_evict(disk_sector_t sec_no);/*evict cache */
+
+void thread_function_frequently_write_behind();/*frequntly refresh the whole cache*/
+
+void cache_lock_acquire();
+void cache_lock_release();
+#endif
