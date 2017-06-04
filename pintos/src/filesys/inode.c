@@ -48,8 +48,8 @@ byte_to_sector (const struct inode *inode, off_t pos)
 	
 	sec_cnt = pos/DISK_SECTOR_SIZE;
 	
-	struct inode_disk * disk_inode = (struct inode_disk *)malloc(sizeof(struct inode_disk));
-
+	struct inode_disk * disk_inode = (struct inode_disk *)malloc(DISK_SECTOR_SIZE);
+	ASSERT(disk_inode != NULL);
 	cache_read(inode->sector, disk_inode,0, DISK_SECTOR_SIZE);
 
 	
@@ -361,6 +361,7 @@ inode_close (struct inode *inode)
 
         }
 	lock_release(&inode->lock);	
+	free (disk_inode);
 	free (inode); 
     }
 
@@ -430,7 +431,7 @@ inode_write_at (struct inode *inode, const void *buffer_, off_t size,
 {
   const uint8_t *buffer = buffer_;
   off_t bytes_written = 0;
-	uint8_t * bounce = NULL;	
+//	uint8_t * bounce = NULL;	
 	
 	if(inode->deny_write_cnt != 0)
 					return 0;

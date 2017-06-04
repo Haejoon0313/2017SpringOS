@@ -131,6 +131,7 @@ void cache_read(disk_sector_t sec_no, void *read_buffer, int sector_offset, int 
 
 				read_cache = find_cache(sec_no);
 
+				ASSERT(read_buffer != NULL);
 				if(read_cache == NULL){
 								read_cache = make_cache(sec_no,false);
 								disk_read(filesys_disk,sec_no,read_cache->buffer);
