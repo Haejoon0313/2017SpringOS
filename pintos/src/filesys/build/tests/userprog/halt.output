@@ -1,6 +1,6 @@
-Copying tests/userprog/halt into /tmp/FD1ItdhnX6.dsk...
-Writing command line to /tmp/a70qaw8LQi.dsk...
-qemu -hda /tmp/a70qaw8LQi.dsk -hdb /tmp/yz6S0qu9rk.dsk -hdc /tmp/FD1ItdhnX6.dsk -hdd /tmp/CLAAHKe6JP.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/halt into /tmp/ytVTqOYEGr.dsk...
+Writing command line to /tmp/lCUlANYyMb.dsk...
+qemu -hda /tmp/lCUlANYyMb.dsk -hdb /tmp/4KwnjZEh7P.dsk -hdc /tmp/ytVTqOYEGr.dsk -hdd /tmp/38IashHoQ8.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put halt run halt
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -16,12 +16,12 @@ Putting 'halt' into the file system...
 Executing 'halt':
 (halt) begin
 Timer: 65 ticks
-Thread: 30 idle ticks, 31 kernel ticks, 4 user ticks
+Thread: 30 idle ticks, 27 kernel ticks, 8 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 32 reads, 151 writes
+hd0:1: 26 reads, 78 writes
 hd1:0: 73 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 807 characters output
+Console: 806 characters output
 Keyboard: 0 keys pressed
 Exception: 4 page faults
 Powering off...

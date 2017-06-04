@@ -1,5 +1,5 @@
-Writing command line to /tmp/ZinDEY0XQ1.dsk...
-qemu -hda /tmp/ZinDEY0XQ1.dsk -hdb tmp.dsk -hdc /tmp/eJ0HLpcOZo.dsk -hdd /tmp/mljAhIP5fN.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/frn4TLo6tf.dsk...
+qemu -hda /tmp/frn4TLo6tf.dsk -hdb tmp.dsk -hdc /tmp/5OPqnw6lsa.dsk -hdd /tmp/vtwQQWLHuo.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -16,13 +16,13 @@ tar: exit(-1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
 Timer: 54 ticks
-Thread: 30 idle ticks, 23 kernel ticks, 1 user ticks
+Thread: 30 idle ticks, 22 kernel ticks, 2 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 36 reads, 3 writes
+hd0:1: 32 reads, 3 writes
 hd1:0: 0 reads, 1 writes
 hd1:1: 0 reads, 0 writes
 Console: 851 characters output
 Keyboard: 0 keys pressed
 Exception: 4 page faults
 Powering off...
-Copying tests/filesys/extended/syn-rw.tar out of /tmp/eJ0HLpcOZo.dsk...
+Copying tests/filesys/extended/syn-rw.tar out of /tmp/5OPqnw6lsa.dsk...

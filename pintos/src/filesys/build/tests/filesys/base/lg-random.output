@@ -1,6 +1,6 @@
-Copying tests/filesys/base/lg-random into /tmp/nTqIEldMZt.dsk...
-Writing command line to /tmp/XpAqLYbhKT.dsk...
-qemu -hda /tmp/XpAqLYbhKT.dsk -hdb /tmp/UppxwLw39M.dsk -hdc /tmp/nTqIEldMZt.dsk -hdd /tmp/T8VyHlP8eK.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/lg-random into /tmp/wjbIFmgI6G.dsk...
+Writing command line to /tmp/FgtuTkPno2.dsk...
+qemu -hda /tmp/FgtuTkPno2.dsk -hdb /tmp/MLmj3MbJaI.dsk -hdc /tmp/wjbIFmgI6G.dsk -hdd /tmp/r5a7vrxN3f.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put lg-random run lg-random
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -23,10 +23,10 @@ Executing 'lg-random':
 (lg-random) end
 lg-random: exit(0)
 Execution of 'lg-random' complete.
-Timer: 92 ticks
-Thread: 30 idle ticks, 31 kernel ticks, 31 user ticks
+Timer: 84 ticks
+Thread: 30 idle ticks, 27 kernel ticks, 27 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 171 reads, 464 writes
+hd0:1: 166 reads, 237 writes
 hd1:0: 78 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1070 characters output

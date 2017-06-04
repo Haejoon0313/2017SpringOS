@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-over-data into /tmp/nWn72CQa8z.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/nWn72CQa8z.dsk...
-Writing command line to /tmp/1iNiBCfiOb.dsk...
-qemu -hda /tmp/1iNiBCfiOb.dsk -hdb /tmp/R2icSHLMN9.dsk -hdc /tmp/nWn72CQa8z.dsk -hdd /tmp/GQ4IaaeSUl.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-over-data into /tmp/nYkWpVRshu.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/nYkWpVRshu.dsk...
+Writing command line to /tmp/lLu9hCqj3n.dsk...
+qemu -hda /tmp/lLu9hCqj3n.dsk -hdb /tmp/SYDErf7vRL.dsk -hdc /tmp/nYkWpVRshu.dsk -hdd /tmp/p54UhzKG79.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-over-data put sample.txt run mmap-over-data
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -22,13 +22,13 @@ Executing 'mmap-over-data':
 (mmap-over-data) end
 mmap-over-data: exit(0)
 Execution of 'mmap-over-data' complete.
-Timer: 64 ticks
-Thread: 30 idle ticks, 30 kernel ticks, 4 user ticks
+Timer: 62 ticks
+Thread: 30 idle ticks, 30 kernel ticks, 3 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 40 reads, 160 writes
+hd0:1: 29 reads, 84 writes
 hd1:0: 77 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1084 characters output
+Console: 1083 characters output
 Keyboard: 0 keys pressed
 Exception: 4 page faults
 Powering off...

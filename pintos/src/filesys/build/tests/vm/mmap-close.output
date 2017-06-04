@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-close into /tmp/wHAGJFJXiK.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/wHAGJFJXiK.dsk...
-Writing command line to /tmp/FbDH5Yrywz.dsk...
-qemu -hda /tmp/FbDH5Yrywz.dsk -hdb /tmp/Qbp4DHk5Cc.dsk -hdc /tmp/wHAGJFJXiK.dsk -hdd /tmp/qNDBP937hI.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-close into /tmp/luu6RwAHRu.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/luu6RwAHRu.dsk...
+Writing command line to /tmp/VBFU3Gp7ZL.dsk...
+qemu -hda /tmp/VBFU3Gp7ZL.dsk -hdb /tmp/QCYkVYIBLU.dsk -hdc /tmp/luu6RwAHRu.dsk -hdd /tmp/hqCkJNqA3l.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-close put sample.txt run mmap-close
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -22,13 +22,13 @@ Executing 'mmap-close':
 (mmap-close) end
 mmap-close: exit(0)
 Execution of 'mmap-close' complete.
-Timer: 62 ticks
-Thread: 30 idle ticks, 30 kernel ticks, 2 user ticks
+Timer: 63 ticks
+Thread: 30 idle ticks, 29 kernel ticks, 4 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 42 reads, 164 writes
+hd0:1: 31 reads, 86 writes
 hd1:0: 79 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1032 characters output
+Console: 1031 characters output
 Keyboard: 0 keys pressed
 Exception: 6 page faults
 Powering off...

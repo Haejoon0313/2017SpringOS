@@ -1,6 +1,6 @@
-Copying tests/userprog/close-stdin into /tmp/WpcRgYbQv6.dsk...
-Writing command line to /tmp/C6FqFBL0CE.dsk...
-qemu -hda /tmp/C6FqFBL0CE.dsk -hdb /tmp/m9ewAIyPAj.dsk -hdc /tmp/WpcRgYbQv6.dsk -hdd /tmp/OYNnAjtPus.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/close-stdin into /tmp/I923S19ndA.dsk...
+Writing command line to /tmp/xd8n3SKAGv.dsk...
+qemu -hda /tmp/xd8n3SKAGv.dsk -hdb /tmp/HL6iwAx61K.dsk -hdc /tmp/I923S19ndA.dsk -hdd /tmp/KEyHFmtKei.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put close-stdin run close-stdin
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -18,13 +18,13 @@ Executing 'close-stdin':
 (close-stdin) end
 close-stdin: exit(0)
 Execution of 'close-stdin' complete.
-Timer: 64 ticks
-Thread: 30 idle ticks, 32 kernel ticks, 2 user ticks
+Timer: 67 ticks
+Thread: 30 idle ticks, 33 kernel ticks, 4 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 32 reads, 151 writes
+hd0:1: 26 reads, 78 writes
 hd1:0: 73 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 918 characters output
+Console: 917 characters output
 Keyboard: 0 keys pressed
 Exception: 4 page faults
 Powering off...

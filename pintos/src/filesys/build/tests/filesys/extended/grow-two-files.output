@@ -1,7 +1,7 @@
-Copying tests/filesys/extended/grow-two-files into /tmp/lE58Fw3E3m.dsk...
-Copying tests/filesys/extended/tar into /tmp/lE58Fw3E3m.dsk...
-Writing command line to /tmp/BW6X5YMMAO.dsk...
-qemu -hda /tmp/BW6X5YMMAO.dsk -hdb tmp.dsk -hdc /tmp/lE58Fw3E3m.dsk -hdd /tmp/Ystniu8ZmB.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/grow-two-files into /tmp/oJU4iqbnJO.dsk...
+Copying tests/filesys/extended/tar into /tmp/oJU4iqbnJO.dsk...
+Writing command line to /tmp/16uH14bedd.dsk...
+qemu -hda /tmp/16uH14bedd.dsk -hdb tmp.dsk -hdc /tmp/oJU4iqbnJO.dsk -hdd /tmp/eGr7Y5tUV3.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put grow-two-files put tar run grow-two-files
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -25,10 +25,10 @@ Executing 'grow-two-files':
 (grow-two-files) write 250 bytes at offset 0 in "a" returned 0: FAILED
 grow-two-files: exit(1)
 Execution of 'grow-two-files' complete.
-Timer: 83 ticks
-Thread: 30 idle ticks, 50 kernel ticks, 3 user ticks
+Timer: 70 ticks
+Thread: 30 idle ticks, 36 kernel ticks, 4 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 48 reads, 332 writes
+hd0:1: 33 reads, 173 writes
 hd1:0: 161 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1195 characters output

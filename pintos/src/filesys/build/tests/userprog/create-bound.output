@@ -1,6 +1,6 @@
-Copying tests/userprog/create-bound into /tmp/jpVPjnXtPC.dsk...
-Writing command line to /tmp/8w9OKcIpLj.dsk...
-qemu -hda /tmp/8w9OKcIpLj.dsk -hdb /tmp/8eLIF8kt6O.dsk -hdc /tmp/jpVPjnXtPC.dsk -hdd /tmp/UViDt2ifYL.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/create-bound into /tmp/DTGa25aOVT.dsk...
+Writing command line to /tmp/kEK6XygPfe.dsk...
+qemu -hda /tmp/kEK6XygPfe.dsk -hdb /tmp/N7CXZG50ZF.dsk -hdc /tmp/DTGa25aOVT.dsk -hdd /tmp/V2p1zo6tEG.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put create-bound run create-bound
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -19,13 +19,13 @@ Executing 'create-bound':
 (create-bound) end
 create-bound: exit(0)
 Execution of 'create-bound' complete.
-Timer: 65 ticks
-Thread: 30 idle ticks, 33 kernel ticks, 2 user ticks
+Timer: 69 ticks
+Thread: 30 idle ticks, 34 kernel ticks, 5 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 35 reads, 158 writes
+hd0:1: 28 reads, 83 writes
 hd1:0: 75 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 963 characters output
+Console: 962 characters output
 Keyboard: 0 keys pressed
 Exception: 6 page faults
 Powering off...

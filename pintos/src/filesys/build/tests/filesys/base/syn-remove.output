@@ -1,6 +1,6 @@
-Copying tests/filesys/base/syn-remove into /tmp/qHsZPmKkv9.dsk...
-Writing command line to /tmp/wSk6MPdzJO.dsk...
-qemu -hda /tmp/wSk6MPdzJO.dsk -hdb /tmp/nXmePIEPf0.dsk -hdc /tmp/qHsZPmKkv9.dsk -hdd /tmp/ysobDxusBu.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/syn-remove into /tmp/G6oJc93Egc.dsk...
+Writing command line to /tmp/eyg5sfHL6K.dsk...
+qemu -hda /tmp/eyg5sfHL6K.dsk -hdb /tmp/B4TI9Bz7tr.dsk -hdc /tmp/G6oJc93Egc.dsk -hdd /tmp/apjItWOfp2.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put syn-remove run syn-remove
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -25,13 +25,13 @@ Executing 'syn-remove':
 (syn-remove) end
 syn-remove: exit(0)
 Execution of 'syn-remove' complete.
-Timer: 66 ticks
-Thread: 30 idle ticks, 33 kernel ticks, 4 user ticks
+Timer: 68 ticks
+Thread: 30 idle ticks, 30 kernel ticks, 8 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 40 reads, 168 writes
+hd0:1: 30 reads, 88 writes
 hd1:0: 77 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1124 characters output
+Console: 1123 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

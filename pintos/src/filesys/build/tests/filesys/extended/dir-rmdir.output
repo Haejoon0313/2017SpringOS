@@ -1,7 +1,7 @@
-Copying tests/filesys/extended/dir-rmdir into /tmp/JimIgfeKe2.dsk...
-Copying tests/filesys/extended/tar into /tmp/JimIgfeKe2.dsk...
-Writing command line to /tmp/Bsv4uCgW01.dsk...
-qemu -hda /tmp/Bsv4uCgW01.dsk -hdb tmp.dsk -hdc /tmp/JimIgfeKe2.dsk -hdd /tmp/cFb8eUVWaB.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/dir-rmdir into /tmp/6JPEr97WPj.dsk...
+Copying tests/filesys/extended/tar into /tmp/6JPEr97WPj.dsk...
+Writing command line to /tmp/mgI5M2wSqg.dsk...
+qemu -hda /tmp/mgI5M2wSqg.dsk -hdb tmp.dsk -hdc /tmp/6JPEr97WPj.dsk -hdd /tmp/XJm6nvje05.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put dir-rmdir put tar run dir-rmdir
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -22,10 +22,10 @@ Executing 'dir-rmdir':
 (dir-rmdir) rmdir "a": FAILED
 dir-rmdir: exit(1)
 Execution of 'dir-rmdir' complete.
-Timer: 69 ticks
-Thread: 30 idle ticks, 38 kernel ticks, 1 user ticks
+Timer: 76 ticks
+Thread: 30 idle ticks, 41 kernel ticks, 5 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 41 reads, 324 writes
+hd0:1: 31 reads, 167 writes
 hd1:0: 159 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1008 characters output

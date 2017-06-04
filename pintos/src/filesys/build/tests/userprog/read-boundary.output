@@ -1,7 +1,7 @@
-Copying tests/userprog/read-boundary into /tmp/ZMdXQrXkO3.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/ZMdXQrXkO3.dsk...
-Writing command line to /tmp/chzewEk7IO.dsk...
-qemu -hda /tmp/chzewEk7IO.dsk -hdb /tmp/w1ey3b1b0C.dsk -hdc /tmp/ZMdXQrXkO3.dsk -hdd /tmp/ZFrugZdVS6.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/read-boundary into /tmp/erHaMdiv1o.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/erHaMdiv1o.dsk...
+Writing command line to /tmp/3u4X8JenmH.dsk...
+qemu -hda /tmp/3u4X8JenmH.dsk -hdb /tmp/QBzr8EILPX.dsk -hdc /tmp/erHaMdiv1o.dsk -hdd /tmp/Y6lnuAbep1.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put read-boundary put sample.txt run read-boundary
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -21,13 +21,13 @@ Executing 'read-boundary':
 (read-boundary) end
 read-boundary: exit(0)
 Execution of 'read-boundary' complete.
-Timer: 67 ticks
-Thread: 30 idle ticks, 34 kernel ticks, 3 user ticks
+Timer: 70 ticks
+Thread: 30 idle ticks, 34 kernel ticks, 6 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 41 reads, 164 writes
+hd0:1: 30 reads, 86 writes
 hd1:0: 79 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1028 characters output
+Console: 1027 characters output
 Keyboard: 0 keys pressed
 Exception: 7 page faults
 Powering off...

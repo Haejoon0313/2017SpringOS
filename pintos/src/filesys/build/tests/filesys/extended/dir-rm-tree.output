@@ -1,7 +1,7 @@
-Copying tests/filesys/extended/dir-rm-tree into /tmp/wtmG1m2aLp.dsk...
-Copying tests/filesys/extended/tar into /tmp/wtmG1m2aLp.dsk...
-Writing command line to /tmp/uPyDddI0f8.dsk...
-qemu -hda /tmp/uPyDddI0f8.dsk -hdb tmp.dsk -hdc /tmp/wtmG1m2aLp.dsk -hdd /tmp/B8PBKDWQES.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/dir-rm-tree into /tmp/pwR10Wv90P.dsk...
+Copying tests/filesys/extended/tar into /tmp/pwR10Wv90P.dsk...
+Writing command line to /tmp/2aPZMIAeJ2.dsk...
+qemu -hda /tmp/2aPZMIAeJ2.dsk -hdb tmp.dsk -hdc /tmp/pwR10Wv90P.dsk -hdd /tmp/lPomM2GU6g.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put dir-rm-tree put tar run dir-rm-tree
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -21,10 +21,10 @@ Executing 'dir-rm-tree':
 (dir-rm-tree) create "/0/1/0/2": FAILED
 dir-rm-tree: exit(1)
 Execution of 'dir-rm-tree' complete.
-Timer: 87 ticks
-Thread: 30 idle ticks, 49 kernel ticks, 8 user ticks
+Timer: 80 ticks
+Thread: 30 idle ticks, 41 kernel ticks, 9 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 57 reads, 353 writes
+hd0:1: 33 reads, 190 writes
 hd1:0: 165 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1040 characters output

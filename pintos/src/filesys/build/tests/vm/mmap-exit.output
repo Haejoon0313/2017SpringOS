@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-exit into /tmp/Adtf7LTLiR.dsk...
-Copying tests/vm/child-mm-wrt into /tmp/Adtf7LTLiR.dsk...
-Writing command line to /tmp/T8cx4xiEEC.dsk...
-qemu -hda /tmp/T8cx4xiEEC.dsk -hdb /tmp/sqZZ3W424i.dsk -hdc /tmp/Adtf7LTLiR.dsk -hdd /tmp/hex8sE59zK.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-exit into /tmp/FitW6MWgU1.dsk...
+Copying tests/vm/child-mm-wrt into /tmp/FitW6MWgU1.dsk...
+Writing command line to /tmp/5LwHfeHi5f.dsk...
+qemu -hda /tmp/5LwHfeHi5f.dsk -hdb /tmp/Y0f7IEJAxj.dsk -hdc /tmp/FitW6MWgU1.dsk -hdd /tmp/nbXGakksot.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-exit put child-mm-wrt run mmap-exit
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -29,10 +29,10 @@ child-mm-wrt: exit(0)
 (mmap-exit) end
 mmap-exit: exit(0)
 Execution of 'mmap-exit' complete.
-Timer: 76 ticks
-Thread: 30 idle ticks, 39 kernel ticks, 7 user ticks
+Timer: 69 ticks
+Thread: 30 idle ticks, 32 kernel ticks, 7 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 74 reads, 313 writes
+hd0:1: 57 reads, 163 writes
 hd1:0: 150 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1255 characters output

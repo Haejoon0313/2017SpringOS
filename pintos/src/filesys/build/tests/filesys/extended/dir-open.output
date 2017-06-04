@@ -1,7 +1,7 @@
-Copying tests/filesys/extended/dir-open into /tmp/Ic6znBkmIX.dsk...
-Copying tests/filesys/extended/tar into /tmp/Ic6znBkmIX.dsk...
-Writing command line to /tmp/1CZcNg7fBY.dsk...
-qemu -hda /tmp/1CZcNg7fBY.dsk -hdb tmp.dsk -hdc /tmp/Ic6znBkmIX.dsk -hdd /tmp/7Gpa3JI0Y4.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/dir-open into /tmp/Q35KUzhQX1.dsk...
+Copying tests/filesys/extended/tar into /tmp/Q35KUzhQX1.dsk...
+Writing command line to /tmp/T44fUQuqMS.dsk...
+qemu -hda /tmp/T44fUQuqMS.dsk -hdb tmp.dsk -hdc /tmp/Q35KUzhQX1.dsk -hdd /tmp/VX7Wm5ttMJ.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put dir-open put tar run dir-open
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -22,10 +22,10 @@ Executing 'dir-open':
 (dir-open) open "xyzzy": FAILED
 dir-open: exit(1)
 Execution of 'dir-open' complete.
-Timer: 77 ticks
-Thread: 30 idle ticks, 45 kernel ticks, 2 user ticks
+Timer: 83 ticks
+Thread: 30 idle ticks, 49 kernel ticks, 5 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 41 reads, 324 writes
+hd0:1: 31 reads, 167 writes
 hd1:0: 159 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1008 characters output

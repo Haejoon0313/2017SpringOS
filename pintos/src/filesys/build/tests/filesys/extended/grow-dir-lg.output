@@ -1,7 +1,7 @@
-Copying tests/filesys/extended/grow-dir-lg into /tmp/2cZP3eXHSs.dsk...
-Copying tests/filesys/extended/tar into /tmp/2cZP3eXHSs.dsk...
-Writing command line to /tmp/RIIvwC7iIT.dsk...
-qemu -hda /tmp/RIIvwC7iIT.dsk -hdb tmp.dsk -hdc /tmp/2cZP3eXHSs.dsk -hdd /tmp/YP9Ydf8CZO.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/grow-dir-lg into /tmp/fyfjNSKyfM.dsk...
+Copying tests/filesys/extended/tar into /tmp/fyfjNSKyfM.dsk...
+Writing command line to /tmp/HBgMLZ7FBW.dsk...
+qemu -hda /tmp/HBgMLZ7FBW.dsk -hdb tmp.dsk -hdc /tmp/fyfjNSKyfM.dsk -hdd /tmp/pl75fPu0nA.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put grow-dir-lg put tar run grow-dir-lg
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -36,13 +36,13 @@ Executing 'grow-dir-lg':
 (grow-dir-lg) create "/x/file14": FAILED
 grow-dir-lg: exit(1)
 Execution of 'grow-dir-lg' complete.
-Timer: 83 ticks
-Thread: 30 idle ticks, 43 kernel ticks, 10 user ticks
+Timer: 81 ticks
+Thread: 30 idle ticks, 37 kernel ticks, 14 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 112 reads, 372 writes
+hd0:1: 32 reads, 199 writes
 hd1:0: 160 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1724 characters output
+Console: 1723 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

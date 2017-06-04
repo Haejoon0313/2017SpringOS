@@ -4,8 +4,36 @@
 #include <stdbool.h>
 #include "filesys/off_t.h"
 #include "devices/disk.h"
-
+#include <list.h>
+#include "threads/synch.h"
 struct bitmap;
+
+
+struct inode_disk
+{
+				disk_sector_t start;
+				off_t length;
+				unsigned magic;
+				
+				disk_sector_t direct[64];
+				disk_sector_t indirect;
+				disk_sector_t doubly_indirect;
+
+				uint32_t unused[59];
+};
+
+struct inode{
+				struct list_elem elem;	/*element in inode list*/
+				disk_sector_t sector;		/*sector # of disk location*/
+				int open_cnt;						/*Number of openers*/
+				bool removed;						/*True if deleted*/
+				int deny_write_cnt;			/*0:writes ok, >0 deny write*/
+				struct inode_disk data; /*Inode contents*/
+				struct lock lock;
+};
+
+
+
 
 void inode_init (void);
 bool inode_create (disk_sector_t, off_t);

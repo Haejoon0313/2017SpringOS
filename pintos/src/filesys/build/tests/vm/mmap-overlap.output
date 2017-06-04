@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-overlap into /tmp/HuTqxtyd2r.dsk...
-Copying tests/vm/zeros into /tmp/HuTqxtyd2r.dsk...
-Writing command line to /tmp/U5l52fY1Xj.dsk...
-qemu -hda /tmp/U5l52fY1Xj.dsk -hdb /tmp/mq4s8DZdSe.dsk -hdc /tmp/HuTqxtyd2r.dsk -hdd /tmp/vAlw0BxeBE.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-overlap into /tmp/zMQnElmuv8.dsk...
+Copying tests/vm/zeros into /tmp/zMQnElmuv8.dsk...
+Writing command line to /tmp/vdZbvjW2VF.dsk...
+qemu -hda /tmp/vdZbvjW2VF.dsk -hdb /tmp/XwkF7YKrQ4.dsk -hdc /tmp/zMQnElmuv8.dsk -hdd /tmp/8dp24Qv29F.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-overlap put zeros run mmap-overlap
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -24,13 +24,13 @@ Executing 'mmap-overlap':
 (mmap-overlap) end
 mmap-overlap: exit(0)
 Execution of 'mmap-overlap' complete.
-Timer: 66 ticks
-Thread: 30 idle ticks, 34 kernel ticks, 2 user ticks
+Timer: 68 ticks
+Thread: 30 idle ticks, 34 kernel ticks, 4 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 42 reads, 184 writes
+hd0:1: 30 reads, 96 writes
 hd1:0: 89 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1112 characters output
+Console: 1111 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

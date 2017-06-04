@@ -1,7 +1,7 @@
-Copying tests/filesys/extended/dir-rm-root into /tmp/MZ8Xvj96iR.dsk...
-Copying tests/filesys/extended/tar into /tmp/MZ8Xvj96iR.dsk...
-Writing command line to /tmp/ydbtVm9LIL.dsk...
-qemu -hda /tmp/ydbtVm9LIL.dsk -hdb tmp.dsk -hdc /tmp/MZ8Xvj96iR.dsk -hdd /tmp/O1ad70DEhV.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/dir-rm-root into /tmp/AgzgIvFf8E.dsk...
+Copying tests/filesys/extended/tar into /tmp/AgzgIvFf8E.dsk...
+Writing command line to /tmp/9ZtMPhXElh.dsk...
+qemu -hda /tmp/9ZtMPhXElh.dsk -hdb tmp.dsk -hdc /tmp/AgzgIvFf8E.dsk -hdd /tmp/NxNQHWlHhG.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put dir-rm-root put tar run dir-rm-root
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -22,10 +22,10 @@ Executing 'dir-rm-root':
 (dir-rm-root) end
 dir-rm-root: exit(0)
 Execution of 'dir-rm-root' complete.
-Timer: 90 ticks
-Thread: 30 idle ticks, 57 kernel ticks, 3 user ticks
+Timer: 78 ticks
+Thread: 30 idle ticks, 42 kernel ticks, 6 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 42 reads, 328 writes
+hd0:1: 31 reads, 170 writes
 hd1:0: 159 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1029 characters output

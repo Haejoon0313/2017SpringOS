@@ -1,6 +1,6 @@
-Copying tests/userprog/write-bad-fd into /tmp/xzaJh1eDQ5.dsk...
-Writing command line to /tmp/P2KykE0k6A.dsk...
-qemu -hda /tmp/P2KykE0k6A.dsk -hdb /tmp/N3FoWRQPHk.dsk -hdc /tmp/xzaJh1eDQ5.dsk -hdd /tmp/dh0oiZwouy.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/write-bad-fd into /tmp/angc79MoZe.dsk...
+Writing command line to /tmp/6Yhd54Ceq5.dsk...
+qemu -hda /tmp/6Yhd54Ceq5.dsk -hdb /tmp/JHVD8CYcCg.dsk -hdc /tmp/angc79MoZe.dsk -hdd /tmp/l6hGoaiuJ2.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put write-bad-fd run write-bad-fd
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -18,13 +18,13 @@ Executing 'write-bad-fd':
 (write-bad-fd) end
 write-bad-fd: exit(0)
 Execution of 'write-bad-fd' complete.
-Timer: 64 ticks
-Thread: 30 idle ticks, 33 kernel ticks, 2 user ticks
+Timer: 65 ticks
+Thread: 30 idle ticks, 32 kernel ticks, 3 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 33 reads, 151 writes
+hd0:1: 27 reads, 78 writes
 hd1:0: 73 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 926 characters output
+Console: 925 characters output
 Keyboard: 0 keys pressed
 Exception: 4 page faults
 Powering off...

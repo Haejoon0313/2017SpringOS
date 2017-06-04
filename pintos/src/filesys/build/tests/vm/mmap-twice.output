@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-twice into /tmp/yjLDA6AL5M.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/yjLDA6AL5M.dsk...
-Writing command line to /tmp/jJKKTlE2n1.dsk...
-qemu -hda /tmp/jJKKTlE2n1.dsk -hdb /tmp/jsCWbAhAFn.dsk -hdc /tmp/yjLDA6AL5M.dsk -hdd /tmp/v6gvzPLtCK.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-twice into /tmp/EdLQ92dYmF.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/EdLQ92dYmF.dsk...
+Writing command line to /tmp/96xg5TXwEg.dsk...
+qemu -hda /tmp/96xg5TXwEg.dsk -hdb /tmp/Hnw5SrTblk.dsk -hdc /tmp/EdLQ92dYmF.dsk -hdd /tmp/Dbdu028rTB.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-twice put sample.txt run mmap-twice
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -26,13 +26,13 @@ Executing 'mmap-twice':
 (mmap-twice) end
 mmap-twice: exit(0)
 Execution of 'mmap-twice' complete.
-Timer: 63 ticks
-Thread: 30 idle ticks, 29 kernel ticks, 4 user ticks
+Timer: 65 ticks
+Thread: 30 idle ticks, 30 kernel ticks, 5 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 43 reads, 164 writes
+hd0:1: 31 reads, 86 writes
 hd1:0: 79 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1230 characters output
+Console: 1229 characters output
 Keyboard: 0 keys pressed
 Exception: 7 page faults
 Powering off...

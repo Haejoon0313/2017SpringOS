@@ -1,7 +1,7 @@
-Copying tests/userprog/write-zero into /tmp/5WMaXM1bvg.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/5WMaXM1bvg.dsk...
-Writing command line to /tmp/m9jYckuu2o.dsk...
-qemu -hda /tmp/m9jYckuu2o.dsk -hdb /tmp/H5hi4h20Pb.dsk -hdc /tmp/5WMaXM1bvg.dsk -hdd /tmp/3r9Ls5dXZe.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/write-zero into /tmp/ZgO9USLYM1.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/ZgO9USLYM1.dsk...
+Writing command line to /tmp/OhYPUirk6C.dsk...
+qemu -hda /tmp/OhYPUirk6C.dsk -hdb /tmp/vtHKN7vD2W.dsk -hdc /tmp/ZgO9USLYM1.dsk -hdd /tmp/9ghe5KGAWw.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put write-zero put sample.txt run write-zero
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -21,13 +21,13 @@ Executing 'write-zero':
 (write-zero) end
 write-zero: exit(0)
 Execution of 'write-zero' complete.
-Timer: 68 ticks
-Thread: 30 idle ticks, 36 kernel ticks, 2 user ticks
+Timer: 67 ticks
+Thread: 30 idle ticks, 34 kernel ticks, 3 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 40 reads, 156 writes
+hd0:1: 29 reads, 82 writes
 hd1:0: 75 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1001 characters output
+Console: 1000 characters output
 Keyboard: 0 keys pressed
 Exception: 4 page faults
 Powering off...

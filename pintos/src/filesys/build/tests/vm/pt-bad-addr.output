@@ -1,6 +1,6 @@
-Copying tests/vm/pt-bad-addr into /tmp/YR7YHvOAlH.dsk...
-Writing command line to /tmp/r9QdXNgNhD.dsk...
-qemu -hda /tmp/r9QdXNgNhD.dsk -hdb /tmp/40yZR6TpAX.dsk -hdc /tmp/YR7YHvOAlH.dsk -hdd /tmp/z3UsWO6AO0.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/pt-bad-addr into /tmp/FjMdG9wNnL.dsk...
+Writing command line to /tmp/2wq73Q9KMc.dsk...
+qemu -hda /tmp/2wq73Q9KMc.dsk -hdb /tmp/HWpOe7rmX6.dsk -hdc /tmp/FjMdG9wNnL.dsk -hdd /tmp/zHSNH6Kdwy.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put pt-bad-addr run pt-bad-addr
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -17,13 +17,13 @@ Executing 'pt-bad-addr':
 (pt-bad-addr) begin
 pt-bad-addr: exit(-1)
 Execution of 'pt-bad-addr' complete.
-Timer: 63 ticks
-Thread: 30 idle ticks, 32 kernel ticks, 2 user ticks
+Timer: 67 ticks
+Thread: 30 idle ticks, 33 kernel ticks, 4 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 33 reads, 151 writes
+hd0:1: 27 reads, 78 writes
 hd1:0: 73 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 901 characters output
+Console: 900 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

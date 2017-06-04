@@ -118,8 +118,10 @@ main (void)
 #ifdef FILESYS
   /* Initialize file system. */
   disk_init ();
-	//cache_init();
+
 	filesys_init (format_filesys);
+	//cache_thread_init();
+
 #endif
 
 

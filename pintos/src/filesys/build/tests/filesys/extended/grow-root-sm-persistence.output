@@ -1,5 +1,5 @@
-Writing command line to /tmp/1JmeJV2Odx.dsk...
-qemu -hda /tmp/1JmeJV2Odx.dsk -hdb tmp.dsk -hdc /tmp/umacPe277l.dsk -hdd /tmp/DfLTpxwmGh.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/eehAe0HVEb.dsk...
+qemu -hda /tmp/eehAe0HVEb.dsk -hdb tmp.dsk -hdc /tmp/1kR1V1vzT7.dsk -hdd /tmp/srU4ZyT3h4.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -16,7 +16,7 @@ tar: exit(1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
 Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010dc72 0xc0100681 0xc01000cd.
+Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -37,7 +37,7 @@ tar: exit(1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
 Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010dc72 0xc0100681 0xc01000cd.
+Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -58,7 +58,7 @@ tar: exit(1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
 Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010dc72 0xc0100681 0xc01000cd.
+Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -79,7 +79,7 @@ tar: exit(1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
 Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010dc72 0xc0100681 0xc01000cd.
+Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -100,7 +100,7 @@ tar: exit(1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
 Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010dc72 0xc0100681 0xc01000cd.
+Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -121,7 +121,7 @@ tar: exit(1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
 Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010dc72 0xc0100681 0xc01000cd.
+Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -142,7 +142,7 @@ tar: exit(1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
 Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010dc72 0xc0100681 0xc01000cd.
+Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -163,7 +163,7 @@ tar: exit(1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
 Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010dc72 0xc0100681 0xc01000cd.
+Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.

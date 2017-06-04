@@ -1,10 +1,10 @@
-Writing command line to /tmp/uz45y5K8Gf.dsk...
-qemu -hda /tmp/uz45y5K8Gf.dsk -hdb tmp.dsk -hdc /tmp/6jE9cZA99T.dsk -hdd /tmp/4jWw8ByaV0.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/6JeCpklfQC.dsk...
+qemu -hda /tmp/6JeCpklfQC.dsk -hdb tmp.dsk -hdc /tmp/SqDtUEp2pg.dsk -hdd /tmp/0salG4ovCn.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
 373 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
+Calibrating timer...  65,433,600 loops/s.
 hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
@@ -16,7 +16,7 @@ tar: exit(1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
 Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010dc72 0xc0100681 0xc01000cd.
+Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -37,7 +37,7 @@ tar: exit(1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
 Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010dc72 0xc0100681 0xc01000cd.
+Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -58,7 +58,7 @@ tar: exit(1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
 Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010dc72 0xc0100681 0xc01000cd.
+Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -79,7 +79,7 @@ tar: exit(1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
 Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010dc72 0xc0100681 0xc01000cd.
+Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -100,7 +100,7 @@ tar: exit(1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
 Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010dc72 0xc0100681 0xc01000cd.
+Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -121,7 +121,7 @@ tar: exit(1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
 Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010dc72 0xc0100681 0xc01000cd.
+Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -142,7 +142,7 @@ tar: exit(1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
 Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010dc72 0xc0100681 0xc01000cd.
+Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -154,18 +154,4 @@ Pintos booting with 4,096 kB RAM...
 Calibrating timer...  78,540,800 loops/s.
 hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Boot complete.
-Executing 'tar fs.tar /':
-fs.tar: create failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010dc72 0xc0100681 0xc01000cd.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
 Simulation terminated due to kernel panic.

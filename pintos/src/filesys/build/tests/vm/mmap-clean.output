@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-clean into /tmp/QqYl8Tx4B3.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/QqYl8Tx4B3.dsk...
-Writing command line to /tmp/JF1FJP4iQj.dsk...
-qemu -hda /tmp/JF1FJP4iQj.dsk -hdb /tmp/Z7AyIaZU5l.dsk -hdc /tmp/QqYl8Tx4B3.dsk -hdd /tmp/C8HCqrQc20.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-clean into /tmp/94qK3YAluv.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/94qK3YAluv.dsk...
+Writing command line to /tmp/YLdcvuMMic.dsk...
+qemu -hda /tmp/YLdcvuMMic.dsk -hdb /tmp/rvhaoWubQj.dsk -hdc /tmp/94qK3YAluv.dsk -hdd /tmp/KOzpaGseKF.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-clean put sample.txt run mmap-clean
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -27,13 +27,13 @@ Executing 'mmap-clean':
 (mmap-clean) end
 mmap-clean: exit(0)
 Execution of 'mmap-clean' complete.
-Timer: 66 ticks
-Thread: 30 idle ticks, 33 kernel ticks, 3 user ticks
+Timer: 70 ticks
+Thread: 30 idle ticks, 34 kernel ticks, 6 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 42 reads, 166 writes
+hd0:1: 32 reads, 87 writes
 hd1:0: 80 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1210 characters output
+Console: 1209 characters output
 Keyboard: 0 keys pressed
 Exception: 6 page faults
 Powering off...

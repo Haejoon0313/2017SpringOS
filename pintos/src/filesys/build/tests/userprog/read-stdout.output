@@ -1,6 +1,6 @@
-Copying tests/userprog/read-stdout into /tmp/X697J2Axm1.dsk...
-Writing command line to /tmp/ImTJUxcovE.dsk...
-qemu -hda /tmp/ImTJUxcovE.dsk -hdb /tmp/4qw14dyTB7.dsk -hdc /tmp/X697J2Axm1.dsk -hdd /tmp/IK8XY3Jnan.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/read-stdout into /tmp/HAGD0bbsj9.dsk...
+Writing command line to /tmp/p6LZTvHCeT.dsk...
+qemu -hda /tmp/p6LZTvHCeT.dsk -hdb /tmp/qGAPdvdEKv.dsk -hdc /tmp/HAGD0bbsj9.dsk -hdd /tmp/rnpdbPKfi7.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put read-stdout run read-stdout
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -18,13 +18,13 @@ Executing 'read-stdout':
 (read-stdout) end
 read-stdout: exit(0)
 Execution of 'read-stdout' complete.
-Timer: 65 ticks
-Thread: 30 idle ticks, 33 kernel ticks, 2 user ticks
+Timer: 63 ticks
+Thread: 30 idle ticks, 29 kernel ticks, 4 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 32 reads, 151 writes
+hd0:1: 26 reads, 78 writes
 hd1:0: 73 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 918 characters output
+Console: 917 characters output
 Keyboard: 0 keys pressed
 Exception: 4 page faults
 Powering off...

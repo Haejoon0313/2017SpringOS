@@ -1,12 +1,12 @@
-Copying tests/filesys/extended/dir-rm-cwd into /tmp/9KK11TMe3G.dsk...
-Copying tests/filesys/extended/tar into /tmp/9KK11TMe3G.dsk...
-Writing command line to /tmp/ccTsu80ZF6.dsk...
-qemu -hda /tmp/ccTsu80ZF6.dsk -hdb tmp.dsk -hdc /tmp/9KK11TMe3G.dsk -hdd /tmp/a1EtVxEKz1.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/dir-rm-cwd into /tmp/7V3N4GGxMW.dsk...
+Copying tests/filesys/extended/tar into /tmp/7V3N4GGxMW.dsk...
+Writing command line to /tmp/GrftRD8po1.dsk...
+qemu -hda /tmp/GrftRD8po1.dsk -hdb tmp.dsk -hdc /tmp/7V3N4GGxMW.dsk -hdd /tmp/Ifdccbdq45.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put dir-rm-cwd put tar run dir-rm-cwd
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
 373 pages available in user pool.
-Calibrating timer...  104,755,200 loops/s.
+Calibrating timer...  78,540,800 loops/s.
 hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 163 sector (81 kB) disk, model "QEMU HARDDISK", serial "QM00003"
@@ -21,13 +21,13 @@ Executing 'dir-rm-cwd':
 (dir-rm-cwd) open "/": FAILED
 dir-rm-cwd: exit(1)
 Execution of 'dir-rm-cwd' complete.
-Timer: 91 ticks
-Thread: 30 idle ticks, 57 kernel ticks, 4 user ticks
+Timer: 79 ticks
+Thread: 30 idle ticks, 45 kernel ticks, 4 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 42 reads, 332 writes
+hd0:1: 32 reads, 171 writes
 hd1:0: 163 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 994 characters output
+Console: 993 characters output
 Keyboard: 0 keys pressed
 Exception: 4 page faults
 Powering off...

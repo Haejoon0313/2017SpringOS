@@ -1,7 +1,7 @@
-Copying tests/userprog/close-twice into /tmp/9ypmHO4jsX.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/9ypmHO4jsX.dsk...
-Writing command line to /tmp/6Ll8lulnRo.dsk...
-qemu -hda /tmp/6Ll8lulnRo.dsk -hdb /tmp/1FR1hrbfHB.dsk -hdc /tmp/9ypmHO4jsX.dsk -hdd /tmp/A2xxcbEdhD.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/close-twice into /tmp/hcq6IxS2lQ.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/hcq6IxS2lQ.dsk...
+Writing command line to /tmp/oVm3P7BEtc.dsk...
+qemu -hda /tmp/oVm3P7BEtc.dsk -hdb /tmp/IUPDtjCoq6.dsk -hdc /tmp/hcq6IxS2lQ.dsk -hdd /tmp/Bv1NRuUCzH.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put close-twice put sample.txt run close-twice
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -23,13 +23,13 @@ Executing 'close-twice':
 (close-twice) end
 close-twice: exit(0)
 Execution of 'close-twice' complete.
-Timer: 63 ticks
-Thread: 30 idle ticks, 31 kernel ticks, 2 user ticks
+Timer: 68 ticks
+Thread: 30 idle ticks, 32 kernel ticks, 6 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 40 reads, 156 writes
+hd0:1: 29 reads, 82 writes
 hd1:0: 75 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1082 characters output
+Console: 1081 characters output
 Keyboard: 0 keys pressed
 Exception: 4 page faults
 Powering off...

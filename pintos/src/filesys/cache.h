@@ -31,7 +31,7 @@ struct cache* find_cache(disk_sector_t sec_no);/*search and return cache*/
 
 bool evict_cache(void);/*evict cache */
 
-//void thread_function_wb_frequently(void *aux UNUSED);/*frequntly refresh the whole cache*/
+//void thread_function_wb_frequently(void);/*frequntly refresh the whole cache*/
 
 void destroy_cache_list(void);											/*remove the whole cache list*/
 
@@ -39,8 +39,10 @@ void cache_read(disk_sector_t sec_no, void * read_buffer, int sector_offset, int
 
 void cache_write(disk_sector_t sec_no, void *read_buffer, int  sector_offset, int size);
 
+
 void all_cache_write_behind(void);
 
+void cache_thread_init(void);
 void cache_lock_acquire(void);
 void cache_lock_release(void);
 #endif

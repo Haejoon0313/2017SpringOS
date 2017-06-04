@@ -1,7 +1,7 @@
-Copying tests/vm/page-merge-par into /tmp/q5kAzNoojQ.dsk...
-Copying tests/vm/child-sort into /tmp/q5kAzNoojQ.dsk...
-Writing command line to /tmp/VUrFexfNCg.dsk...
-qemu -hda /tmp/VUrFexfNCg.dsk -hdb /tmp/66lAtjrKh0.dsk -hdc /tmp/q5kAzNoojQ.dsk -hdd /tmp/SLcIvX84Hd.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-merge-par into /tmp/znIbTVYpYs.dsk...
+Copying tests/vm/child-sort into /tmp/znIbTVYpYs.dsk...
+Writing command line to /tmp/FOdJlerfn3.dsk...
+qemu -hda /tmp/FOdJlerfn3.dsk -hdb /tmp/EXVh2e9HPT.dsk -hdc /tmp/znIbTVYpYs.dsk -hdd /tmp/ZHfJWP3N92.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -19,42 +19,125 @@ Executing 'page-merge-par':
 (page-merge-par) begin
 (page-merge-par) init
 (page-merge-par) sort chunk 0
-(page-merge-par) sort chunk 1
-child-sort: exit(123)
-(page-merge-par) sort chunk 2
-child-sort: exit(123)
-(page-merge-par) sort chunk 3
-child-sort: exit(123)
-(page-merge-par) sort chunk 4
-child-sort: exit(123)
-(page-merge-par) sort chunk 5
-child-sort: exit(123)
-(page-merge-par) sort chunk 6
-child-sort: exit(123)
-(page-merge-par) sort chunk 7
-child-sort: exit(123)
-(page-merge-par) wait for child 0
-(page-merge-par) wait for child 1
-child-sort: exit(123)
-(page-merge-par) wait for child 2
-(page-merge-par) wait for child 3
-(page-merge-par) wait for child 4
-(page-merge-par) wait for child 5
-(page-merge-par) wait for child 6
-(page-merge-par) wait for child 7
-(page-merge-par) merge
-(page-merge-par) verify
-(page-merge-par) success, buf_idx=1,048,576
-(page-merge-par) end
-page-merge-par: exit(0)
-Execution of 'page-merge-par' complete.
-Timer: 713 ticks
-Thread: 30 idle ticks, 46 kernel ticks, 637 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 4392 reads, 6484 writes
-hd1:0: 155 reads, 0 writes
-hd1:1: 432 reads, 1592 writes
-Console: 1816 characters output
-Keyboard: 0 keys pressed
-Exception: 862 page faults
-Powering off...
+Kernel PANIC at ../../devices/disk.c:436 in select_sector(): assertion `sec_no < d->capacity' failed.
+Call stack: 0xc0107756 0xc01051ce 0xc0104bc3 0xc010e633 0xc010d264 0xc010dc2d 0xc010ca02 0xc010ba8d 0xc0101935 0xc0101b0b 0x804a529 0x80481d9 0x8048442 0x80480ba 0x8048b4f 0x8048b7c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/synch.c:242 in lock_acquire().
+Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 155 sector (77 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-par' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): page-merge-par: create failed
+Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 155 sector (77 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-par' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): page-merge-par: create failed
+Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 155 sector (77 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-par' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): page-merge-par: create failed
+Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 155 sector (77 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-par' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): page-merge-par: create failed
+Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 155 sector (77 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-par' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): page-merge-par: create failed
+Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 155 sector (77 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-par' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): page-merge-par: create failed
+Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+Simulation terminated due to kernel panic.

@@ -1,2 +1,32 @@
 FAIL
-run: TIMEOUT after 61 seconds of wall-clock time - load average: 0.16, 0.44, 0.35
+Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
+Call stack: 0xc0107756 0xc0102acd 0xc010e7bc 0xc010e5fe 0xc010d7f0 0xc010c965 0xc0109b38 0xc0100c58 0xc010bfa3 0xc010b5e5 0xc0101935 0xc0101b0b 0xc0106bc6 0xc010e654 0xc010db9c 0xc010c9a6 0xc010b9f6 0xc0101935 0xc0101b0b 0x804a091 0x80480e7 0x80486d3 0x8048700
+Translation of call stack:
+In kernel.o:
+0xc0107756: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0102acd: lock_acquire (...../../threads/synch.c:243)
+0xc010e7bc: cache_lock_acquire (...../../filesys/cache.c:204)
+0xc010e5fe: cache_read (...../../filesys/cache.c:132)
+0xc010d7f0: bytes_to_sectors (.../../../filesys/inode.c:41)
+0xc010c965: file_close (...d/../../filesys/file.c:55)
+0xc0109b38: process_exit (...../userprog/process.c:189)
+0xc0100c58: thread_exit (..../../threads/thread.c:334)
+0xc010bfa3: close_all_filelist (...../userprog/syscall.c:472)
+0xc010b5e5: page_fault (.../userprog/exception.c:331)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+0xc0106bc6: memcpy (...ild/../../lib/string.c:16)
+0xc010e654: cache_read (...../../filesys/cache.c:140)
+0xc010db9c: inode_read_at (...../../filesys/inode.c:461)
+0xc010c9a6: file_read (...d/../../filesys/file.c:75)
+0xc010b9f6: syscall_handler (...../userprog/syscall.c:225)
+0xc0101935: intr_handler (..../threads/interrupt.c:361)
+0xc0101b0b: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/pt-write-code2:
+0x0804a091: read (...../lib/user/syscall.c:117)
+0x080480e7: test_main (...s/vm/pt-write-code-2.c:14)
+0x080486d3: main (...ild/../../tests/main.c:13)
+0x08048700: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.

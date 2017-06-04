@@ -1,7 +1,7 @@
-Copying tests/filesys/extended/dir-mk-tree into /tmp/Hsw8pH8SYk.dsk...
-Copying tests/filesys/extended/tar into /tmp/Hsw8pH8SYk.dsk...
-Writing command line to /tmp/cPxX9isbGn.dsk...
-qemu -hda /tmp/cPxX9isbGn.dsk -hdb tmp.dsk -hdc /tmp/Hsw8pH8SYk.dsk -hdd /tmp/TIGzVLuKXU.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/dir-mk-tree into /tmp/gtTKrwR5VJ.dsk...
+Copying tests/filesys/extended/tar into /tmp/gtTKrwR5VJ.dsk...
+Writing command line to /tmp/Ngdrc0677j.dsk...
+qemu -hda /tmp/Ngdrc0677j.dsk -hdb tmp.dsk -hdc /tmp/gtTKrwR5VJ.dsk -hdd /tmp/A8fCETZ7L0.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put dir-mk-tree put tar run dir-mk-tree
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -21,13 +21,13 @@ Executing 'dir-mk-tree':
 (dir-mk-tree) create "/0/1/0/2": FAILED
 dir-mk-tree: exit(1)
 Execution of 'dir-mk-tree' complete.
-Timer: 84 ticks
-Thread: 30 idle ticks, 49 kernel ticks, 5 user ticks
+Timer: 82 ticks
+Thread: 30 idle ticks, 39 kernel ticks, 13 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 57 reads, 347 writes
+hd0:1: 33 reads, 187 writes
 hd1:0: 162 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1040 characters output
+Console: 1041 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

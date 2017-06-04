@@ -113,7 +113,7 @@ off_t
 file_write_at (struct file *file, const void *buffer, off_t size,
                off_t file_ofs) 
 {
-	//printf("[fw]write buffer contents : %s \n",buffer);
+
   return inode_write_at (file->inode, buffer, size, file_ofs);
 }
 

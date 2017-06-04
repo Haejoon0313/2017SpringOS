@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-over-stk into /tmp/8Igws7dwST.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/8Igws7dwST.dsk...
-Writing command line to /tmp/C750lB6BK7.dsk...
-qemu -hda /tmp/C750lB6BK7.dsk -hdb /tmp/DAoM6labl5.dsk -hdc /tmp/8Igws7dwST.dsk -hdd /tmp/aJzLcmgimN.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-over-stk into /tmp/n9dxUalYAE.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/n9dxUalYAE.dsk...
+Writing command line to /tmp/MYCNv2FsSS.dsk...
+qemu -hda /tmp/MYCNv2FsSS.dsk -hdb /tmp/u7jqTKrnOx.dsk -hdc /tmp/n9dxUalYAE.dsk -hdd /tmp/uDKDpx6wiB.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-over-stk put sample.txt run mmap-over-stk
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -23,12 +23,12 @@ Executing 'mmap-over-stk':
 mmap-over-stk: exit(0)
 Execution of 'mmap-over-stk' complete.
 Timer: 63 ticks
-Thread: 30 idle ticks, 31 kernel ticks, 2 user ticks
+Thread: 30 idle ticks, 29 kernel ticks, 4 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 40 reads, 158 writes
+hd0:1: 29 reads, 83 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1075 characters output
+Console: 1074 characters output
 Keyboard: 0 keys pressed
 Exception: 4 page faults
 Powering off...

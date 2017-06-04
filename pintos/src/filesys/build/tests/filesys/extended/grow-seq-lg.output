@@ -1,7 +1,7 @@
-Copying tests/filesys/extended/grow-seq-lg into /tmp/gmtW2e6j8a.dsk...
-Copying tests/filesys/extended/tar into /tmp/gmtW2e6j8a.dsk...
-Writing command line to /tmp/qJ0RjaCpCg.dsk...
-qemu -hda /tmp/qJ0RjaCpCg.dsk -hdb tmp.dsk -hdc /tmp/gmtW2e6j8a.dsk -hdd /tmp/J7naDu3uGC.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/grow-seq-lg into /tmp/tPURF8tQE0.dsk...
+Copying tests/filesys/extended/tar into /tmp/tPURF8tQE0.dsk...
+Writing command line to /tmp/xJNysjLEFp.dsk...
+qemu -hda /tmp/xJNysjLEFp.dsk -hdb tmp.dsk -hdc /tmp/tPURF8tQE0.dsk -hdd /tmp/2ZLVaCUfb8.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put grow-seq-lg put tar run grow-seq-lg
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -23,10 +23,10 @@ Executing 'grow-seq-lg':
 (grow-seq-lg) write 1234 bytes at offset 0 in "testme" failed: FAILED
 grow-seq-lg: exit(1)
 Execution of 'grow-seq-lg' complete.
-Timer: 82 ticks
-Thread: 30 idle ticks, 49 kernel ticks, 3 user ticks
+Timer: 74 ticks
+Thread: 30 idle ticks, 40 kernel ticks, 5 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 43 reads, 327 writes
+hd0:1: 31 reads, 170 writes
 hd1:0: 159 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1107 characters output

@@ -20,17 +20,20 @@
 static struct list cache_list;
 static struct lock cache_lock;
 
-void thread_function_wb_frequently(void* aux UNUSED);
+static void thread_function_wb_frequently(void);
+
 
 void cache_init(void){
 				list_init(&cache_list);
 				lock_init(&cache_lock);
 					
-				/*make thread for frequently write behind*/
-//				tid_t tid = thread_create("wb_frequently",PRI_DEFAULT,thread_function_wb_frequently,NULL);
-//				ASSERT(tid!=TID_ERROR);
-};
+		};
 
+
+//void cache_thread_init(void){
+		/*make thread for frequently write behind*/
+//				thread_create("wb_frequently",PRI_DEFAULT,thread_function_wb_frequently,NULL);
+//}
 
 /*make new cache entry.*/
 struct cache* make_cache(disk_sector_t sec_no, bool dirty){
@@ -133,7 +136,7 @@ void cache_read(disk_sector_t sec_no, void *read_buffer, int sector_offset, int 
 								disk_read(filesys_disk,sec_no,read_cache->buffer);
 				}
 				read_cache->open_cnt++;
-				memcpy((uint8_t *)read_buffer,(uint8_t *)&read_cache->buffer + sector_offset, size);
+				memcpy(read_buffer,(uint8_t *)&read_cache->buffer + sector_offset, size);
 				cache_lock_release();
 
 }
@@ -159,19 +162,19 @@ void cache_write(disk_sector_t sec_no, void* write_buffer, int sector_offset, in
 }
 
 /*write behind all dirty cache in evry 500 ticks*/
-void thread_function_wb_frequently(void *aux UNUSED){
+static void thread_function_wb_frequently(void){
 				struct cache* tmp_cache =NULL;
 				struct list_elem * elem;
 				
 				while(true){
 								timer_sleep(500);
-
+								printf("1\n");
 								/*Traverse cache list and write behind the dirty cache*/
 								//cache_lock_acquire();
-								for(elem = list_begin(&cache_list) ; elem != list_end(&cache_list) ; elem = list_next(elem)){
-										tmp_cache = list_entry(elem, struct cache, el);
-										bool check = write_behind(tmp_cache);
-								}
+			//					for(elem = list_begin(&cache_list) ; elem != list_end(&cache_list) ; elem = list_next(elem)){
+			//							tmp_cache = list_entry(elem, struct cache, el);
+			//							bool check = write_behind(tmp_cache);
+			//					}
 				}			
 								//cache_lock_release();
 				
