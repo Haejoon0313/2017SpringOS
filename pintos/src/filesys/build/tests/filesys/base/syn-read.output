@@ -1,7 +1,7 @@
-Copying tests/filesys/base/syn-read into /tmp/NWnV9qquk0.dsk...
-Copying tests/filesys/base/child-syn-read into /tmp/NWnV9qquk0.dsk...
-Writing command line to /tmp/rmppSKrhPK.dsk...
-qemu -hda /tmp/rmppSKrhPK.dsk -hdb /tmp/SaFzAGuZQu.dsk -hdc /tmp/NWnV9qquk0.dsk -hdd /tmp/Z7rq1w4Y1v.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/syn-read into /tmp/nF5RfzZz0e.dsk...
+Copying tests/filesys/base/child-syn-read into /tmp/nF5RfzZz0e.dsk...
+Writing command line to /tmp/6uSBPqHpaw.dsk...
+qemu -hda /tmp/6uSBPqHpaw.dsk -hdb /tmp/nqB7MkYzzt.dsk -hdc /tmp/nF5RfzZz0e.dsk -hdd /tmp/eIUqBwxsXg.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put syn-read put child-syn-read run syn-read
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -23,10 +23,10 @@ Executing 'syn-read':
 (syn-read) close "data"
 (syn-read) exec child 1 of 10: "child-syn-read 0"
 (syn-read) exec child 2 of 10: "child-syn-read 1"
-child-syn-read: exit(0)
 (syn-read) exec child 3 of 10: "child-syn-read 2"
+child-syn-read: exit(0)
 Kernel PANIC at ../../lib/string.c:12 in memcpy(): assertion `dst != NULL || size == 0' failed.
-Call stack: 0xc0107756 0xc0106b80 0xc010e654 0xc010d1a7 0xc010da9a 0xc010c9a6 0xc010b9f6 0xc0101935 0xc0101b0b 0x804a691 0x804817a 0x80488dc.
+Call stack: 0xc0107766 0xc0106b90 0xc010e5f9 0xc010d1b7 0xc010daa4 0xc010c9b6 0xc010ba06 0xc0101945 0xc0101b1b 0x804a691 0x804817a 0x80488dc.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -44,7 +44,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'syn-read' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): syn-read: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -62,7 +62,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'syn-read' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): syn-read: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -80,7 +80,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'syn-read' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): syn-read: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -98,7 +98,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'syn-read' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): syn-read: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -116,7 +116,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'syn-read' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): syn-read: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -134,7 +134,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'syn-read' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): syn-read: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -150,11 +150,4 @@ hd1:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Formatting file system...done.
 Boot complete.
-Putting 'syn-read' into the file system...
-Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): syn-read: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
-Simulation terminated due to kernel panic.
+Putting 'syn-read' intoSimulation terminated due to kernel panic.

@@ -1,6 +1,6 @@
-Copying tests/filesys/base/sm-seq-block into /tmp/drzFU18M5n.dsk...
-Writing command line to /tmp/x7U3zwkNl9.dsk...
-qemu -hda /tmp/x7U3zwkNl9.dsk -hdb /tmp/kCViHrpwkA.dsk -hdc /tmp/drzFU18M5n.dsk -hdd /tmp/SMlLNrxQFi.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/base/sm-seq-block into /tmp/BT1vRLUP16.dsk...
+Writing command line to /tmp/SspNJsQZH6.dsk...
+qemu -hda /tmp/SspNJsQZH6.dsk -hdb /tmp/4KKY0DdgT5.dsk -hdc /tmp/BT1vRLUP16.dsk -hdd /tmp/XImpT3riVk.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put sm-seq-block run sm-seq-block
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -25,13 +25,13 @@ Executing 'sm-seq-block':
 (sm-seq-block) end
 sm-seq-block: exit(0)
 Execution of 'sm-seq-block' complete.
-Timer: 63 ticks
-Thread: 30 idle ticks, 28 kernel ticks, 5 user ticks
+Timer: 70 ticks
+Thread: 30 idle ticks, 31 kernel ticks, 10 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 39 reads, 96 writes
 hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1168 characters output
+Console: 1169 characters output
 Keyboard: 0 keys pressed
 Exception: 6 page faults
 Powering off...

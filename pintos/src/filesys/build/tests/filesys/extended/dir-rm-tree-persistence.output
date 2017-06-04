@@ -1,5 +1,5 @@
-Writing command line to /tmp/g9uXBIJcou.dsk...
-qemu -hda /tmp/g9uXBIJcou.dsk -hdb tmp.dsk -hdc /tmp/NYzKfRDpl2.dsk -hdd /tmp/x5kIKno2Q7.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/x7SVArfh72.dsk...
+qemu -hda /tmp/x7SVArfh72.dsk -hdb tmp.dsk -hdc /tmp/FTlwpGCvLp.dsk -hdd /tmp/HBVJxy4tca.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -9,14 +9,8 @@ hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Boot complete.
-Executing 'tar fs.tar /':
-fs.tar: create failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
+Kernel PANIC at ../../filesys/free-map.c:59 in free_map_open(): can't read free map
+Call stack: 0xc0107766 0xc010c7f0 0xc010c42c 0xc01000b4.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -30,14 +24,8 @@ hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Boot complete.
-Executing 'tar fs.tar /':
-fs.tar: create failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
+Kernel PANIC at ../../filesys/free-map.c:59 in free_map_open(): can't read free map
+Call stack: 0xc0107766 0xc010c7f0 0xc010c42c 0xc01000b4.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -51,14 +39,8 @@ hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Boot complete.
-Executing 'tar fs.tar /':
-fs.tar: create failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
+Kernel PANIC at ../../filesys/free-map.c:59 in free_map_open(): can't read free map
+Call stack: 0xc0107766 0xc010c7f0 0xc010c42c 0xc01000b4.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -72,14 +54,8 @@ hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Boot complete.
-Executing 'tar fs.tar /':
-fs.tar: create failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
+Kernel PANIC at ../../filesys/free-map.c:59 in free_map_open(): can't read free map
+Call stack: 0xc0107766 0xc010c7f0 0xc010c42c 0xc01000b4.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -93,14 +69,8 @@ hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Boot complete.
-Executing 'tar fs.tar /':
-fs.tar: create failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
+Kernel PANIC at ../../filesys/free-map.c:59 in free_map_open(): can't read free map
+Call stack: 0xc0107766 0xc010c7f0 0xc010c42c 0xc01000b4.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -114,14 +84,8 @@ hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Boot complete.
-Executing 'tar fs.tar /':
-fs.tar: create failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
+Kernel PANIC at ../../filesys/free-map.c:59 in free_map_open(): can't read free map
+Call stack: 0xc0107766 0xc010c7f0 0xc010c42c 0xc01000b4.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -135,14 +99,8 @@ hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Boot complete.
-Executing 'tar fs.tar /':
-fs.tar: create failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
+Kernel PANIC at ../../filesys/free-map.c:59 in free_map_open(): can't read free map
+Call stack: 0xc0107766 0xc010c7f0 0xc010c42c 0xc01000b4.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -154,4 +112,6 @@ Pintos booting with 4,096 kB RAM...
 Calibrating timer...  78,540,800 loops/s.
 hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Simulation terminated due to kernel panic.

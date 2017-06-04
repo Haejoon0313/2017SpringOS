@@ -1,7 +1,7 @@
-Copying tests/filesys/extended/grow-file-size into /tmp/XlrDWsae6T.dsk...
-Copying tests/filesys/extended/tar into /tmp/XlrDWsae6T.dsk...
-Writing command line to /tmp/qHP0s1QYw6.dsk...
-qemu -hda /tmp/qHP0s1QYw6.dsk -hdb tmp.dsk -hdc /tmp/XlrDWsae6T.dsk -hdd /tmp/TkppOt2abJ.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/grow-file-size into /tmp/pLCCFOGMsh.dsk...
+Copying tests/filesys/extended/tar into /tmp/pLCCFOGMsh.dsk...
+Writing command line to /tmp/tO8r35uy2X.dsk...
+qemu -hda /tmp/tO8r35uy2X.dsk -hdb tmp.dsk -hdc /tmp/pLCCFOGMsh.dsk -hdd /tmp/dwY6DILvjj.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put grow-file-size put tar run grow-file-size
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -20,16 +20,20 @@ Executing 'grow-file-size':
 (grow-file-size) create "testfile"
 (grow-file-size) open "testfile"
 (grow-file-size) writing "testfile"
-(grow-file-size) write 37 bytes at offset 0 in "testfile" failed: FAILED
-grow-file-size: exit(1)
+(grow-file-size) close "testfile"
+(grow-file-size) open "testfile" for verification
+(grow-file-size) verified contents of "testfile"
+(grow-file-size) close "testfile"
+(grow-file-size) end
+grow-file-size: exit(0)
 Execution of 'grow-file-size' complete.
-Timer: 83 ticks
-Thread: 30 idle ticks, 48 kernel ticks, 5 user ticks
+Timer: 86 ticks
+Thread: 30 idle ticks, 47 kernel ticks, 9 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 32 reads, 171 writes
+hd0:1: 37 reads, 176 writes
 hd1:0: 160 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1146 characters output
+Console: 1261 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

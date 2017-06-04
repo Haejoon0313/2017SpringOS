@@ -1,12 +1,12 @@
-Copying tests/filesys/extended/dir-open into /tmp/Q35KUzhQX1.dsk...
-Copying tests/filesys/extended/tar into /tmp/Q35KUzhQX1.dsk...
-Writing command line to /tmp/T44fUQuqMS.dsk...
-qemu -hda /tmp/T44fUQuqMS.dsk -hdb tmp.dsk -hdc /tmp/Q35KUzhQX1.dsk -hdd /tmp/VX7Wm5ttMJ.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/dir-open into /tmp/l6e48phc4p.dsk...
+Copying tests/filesys/extended/tar into /tmp/l6e48phc4p.dsk...
+Writing command line to /tmp/XdXiizSixe.dsk...
+qemu -hda /tmp/XdXiizSixe.dsk -hdb tmp.dsk -hdc /tmp/l6e48phc4p.dsk -hdd /tmp/fsNZ8lHNyF.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put dir-open put tar run dir-open
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
 373 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
+Calibrating timer...  77,824,000 loops/s.
 hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 159 sector (79 kB) disk, model "QEMU HARDDISK", serial "QM00003"
@@ -22,8 +22,8 @@ Executing 'dir-open':
 (dir-open) open "xyzzy": FAILED
 dir-open: exit(1)
 Execution of 'dir-open' complete.
-Timer: 83 ticks
-Thread: 30 idle ticks, 49 kernel ticks, 5 user ticks
+Timer: 84 ticks
+Thread: 30 idle ticks, 48 kernel ticks, 6 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 31 reads, 167 writes
 hd1:0: 159 reads, 0 writes

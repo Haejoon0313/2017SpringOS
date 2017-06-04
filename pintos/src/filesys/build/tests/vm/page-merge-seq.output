@@ -1,7 +1,7 @@
-Copying tests/vm/page-merge-seq into /tmp/6VBEopJbMg.dsk...
-Copying tests/vm/child-sort into /tmp/6VBEopJbMg.dsk...
-Writing command line to /tmp/GDqFtSjF1G.dsk...
-qemu -hda /tmp/GDqFtSjF1G.dsk -hdb /tmp/2eqLBvYZAE.dsk -hdc /tmp/6VBEopJbMg.dsk -hdd /tmp/zjQlEVxnBE.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-merge-seq into /tmp/pu8hLZoYkh.dsk...
+Copying tests/vm/child-sort into /tmp/pu8hLZoYkh.dsk...
+Writing command line to /tmp/IkfnbDuI4E.dsk...
+qemu -hda /tmp/IkfnbDuI4E.dsk -hdb /tmp/c8Y4AKEvhw.dsk -hdc /tmp/pu8hLZoYkh.dsk -hdd /tmp/EqE0QRWKu8.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-merge-seq put child-sort run page-merge-seq
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -26,7 +26,7 @@ child-sort: exit(123)
 child-sort: exit(123)
 (page-merge-seq) sort chunk 3
 Kernel PANIC at ../../lib/string.c:12 in memcpy(): assertion `dst != NULL || size == 0' failed.
-Call stack: 0xc0107756 0xc0106b80 0xc010e654 0xc010d1a7 0xc010dc2d 0xc010ca02 0xc010ba8d 0xc0101935 0xc0101b0b 0x804a469 0x8048194 0x804838c 0x8048a93 0x8048ac0.
+Call stack: 0xc0107766 0xc0106b90 0xc010e5f9 0xc010d1b7 0xc010dbcd 0xc010ca12 0xc010ba9d 0xc0101945 0xc0101b1b 0x804a469 0x8048194 0x804838c 0x8048a93 0x8048ac0.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -44,7 +44,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'page-merge-seq' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): page-merge-seq: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -62,7 +62,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'page-merge-seq' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): page-merge-seq: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -80,7 +80,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'page-merge-seq' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): page-merge-seq: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -98,7 +98,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'page-merge-seq' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): page-merge-seq: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -116,7 +116,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'page-merge-seq' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): page-merge-seq: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -134,7 +134,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'page-merge-seq' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): page-merge-seq: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -152,7 +152,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'page-merge-seq' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): page-merge-seq: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.

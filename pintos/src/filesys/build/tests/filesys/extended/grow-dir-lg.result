@@ -1,2 +1,25 @@
 FAIL
-run: create "/x/file14": FAILED
+Kernel panic in run: PANIC at ../../lib/string.c:12 in memcpy(): assertion `dst != NULL || size == 0' failed.
+Call stack: 0xc0107766 0xc0106b90 0xc010e5f9 0xc010d1b7 0xc010daa4 0xc010cdb0 0xc010ce4d 0xc010c50d 0xc010b89a 0xc0101945 0xc0101b1b 0x804a239 0x804879d 0x8048163 0x804889f 0x80488cc
+Translation of call stack:
+In kernel.o:
+0xc0107766: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0106b90: memcpy (...ild/../../lib/string.c:13)
+0xc010e5f9: cache_read (...../../filesys/cache.c:140)
+0xc010d1b7: byte_to_sector (.../../../filesys/inode.c:57)
+0xc010daa4: inode_read_at (...../../filesys/inode.c:391)
+0xc010cdb0: lookup (..../filesys/directory.c:101)
+0xc010ce4d: dir_lookup (..../filesys/directory.c:127)
+0xc010c50d: filesys_open (..../../filesys/filesys.c:82)
+0xc010b89a: syscall_handler (...../userprog/syscall.c:164)
+0xc0101945: intr_handler (..../threads/interrupt.c:361)
+0xc0101b1b: intr_entry (threads/intr-stubs.S:38)
+In tests/filesys/extended/grow-dir-lg:
+0x0804a239: open (...../lib/user/syscall.c:105)
+0x0804879d: seq_test (...sts/filesys/seq-test.c:16)
+0x08048163: test_main (.../extended/grow-dir.inc:39)
+0x0804889f: main (...ild/../../tests/main.c:13)
+0x080488cc: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.

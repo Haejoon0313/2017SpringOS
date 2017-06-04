@@ -1,7 +1,7 @@
-Copying tests/filesys/extended/grow-dir-lg into /tmp/fyfjNSKyfM.dsk...
-Copying tests/filesys/extended/tar into /tmp/fyfjNSKyfM.dsk...
-Writing command line to /tmp/HBgMLZ7FBW.dsk...
-qemu -hda /tmp/HBgMLZ7FBW.dsk -hdb tmp.dsk -hdc /tmp/fyfjNSKyfM.dsk -hdd /tmp/pl75fPu0nA.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/grow-dir-lg into /tmp/GT7s21hGBg.dsk...
+Copying tests/filesys/extended/tar into /tmp/GT7s21hGBg.dsk...
+Writing command line to /tmp/i5TOI3SxZE.dsk...
+qemu -hda /tmp/i5TOI3SxZE.dsk -hdb tmp.dsk -hdc /tmp/GT7s21hGBg.dsk -hdd /tmp/j3cySsJ0vV.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put grow-dir-lg put tar run grow-dir-lg
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -33,16 +33,136 @@ Executing 'grow-dir-lg':
 (grow-dir-lg) creating and checking "/x/file12"
 (grow-dir-lg) creating and checking "/x/file13"
 (grow-dir-lg) creating and checking "/x/file14"
-(grow-dir-lg) create "/x/file14": FAILED
-grow-dir-lg: exit(1)
-Execution of 'grow-dir-lg' complete.
-Timer: 81 ticks
-Thread: 30 idle ticks, 37 kernel ticks, 14 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 32 reads, 199 writes
-hd1:0: 160 reads, 0 writes
-hd1:1: 0 reads, 0 writes
-Console: 1723 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
+(grow-dir-lg) creating and checking "/x/file15"
+(grow-dir-lg) creating and checking "/x/file16"
+(grow-dir-lg) creating and checking "/x/file17"
+(grow-dir-lg) creating and checking "/x/file18"
+(grow-dir-lg) creating and checking "/x/file19"
+(grow-dir-lg) creating and checking "/x/file20"
+(grow-dir-lg) creating and checking "/x/file21"
+(grow-dir-lg) creating and checking "/x/file22"
+(grow-dir-lg) creating and checking "/x/file23"
+(grow-dir-lg) creating and checking "/x/file24"
+(grow-dir-lg) creating and checking "/x/file25"
+Kernel PANIC at ../../lib/string.c:12 in memcpy(): assertion `dst != NULL || size == 0' failed.
+Call stack: 0xc0107766 0xc0106b90 0xc010e5f9 0xc010d1b7 0xc010daa4 0xc010cdb0 0xc010ce4d 0xc010c50d 0xc010b89a 0xc0101945 0xc0101b1b 0x804a239 0x804879d 0x8048163 0x804889f 0x80488cc.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/synch.c:242 in lock_acquire().
+Kernel command line: -q -f put grow-dir-lg put tar run grow-dir-lg
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 160 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'grow-dir-lg' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): grow-dir-lg: create failed
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put grow-dir-lg put tar run grow-dir-lg
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 160 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'grow-dir-lg' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): grow-dir-lg: create failed
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put grow-dir-lg put tar run grow-dir-lg
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 160 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'grow-dir-lg' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): grow-dir-lg: create failed
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put grow-dir-lg put tar run grow-dir-lg
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 160 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'grow-dir-lg' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): grow-dir-lg: create failed
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put grow-dir-lg put tar run grow-dir-lg
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  52,377,600 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 160 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'grow-dir-lg' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): grow-dir-lg: create failed
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put grow-dir-lg put tar run grow-dir-lg
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 160 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'grow-dir-lg' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): grow-dir-lg: create failed
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put grow-dir-lg put tar run grow-dir-lg
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+Simulation terminated due to kernel panic.

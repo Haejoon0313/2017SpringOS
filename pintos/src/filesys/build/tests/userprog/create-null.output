@@ -1,6 +1,6 @@
-Copying tests/userprog/create-null into /tmp/P5IuzImzYj.dsk...
-Writing command line to /tmp/kO8mkKN0ze.dsk...
-qemu -hda /tmp/kO8mkKN0ze.dsk -hdb /tmp/mFiEK07K8X.dsk -hdc /tmp/P5IuzImzYj.dsk -hdd /tmp/HXNX4VmZl5.dsk -m 4 -net none -nographic -monitor null
+Copying tests/userprog/create-null into /tmp/KV1VCMlLry.dsk...
+Writing command line to /tmp/yCiBQh4Cef.dsk...
+qemu -hda /tmp/yCiBQh4Cef.dsk -hdb /tmp/JJlXqWhQaO.dsk -hdc /tmp/KV1VCMlLry.dsk -hdd /tmp/RXYl638108.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put create-null run create-null
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -17,8 +17,8 @@ Executing 'create-null':
 (create-null) begin
 create-null: exit(-1)
 Execution of 'create-null' complete.
-Timer: 67 ticks
-Thread: 30 idle ticks, 33 kernel ticks, 4 user ticks
+Timer: 64 ticks
+Thread: 30 idle ticks, 30 kernel ticks, 4 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 27 reads, 78 writes
 hd1:0: 73 reads, 0 writes

@@ -1,11 +1,11 @@
-Copying tests/vm/page-shuffle into /tmp/HWPkbzX0gy.dsk...
-Writing command line to /tmp/AhyUxp5I9z.dsk...
-qemu -hda /tmp/AhyUxp5I9z.dsk -hdb /tmp/tdAPFMwDEd.dsk -hdc /tmp/HWPkbzX0gy.dsk -hdd /tmp/9ntJ5CV6Jc.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-shuffle into /tmp/M7UCZcuu48.dsk...
+Writing command line to /tmp/ReFr1Kf4KM.dsk...
+qemu -hda /tmp/ReFr1Kf4KM.dsk -hdb /tmp/SDOD07bmE0.dsk -hdc /tmp/M7UCZcuu48.dsk -hdd /tmp/Z14WX3JtKg.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-shuffle run page-shuffle
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
 373 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
+Calibrating timer...  52,377,600 loops/s.
 hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 81 sector (40 kB) disk, model "QEMU HARDDISK", serial "QM00003"
@@ -29,8 +29,8 @@ Executing 'page-shuffle':
 (page-shuffle) end
 page-shuffle: exit(0)
 Execution of 'page-shuffle' complete.
-Timer: 115 ticks
-Thread: 30 idle ticks, 28 kernel ticks, 57 user ticks
+Timer: 123 ticks
+Thread: 30 idle ticks, 31 kernel ticks, 63 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 30 reads, 86 writes
 hd1:0: 81 reads, 0 writes

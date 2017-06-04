@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-shuffle into /tmp/zVhQBHMbJk.dsk...
-Writing command line to /tmp/brCxbgy2NE.dsk...
-qemu -hda /tmp/brCxbgy2NE.dsk -hdb /tmp/dAuCV5fH2a.dsk -hdc /tmp/zVhQBHMbJk.dsk -hdd /tmp/o4RQge5mLC.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/mmap-shuffle into /tmp/4c0ET2FNCN.dsk...
+Writing command line to /tmp/AvfGlX9RFn.dsk...
+qemu -hda /tmp/AvfGlX9RFn.dsk -hdb /tmp/pUBH7CxG2Z.dsk -hdc /tmp/4c0ET2FNCN.dsk -hdd /tmp/4IKaQ5X4Gy.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put mmap-shuffle run mmap-shuffle
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -19,7 +19,7 @@ Executing 'mmap-shuffle':
 (mmap-shuffle) open "buffer"
 (mmap-shuffle) mmap "buffer"
 Kernel PANIC at ../../devices/disk.c:436 in select_sector(): assertion `sec_no < d->capacity' failed.
-Call stack: 0xc0107756 0xc01051ce 0xc0104bc3 0xc010e633 0xc010d264 0xc010da9a 0xc010c9d7 0xc010b27c 0xc0101935 0xc0101b0b 0x804813a 0x804891f 0x804894c.
+Call stack: 0xc0107766 0xc01051de 0xc0104bd3 0xc010e5d8 0xc010d274 0xc010daa4 0xc010c9e7 0xc010b28c 0xc0101945 0xc0101b1b 0x804813a 0x804891f 0x804894c.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -37,7 +37,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'mmap-shuffle' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): mmap-shuffle: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -55,7 +55,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'mmap-shuffle' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): mmap-shuffle: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -73,7 +73,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'mmap-shuffle' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): mmap-shuffle: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -91,7 +91,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'mmap-shuffle' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): mmap-shuffle: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -109,7 +109,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'mmap-shuffle' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): mmap-shuffle: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -127,7 +127,7 @@ Formatting file system...done.
 Boot complete.
 Putting 'mmap-shuffle' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): mmap-shuffle: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -145,9 +145,13 @@ Formatting file system...done.
 Boot complete.
 Putting 'mmap-shuffle' into the file system...
 Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): mmap-shuffle: create failed
-Call stack: 0xc0107756 0xc010e097 0xc0100681 0xc01000cd.
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
 Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
-Simulation terminated due to kernel panic.
+Kernel command line: -q -f put mmap-shuffle run mmap-shuffle
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  Simulation terminated due to kernel panic.

@@ -18,21 +18,6 @@
 #define DOUBLY_INDIRECT_CNT (INDIRECT_CNT * INDIRECT_CNT)
 
 /*To save previous project code */
-bool pintos4 = true;
-
-
-
-/* On-disk inode.
-   Must be exactly DISK_SECTOR_SIZE bytes long. */
-
-//struct inode_disk
-// {
-//    disk_sector_t start;                /* First data sector. */
-//    off_t length;                       /* File size in bytes. */
-//    unsigned magic;                     /* Magic number. */
-//   uint32_t unused[125];               /* Not used. */
-//  };
-
 
 /* Returns the number of sectors to allocate for an inode SIZE
    bytes long. */
@@ -41,19 +26,6 @@ bytes_to_sectors (off_t size)
 {
   return DIV_ROUND_UP (size, DISK_SECTOR_SIZE);
 }
-
-/* In-memory inode. */
-//struct inode 
-//  {
-//    struct list_elem elem;              /* Element in inode list. */
-//    disk_sector_t sector;               /* Sector number of disk location. */
-//    int open_cnt;                       /* Number of openers. */
-//    bool removed;                       /* True if deleted, false otherwise. */
-//    int deny_write_cnt;                 /* 0: writes ok, >0: deny writes. */
-//   struct inode_disk data;             /* Inode content. */
-//  };
-
-
 
 
 /*If we need to read POS position of file, which sector do we need to read?
@@ -139,9 +111,6 @@ bool inode_expand(struct inode * extend_inode, off_t extend_length)//LENGTH mean
 	
 	/*how many sectors are newly allocated*/	
 	size_t sectors = bytes_to_sectors(extend_length-snip_byte);/*number of actually write sector*/
-	/*sectors가 마이너스가 될수도 있냐? ㄴㄴ애초에 inode_expand에 length를 줄 때 진짜 sector를 추가로 만들어야 하는지 판단하자.*/
-
-
 	
 	/*current sector count*/
 	size_t curr_sector = exist_sectors;
@@ -432,37 +401,13 @@ inode_read_at (struct inode *inode, void *buffer_, off_t size, off_t offset)
       if (chunk_size <= 0){
 							break;
 			}
-			/*Before project4 filesys part. Substitute into cache read.*/
-			if(!pintos4){
-      if (sector_ofs == 0 && chunk_size == DISK_SECTOR_SIZE) 
-        {
-          /* Read full sector directly into caller's buffer. */
-          disk_read (filesys_disk, sector_idx, buffer + bytes_read); 
-        }
-      else /*read의 마지막 경우 / size가 딱 안나누어 떨어질 경우*/
-        {
-          /* Read sector into bounce buffer, then partially copy
-             into caller's buffer. */
-          if (bounce == NULL) 
-            {
-              bounce = malloc (DISK_SECTOR_SIZE);
-
-						
-              if (bounce == NULL)
-                break;
-            }
-          disk_read (filesys_disk, sector_idx, bounce);
-          memcpy (buffer + bytes_read, bounce + sector_ofs, chunk_size);
-        }
-			}
-
-			if(pintos4){
+			
 			cache_read(sector_idx, buffer + bytes_read, sector_ofs, chunk_size);
 			struct cache * read_cache =  find_cache(sector_idx);
 			ASSERT(read_cache != NULL);
 			read_cache->open_cnt--;
 			/*need read_ahead later??*/
-			}
+			
 
       /* Advance. */
       size -= chunk_size;
@@ -486,6 +431,17 @@ inode_write_at (struct inode *inode, const void *buffer_, off_t size,
   const uint8_t *buffer = buffer_;
   off_t bytes_written = 0;
 	uint8_t * bounce = NULL;	
+	
+	if(inode->deny_write_cnt != 0)
+					return 0;
+	
+	off_t exist_length;
+	exist_length = inode_length(inode);
+
+	/*File extension case*/
+	if(exist_length < offset + size){
+					inode_expand(inode, offset + size - exist_length);
+	}
 
   while (size > 0) 
     {
@@ -548,7 +504,9 @@ inode_length (const struct inode *inode)
 {
 	off_t length;
 
-	cache_read(inode->sector, (void*)&length,sizeof(disk_sector_t),sizeof(off_t));
-				
+//	struct inode_disk * disk_inode;
+//	cache_read(inode->sector, disk_inode,0, DISK_SECTOR_SIZE);
+//	length = (off_t*)& disk_inode->length;
+	cache_read(inode->sector,(void *)&length, sizeof(disk_sector_t) ,sizeof(off_t));
 	return length;
 }

@@ -1,2 +1,4 @@
 FAIL
-Prerequisite test tests/filesys/extended/grow-seq-lg failed.
+Error extracting file system:
+/: open failed
+tar: exit(-1)

@@ -30,10 +30,10 @@ void cache_init(void){
 		};
 
 
-//void cache_thread_init(void){
-		/*make thread for frequently write behind*/
-//				thread_create("wb_frequently",PRI_DEFAULT,thread_function_wb_frequently,NULL);
-//}
+void cache_thread_init(void){
+				/*make thread for frequently write behind*/
+			//	thread_create("wb_frequently",PRI_DEFAULT,thread_function_wb_frequently,NULL);
+}
 
 /*make new cache entry.*/
 struct cache* make_cache(disk_sector_t sec_no, bool dirty){
@@ -168,13 +168,13 @@ static void thread_function_wb_frequently(void){
 				
 				while(true){
 								timer_sleep(500);
-								printf("1\n");
+								
 								/*Traverse cache list and write behind the dirty cache*/
 								//cache_lock_acquire();
-			//					for(elem = list_begin(&cache_list) ; elem != list_end(&cache_list) ; elem = list_next(elem)){
-			//							tmp_cache = list_entry(elem, struct cache, el);
-			//							bool check = write_behind(tmp_cache);
-			//					}
+								for(elem = list_begin(&cache_list) ; elem != list_end(&cache_list) ; elem = list_next(elem)){
+										tmp_cache = list_entry(elem, struct cache, el);
+										bool check = write_behind(tmp_cache);
+								}
 				}			
 								//cache_lock_release();
 				

@@ -120,7 +120,7 @@ main (void)
   disk_init ();
 
 	filesys_init (format_filesys);
-	//cache_thread_init();
+	cache_thread_init();
 
 #endif
 

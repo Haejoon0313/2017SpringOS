@@ -1,7 +1,7 @@
-Copying tests/filesys/extended/dir-mk-tree into /tmp/gtTKrwR5VJ.dsk...
-Copying tests/filesys/extended/tar into /tmp/gtTKrwR5VJ.dsk...
-Writing command line to /tmp/Ngdrc0677j.dsk...
-qemu -hda /tmp/Ngdrc0677j.dsk -hdb tmp.dsk -hdc /tmp/gtTKrwR5VJ.dsk -hdd /tmp/A8fCETZ7L0.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/dir-mk-tree into /tmp/utijdPOXV3.dsk...
+Copying tests/filesys/extended/tar into /tmp/utijdPOXV3.dsk...
+Writing command line to /tmp/6ecQ40LEJ6.dsk...
+qemu -hda /tmp/6ecQ40LEJ6.dsk -hdb tmp.dsk -hdc /tmp/utijdPOXV3.dsk -hdd /tmp/Y9cT6wMa7q.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put dir-mk-tree put tar run dir-mk-tree
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -18,16 +18,136 @@ Putting 'tar' into the file system...
 Executing 'dir-mk-tree':
 (dir-mk-tree) begin
 (dir-mk-tree) creating /0/0/0/0 through /3/2/2/3...
-(dir-mk-tree) create "/0/1/0/2": FAILED
-dir-mk-tree: exit(1)
-Execution of 'dir-mk-tree' complete.
-Timer: 82 ticks
-Thread: 30 idle ticks, 39 kernel ticks, 13 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 33 reads, 187 writes
-hd1:0: 162 reads, 0 writes
-hd1:1: 0 reads, 0 writes
-Console: 1041 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
+Kernel PANIC at ../../lib/string.c:12 in memcpy(): assertion `dst != NULL || size == 0' failed.
+Call stack: 0xc0107766 0xc0106b90 0xc010e5f9 0xc010d1b7 0xc010daa4 0xc010cf62 0xc010c4a6 0xc010b839 0xc0101945 0xc0101b1b 0x804a3d9 0x8048a6f 0x80488fa 0x80480ca 0x80487ef 0x8048aa4.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../threads/synch.c:242 in lock_acquire().
+Kernel command line: -q -f put dir-mk-tree put tar run dir-mk-tree
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 162 sector (81 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'dir-mk-tree' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): dir-mk-tree: create failed
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put dir-mk-tree put tar run dir-mk-tree
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 162 sector (81 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'dir-mk-tree' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): dir-mk-tree: create failed
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put dir-mk-tree put tar run dir-mk-tree
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 162 sector (81 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'dir-mk-tree' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): dir-mk-tree: create failed
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put dir-mk-tree put tar run dir-mk-tree
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 162 sector (81 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'dir-mk-tree' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): dir-mk-tree: create failed
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put dir-mk-tree put tar run dir-mk-tree
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 162 sector (81 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'dir-mk-tree' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): dir-mk-tree: create failed
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put dir-mk-tree put tar run dir-mk-tree
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 162 sector (81 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'dir-mk-tree' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): dir-mk-tree: create failed
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put dir-mk-tree put tar run dir-mk-tree
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 162 sector (81 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'dir-mk-tree' into the file system...
+Kernel PANIC at ../../filesys/fsutil.c:114 in fsutil_put(): dir-mk-tree: create failed
+Call stack: 0xc0107766 0xc010e037 0xc0100686 0xc01000d2.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Simulation terminated due to kernel panic.

@@ -1,7 +1,7 @@
-Copying tests/filesys/extended/grow-tell into /tmp/7kLIA387zV.dsk...
-Copying tests/filesys/extended/tar into /tmp/7kLIA387zV.dsk...
-Writing command line to /tmp/g6XYKgRypv.dsk...
-qemu -hda /tmp/g6XYKgRypv.dsk -hdb tmp.dsk -hdc /tmp/7kLIA387zV.dsk -hdd /tmp/F0q7GGHBj1.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/grow-tell into /tmp/8bnQ8W9WnD.dsk...
+Copying tests/filesys/extended/tar into /tmp/8bnQ8W9WnD.dsk...
+Writing command line to /tmp/WMAyrV1pxm.dsk...
+qemu -hda /tmp/WMAyrV1pxm.dsk -hdb tmp.dsk -hdc /tmp/8bnQ8W9WnD.dsk -hdd /tmp/JOVgEDthL0.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put grow-tell put tar run grow-tell
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -20,16 +20,20 @@ Executing 'grow-tell':
 (grow-tell) create "foobar"
 (grow-tell) open "foobar"
 (grow-tell) writing "foobar"
-(grow-tell) write 37 bytes at offset 0 in "foobar" failed: FAILED
-grow-tell: exit(1)
+(grow-tell) close "foobar"
+(grow-tell) open "foobar" for verification
+(grow-tell) verified contents of "foobar"
+(grow-tell) close "foobar"
+(grow-tell) end
+grow-tell: exit(0)
 Execution of 'grow-tell' complete.
-Timer: 78 ticks
-Thread: 30 idle ticks, 42 kernel ticks, 6 user ticks
+Timer: 75 ticks
+Thread: 30 idle ticks, 40 kernel ticks, 5 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 32 reads, 171 writes
+hd0:1: 37 reads, 176 writes
 hd1:0: 160 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1083 characters output
+Console: 1172 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

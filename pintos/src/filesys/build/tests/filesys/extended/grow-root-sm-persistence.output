@@ -1,5 +1,5 @@
-Writing command line to /tmp/eehAe0HVEb.dsk...
-qemu -hda /tmp/eehAe0HVEb.dsk -hdb tmp.dsk -hdc /tmp/1kR1V1vzT7.dsk -hdd /tmp/srU4ZyT3h4.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/E1EkysP4Eb.dsk...
+qemu -hda /tmp/E1EkysP4Eb.dsk -hdb tmp.dsk -hdc /tmp/y0gKnr1Mbz.dsk -hdd /tmp/acjycS3oNl.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -11,161 +11,18 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-fs.tar: create failed
-tar: exit(1)
+/: open failed
+tar: exit(-1)
 Execution of 'tar fs.tar /' complete.
 Getting 'fs.tar' from the file system...
-Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
-Kernel command line: -q run 'tar fs.tar /' get fs.tar
-Pintos booting with 4,096 kB RAM...
-373 pages available in kernel pool.
-373 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Boot complete.
-Executing 'tar fs.tar /':
-fs.tar: create failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
-Kernel command line: -q run 'tar fs.tar /' get fs.tar
-Pintos booting with 4,096 kB RAM...
-373 pages available in kernel pool.
-373 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Boot complete.
-Executing 'tar fs.tar /':
-fs.tar: create failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
-Kernel command line: -q run 'tar fs.tar /' get fs.tar
-Pintos booting with 4,096 kB RAM...
-373 pages available in kernel pool.
-373 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Boot complete.
-Executing 'tar fs.tar /':
-fs.tar: create failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
-Kernel command line: -q run 'tar fs.tar /' get fs.tar
-Pintos booting with 4,096 kB RAM...
-373 pages available in kernel pool.
-373 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Boot complete.
-Executing 'tar fs.tar /':
-fs.tar: create failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
-Kernel command line: -q run 'tar fs.tar /' get fs.tar
-Pintos booting with 4,096 kB RAM...
-373 pages available in kernel pool.
-373 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Boot complete.
-Executing 'tar fs.tar /':
-fs.tar: create failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
-Kernel command line: -q run 'tar fs.tar /' get fs.tar
-Pintos booting with 4,096 kB RAM...
-373 pages available in kernel pool.
-373 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Boot complete.
-Executing 'tar fs.tar /':
-fs.tar: create failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
-Kernel command line: -q run 'tar fs.tar /' get fs.tar
-Pintos booting with 4,096 kB RAM...
-373 pages available in kernel pool.
-373 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 153 sector (76 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Boot complete.
-Executing 'tar fs.tar /':
-fs.tar: create failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Kernel PANIC at ../../filesys/fsutil.c:167 in fsutil_get(): fs.tar: open failed
-Call stack: 0xc0107756 0xc010e20a 0xc0100681 0xc01000cd.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
-Simulation terminated due to kernel panic.
+Timer: 56 ticks
+Thread: 30 idle ticks, 23 kernel ticks, 3 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 32 reads, 4 writes
+hd1:0: 0 reads, 1 writes
+hd1:1: 0 reads, 0 writes
+Console: 851 characters output
+Keyboard: 0 keys pressed
+Exception: 4 page faults
+Powering off...
+Copying tests/filesys/extended/grow-root-sm.tar out of /tmp/y0gKnr1Mbz.dsk...

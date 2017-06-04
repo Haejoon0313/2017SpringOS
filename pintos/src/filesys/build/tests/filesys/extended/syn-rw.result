@@ -1,2 +1,26 @@
 FAIL
-run: write 8 bytes at offset 0 in "logfile": FAILED
+Kernel panic in run: PANIC at ../../devices/disk.c:436 in select_sector(): assertion `sec_no < d->capacity' failed.
+Call stack: 0xc0107766 0xc01051de 0xc0104bd3 0xc010e5d8 0xc010db08 0xc010c9b6 0xc010ba06 0xc0101945 0xc0101b1b 0x804a6c1 0x8048170 0x8048914
+Translation of call stack:
+In kernel.o:
+0xc0107766: debug_panic (.../../lib/kernel/debug.c:34)
+0xc01051de: select_sector (.../../../devices/disk.c:437)
+0xc0104bd3: disk_read (.../../../devices/disk.c:230)
+0xc010e5d8: cache_read (...../../filesys/cache.c:138)
+0xc010db08: inode_read_at (...../../filesys/inode.c:406)
+0xc010c9b6: file_read (...d/../../filesys/file.c:75)
+0xc010ba06: syscall_handler (...../userprog/syscall.c:225)
+0xc0101945: intr_handler (..../threads/interrupt.c:361)
+0xc0101b1b: intr_entry (threads/intr-stubs.S:38)
+0x0804a6c1: (unknown)
+In tests/filesys/extended/syn-rw:
+0x08048170: test_main (...esys/extended/syn-rw.c:29)
+0x08048914: main (...ild/../../tests/main.c:13)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
+
+This assertion commonly fails when accessing a file via an inode that
+has been closed and freed.  Freeing an inode clears all its sector
+indexes to 0xcccccccc, which is not a valid sector number for disks
+smaller than about 1.6 TB.
