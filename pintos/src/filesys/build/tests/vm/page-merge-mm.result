@@ -1,0 +1,21 @@
+FAIL
+Kernel panic in run: PANIC at ../../filesys/inode.c:414 in inode_read_at(): assertion `read_cache != NULL' failed.
+Call stack: 0xc0107766 0xc010dbad 0xc010c9b6 0xc010ba06 0xc0101945 0xc0101b1b 0x804a511 0x80482f8 0x8048442 0x80480ba 0x8048b4f 0x8048b7c
+Translation of call stack:
+In kernel.o:
+0xc0107766: debug_panic (.../../lib/kernel/debug.c:34)
+0xc010dbad: inode_read_at (...../../filesys/inode.c:415)
+0xc010c9b6: file_read (...d/../../filesys/file.c:75)
+0xc010ba06: syscall_handler (...../userprog/syscall.c:225)
+0xc0101945: intr_handler (..../threads/interrupt.c:361)
+0xc0101b1b: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/page-merge-mm:
+0x0804a511: read (...../lib/user/syscall.c:117)
+0x080482f8: sort_chunks (...ts/vm/parallel-merge.c:78)
+0x08048442: parallel_merge (...s/vm/parallel-merge.c:147)
+0x080480ba: test_main (...ests/vm/page-merge-mm.c:8)
+0x08048b4f: main (...ild/../../tests/main.c:13)
+0x08048b7c: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.

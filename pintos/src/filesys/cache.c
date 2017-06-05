@@ -22,6 +22,9 @@ static struct lock cache_lock;
 
 static void thread_function_wb_frequently(void);
 
+void cache_block_lock_acquire(struct cache* lock_cache);
+
+void cache_block_lock_release(struct cache* lock_cache);
 
 void cache_init(void){
 				list_init(&cache_list);
@@ -32,7 +35,7 @@ void cache_init(void){
 
 void cache_thread_init(void){
 				/*make thread for frequently write behind*/
-			//	thread_create("wb_frequently",PRI_DEFAULT,thread_function_wb_frequently,NULL);
+			//thread_create("thread_function_wb_frequently",0,(thread_func* ) thread_function_wb_frequently,NULL);
 }
 
 /*make new cache entry.*/
@@ -47,7 +50,7 @@ struct cache* make_cache(disk_sector_t sec_no, bool dirty){
 								ASSERT(evict_success);
 				}
 				new_cache = (struct cache *) malloc(sizeof(struct cache));
-
+				lock_init(&new_cache->lock);
 				new_cache->sector_idx = sec_no;
 				new_cache->dirty = dirty;
 				new_cache->open_cnt = 0;
@@ -68,8 +71,10 @@ struct cache* find_cache(disk_sector_t sec_no){
 								tmp_cache = list_entry(elem, struct cache, el);
 								if (tmp_cache->sector_idx == sec_no){
 												/*pop finding cache and re_insert it, doto LRU alogoritm for eviction */
+												cache_block_lock_acquire(tmp_cache);
 												list_remove(elem);
 												list_push_back(&cache_list, &tmp_cache->el);
+												cache_block_lock_release(tmp_cache);
 												return tmp_cache;
 								}
 				}
@@ -100,12 +105,18 @@ bool evict_cache(void){
 
 				bool check = false;
 
+				
 				for (elem =list_begin(&cache_list); elem != list_end(&cache_list) ; elem = list_next(elem)){
 								evicted_cache = list_entry(elem, struct cache, el);								
 								if(evicted_cache->open_cnt == 0){
+												cache_block_lock_acquire(evicted_cache);
 												check = true;
 												break;
 								}
+				}
+
+				if(!check){
+					return check;
 				}
 
 				bool wb_check = write_behind(evicted_cache);
@@ -113,7 +124,8 @@ bool evict_cache(void){
 				ASSERT(wb_check);
 
 				list_remove(elem);
-
+				
+				cache_block_lock_release(evicted_cache);
 				free(evicted_cache);
 
 				ASSERT(check);
@@ -134,10 +146,15 @@ void cache_read(disk_sector_t sec_no, void *read_buffer, int sector_offset, int 
 				ASSERT(read_buffer != NULL);
 				if(read_cache == NULL){
 								read_cache = make_cache(sec_no,false);
+								cache_block_lock_acquire(read_cache);
 								disk_read(filesys_disk,sec_no,read_cache->buffer);
+								cache_block_lock_release(read_cache);
 				}
-				read_cache->open_cnt++;
+
+				cache_block_lock_acquire(read_cache);
+				read_cache->open_cnt++;				
 				memcpy(read_buffer,(uint8_t *)&read_cache->buffer + sector_offset, size);
+				cache_block_lock_release(read_cache);
 				cache_lock_release();
 
 }
@@ -152,11 +169,15 @@ void cache_write(disk_sector_t sec_no, void* write_buffer, int sector_offset, in
 								write_cache = make_cache(sec_no, true);
 
 								if(sector_offset>0 || size<DISK_SECTOR_SIZE){
+												cache_block_lock_acquire(write_cache);
 												disk_read(filesys_disk,sec_no,write_cache->buffer);
+												cache_block_lock_release(write_cache);
 								}
 				}
+				cache_block_lock_acquire(write_cache);
 				write_cache->dirty = true;
 				memcpy((uint8_t*)&write_cache->buffer + sector_offset, write_buffer, size);
+				cache_block_lock_release(write_cache);
 				write_cache->open_cnt++;
 				cache_lock_release();
 
@@ -171,13 +192,14 @@ static void thread_function_wb_frequently(void){
 								timer_sleep(500);
 								
 								/*Traverse cache list and write behind the dirty cache*/
-								//cache_lock_acquire();
+								cache_lock_acquire();
 								for(elem = list_begin(&cache_list) ; elem != list_end(&cache_list) ; elem = list_next(elem)){
 										tmp_cache = list_entry(elem, struct cache, el);
 										bool check = write_behind(tmp_cache);
+										ASSERT(check);
 								}
 				}			
-								//cache_lock_release();
+								cache_lock_release();
 				
 }
 
@@ -189,12 +211,16 @@ void destroy_cache_list(void){
 				struct cache * removed;
 
 				cache_lock_acquire();
-				for(elem = list_begin(&cache_list) ; elem != list_end(&cache_list) ; elem = list_next(elem)){
+				while(!list_empty(&cache_list)){//for(elem = list_begin(&cache_list) ; elem != list_end(&cache_list) ; elem = list_next(elem)){
+								elem = list_begin(&cache_list);
+
 								removed = list_entry(elem, struct cache, el);
+								cache_block_lock_acquire(removed);
 								bool wb_result = write_behind(removed);
 								ASSERT(wb_result);
+								cache_block_lock_release(removed);
 								list_remove(elem);
-								//free(removed);
+								free(removed);
 				}
 				cache_lock_release();
 
@@ -206,4 +232,13 @@ void cache_lock_acquire(void){
 
 void cache_lock_release(void){
 				lock_release(&cache_lock);
+}
+
+
+void cache_block_lock_acquire(struct cache* lock_cache){
+	lock_acquire(&lock_cache->lock);
+}
+
+void cache_block_lock_release(struct cache* lock_cache){
+	lock_release(&lock_cache->lock);
 }

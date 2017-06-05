@@ -40,8 +40,9 @@ filesys_init (bool format)
 void
 filesys_done (void) 
 {
-	destroy_cache_list();	
+
 	free_map_close ();
+	destroy_cache_list();
 
 }
 

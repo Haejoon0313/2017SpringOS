@@ -1,0 +1,25 @@
+FAIL
+Kernel panic in run: PANIC at ../../filesys/cache.c:50 in make_cache(): assertion `evict_success' failed.
+Call stack: 0xc0107766 0xc010e417 0xc010e699 0xc010db72 0xc010cdb0 0xc010cf30 0xc010c4a6 0xc010b839 0xc0101945 0xc0101b1b 0x804a3d9 0x8048a6f 0x80488fa 0x80480ca 0x80487ef 0x8048aa4
+Translation of call stack:
+In kernel.o:
+0xc0107766: debug_panic (.../../lib/kernel/debug.c:34)
+0xc010e417: make_cache (.../../../filesys/cache.c:52)
+0xc010e699: cache_read (...../../filesys/cache.c:148)
+0xc010db72: inode_read_at (...../../filesys/inode.c:413)
+0xc010cdb0: lookup (..../filesys/directory.c:101)
+0xc010cf30: dir_add (..../filesys/directory.c:166)
+0xc010c4a6: filesys_create (..../../filesys/filesys.c:58)
+0xc010b839: syscall_handler (...../userprog/syscall.c:136)
+0xc0101945: intr_handler (..../threads/interrupt.c:361)
+0xc0101b1b: intr_entry (threads/intr-stubs.S:38)
+In tests/filesys/extended/dir-mk-tree:
+0x0804a3d9: create (.../../lib/user/syscall.c:93)
+0x08048a6f: do_touch (...sys/extended/mk-tree.c:66)
+0x080488fa: make_tree (...sys/extended/mk-tree.c:30)
+0x080480ca: test_main (...extended/dir-mk-tree.c:11)
+0x080487ef: main (...ild/../../tests/main.c:13)
+0x08048aa4: _start (.../../../lib/user/entry.c:9)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.

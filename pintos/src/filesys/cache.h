@@ -15,8 +15,10 @@ struct cache{
 				disk_sector_t sector_idx;					/*Sector No. */
 				bool dirty;												/*is dirty cache? */
 				int open_cnt;											/*#of open count*/
-				bool loaded;											/*is this block used?(uploaded?)*/
+//				bool loaded;											/*is this block used?(uploaded?)*/
+				struct lock lock;									/*lock for each cache entry*/
 				struct list_elem el;							/*list element */	
+				
 };
 
 void cache_init(void);

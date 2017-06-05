@@ -9,6 +9,7 @@
 #include "filesys/cache.h"
 #include "threads/synch.h"
 #include "threads/thread.h"
+#include <stdio.h>
 
 /* Identifies an inode. */
 #define INODE_MAGIC 0x494e4f44
@@ -39,24 +40,28 @@ byte_to_sector (const struct inode *inode, off_t pos)
 {
   ASSERT (inode != NULL);
 
-	if(pos >= inode_length(inode))
+	if(pos >= inode_length(inode)){
+					
+					//printf("@@@@@@@@@@@@@Byte to sector, wrong pos!\n	length : %d \n pos : %d \n",inode_length(inode),pos);
 					return -1;
-	
+	}
 	disk_sector_t return_sec;
 	
 	off_t sec_cnt;
 	
 	sec_cnt = pos/DISK_SECTOR_SIZE;
 	
-	struct inode_disk * disk_inode = (struct inode_disk *)malloc(DISK_SECTOR_SIZE);
+	struct inode_disk * disk_inode = NULL;
+	disk_inode = calloc(1,sizeof * disk_inode);/// (struct inode_disk *)malloc(DISK_SECTOR_SIZE);
 	ASSERT(disk_inode != NULL);
+	
 	cache_read(inode->sector, disk_inode,0, DISK_SECTOR_SIZE);
 
-	
 	/*return sector in direct case*/
 	if(sec_cnt < DIRECT_CNT)
 		return_sec = disk_inode->direct[sec_cnt];
 
+	/*Indirect case*/
 	else if (sec_cnt < DIRECT_CNT + INDIRECT_CNT){
 		cache_read(disk_inode->indirect, (void *)&return_sec, (sec_cnt - DIRECT_CNT)*sizeof(disk_sector_t),sizeof(disk_sector_t));
 	}
@@ -73,6 +78,8 @@ byte_to_sector (const struct inode *inode, off_t pos)
 	}
 	else
 					printf("b_t_s error?\n");
+
+	free(disk_inode);
 
 	return return_sec;
 
@@ -104,10 +111,10 @@ bool inode_expand(struct inode * extend_inode, off_t extend_length)//LENGTH mean
 	cache_read(extend_inode->sector, disk_inode, 0, DISK_SECTOR_SIZE);
 	
 	/*Data of current disk_inode length*/
-	size_t exist_sectors = bytes_to_sectors(disk_inode->length);
+	size_t exist_sectors = bytes_to_sectors(inode_length(extend_inode));//(disk_inode->length);
 
 	/*How many sectors need to make newly*/
-	off_t snip_byte = exist_sectors * DISK_SECTOR_SIZE - disk_inode->length;
+	off_t snip_byte = exist_sectors * DISK_SECTOR_SIZE -inode_length(extend_inode);// disk_inode->length;
 	
 	/*how many sectors are newly allocated*/	
 	size_t sectors = bytes_to_sectors(extend_length-snip_byte);/*number of actually write sector*/
@@ -143,7 +150,7 @@ bool inode_expand(struct inode * extend_inode, off_t extend_length)//LENGTH mean
 		}
 		else if(curr_sector < DIRECT_CNT +INDIRECT_CNT + DOUBLY_INDIRECT_CNT)
 		{
-			size_t double_cnt = curr_sector - DIRECT_CNT + INDIRECT_CNT;
+			size_t double_cnt = curr_sector - DIRECT_CNT - INDIRECT_CNT;
 
 			/*makes new doubly indirect blcok*/
 			if(curr_sector == DIRECT_CNT + INDIRECT_CNT)
@@ -240,7 +247,7 @@ inode_open (disk_sector_t sector)
     }
 
   /* Allocate memory. */
-  inode = malloc (sizeof *inode);
+  inode =calloc(1,sizeof * inode);//(struct slkfjsdfldk; malloc (sizeof *inode);
   if (inode == NULL)
     return NULL;
 
@@ -283,7 +290,8 @@ inode_close (struct inode *inode)
   if (inode == NULL)
     return;
 
-	struct inode_disk * disk_inode = (struct inode_disk *) malloc(sizeof (struct inode_disk));
+	struct inode_disk * disk_inode = NULL;
+	disk_inode = calloc(1,sizeof * disk_inode);//(struct inode_disk *) malloc(sizeof (struct inode_disk));
 
 	cache_read(inode->sector, disk_inode, 0, DISK_SECTOR_SIZE);
 
@@ -295,7 +303,7 @@ inode_close (struct inode *inode)
 
 	size_t sector_cnt = bytes_to_sectors(disk_inode->length);
 	size_t double_cnt, indirect_cnt, direct_cnt;
-	off_t double_indirect_off, double_off,indirect_off;
+	off_t double_indirect_off, double_off;
 
 
   /* Release resources if this was the last opener. */
@@ -311,7 +319,7 @@ inode_close (struct inode *inode)
         {
 					/*doubly indirect sector free step*/
 					if(sector_cnt > DIRECT_CNT + INDIRECT_CNT){
-						double_cnt = sector_cnt - DIRECT_CNT+INDIRECT_CNT;
+						double_cnt = sector_cnt - DIRECT_CNT - INDIRECT_CNT;
 
 						cache_read(disk_inode->doubly_indirect, doubly, 0,DISK_SECTOR_SIZE);//now, doubly has T1 table.
 
@@ -347,7 +355,7 @@ inode_close (struct inode *inode)
 					if(sector_cnt <= DIRECT_CNT){
 						direct_cnt = sector_cnt;
 
-						cache_read(disk_inode->direct, direct, 0, DISK_SECTOR_SIZE);
+						cache_read((disk_sector_t)disk_inode->direct,(void*) direct, 0, DISK_SECTOR_SIZE);
 						while(direct_cnt >0){
 							free_map_release(direct[direct_cnt],1);
 							direct_cnt--;
@@ -384,8 +392,6 @@ inode_read_at (struct inode *inode, void *buffer_, off_t size, off_t offset)
 {
   uint8_t *buffer = buffer_;
   off_t bytes_read = 0;
-  uint8_t *bounce = NULL;
-
   while (size > 0) 
     {
       /* Disk sector to read, starting byte offset within sector. */
@@ -398,7 +404,7 @@ inode_read_at (struct inode *inode, void *buffer_, off_t size, off_t offset)
       int min_left = inode_left < sector_left ? inode_left : sector_left;
 
       /* Number of bytes to actually copy out of this sector. */
-      int chunk_size = size < min_left ? size : min_left;
+      size_t chunk_size = size < min_left ? size : min_left;
       if (chunk_size <= 0){
 							break;
 			}
@@ -415,7 +421,7 @@ inode_read_at (struct inode *inode, void *buffer_, off_t size, off_t offset)
       offset += chunk_size;
       bytes_read += chunk_size;
     }
-  //free (bounce);
+
 
   return bytes_read;
 }
@@ -444,6 +450,7 @@ inode_write_at (struct inode *inode, const void *buffer_, off_t size,
 					inode_expand(inode, offset + size - exist_length);
 	}
 
+	//printf("@@@@@@@@@@@%d %d \n",exist_length, offset);
   while (size > 0) 
     {
       /* Sector to write, starting byte offset within sector. */
@@ -457,12 +464,12 @@ inode_write_at (struct inode *inode, const void *buffer_, off_t size,
 
 			
 			/* Number of bytes to actually write into this sector. */
-      int chunk_size = size < min_left ? size : min_left;
+      size_t chunk_size = size < min_left ? size : min_left;
       if (chunk_size <= 0){
 	        break;
 			}
 		
-			cache_write(sector_idx, buffer + bytes_written, sector_ofs, chunk_size);
+			cache_write(sector_idx, (void *)buffer + bytes_written, sector_ofs  , chunk_size);
 			struct cache* write_cache = find_cache(sector_idx);
 			write_cache->open_cnt--;
 
@@ -474,7 +481,7 @@ inode_write_at (struct inode *inode, const void *buffer_, off_t size,
       offset += chunk_size;
       bytes_written += chunk_size;
     }
-  //free (bounce);
+
 
   return bytes_written;
 }
