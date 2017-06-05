@@ -196,7 +196,7 @@ bool inode_expand(struct inode * extend_inode, off_t extend_length)//LENGTH mean
    Returns true if successful.
    Returns false if memory or disk allocation fails. */
 bool
-inode_create (disk_sector_t sector, off_t length)
+inode_create (disk_sector_t sector, off_t length, bool is_dir)
 {
   struct inode_disk *disk_inode = NULL;
   bool success = false;
@@ -213,6 +213,7 @@ inode_create (disk_sector_t sector, off_t length)
 	
 	disk_inode->length = 0;/*file initial size is set to 0*/
 	disk_inode->magic = INODE_MAGIC;
+	disk_inode->is_dir = is_dir;
 	
 	cache_write(sector,disk_inode,0,DISK_SECTOR_SIZE);
 
@@ -413,12 +414,7 @@ inode_read_at (struct inode *inode, void *buffer_, off_t size, off_t offset)
 			struct cache * read_cache =  find_cache(sector_idx);
 			ASSERT(read_cache != NULL);
 			read_cache->open_cnt--;
-			
-			disk_sector_t ahead_sector = byte_to_sector(inode, offset);
-			if(ahead_sector != -1){
-//				printf("read ahead request happen!\n");
-				cache_read_ahead(ahead_sector);
-			}
+			/*need read_ahead later??*/
 			
 
       /* Advance. */

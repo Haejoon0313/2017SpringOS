@@ -14,12 +14,13 @@ struct inode_disk
 				disk_sector_t start;
 				off_t length;
 				unsigned magic;
+				bool is_dir;
 				
 				disk_sector_t direct[64];
 				disk_sector_t indirect;
 				disk_sector_t doubly_indirect;
 
-				uint32_t unused[59];
+				uint32_t unused[58];
 };
 
 struct inode{
@@ -36,7 +37,7 @@ struct inode{
 
 
 void inode_init (void);
-bool inode_create (disk_sector_t, off_t);
+bool inode_create (disk_sector_t, off_t, bool is_dir);
 struct inode *inode_open (disk_sector_t);
 struct inode *inode_reopen (struct inode *);
 disk_sector_t inode_get_inumber (const struct inode *);

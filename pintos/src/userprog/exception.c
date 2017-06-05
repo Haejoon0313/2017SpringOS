@@ -179,7 +179,6 @@ page_fault (struct intr_frame *f)
 					spte = get_sup_pte(&curr->sup_page_table,upage);
 					/*page fault is caused by STACK GROWTH*/
 					if(spte==NULL){
-									//printf("2222222222\n");
 									if(!user){
 										f->esp = curr->exception_esp;
 									}
@@ -193,7 +192,6 @@ page_fault (struct intr_frame *f)
 										if(!stack_check || !stack_set){
 														frame_free(kpage);
 										}else{
-										//				printf("33333333333333333\n");
 														page_insert(NULL,NULL,upage,NULL,NULL,true);
 														frame_table_lock_release();
 														return;

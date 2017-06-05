@@ -18,6 +18,9 @@
 #include "vm/frame.h"
 #include <hash.h>
 #endif
+#ifdef FILESYS
+#include "filesys/directory.h"
+#endif
 
 /* Random value for struct thread's `magic' member.
    Used to detect stack overflow.  See the big comment at the top
@@ -233,7 +236,11 @@ thread_create (const char *name, int priority,
 	//When new threads is hier priority than current thread, it needs switch
 	if(thread_current()->priority<priority)
 			thread_yield();
-				
+	
+	if(thread_current()->dir != NULL){
+					t->dir = dir_reopen(thread_current()->dir);
+	}
+
   return tid;
 }
 
@@ -530,6 +537,8 @@ init_thread (struct thread *t, const char *name, int priority)
 //	list_init(&t->mmap_list);
 	list_init(&t->file_list);
 	t->load = NULL;
+
+	t->dir = NULL;
 }
 
 /* Allocates a SIZE-byte frame at the top of thread T's stack and

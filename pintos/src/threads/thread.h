@@ -132,8 +132,12 @@ struct thread
 #ifdef VM
 		struct hash sup_page_table;
 		struct list mmap_list;
-#endif
 		mapid_t  mmap_count;
+#endif
+
+#ifdef FILESYS
+		struct dir *dir;
+#endif
 		void * exception_esp;
 
 

@@ -9,7 +9,9 @@
 #include "devices/disk.h"
 #include "filesys/cache.h"
 #include <list.h>
-//#include "filesys/cache.h"
+#include "threads/malloc.h"
+#include "threads/thread.h"
+
 /* The disk that contains the file system. */
 struct disk *filesys_disk;
 
@@ -29,6 +31,7 @@ filesys_init (bool format)
 	cache_init();
 	//list_init(&cache_list);
 
+	thread_current()->dir = dir_open_root();
   if (format) 
     do_format ();
 
@@ -39,25 +42,24 @@ filesys_init (bool format)
    to disk. */
 void
 filesys_done (void) 
-{
-
+{	
 	free_map_close ();
 	destroy_cache_list();
 
 }
-
+
 /* Creates a file named NAME with the given INITIAL_SIZE.
    Returns true if successful, false otherwise.
    Fails if a file named NAME already exists,
    or if internal memory allocation fails. */
 bool
-filesys_create (const char *name, off_t initial_size) 
+filesys_create (const char *name, off_t initial_size, bool is_dir) 
 {
   disk_sector_t inode_sector = 0;
   struct dir *dir = dir_open_root ();
   bool success = (dir != NULL
                   && free_map_allocate (1, &inode_sector)
-                  && inode_create (inode_sector, initial_size)
+                  && inode_create (inode_sector, initial_size, false)
                   && dir_add (dir, name, inode_sector));
   if (!success && inode_sector != 0) 
     free_map_release (inode_sector, 1);
@@ -100,7 +102,7 @@ filesys_remove (const char *name)
 
   return success;
 }
-
+
 /* Formats the file system. */
 static void
 do_format (void)

@@ -5,28 +5,14 @@
 #include "filesys/filesys.h"
 #include "filesys/inode.h"
 #include "threads/malloc.h"
-
-/* A directory. */
-struct dir 
-  {
-    struct inode *inode;                /* Backing store. */
-    off_t pos;                          /* Current position. */
-  };
-
-/* A single directory entry. */
-struct dir_entry 
-  {
-    disk_sector_t inode_sector;         /* Sector number of header. */
-    char name[NAME_MAX + 1];            /* Null terminated file name. */
-    bool in_use;                        /* In use or free? */
-  };
+#include "threads/thread.h"
 
 /* Creates a directory with space for ENTRY_CNT entries in the
    given SECTOR.  Returns true if successful, false on failure. */
 bool
 dir_create (disk_sector_t sector, size_t entry_cnt) 
 {
-  return inode_create (sector, entry_cnt * sizeof (struct dir_entry));
+  return inode_create (sector, entry_cnt * sizeof (struct dir_entry), true);
 }
 
 /* Opens and returns the directory for the given INODE, of which
@@ -172,6 +158,7 @@ dir_add (struct dir *dir, const char *name, disk_sector_t inode_sector)
   e.in_use = true;
   strlcpy (e.name, name, sizeof e.name);
   e.inode_sector = inode_sector;
+	e.parent = dir->inode->sector;
   success = inode_write_at (dir->inode, &e, sizeof e, ofs) == sizeof e;
 
  done:
@@ -233,4 +220,32 @@ dir_readdir (struct dir *dir, char name[NAME_MAX + 1])
         } 
     }
   return false;
+}
+
+struct dir * path_parsing(const char * path){
+				char * temp_path;
+				char * token, * rest;
+				struct dir * temp_dir;
+				struct thread * curr = thread_current();
+				struct inode * inode;
+
+				temp_path = malloc(strlen(path) + 1); // where to free? (HJ)
+				strlcpy(temp_path, path,strlen(path) + 1);
+
+				if(temp_path[0] == "/"){
+								temp_dir = dir_open_root();
+				}else{
+								temp_dir = dir_reopen(curr->dir);
+				}
+
+				for(token = strtok_r(temp_path, "/", &rest); token != NULL; token = strtok_r(NULL,"/", &rest)){
+								if(dir_lookup(temp_dir, token, &inode)){
+												dir_close(temp_dir);
+												temp_dir = dir_open(inode);
+								}else{
+												dir_close(temp_dir);
+												return NULL;
+								}
+				}
+				return temp_dir;
 }
