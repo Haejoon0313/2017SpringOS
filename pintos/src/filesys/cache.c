@@ -19,6 +19,9 @@
 
 static struct list cache_list;
 static struct lock cache_lock;
+static struct list read_ahead_list;
+static struct condition read_ahead_condition;
+static struct lock read_ahead_lock;
 
 static void thread_function_wb_frequently(void);
 
@@ -29,14 +32,19 @@ void cache_block_lock_release(struct cache* lock_cache);
 void cache_init(void){
 				list_init(&cache_list);
 				lock_init(&cache_lock);
-					
+				list_init(&read_ahead_list);
+				cond_init(&read_ahead_condition);
+				lock_init(&read_ahead_lock);
 		};
 
 
 void cache_thread_init(void){
 				/*make thread for frequently write behind*/
-			//thread_create("thread_function_wb_frequently",0,(thread_func* ) thread_function_wb_frequently,NULL);
+			thread_create("thread_function_wb_frequently",0,(thread_func* ) thread_function_wb_frequently,NULL);
+			
+			thread_create("thread_function_read_ahead",0,(thread_func *) read_ahead_manager,NULL);
 }
+
 
 /*make new cache entry.*/
 struct cache* make_cache(disk_sector_t sec_no, bool dirty){
@@ -143,6 +151,7 @@ void cache_read(disk_sector_t sec_no, void *read_buffer, int sector_offset, int 
 
 				read_cache = find_cache(sec_no);
 
+//				printf("buffer address to cache write : %x \n",read_buffer);
 				ASSERT(read_buffer != NULL);
 				if(read_cache == NULL){
 								read_cache = make_cache(sec_no,false);
@@ -152,7 +161,9 @@ void cache_read(disk_sector_t sec_no, void *read_buffer, int sector_offset, int 
 				}
 
 				cache_block_lock_acquire(read_cache);
-				read_cache->open_cnt++;				
+				read_cache->open_cnt++;
+				ASSERT(read_buffer!=NULL);
+				ASSERT(read_cache !=NULL);
 				memcpy(read_buffer,(uint8_t *)&read_cache->buffer + sector_offset, size);
 				cache_block_lock_release(read_cache);
 				cache_lock_release();
@@ -226,6 +237,74 @@ void destroy_cache_list(void){
 
 }
 
+
+void cache_read_ahead(disk_sector_t ahead_sec){
+	struct cache * ahead_cache = NULL;
+	struct ahead_entry * new_rae = NULL;
+	ahead_cache = find_cache(ahead_sec);
+
+	/*next sector is already in cache system. return*/
+	if(ahead_cache !=NULL){
+					return;
+	}
+
+	lock_acquire(&read_ahead_lock);
+
+	new_rae = calloc(1, sizeof * new_rae);
+
+	list_push_back(&read_ahead_list, &new_rae->el);
+	
+	cond_signal(&read_ahead_condition, &read_ahead_lock);
+
+	lock_release(&read_ahead_lock);
+
+}
+
+
+void read_ahead_manager(){
+	struct cache * read_ahead_cache = NULL;
+	struct ahead_entry * new_rae = NULL;
+	struct list_elem * elem;
+	disk_sector_t ra_sec;
+	while(1)
+	{
+		lock_acquire(&read_ahead_lock);
+
+		cond_wait(&read_ahead_condition, &read_ahead_lock);
+		
+		elem = list_begin(&read_ahead_list);
+
+		new_rae = list_entry(elem, struct ahead_entry, el);
+
+		ra_sec = new_rae->sector_idx;
+
+		read_ahead_cache = find_cache(ra_sec);
+		
+		list_remove(elem);
+		/*next sector is already in cache*/
+		if(read_ahead_cache != NULL)
+		{
+			free(new_rae);
+			return;	
+		}
+		cache_lock_acquire();
+
+		read_ahead_cache = make_cache(ra_sec, false);
+
+		disk_read(filesys_disk, ra_sec, read_ahead_cache->buffer);
+		
+		cache_lock_release();
+		//read_ahead_cache->open_cnt = 1;
+
+		free(new_rae);
+		return;
+	}
+	
+}
+
+
+
+
 void cache_lock_acquire(void){
 				lock_acquire(&cache_lock);
 }
@@ -236,9 +315,12 @@ void cache_lock_release(void){
 
 
 void cache_block_lock_acquire(struct cache* lock_cache){
-	lock_acquire(&lock_cache->lock);
+	ASSERT(lock_cache != NULL);
+				//lock_acquire(&lock_cache->lock);
 }
 
+
 void cache_block_lock_release(struct cache* lock_cache){
-	lock_release(&lock_cache->lock);
+	ASSERT(lock_cache !=NULL);
+				//lock_release(&lock_cache->lock);
 }

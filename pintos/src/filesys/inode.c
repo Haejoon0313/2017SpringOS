@@ -413,7 +413,12 @@ inode_read_at (struct inode *inode, void *buffer_, off_t size, off_t offset)
 			struct cache * read_cache =  find_cache(sector_idx);
 			ASSERT(read_cache != NULL);
 			read_cache->open_cnt--;
-			/*need read_ahead later??*/
+			
+			disk_sector_t ahead_sector = byte_to_sector(inode, offset);
+			if(ahead_sector != -1){
+//				printf("read ahead request happen!\n");
+				cache_read_ahead(ahead_sector);
+			}
 			
 
       /* Advance. */

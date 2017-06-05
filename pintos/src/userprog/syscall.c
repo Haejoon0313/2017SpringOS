@@ -3,11 +3,14 @@
 #include <syscall-nr.h>
 #include "threads/interrupt.h"
 #include "threads/thread.h"
-#include "../threads/vaddr.h"
-#include "../filesys/filesys.h"
+#include "threads/vaddr.h"
+#include "filesys/filesys.h"
 #include "../filesys/file.h"
 #include "userprog/process.h"
 #include "vm/page.h"
+#ifdef VM
+
+#endif
 #define ARG_MAX = 3;
 #define EXIT_ERROR = -1;
 static void syscall_handler (struct intr_frame *);
@@ -45,8 +48,8 @@ void check_address(void *addr){
 
 	//addreess mapping the virtual memory check
 	void *mapping_check = pagedir_get_page(thread_current()->pagedir, addr);
-	if (!mapping_check)
-					mapping_check = pagedir_get_page(thread_current()->pagedir, addr);
+	//if (!mapping_check)
+	//				mapping_check = pagedir_get_page(thread_current()->pagedir, addr);
 
 	if (mapping_check==NULL){
 					exit_process(-1);
@@ -191,10 +194,13 @@ syscall_handler (struct intr_frame *f UNUSED)
 						break;
 						}
 		case SYS_READ:{
+						//printf("@@@@@@@@@@@@@@@@@@@@@@@ %x \n",p+2);
+						void * buffer = (void *) *(p+2);
 						check_address(p+1);
-						if((*(p+2)==NULL) || !is_user_vaddr(*(p+2)))
-								exit_process(-1);						
-						//check_address(*(p+2));
+						//if((buffer==NULL) || !is_user_vaddr(buffer))// || (get_sup_pte(&thread_current()->sup_page_table,*(p+2))==NULL ))
+						//		exit_process(-1);						
+						
+						check_address(*(p+2));
 						check_address(p+3);
 						// check address valid
 
@@ -202,7 +208,8 @@ syscall_handler (struct intr_frame *f UNUSED)
 						int read_fd = *(p+1);
 						uint32_t* read_buffer = *(p+2);
 						unsigned read_size = *(p+3);
-						
+						int file_size;
+						//acquire_file_lock();
 						//Read from keyboard using input_getc()
 						if(read_fd == 0){						
 										for(i=0; i<read_size ; i++){
@@ -212,20 +219,22 @@ syscall_handler (struct intr_frame *f UNUSED)
 						//Read by open file.
 						}else{
 								struct open_file * read_file = get_file_by_fd(&thread_current()->file_list,read_fd);
-								if(read_file==NULL){
+								if(read_file == NULL || read_file->file == NULL){
 												f->eax = -1;
 								}else{
 										//read file and return the bytes actually read.
-										if(!is_user_vaddr(read_buffer)){
+										if(!is_user_vaddr(buffer)){
 														f->eax = -1;
 										}else{
+														acquire_file_lock();
 														
-														int file_size;
-														file_size = file_read(read_file->file,read_buffer,read_size);
+														file_size = file_read(read_file->file,buffer,read_size);
 														f->eax = file_size;
+														release_file_lock();
 										}
 								}
 						}
+						//release_file_lock();
 						break;
 						}
 

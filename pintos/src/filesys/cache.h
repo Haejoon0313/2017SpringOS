@@ -21,6 +21,15 @@ struct cache{
 				
 };
 
+struct ahead_entry{
+				disk_sector_t sector_idx;
+				struct list_elem el;							
+};
+
+
+
+
+
 void cache_init(void);
 
 struct cache* make_cache(disk_sector_t sec_no, bool dirty);
@@ -40,6 +49,11 @@ void destroy_cache_list(void);											/*remove the whole cache list*/
 void cache_read(disk_sector_t sec_no, void * read_buffer, int sector_offset, int size);
 
 void cache_write(disk_sector_t sec_no, void *read_buffer, int  sector_offset, int size);
+
+void cache_read_ahead(disk_sector_t sec);
+
+void read_ahead_manager(void);
+
 
 
 void all_cache_write_behind(void);
