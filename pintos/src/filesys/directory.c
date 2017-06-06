@@ -129,10 +129,10 @@ dir_add (struct dir *dir, const char *name, disk_sector_t inode_sector)
 {
   struct dir_entry e;
   off_t ofs;
-  bool success = false;
+	bool success = false;
   
   ASSERT (dir != NULL);
-  ASSERT (name != NULL);
+	ASSERT (name != NULL);
 
   /* Check NAME for validity. */
   if (*name == '\0' || strlen (name) > NAME_MAX)
@@ -141,6 +141,8 @@ dir_add (struct dir *dir, const char *name, disk_sector_t inode_sector)
   /* Check that NAME is not in use. */
   if (lookup (dir, name, NULL, NULL))
     goto done;
+
+	//PANIC("write slot before");
 
   /* Set OFS to offset of free slot.
      If there are no free slots, then it will be set to the
@@ -249,3 +251,4 @@ struct dir * path_parsing(const char * path){
 				}
 				return temp_dir;
 }
+

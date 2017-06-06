@@ -55,18 +55,71 @@ filesys_done (void)
 bool
 filesys_create (const char *name, off_t initial_size, bool is_dir) 
 {
-  disk_sector_t inode_sector = 0;
-  struct dir *dir = dir_open_root ();
-  bool success = (dir != NULL
-                  && free_map_allocate (1, &inode_sector)
-                  && inode_create (inode_sector, initial_size, false)
-                  && dir_add (dir, name, inode_sector));
-  if (!success && inode_sector != 0) 
-    free_map_release (inode_sector, 1);
-  dir_close (dir);
+	ASSERT(name != NULL);
 
-  return success;
+	char * temp_name;
+
+	temp_name = malloc(strlen(name) + 1);
+	strlcpy(temp_name, name, strlen(name) + 1);
+
+	char * temp_path = strrchr(temp_name, "/");
+	char * open_path = NULL;
+	char * target_name = NULL;
+	struct dir * current_dir;
+	struct inode * current_inode;
+	disk_sector_t sector;
+	bool result = false;
+
+	if(temp_path == NULL){
+					target_name = (char *) malloc(strlen(temp_name) + 1);
+
+					strlcpy(target_name, temp_name, strlen(temp_name) + 1);
+
+					current_dir = dir_reopen(thread_current()->dir);
+
+	}else{
+					size_t path_len = temp_path - temp_name;
+					open_path = (char *) malloc(path_len + 1);
+
+					strlcpy(open_path, name, path_len + 1);
+
+					size_t name_len = ((size_t)strlen(name)) - path_len;
+					target_name = (char *) malloc(name_len + 1);
+
+					strlcpy(target_name, temp_path + 1, name_len + 1);
+
+					current_dir = path_parsing(open_path);
+	}
+
+	if(current_dir == NULL){
+					result = false;
+	}else{
+					current_inode = dir_get_inode(current_dir);
+
+					if(!dir_lookup(current_dir, target_name, &current_inode)){
+									if(free_map_allocate(1, &sector)){
+													if(is_dir){
+																	result = dir_create(sector, 0);
+													}else{
+																	result = inode_create(sector, initial_size, false);
+													}
+
+													result &= dir_add(current_dir, target_name, sector);
+									}
+					}else{
+									inode_close(current_inode);
+					}
+
+					dir_close(current_dir);
+	}
+	
+	free(open_path);
+	free(target_name);
+	free(temp_name);
+
+	return result;
 }
+													
 
 /* Opens the file with the given NAME.
    Returns the new file if successful or a null pointer
@@ -76,17 +129,52 @@ filesys_create (const char *name, off_t initial_size, bool is_dir)
 struct file *
 filesys_open (const char *name)
 {
-//	printf("[a]file name : %s. I'm in filesys_open \n",name);
-  struct dir *dir = dir_open_root ();
-  struct inode *inode = NULL;
+	ASSERT(name != NULL);
+	char * temp_name;
 
-  if (dir != NULL)
-    dir_lookup (dir, name, &inode);
-  dir_close (dir);
+	temp_name = malloc(strlen(name) + 1);
+	strlcpy(temp_name, name, strlen(name) + 1);
 
-//	if(inode==NULL)
-//					printf("WHAT the hell the dir is? I'm in filesys.c\n");
-  return file_open (inode);
+	char * temp_path = strrchr(temp_name, "/");
+	char * open_path = NULL;
+	char * target_name = NULL;
+	struct dir * current_dir;
+	struct inode * current_inode;
+
+
+		if(temp_path == NULL){
+					target_name = (char *) malloc(strlen(temp_name) + 1);
+
+					strlcpy(target_name, temp_name, strlen(temp_name) + 1);
+
+					current_dir = dir_reopen(thread_current()->dir);
+
+	}else{
+					size_t path_len = temp_path - temp_name;
+					open_path = (char *) malloc(path_len + 1);
+
+					strlcpy(open_path, name, path_len + 1);
+
+					size_t name_len = ((size_t)strlen(name)) - path_len;
+					target_name = (char *) malloc(name_len + 1);
+
+					strlcpy(target_name, temp_path + 1, name_len + 1);
+
+					current_dir = path_parsing(open_path);
+	}
+
+	if(current_dir == NULL){
+					free(open_path);
+					free(target_name);
+					return NULL;
+	}else{
+					dir_lookup(current_dir, target_name, &current_inode);
+					dir_close(current_dir);
+					free(open_path);
+					free(target_name);
+					return file_open(current_inode);
+	}
+
 }
 
 /* Deletes the file named NAME.
