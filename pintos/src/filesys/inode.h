@@ -15,12 +15,12 @@ struct inode_disk
 				off_t length;
 				unsigned magic;
 				bool is_dir;
-				
+				disk_sector_t parent;
 				disk_sector_t direct[64];
 				disk_sector_t indirect;
 				disk_sector_t doubly_indirect;
 
-				uint32_t unused[58];
+				uint32_t unused[57];
 };
 
 struct inode{
@@ -54,4 +54,6 @@ bool inode_expand(struct inode * extend_inode, off_t extend_length);
 int inode_to_inumber(struct inode * inode);
 
 bool inode_dir_check(struct inode * inode);
+
+disk_sector_t inode_parent (struct inode *);
 #endif /* filesys/inode.h */

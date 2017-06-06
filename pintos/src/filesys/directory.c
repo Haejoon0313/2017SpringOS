@@ -7,7 +7,6 @@
 #include "threads/malloc.h"
 #include "threads/thread.h"
 
-
 /* Creates a directory with space for ENTRY_CNT entries in the
    given SECTOR.  Returns true if successful, false on failure. */
 bool
@@ -111,10 +110,15 @@ dir_lookup (const struct dir *dir, const char *name,
   ASSERT (dir != NULL);
   ASSERT (name != NULL);
 
-  if (lookup (dir, name, &e, NULL))
+	if(!strcmp(name, ".")){
+		*inode = inode_reopen(dir->inode);
+	}else if(!strcmp(name, "..")){
+		*inode = inode_open(inode_parent(dir->inode));
+	}else if(lookup (dir, name, &e, NULL)){
     *inode = inode_open (e.inode_sector);
-  else
+	}else{
     *inode = NULL;
+	}
 
   return *inode != NULL;
 }
@@ -161,7 +165,6 @@ dir_add (struct dir *dir, const char *name, disk_sector_t inode_sector)
   e.in_use = true;
   strlcpy (e.name, name, sizeof e.name);
   e.inode_sector = inode_sector;
-	e.parent = dir->inode->sector;
   success = inode_write_at (dir->inode, &e, sizeof e, ofs) == sizeof e;
 
  done:
@@ -261,23 +264,16 @@ readdir_manager(struct file * read_file ,char name[15]){
 
 	read_dir->inode = readdir_inode;
 	off_t origin_pos = file_tell(read_file);
-
- while(inode_read_at(readdir_inode, &de, sizeof de, origin_pos) == sizeof de)
-{
-		read_dir->pos += sizeof de;
-		if(de->in_use){
-			strlcpy(name, de->name, 15);
-			file_seek(read_file, origin_pos);
-			return true;
-		}
-		else
-			return false;
+	
+	while(inode_read_at(readdir_inode, &de, sizeof de, origin_pos) == sizeof de)
+	{
+					read_dir->pos += sizeof de;
+					if(de->in_use){
+									strlcpy(name, de->name, 15);
+									file_seek(read_file, origin_pos);
+									return true;
+					}
 	}
 	return false;
-
-
 }
-
-
-
 

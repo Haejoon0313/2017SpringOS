@@ -434,27 +434,36 @@ syscall_handler (struct intr_frame *f UNUSED)
 						check_address(p+1);
 						char * new_dir = *(p+1);
 
-						f->eax = filesys_create(new_dir, 0, true);
+						acquire_file_lock();
+
+						if(filesys_create(new_dir, 0, true)){
+										release_file_lock();
+										f->eax = true;
+						}else{
+										release_file_lock();
+										f->eax = false;
+						}
+
 						break;
 						}
 		case SYS_READDIR:
 						{
 						check_address(p+1);
-						check_address(*(p+2));
+						//check_address(*(p+2));
 						check_address(p+2);
 						struct dir *read_dir;
 						bool success;
 
 						int fd = *(p+1);
 						char * name = NULL;
-						name= *(p+2); 
-			
+						name= *(p+2);
+
 						acquire_file_lock();
 						struct open_file *  read_temp = get_file_by_fd(&thread_current()->file_list, fd);
 						struct file * read_file = read_temp->file;
-				
+
 						if((read_temp == NULL) || (read_file == NULL))
-						{	
+						{
 							exit_process(-1);
 							break;
 						}
@@ -473,7 +482,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 							
 						if (check_file == NULL)
 						{
-							exit_process(-1);
+							f->eax = -1;
 							break;
 						}
 
@@ -489,7 +498,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 						if(number_file == NULL)
 						{
-							exit_process(-1);
+							f->eax = -1;
 							break;
 						}
 					

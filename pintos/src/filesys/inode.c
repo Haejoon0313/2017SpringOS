@@ -201,6 +201,7 @@ inode_create (disk_sector_t sector, off_t length, bool is_dir)
 {
   struct inode_disk *disk_inode = NULL;
   bool success = false;
+	struct thread * curr = thread_current();
 
   ASSERT (length >= 0);
 
@@ -215,6 +216,8 @@ inode_create (disk_sector_t sector, off_t length, bool is_dir)
 	disk_inode->length = 0;/*file initial size is set to 0*/
 	disk_inode->magic = INODE_MAGIC;
 	disk_inode->is_dir = is_dir;
+	struct inode * temp = dir_get_inode(curr->dir);
+	disk_inode->parent = temp->sector;
 	
 	cache_write(sector,disk_inode,0,DISK_SECTOR_SIZE);
 
@@ -558,3 +561,10 @@ inode_dir_check(struct inode * check_inode)
 
 }
 
+disk_sector_t inode_parent(struct inode * inode){
+	disk_sector_t temp;
+
+	cache_read(inode->sector, &temp, 16, sizeof(disk_sector_t));
+
+	return temp;
+}

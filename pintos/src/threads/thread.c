@@ -333,6 +333,10 @@ thread_exit (void)
 {
   ASSERT (!intr_context ());
 
+#ifdef FILESYS
+	dir_close(thread_current()->dir);
+#endif
+
 #ifdef USERPROG
   process_exit ();
 #endif

@@ -58,9 +58,10 @@ filesys_create (const char *name, off_t initial_size, bool is_dir)
 	ASSERT(name != NULL);
 
 	char * temp_name;
+	size_t input_len = strlen(name);
 
-	temp_name = malloc(strlen(name) + 1);
-	strlcpy(temp_name, name, strlen(name) + 1);
+	temp_name = malloc(input_len + 1);
+	strlcpy(temp_name, name, input_len + 1);
 
 	char * temp_path = strrchr(temp_name, "/");
 	char * open_path = NULL;
@@ -71,9 +72,9 @@ filesys_create (const char *name, off_t initial_size, bool is_dir)
 	bool result = false;
 
 	if(temp_path == NULL){
-					target_name = (char *) malloc(strlen(temp_name) + 1);
+					target_name = (char *) malloc(input_len + 1 );
 
-					strlcpy(target_name, temp_name, strlen(temp_name) + 1);
+					strlcpy(target_name, temp_name, input_len + 1);
 
 					current_dir = dir_reopen(thread_current()->dir);
 
@@ -83,7 +84,7 @@ filesys_create (const char *name, off_t initial_size, bool is_dir)
 
 					strlcpy(open_path, name, path_len + 1);
 
-					size_t name_len = ((size_t)strlen(name)) - path_len;
+					size_t name_len = input_len - path_len;
 					target_name = (char *) malloc(name_len + 1);
 
 					strlcpy(target_name, temp_path + 1, name_len + 1);
@@ -131,9 +132,10 @@ filesys_open (const char *name)
 {
 	ASSERT(name != NULL);
 	char * temp_name;
+	size_t input_len = strlen(name);
 
-	temp_name = malloc(strlen(name) + 1);
-	strlcpy(temp_name, name, strlen(name) + 1);
+	temp_name = malloc(input_len + 1);
+	strlcpy(temp_name, name, input_len + 1);
 
 	char * temp_path = strrchr(temp_name, "/");
 	char * open_path = NULL;
@@ -142,10 +144,10 @@ filesys_open (const char *name)
 	struct inode * current_inode;
 
 
-		if(temp_path == NULL){
-					target_name = (char *) malloc(strlen(temp_name) + 1);
+	if(temp_path == NULL){
+					target_name = (char *) malloc(input_len + 1);
 
-					strlcpy(target_name, temp_name, strlen(temp_name) + 1);
+					strlcpy(target_name, temp_name, input_len + 1);
 
 					current_dir = dir_reopen(thread_current()->dir);
 
@@ -155,7 +157,7 @@ filesys_open (const char *name)
 
 					strlcpy(open_path, name, path_len + 1);
 
-					size_t name_len = ((size_t)strlen(name)) - path_len;
+					size_t name_len = input_len - path_len;
 					target_name = (char *) malloc(name_len + 1);
 
 					strlcpy(target_name, temp_path + 1, name_len + 1);
@@ -166,12 +168,20 @@ filesys_open (const char *name)
 	if(current_dir == NULL){
 					free(open_path);
 					free(target_name);
+					free(temp_name);
 					return NULL;
 	}else{
+					if(target_name[0]==0){
+									free(open_path);
+									free(target_name);
+									free(temp_name);
+									return file_open(dir_get_inode(current_dir));
+					}
 					dir_lookup(current_dir, target_name, &current_inode);
 					dir_close(current_dir);
 					free(open_path);
 					free(target_name);
+					free(temp_name);
 					return file_open(current_inode);
 	}
 
@@ -184,11 +194,66 @@ filesys_open (const char *name)
 bool
 filesys_remove (const char *name) 
 {
-  struct dir *dir = dir_open_root ();
-  bool success = dir != NULL && dir_remove (dir, name);
-  dir_close (dir); 
+  if(name == NULL){
+					return false;
+	}
+	char * temp_name;
+	size_t input_len = strlen(name);
+	struct thread * curr = thread_current();
 
-  return success;
+	temp_name = malloc(input_len + 1);
+	strlcpy(temp_name, name, input_len + 1);
+
+	char * temp_path = strrchr(temp_name, "/");
+	char * open_path = NULL;
+	char * target_name = NULL;
+	struct dir * current_dir;
+	struct inode * current_inode;
+	disk_sector_t sector;
+	bool result = false;
+
+	if(temp_path == NULL){
+					target_name = (char *) malloc(input_len + 1 );
+
+					strlcpy(target_name, temp_name, input_len + 1);
+
+					current_dir = dir_reopen(curr->dir);
+
+	}else{
+					size_t path_len = temp_path - temp_name;
+					open_path = (char *) malloc(path_len + 1);
+
+					strlcpy(open_path, name, path_len + 1);
+
+					size_t name_len = input_len - path_len;
+					target_name = (char *) malloc(name_len + 1);
+
+					strlcpy(target_name, temp_path + 1, name_len + 1);
+
+					current_dir = path_parsing(open_path);
+	}
+
+	if(current_dir == NULL){
+					result = false;
+	}else{
+					dir_lookup(current_dir, target_name, &current_inode);
+
+					if(current_inode == dir_get_inode(curr->dir)){
+									result = false;
+					}else{
+									result = dir_remove(current_dir, target_name);
+					}
+
+					dir_close(current_dir);
+					inode_close(current_inode);
+	}
+
+	free(open_path);
+	free(target_name);
+	free(temp_name);
+
+	return result;
+
 }
 
 /* Formats the file system. */
