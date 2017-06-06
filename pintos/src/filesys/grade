@@ -1,4 +1,4 @@
-TOTAL TESTING SCORE: 73.1%
+TOTAL TESTING SCORE: 76.6%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -6,16 +6,16 @@ SUMMARY BY TEST SET
 
 Test Set                                      Pts Max  % Ttl  % Max
 --------------------------------------------- --- --- ------ ------
-tests/filesys/extended/Rubric.functionality    22/ 34  19.4%/ 30.0%
+tests/filesys/extended/Rubric.functionality    26/ 34  22.9%/ 30.0%
 tests/filesys/extended/Rubric.robustness        7/ 10  10.5%/ 15.0%
 tests/filesys/extended/Rubric.persistence       0/ 23   0.0%/ 20.0%
 tests/filesys/base/Rubric                      30/ 30  20.0%/ 20.0%
-tests/userprog/Rubric.functionality           108/108  10.0%/ 10.0%
-tests/userprog/Rubric.robustness               74/ 88   4.2%/  5.0%
-tests/vm/Rubric.functionality                  51/ 55   7.4%/  8.0%
-tests/vm/Rubric.robustness                     22/ 28   1.6%/  2.0%
+tests/userprog/Rubric.functionality           103/108   9.5%/ 10.0%
+tests/userprog/Rubric.robustness               85/ 88   4.8%/  5.0%
+tests/vm/Rubric.functionality                  48/ 55   7.0%/  8.0%
+tests/vm/Rubric.robustness                     25/ 28   1.8%/  2.0%
 --------------------------------------------- --- --- ------ ------
-Total                                                  73.1%/110.0%
+Total                                                  76.6%/110.0%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -23,8 +23,8 @@ SUMMARY OF INDIVIDUAL TESTS
 
 Functionality of extended file system (tests/filesys/extended/Rubric.functionality):
 	- Test directory support.
-	  ** 0/ 1 tests/filesys/extended/dir-mkdir
-	  ** 0/ 3 tests/filesys/extended/dir-mk-tree
+	     1/ 1 tests/filesys/extended/dir-mkdir
+	     3/ 3 tests/filesys/extended/dir-mk-tree
 
 	     1/ 1 tests/filesys/extended/dir-rmdir
 	  ** 0/ 3 tests/filesys/extended/dir-rm-tree
@@ -49,8 +49,8 @@ Functionality of extended file system (tests/filesys/extended/Rubric.functionali
 	     5/ 5 tests/filesys/extended/syn-rw
 
 	- Section summary.
-	     12/ 16 tests passed
-	     22/ 34 points subtotal
+	     14/ 16 tests passed
+	     26/ 34 points subtotal
 
 Robustness of file system (tests/filesys/extended/Rubric.robustness):
 	     1/ 1 tests/filesys/extended/dir-empty-name
@@ -155,7 +155,7 @@ Functionality of system calls (tests/userprog/Rubric.functionality):
 	     5/ 5 tests/userprog/exec-arg
 
 	- Test "wait" system call.
-	     5/ 5 tests/userprog/wait-simple
+	  ** 0/ 5 tests/userprog/wait-simple
 	     5/ 5 tests/userprog/wait-twice
 
 	- Test "exit" system call.
@@ -173,8 +173,8 @@ Functionality of system calls (tests/userprog/Rubric.functionality):
 	     3/ 3 tests/userprog/rox-multichild
 
 	- Section summary.
-	     28/ 28 tests passed
-	    108/108 points subtotal
+	     27/ 28 tests passed
+	    103/108 points subtotal
 
 Robustness of system calls (tests/userprog/Rubric.robustness):
 	- Test robustness of file descriptor handling.
@@ -189,22 +189,22 @@ Robustness of system calls (tests/userprog/Rubric.robustness):
 	     2/ 2 tests/userprog/multi-child-fd
 
 	- Test robustness of pointer handling.
-	  ** 0/ 3 tests/userprog/create-bad-ptr
-	  ** 0/ 3 tests/userprog/exec-bad-ptr
-	  ** 0/ 3 tests/userprog/open-bad-ptr
+	     3/ 3 tests/userprog/create-bad-ptr
+	     3/ 3 tests/userprog/exec-bad-ptr
+	     3/ 3 tests/userprog/open-bad-ptr
 	     3/ 3 tests/userprog/read-bad-ptr
-	  ** 0/ 3 tests/userprog/write-bad-ptr
+	     3/ 3 tests/userprog/write-bad-ptr
 
 	- Test robustness of buffer copying across page boundaries.
 	     3/ 3 tests/userprog/create-bound
 	     3/ 3 tests/userprog/open-boundary
-	     3/ 3 tests/userprog/read-boundary
+	  ** 0/ 3 tests/userprog/read-boundary
 	     3/ 3 tests/userprog/write-boundary
 
 	- Test handling of null pointer and empty strings.
 	     2/ 2 tests/userprog/create-null
 	     2/ 2 tests/userprog/open-null
-	  ** 0/ 2 tests/userprog/open-empty
+	     2/ 2 tests/userprog/open-empty
 
 	- Test robustness of system call implementation.
 	     3/ 3 tests/userprog/sc-bad-arg
@@ -226,13 +226,13 @@ Robustness of system calls (tests/userprog/Rubric.robustness):
 	     1/ 1 tests/userprog/bad-jump2
 
 	- Section summary.
-	     29/ 34 tests passed
-	     74/ 88 points subtotal
+	     33/ 34 tests passed
+	     85/ 88 points subtotal
 
 Functionality of virtual memory subsystem (tests/vm/Rubric.functionality):
 	- Test stack growth.
 	     3/ 3 tests/vm/pt-grow-stack
-	     3/ 3 tests/vm/pt-grow-stk-sc
+	  ** 0/ 3 tests/vm/pt-grow-stk-sc
 	     3/ 3 tests/vm/pt-big-stk-obj
 	     3/ 3 tests/vm/pt-grow-pusha
 
@@ -261,13 +261,13 @@ Functionality of virtual memory subsystem (tests/vm/Rubric.functionality):
 	     2/ 2 tests/vm/mmap-remove
 
 	- Section summary.
-	     19/ 20 tests passed
-	     51/ 55 points subtotal
+	     18/ 20 tests passed
+	     48/ 55 points subtotal
 
 Robustness of virtual memory subsystem (tests/vm/Rubric.robustness):
 	- Test robustness of page table support.
 	     2/ 2 tests/vm/pt-bad-addr
-	  ** 0/ 3 tests/vm/pt-bad-read
+	     3/ 3 tests/vm/pt-bad-read
 	     2/ 2 tests/vm/pt-write-code
 	  ** 0/ 3 tests/vm/pt-write-code2
 	     4/ 4 tests/vm/pt-grow-bad
@@ -287,151 +287,22 @@ Robustness of virtual memory subsystem (tests/vm/Rubric.robustness):
 
 
 	- Section summary.
-	     12/ 14 tests passed
-	     22/ 28 points subtotal
+	     13/ 14 tests passed
+	     25/ 28 points subtotal
 
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/filesys/extended/dir-mkdir FAILURE:
-
-run: open "b": FAILED
-
-OUTPUT FROM tests/filesys/extended/dir-mkdir:
-
-Copying tests/filesys/extended/dir-mkdir into /tmp/y4BkBYNhTF.dsk...
-Copying tests/filesys/extended/tar into /tmp/y4BkBYNhTF.dsk...
-Writing command line to /tmp/XA505DZfqJ.dsk...
-qemu -hda /tmp/XA505DZfqJ.dsk -hdb tmp.dsk -hdc /tmp/y4BkBYNhTF.dsk -hdd /tmp/lfaUKQbEMZ.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put dir-mkdir put tar run dir-mkdir
-Pintos booting with 4,096 kB RAM...
-373 pages available in kernel pool.
-372 pages available in user pool.
-Calibrating timer...  58,880,000 loops/s.
-hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 159 sector (79 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Formatting file system...done.
-Boot complete.
-Putting 'dir-mkdir' into the file system...
-Putting 'tar' into the file system...
-Executing 'dir-mkdir':
-(dir-mkdir) begin
-(dir-mkdir) mkdir "a"
-(dir-mkdir) create "a/b"
-(dir-mkdir) chdir "a"
-(dir-mkdir) open "b"
-(dir-mkdir) open "b": FAILED
-dir-mkdir: exit(1)
-Execution of 'dir-mkdir' complete.
-Timer: 85 ticks
-Thread: 30 idle ticks, 51 kernel ticks, 4 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 171 writes
-hd1:0: 159 reads, 0 writes
-hd1:1: 0 reads, 0 writes
-Console: 1053 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/filesys/extended/dir-mk-tree FAILURE:
-
-Kernel panic in run: PANIC at ../../filesys/cache.c:58 in make_cache(): assertion `evict_success' failed.
-Call stack: 0xc01077b6 0xc010eed6 0xc010f159 0xc010e4a6 0xc010d4b8 0xc010d6af 0xc010c895 0xc010b883 0xc0101995 0xc0101b6b 0x804a3d9 0x8048a6f 0x80488fa 0x80480ca 0x80487ef 0x8048aa4
-Translation of call stack:
-In kernel.o:
-0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc010eed6: make_cache (.../../../filesys/cache.c:60)
-0xc010f159: cache_read (...../../filesys/cache.c:157)
-0xc010e4a6: inode_read_at (...../../filesys/inode.c:418)
-0xc010d4b8: lookup (...../filesys/directory.c:87)
-0xc010d6af: dir_add (..../filesys/directory.c:159)
-0xc010c895: filesys_create (.../../filesys/filesys.c:108)
-0xc010b883: syscall_handler (...../userprog/syscall.c:142)
-0xc0101995: intr_handler (..../threads/interrupt.c:361)
-0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
-In tests/filesys/extended/dir-mk-tree:
-0x0804a3d9: create (.../../lib/user/syscall.c:93)
-0x08048a6f: do_touch (...sys/extended/mk-tree.c:66)
-0x080488fa: make_tree (...sys/extended/mk-tree.c:30)
-0x080480ca: test_main (...extended/dir-mk-tree.c:11)
-0x080487ef: main (...ild/../../tests/main.c:13)
-0x08048aa4: _start (.../../../lib/user/entry.c:9)
-Translations of user virtual addresses above are based on a guess at
-the binary to use.  If this guess is incorrect, then those
-translations will be misleading.
-
-OUTPUT FROM tests/filesys/extended/dir-mk-tree:
-
-Copying tests/filesys/extended/dir-mk-tree into /tmp/092i3NcZTP.dsk...
-Copying tests/filesys/extended/tar into /tmp/092i3NcZTP.dsk...
-Writing command line to /tmp/Q0ftgVwV9W.dsk...
-qemu -hda /tmp/Q0ftgVwV9W.dsk -hdb tmp.dsk -hdc /tmp/092i3NcZTP.dsk -hdd /tmp/6vYP6gRvEy.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put dir-mk-tree put tar run dir-mk-tree
-Pintos booting with 4,096 kB RAM...
-373 pages available in kernel pool.
-372 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 162 sector (81 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Formatting file system...done.
-Boot complete.
-Putting 'dir-mk-tree' into the file system...
-Putting 'tar' into the file system...
-Executing 'dir-mk-tree':
-(dir-mk-tree) begin
-(dir-mk-tree) creating /0/0/0/0 through /3/2/2/3...
-Kernel PANIC at ../../filesys/cache.c:58 in make_cache(): assertion `evict_success' failed.
-Call stack: 0xc01077b6 0xc010eed6 0xc010f159 0xc010e4a6 0xc010d4b8 0xc010d6af 0xc010c895 0xc010b883 0xc0101995 0xc0101b6b 0x804a3d9 0x8048a6f 0x80488fa 0x80480ca 0x80487ef 0x8048aa4.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../threads/synch.c:242 in lock_acquire().
-Kernel command line: -q -f put dir-mk-tree put tar run dir-mk-tree
-Pintos booting with 4,096 kB RAM...
-[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/dir-rm-tree FAILURE:
 
-Kernel panic in run: PANIC at ../../filesys/cache.c:58 in make_cache(): assertion `evict_success' failed.
-Call stack: 0xc01077b6 0xc010eed6 0xc010f159 0xc010e4a6 0xc010d4b8 0xc010d6af 0xc010c895 0xc010b883 0xc0101995 0xc0101b6b 0x804a5e9 0x8048c7f 0x8048b0a 0x80480ca 0x8048a07 0x8048cb4
-Translation of call stack:
-In kernel.o:
-0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc010eed6: make_cache (.../../../filesys/cache.c:60)
-0xc010f159: cache_read (...../../filesys/cache.c:157)
-0xc010e4a6: inode_read_at (...../../filesys/inode.c:418)
-0xc010d4b8: lookup (...../filesys/directory.c:87)
-0xc010d6af: dir_add (..../filesys/directory.c:159)
-0xc010c895: filesys_create (.../../filesys/filesys.c:108)
-0xc010b883: syscall_handler (...../userprog/syscall.c:142)
-0xc0101995: intr_handler (..../threads/interrupt.c:361)
-0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
-In tests/filesys/extended/dir-rm-tree:
-0x0804a5e9: create (.../../lib/user/syscall.c:93)
-0x08048c7f: do_touch (...sys/extended/mk-tree.c:66)
-0x08048b0a: make_tree (...sys/extended/mk-tree.c:30)
-0x080480ca: test_main (...extended/dir-rm-tree.c:17)
-0x08048a07: main (...ild/../../tests/main.c:13)
-0x08048cb4: _start (.../../../lib/user/entry.c:9)
-Translations of user virtual addresses above are based on a guess at
-the binary to use.  If this guess is incorrect, then those
-translations will be misleading.
+run: remove "/0/0/0/0": FAILED
 
 OUTPUT FROM tests/filesys/extended/dir-rm-tree:
 
-Copying tests/filesys/extended/dir-rm-tree into /tmp/wV5TZsf7rb.dsk...
-Copying tests/filesys/extended/tar into /tmp/wV5TZsf7rb.dsk...
-Writing command line to /tmp/IPUZqSAahM.dsk...
-qemu -hda /tmp/IPUZqSAahM.dsk -hdb tmp.dsk -hdc /tmp/wV5TZsf7rb.dsk -hdd /tmp/ZRPYyKv6Nl.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/dir-rm-tree into /tmp/9o9aCLg6Cl.dsk...
+Copying tests/filesys/extended/tar into /tmp/9o9aCLg6Cl.dsk...
+Writing command line to /tmp/XxN8UXWMOq.dsk...
+qemu -hda /tmp/XxN8UXWMOq.dsk -hdb tmp.dsk -hdc /tmp/9o9aCLg6Cl.dsk -hdd /tmp/61SdC3z8rp.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put dir-rm-tree put tar run dir-rm-tree
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -448,22 +319,29 @@ Putting 'tar' into the file system...
 Executing 'dir-rm-tree':
 (dir-rm-tree) begin
 (dir-rm-tree) creating /0/0/0/0 through /3/2/2/3...
-Kernel PANIC at ../../filesys/cache.c:58 in make_cache(): assertion `evict_success' failed.
-Call stack: 0xc01077b6 0xc010eed6 0xc010f159 0xc010e4a6 0xc010d4b8 0xc010d6af 0xc010c895 0xc010b883 0xc0101995 0xc0101b6b 0x804a5e9 0x8048c7f 0x8048b0a 0x80480ca 0x8048a07 0x8048cb4.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../threads/synch.c:242 in lock_acquire().
-Kernel command line: -q -f put dir-rm-tree put tar run dir-rm-tree
-Pintos booting with 4,096 kB RAM...
-[...details of reboot(s) omitted...]
+(dir-rm-tree) open "/0/2/0/3"
+(dir-rm-tree) close "/0/2/0/3"
+(dir-rm-tree) removing /0/0/0/0 through /3/2/2/3...
+(dir-rm-tree) remove "/0/0/0/0": FAILED
+dir-rm-tree: exit(1)
+Execution of 'dir-rm-tree' complete.
+Timer: 182 ticks
+Thread: 30 idle ticks, 51 kernel ticks, 101 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 99 reads, 423 writes
+hd1:0: 165 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1156 characters output
+Keyboard: 0 keys pressed
+Exception: 4 page faults
+Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/dir-vine FAILURE:
 
 Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc01077b6 0xc0102b2d 0xc01012f4 0xc0109b81 0xc0100ca7 0xc010c218 0xc010b645 0xc0101995 0xc0101b6b 0xc010d9ac 0xc010c00a 0xc0101995 0xc0101b6b 0x804a775 0x8048310 0x8048cfb 0x8048d28
+Call stack: 0xc01077b6 0xc0102b2d 0xc01012f4 0xc0109b81 0xc0100ca7 0xc010c282 0xc010b645 0xc0101995 0xc0101b6b 0xc0106c26 0xc01072f6 0xc010d8d1 0xc010c020 0x14 0xc013540c 0xc013580c 0xc013c00c
 Translation of call stack:
 In kernel.o:
 0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
@@ -471,34 +349,30 @@ In kernel.o:
 0xc01012f4: acquire_file_lock (..../../threads/thread.c:662)
 0xc0109b81: process_exit (...../userprog/process.c:185)
 0xc0100ca7: thread_exit (..../../threads/thread.c:345)
-0xc010c218: close_all_filelist (...../userprog/syscall.c:579)
+0xc010c282: close_all_filelist (...../userprog/syscall.c:590)
 0xc010b645: page_fault (.../userprog/exception.c:331)
 0xc0101995: intr_handler (..../threads/interrupt.c:361)
 0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
-0xc010d9ac: readdir_manager (..../filesys/directory.c:265)
-0xc010c00a: syscall_handler (...../userprog/syscall.c:470)
-0xc0101995: intr_handler (..../threads/interrupt.c:361)
-0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
-In tests/filesys/extended/dir-vine:
-0x0804a775: readdir (...../lib/user/syscall.c:171)
-0x08048310: test_main (...ys/extended/dir-vine.c:56)
-0x08048cfb: main (...ild/../../tests/main.c:13)
-0x08048d28: _start (.../../../lib/user/entry.c:9)
-Translations of user virtual addresses above are based on a guess at
-the binary to use.  If this guess is incorrect, then those
-translations will be misleading.
+0xc0106c26: memcpy (...ild/../../lib/string.c:16)
+0xc01072f6: strlcpy (...ld/../../lib/string.c:340)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc013540c: (unknown)
+0xc013580c: (unknown)
+0xc013c00c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/dir-vine:
 
-Copying tests/filesys/extended/dir-vine into /tmp/MbnCTaYLPo.dsk...
-Copying tests/filesys/extended/tar into /tmp/MbnCTaYLPo.dsk...
-Writing command line to /tmp/LzWiv9xf0I.dsk...
-qemu -hda /tmp/LzWiv9xf0I.dsk -hdb tmp.dsk -hdc /tmp/MbnCTaYLPo.dsk -hdd /tmp/iCEKOEBZYS.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/dir-vine into /tmp/XWGuyNqXbK.dsk...
+Copying tests/filesys/extended/tar into /tmp/XWGuyNqXbK.dsk...
+Writing command line to /tmp/LwCZJGkqXS.dsk...
+qemu -hda /tmp/LwCZJGkqXS.dsk -hdb tmp.dsk -hdc /tmp/XWGuyNqXbK.dsk -hdd /tmp/0ykFDcFrFD.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put dir-vine put tar run dir-vine
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
 372 pages available in user pool.
-Calibrating timer...  52,377,600 loops/s.
+Calibrating timer...  78,540,800 loops/s.
 hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 163 sector (81 kB) disk, model "QEMU HARDDISK", serial "QM00003"
@@ -512,7 +386,7 @@ Executing 'dir-vine':
 (dir-vine) creating many levels of files and directories...
 dir-vine: exit(-1)
 Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc01077b6 0xc0102b2d 0xc01012f4 0xc0109b81 0xc0100ca7 0xc010c218 0xc010b645 0xc0101995 0xc0101b6b 0xc010d9ac 0xc010c00a 0xc0101995 0xc0101b6b 0x804a775 0x8048310 0x8048cfb 0x8048d28.
+Call stack: 0xc01077b6 0xc0102b2d 0xc01012f4 0xc0109b81 0xc0100ca7 0xc010c282 0xc010b645 0xc0101995 0xc0101b6b 0xc0106c26 0xc01072f6 0xc010d8d1 0xc010c020 0x14 0xc013540c 0xc013580c 0xc013c00c.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -525,14 +399,97 @@ Pintos booting with 4,096 kB RAM...
 
 DETAILS OF tests/filesys/extended/dir-rm-cwd FAILURE:
 
-run: open "/": FAILED
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (dir-rm-cwd) begin
+  (dir-rm-cwd) open "/"
+  (dir-rm-cwd) mkdir "a"
+  (dir-rm-cwd) open "/a"
+  (dir-rm-cwd) verify "/a" is empty
+  (dir-rm-cwd) "/" and "/a" must have different inumbers
+  (dir-rm-cwd) chdir "a"
+  (dir-rm-cwd) try to remove "/a"
+  (dir-rm-cwd) remove failed
+  (dir-rm-cwd) try to remove "../a" (must fail)
+  (dir-rm-cwd) try to remove ".././a" (must fail)
+  (dir-rm-cwd) try to remove "/./a" (must fail)
+  (dir-rm-cwd) open "/a"
+  (dir-rm-cwd) open "."
+  (dir-rm-cwd) "/a" and "." must have same inumber
+  (dir-rm-cwd) "/" and "/a" must have different inumbers
+  (dir-rm-cwd) chdir "/a"
+  (dir-rm-cwd) open "."
+  (dir-rm-cwd) "." must have same inumber as before
+  (dir-rm-cwd) chdir "/"
+  (dir-rm-cwd) try to remove "a" (must fail: still open)
+  (dir-rm-cwd) verify "/a" is empty
+  (dir-rm-cwd) end
+Differences in `diff -u' format:
+  (dir-rm-cwd) begin
+  (dir-rm-cwd) open "/"
+  (dir-rm-cwd) mkdir "a"
+  (dir-rm-cwd) open "/a"
+  (dir-rm-cwd) verify "/a" is empty
+- (dir-rm-cwd) "/" and "/a" must have different inumbers
+- (dir-rm-cwd) chdir "a"
+- (dir-rm-cwd) try to remove "/a"
+- (dir-rm-cwd) remove failed
+- (dir-rm-cwd) try to remove "../a" (must fail)
+- (dir-rm-cwd) try to remove ".././a" (must fail)
+- (dir-rm-cwd) try to remove "/./a" (must fail)
+- (dir-rm-cwd) open "/a"
+- (dir-rm-cwd) open "."
+- (dir-rm-cwd) "/a" and "." must have same inumber
+- (dir-rm-cwd) "/" and "/a" must have different inumbers
+- (dir-rm-cwd) chdir "/a"
+- (dir-rm-cwd) open "."
+- (dir-rm-cwd) "." must have same inumber as before
+- (dir-rm-cwd) chdir "/"
+- (dir-rm-cwd) try to remove "a" (must fail: still open)
+- (dir-rm-cwd) verify "/a" is empty
+- (dir-rm-cwd) end
+Acceptable output:
+  (dir-rm-cwd) begin
+  (dir-rm-cwd) open "/"
+  (dir-rm-cwd) mkdir "a"
+  (dir-rm-cwd) open "/a"
+  (dir-rm-cwd) verify "/a" is empty
+  (dir-rm-cwd) "/" and "/a" must have different inumbers
+  (dir-rm-cwd) chdir "a"
+  (dir-rm-cwd) try to remove "/a"
+  (dir-rm-cwd) remove successful
+  (dir-rm-cwd) open "/a" (must fail)
+  (dir-rm-cwd) open "." (must fail)
+  (dir-rm-cwd) open ".." (must fail)
+  (dir-rm-cwd) create "x" (must fail)
+  (dir-rm-cwd) verify "/a" is empty
+  (dir-rm-cwd) end
+Differences in `diff -u' format:
+  (dir-rm-cwd) begin
+  (dir-rm-cwd) open "/"
+  (dir-rm-cwd) mkdir "a"
+  (dir-rm-cwd) open "/a"
+  (dir-rm-cwd) verify "/a" is empty
+- (dir-rm-cwd) "/" and "/a" must have different inumbers
+- (dir-rm-cwd) chdir "a"
+- (dir-rm-cwd) try to remove "/a"
+- (dir-rm-cwd) remove successful
+- (dir-rm-cwd) open "/a" (must fail)
+- (dir-rm-cwd) open "." (must fail)
+- (dir-rm-cwd) open ".." (must fail)
+- (dir-rm-cwd) create "x" (must fail)
+- (dir-rm-cwd) verify "/a" is empty
+- (dir-rm-cwd) end
+
+(Process exit codes are excluded for matching purposes.)
 
 OUTPUT FROM tests/filesys/extended/dir-rm-cwd:
 
-Copying tests/filesys/extended/dir-rm-cwd into /tmp/dZd9uKYkjg.dsk...
-Copying tests/filesys/extended/tar into /tmp/dZd9uKYkjg.dsk...
-Writing command line to /tmp/uUDQubRqET.dsk...
-qemu -hda /tmp/uUDQubRqET.dsk -hdb tmp.dsk -hdc /tmp/dZd9uKYkjg.dsk -hdd /tmp/2udrsvBCkG.dsk -m 4 -net none -nographic -monitor null
+Copying tests/filesys/extended/dir-rm-cwd into /tmp/xWN8yt3bD0.dsk...
+Copying tests/filesys/extended/tar into /tmp/xWN8yt3bD0.dsk...
+Writing command line to /tmp/S78ezSWvId.dsk...
+qemu -hda /tmp/S78ezSWvId.dsk -hdb tmp.dsk -hdc /tmp/xWN8yt3bD0.dsk -hdd /tmp/TSIanoRGc2.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put dir-rm-cwd put tar run dir-rm-cwd
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -549,31 +506,43 @@ Putting 'tar' into the file system...
 Executing 'dir-rm-cwd':
 (dir-rm-cwd) begin
 (dir-rm-cwd) open "/"
-(dir-rm-cwd) open "/": FAILED
-dir-rm-cwd: exit(1)
+(dir-rm-cwd) mkdir "a"
+(dir-rm-cwd) open "/a"
+(dir-rm-cwd) verify "/a" is empty
+dir-rm-cwd: exit(-1)
 Execution of 'dir-rm-cwd' complete.
-Timer: 72 ticks
-Thread: 30 idle ticks, 39 kernel ticks, 3 user ticks
+Timer: 88 ticks
+Thread: 30 idle ticks, 52 kernel ticks, 6 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 171 writes
+hd0:1: 39 reads, 174 writes
 hd1:0: 163 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 993 characters output
+Console: 1044 characters output
 Keyboard: 0 keys pressed
-Exception: 4 page faults
+Exception: 5 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/dir-empty-name-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/dir-empty-name-persistence:
 
-Writing command line to /tmp/WN1l8WSbqE.dsk...
-qemu -hda /tmp/WN1l8WSbqE.dsk -hdb tmp.dsk -hdc /tmp/GD9XnSHCPd.dsk -hdd /tmp/0ziDKh6aRZ.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/oN2mo7g6FV.dsk...
+qemu -hda /tmp/oN2mo7g6FV.dsk -hdb tmp.dsk -hdc /tmp/r9DPQYWsHB.dsk -hdd /tmp/5fRxtRxynn.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -585,32 +554,37 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 55 ticks
-Thread: 30 idle ticks, 23 kernel ticks, 2 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/dir-empty-name.tar out of /tmp/GD9XnSHCPd.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/dir-mk-tree-persistence FAILURE:
 
-Prerequisite test tests/filesys/extended/dir-mk-tree failed.
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/dir-mk-tree-persistence:
 
-Writing command line to /tmp/zbmo5tS4QM.dsk...
-qemu -hda /tmp/zbmo5tS4QM.dsk -hdb tmp.dsk -hdc /tmp/agcHi8DOlq.dsk -hdd /tmp/o1qAQOuqOc.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/9ExjEZfMZC.dsk...
+qemu -hda /tmp/9ExjEZfMZC.dsk -hdb tmp.dsk -hdc /tmp/iXWZYi9JCx.dsk -hdd /tmp/PMz58p0v2X.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -620,71 +594,81 @@ hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Kernel PANIC at ../../filesys/free-map.c:59 in free_map_open(): can't read free map
-Call stack: 0xc01077b6 0xc010ceb4 0xc010c6a7 0xc01000b4.
+Boot complete.
+Executing 'tar fs.tar /':
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 51 ticks
-Thread: 30 idle ticks, 21 kernel ticks, 0 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 1 reads, 0 writes
-hd1:0: 0 reads, 0 writes
-hd1:1: 0 reads, 0 writes
-Console: 996 characters output
-Keyboard: 0 keys pressed
-Exception: 0 page faults
-Powering off...
-Copying tests/filesys/extended/dir-mk-tree.tar out of /tmp/agcHi8DOlq.dsk...
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/dir-mkdir-persistence FAILURE:
 
-Prerequisite test tests/filesys/extended/dir-mkdir failed.
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/dir-mkdir-persistence:
 
-Writing command line to /tmp/W2JBlVNj0Q.dsk...
-qemu -hda /tmp/W2JBlVNj0Q.dsk -hdb tmp.dsk -hdc /tmp/LirRZcHXtF.dsk -hdd /tmp/C9mBpxhOOW.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/EUbXz9ExQf.dsk...
+qemu -hda /tmp/EUbXz9ExQf.dsk -hdb tmp.dsk -hdc /tmp/Tx774ErgTy.dsk -hdd /tmp/58lqmOVJn5.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
 372 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
+Calibrating timer...  75,366,400 loops/s.
 hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 55 ticks
-Thread: 30 idle ticks, 23 kernel ticks, 2 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/dir-mkdir.tar out of /tmp/LirRZcHXtF.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/dir-open-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/dir-open-persistence:
 
-Writing command line to /tmp/OeDGLPXFWw.dsk...
-qemu -hda /tmp/OeDGLPXFWw.dsk -hdb tmp.dsk -hdc /tmp/R10i4WQlgc.dsk -hdd /tmp/DK2zFn8knI.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/xurh4PxAE6.dsk...
+qemu -hda /tmp/xurh4PxAE6.dsk -hdb tmp.dsk -hdc /tmp/6CHcoYoQUE.dsk -hdd /tmp/qeObaEBNx1.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -696,59 +680,57 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 55 ticks
-Thread: 30 idle ticks, 24 kernel ticks, 2 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/dir-open.tar out of /tmp/R10i4WQlgc.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/dir-over-file-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/dir-over-file-persistence:
 
-Writing command line to /tmp/UD0U4BLBE3.dsk...
-qemu -hda /tmp/UD0U4BLBE3.dsk -hdb tmp.dsk -hdc /tmp/xPH0WRs62x.dsk -hdd /tmp/XgDQfWIepz.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/KhDte833Uc.dsk...
+qemu -hda /tmp/KhDte833Uc.dsk -hdb tmp.dsk -hdc /tmp/EiS3V6DTM7.dsk -hdd /tmp/R88fId31zo.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
 372 pages available in user pool.
-Calibrating timer...  52,377,600 loops/s.
+Calibrating timer...  78,540,800 loops/s.
 hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 54 ticks
-Thread: 30 idle ticks, 22 kernel ticks, 2 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/dir-over-file.tar out of /tmp/xPH0WRs62x.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -758,8 +740,8 @@ Prerequisite test tests/filesys/extended/dir-rm-cwd failed.
 
 OUTPUT FROM tests/filesys/extended/dir-rm-cwd-persistence:
 
-Writing command line to /tmp/yvQhRYKYJa.dsk...
-qemu -hda /tmp/yvQhRYKYJa.dsk -hdb tmp.dsk -hdc /tmp/GGl3j4Re07.dsk -hdd /tmp/NzErc8qQdZ.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/uZlWP41BOj.dsk...
+qemu -hda /tmp/uZlWP41BOj.dsk -hdb tmp.dsk -hdc /tmp/VMjaw4w2Pu.dsk -hdd /tmp/rjOlhZM57L.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -771,33 +753,37 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 55 ticks
-Thread: 30 idle ticks, 22 kernel ticks, 3 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/dir-rm-cwd.tar out of /tmp/GGl3j4Re07.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/dir-rm-parent-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/dir-rm-parent-persistence:
 
-Writing command line to /tmp/uTIIiST10r.dsk...
-qemu -hda /tmp/uTIIiST10r.dsk -hdb tmp.dsk -hdc /tmp/Mx1W7BHLZv.dsk -hdd /tmp/cAG6UCXgQr.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/6LFIVl9SHo.dsk...
+qemu -hda /tmp/6LFIVl9SHo.dsk -hdb tmp.dsk -hdc /tmp/Sgy6tp9xEN.dsk -hdd /tmp/RHDA7VNKbY.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -809,33 +795,37 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 56 ticks
-Thread: 30 idle ticks, 23 kernel ticks, 3 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/dir-rm-parent.tar out of /tmp/Mx1W7BHLZv.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/dir-rm-root-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/dir-rm-root-persistence:
 
-Writing command line to /tmp/IduSCWHsSc.dsk...
-qemu -hda /tmp/IduSCWHsSc.dsk -hdb tmp.dsk -hdc /tmp/Aon5nQoJgw.dsk -hdd /tmp/L2fmrzJL3h.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/LVGFDA4zSM.dsk...
+qemu -hda /tmp/LVGFDA4zSM.dsk -hdb tmp.dsk -hdc /tmp/LCTHL2iiqO.dsk -hdd /tmp/bM7up9AUtq.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -847,21 +837,15 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 55 ticks
-Thread: 30 idle ticks, 23 kernel ticks, 2 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/dir-rm-root.tar out of /tmp/Aon5nQoJgw.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -871,8 +855,8 @@ Prerequisite test tests/filesys/extended/dir-rm-tree failed.
 
 OUTPUT FROM tests/filesys/extended/dir-rm-tree-persistence:
 
-Writing command line to /tmp/VdT157HeYx.dsk...
-qemu -hda /tmp/VdT157HeYx.dsk -hdb tmp.dsk -hdc /tmp/JxXkXAZWUy.dsk -hdd /tmp/WI24UNPvuN.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/M3qWVThHW7.dsk...
+qemu -hda /tmp/M3qWVThHW7.dsk -hdb tmp.dsk -hdc /tmp/Pa9ICIgAcv.dsk -hdd /tmp/pM3m8z3MF5.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -882,34 +866,39 @@ hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Kernel PANIC at ../../filesys/free-map.c:59 in free_map_open(): can't read free map
-Call stack: 0xc01077b6 0xc010ceb4 0xc010c6a7 0xc01000b4.
+Boot complete.
+Executing 'tar fs.tar /':
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 51 ticks
-Thread: 30 idle ticks, 21 kernel ticks, 0 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 1 reads, 0 writes
-hd1:0: 0 reads, 0 writes
-hd1:1: 0 reads, 0 writes
-Console: 996 characters output
-Keyboard: 0 keys pressed
-Exception: 0 page faults
-Powering off...
-Copying tests/filesys/extended/dir-rm-tree.tar out of /tmp/JxXkXAZWUy.dsk...
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/dir-rmdir-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/dir-rmdir-persistence:
 
-Writing command line to /tmp/WbPzaeU820.dsk...
-qemu -hda /tmp/WbPzaeU820.dsk -hdb tmp.dsk -hdc /tmp/KP4Zznu7Ar.dsk -hdd /tmp/0Wx2KeMfH3.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/n2M0Yipmh8.dsk...
+qemu -hda /tmp/n2M0Yipmh8.dsk -hdb tmp.dsk -hdc /tmp/cZQrTpO7ch.dsk -hdd /tmp/BTj43aO3vJ.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -921,33 +910,37 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 59 ticks
-Thread: 30 idle ticks, 26 kernel ticks, 3 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/dir-rmdir.tar out of /tmp/KP4Zznu7Ar.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/dir-under-file-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/dir-under-file-persistence:
 
-Writing command line to /tmp/hDYqn1Mbt6.dsk...
-qemu -hda /tmp/hDYqn1Mbt6.dsk -hdb tmp.dsk -hdc /tmp/qHcebYCWZS.dsk -hdd /tmp/n3k3fU7CtM.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/u6X7BnimKY.dsk...
+qemu -hda /tmp/u6X7BnimKY.dsk -hdb tmp.dsk -hdc /tmp/aEu9JZiGsX.dsk -hdd /tmp/GsSFsu71GU.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -959,21 +952,15 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 56 ticks
-Thread: 30 idle ticks, 24 kernel ticks, 2 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/dir-under-file.tar out of /tmp/qHcebYCWZS.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -983,8 +970,8 @@ Prerequisite test tests/filesys/extended/dir-vine failed.
 
 OUTPUT FROM tests/filesys/extended/dir-vine-persistence:
 
-Writing command line to /tmp/95zM3Ah8kl.dsk...
-qemu -hda /tmp/95zM3Ah8kl.dsk -hdb tmp.dsk -hdc /tmp/vs6Od9Vsxc.dsk -hdd /tmp/xj9eMr1uIo.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/vYospv7gMv.dsk...
+qemu -hda /tmp/vYospv7gMv.dsk -hdb tmp.dsk -hdc /tmp/u20exJSLRX.dsk -hdd /tmp/pp2Q7elb11.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -994,34 +981,40 @@ hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
 hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Kernel PANIC at ../../filesys/free-map.c:59 in free_map_open(): can't read free map
-Call stack: 0xc01077b6 0xc010ceb4 0xc010c6a7 0xc01000b4.
+Boot complete.
+Executing 'tar fs.tar /':
+load: tar fs.tar /: error loading executable
+Kernel PANIC at ../../devices/disk.c:436 in select_sector(): assertion `sec_no < d->capacity' failed.
+Call stack: 0xc01077b6 0xc010522e 0xc0104c23 0xc010f0b2 0xc010e16f 0xc010d427 0xc0100ca2 0xc010c282 0xc0109b65 0xc0100ca7 0xc0109a53 0xc0100eb9.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 51 ticks
-Thread: 30 idle ticks, 21 kernel ticks, 0 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 1 reads, 0 writes
-hd1:0: 0 reads, 0 writes
-hd1:1: 0 reads, 0 writes
-Console: 996 characters output
-Keyboard: 0 keys pressed
-Exception: 0 page faults
-Powering off...
-Copying tests/filesys/extended/dir-vine.tar out of /tmp/vs6Od9Vsxc.dsk...
+Kernel PANIC recursion at ../../threads/thread.c:316 in thread_current().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/grow-create-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/grow-create-persistence:
 
-Writing command line to /tmp/nEOTuPpJEL.dsk...
-qemu -hda /tmp/nEOTuPpJEL.dsk -hdb tmp.dsk -hdc /tmp/b4hJtzINaR.dsk -hdd /tmp/cHUIFyYiCG.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/O6x4oxYfvQ.dsk...
+qemu -hda /tmp/O6x4oxYfvQ.dsk -hdb tmp.dsk -hdc /tmp/yzb80Iy6al.dsk -hdd /tmp/Eaibgi85BE.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -1033,33 +1026,37 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 56 ticks
-Thread: 30 idle ticks, 24 kernel ticks, 2 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/grow-create.tar out of /tmp/b4hJtzINaR.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/grow-dir-lg-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/grow-dir-lg-persistence:
 
-Writing command line to /tmp/N1e4R2Rxck.dsk...
-qemu -hda /tmp/N1e4R2Rxck.dsk -hdb tmp.dsk -hdc /tmp/8I3724NEi7.dsk -hdd /tmp/GHcksdjGzr.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/5mFD41MeUL.dsk...
+qemu -hda /tmp/5mFD41MeUL.dsk -hdb tmp.dsk -hdc /tmp/csQQFL9x1e.dsk -hdd /tmp/XFrHPRhlwk.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -1071,33 +1068,37 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 59 ticks
-Thread: 30 idle ticks, 24 kernel ticks, 5 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 33 reads, 6 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/grow-dir-lg.tar out of /tmp/8I3724NEi7.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/grow-file-size-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/grow-file-size-persistence:
 
-Writing command line to /tmp/tJmbI3NnKV.dsk...
-qemu -hda /tmp/tJmbI3NnKV.dsk -hdb tmp.dsk -hdc /tmp/O3QNSfbuPa.dsk -hdd /tmp/fS4d3b6659.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/uAR1sU4D6y.dsk...
+qemu -hda /tmp/uAR1sU4D6y.dsk -hdb tmp.dsk -hdc /tmp/cA3UNmDvRm.dsk -hdd /tmp/JtNrRS5188.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -1109,33 +1110,37 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 55 ticks
-Thread: 30 idle ticks, 22 kernel ticks, 3 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/grow-file-size.tar out of /tmp/O3QNSfbuPa.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/grow-root-lg-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/grow-root-lg-persistence:
 
-Writing command line to /tmp/7rtJ4eVMNq.dsk...
-qemu -hda /tmp/7rtJ4eVMNq.dsk -hdb tmp.dsk -hdc /tmp/IsHGc51ad5.dsk -hdd /tmp/RPsTBV7KpZ.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/KB3GsKMq34.dsk...
+qemu -hda /tmp/KB3GsKMq34.dsk -hdb tmp.dsk -hdc /tmp/tVBMvRYCju.dsk -hdd /tmp/7bmf7wSMmG.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -1147,33 +1152,37 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 58 ticks
-Thread: 30 idle ticks, 23 kernel ticks, 5 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 33 reads, 6 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/grow-root-lg.tar out of /tmp/IsHGc51ad5.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/grow-root-sm-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/grow-root-sm-persistence:
 
-Writing command line to /tmp/eAXxUBOI8O.dsk...
-qemu -hda /tmp/eAXxUBOI8O.dsk -hdb tmp.dsk -hdc /tmp/W8flquG3zn.dsk -hdd /tmp/IC7fUXkzLj.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/2VJcbbvv2F.dsk...
+qemu -hda /tmp/2VJcbbvv2F.dsk -hdb tmp.dsk -hdc /tmp/YKUmR8JdMS.dsk -hdd /tmp/q6K0j4wikX.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -1185,33 +1194,37 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 57 ticks
-Thread: 30 idle ticks, 24 kernel ticks, 3 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 6 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/grow-root-sm.tar out of /tmp/W8flquG3zn.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/grow-seq-lg-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/grow-seq-lg-persistence:
 
-Writing command line to /tmp/IjZbSVuEbG.dsk...
-qemu -hda /tmp/IjZbSVuEbG.dsk -hdb tmp.dsk -hdc /tmp/qPqWMQEZzr.dsk -hdd /tmp/ajUZJFVRDA.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/azUnT5RA6X.dsk...
+qemu -hda /tmp/azUnT5RA6X.dsk -hdb tmp.dsk -hdc /tmp/w0csPoYyYx.dsk -hdd /tmp/hV2FQWQph0.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -1223,33 +1236,37 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 56 ticks
-Thread: 30 idle ticks, 23 kernel ticks, 3 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/grow-seq-lg.tar out of /tmp/qPqWMQEZzr.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/grow-seq-sm-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/grow-seq-sm-persistence:
 
-Writing command line to /tmp/kdEqzdk9ej.dsk...
-qemu -hda /tmp/kdEqzdk9ej.dsk -hdb tmp.dsk -hdc /tmp/ZvKgqYwezc.dsk -hdd /tmp/AGpnOtkx1G.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/iz31JDOUR1.dsk...
+qemu -hda /tmp/iz31JDOUR1.dsk -hdb tmp.dsk -hdc /tmp/gFRbRpqgqJ.dsk -hdd /tmp/qrFIeOQRSj.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -1261,33 +1278,37 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 55 ticks
-Thread: 30 idle ticks, 23 kernel ticks, 2 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/grow-seq-sm.tar out of /tmp/ZvKgqYwezc.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/grow-sparse-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/grow-sparse-persistence:
 
-Writing command line to /tmp/gvICl0NhCX.dsk...
-qemu -hda /tmp/gvICl0NhCX.dsk -hdb tmp.dsk -hdc /tmp/20vNda2FQd.dsk -hdd /tmp/vKyS1eRkBZ.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/I64tbtG8R2.dsk...
+qemu -hda /tmp/I64tbtG8R2.dsk -hdb tmp.dsk -hdc /tmp/g0rEYoXeYl.dsk -hdd /tmp/eWpu69GzTG.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -1299,33 +1320,37 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 57 ticks
-Thread: 30 idle ticks, 24 kernel ticks, 3 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/grow-sparse.tar out of /tmp/20vNda2FQd.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/grow-tell-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/grow-tell-persistence:
 
-Writing command line to /tmp/LvUSSw03nh.dsk...
-qemu -hda /tmp/LvUSSw03nh.dsk -hdb tmp.dsk -hdc /tmp/ETaFjJ3NKD.dsk -hdd /tmp/xPnQZLV2gn.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/qF61tkO4Jt.dsk...
+qemu -hda /tmp/qF61tkO4Jt.dsk -hdb tmp.dsk -hdc /tmp/bzuPpUvimb.dsk -hdd /tmp/AoDUoNdGN5.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -1337,33 +1362,37 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 56 ticks
-Thread: 30 idle ticks, 23 kernel ticks, 3 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/grow-tell.tar out of /tmp/ETaFjJ3NKD.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/grow-two-files-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/grow-two-files-persistence:
 
-Writing command line to /tmp/38aqDPoyTH.dsk...
-qemu -hda /tmp/38aqDPoyTH.dsk -hdb tmp.dsk -hdc /tmp/m8BuNM0NtH.dsk -hdd /tmp/w0BAadj1zs.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/9lmrbdw6qJ.dsk...
+qemu -hda /tmp/9lmrbdw6qJ.dsk -hdb tmp.dsk -hdc /tmp/9t3QsimfhU.dsk -hdd /tmp/jPTTkZHKoT.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -1375,33 +1404,37 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 55 ticks
-Thread: 30 idle ticks, 23 kernel ticks, 2 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
-hd1:1: 0 reads, 0 writes
-Console: 850 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
-Copying tests/filesys/extended/grow-two-files.tar out of /tmp/m8BuNM0NtH.dsk...
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/filesys/extended/syn-rw-persistence FAILURE:
 
-Error extracting file system:
-/: open failed
+Kernel panic in file system extraction run: PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c
+Translation of call stack:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc0107292: strlcpy (...ld/../../lib/string.c:331)
+0xc010d8d1: dir_readdir (..../filesys/directory.c:229)
+0xc010c020: syscall_handler (...../userprog/syscall.c:472)
+0x00000014: (unknown)
+0xc0114b84: intrff_stub (threads/intr-stubs.S:0)
+0xc011d00c: (unknown)
+0xc011d40c: (unknown)
+0xc012500c: (unknown)
 
 OUTPUT FROM tests/filesys/extended/syn-rw-persistence:
 
-Writing command line to /tmp/I2Mjfd8LHh.dsk...
-qemu -hda /tmp/I2Mjfd8LHh.dsk -hdb tmp.dsk -hdc /tmp/bPCIWVsyLG.dsk -hdd /tmp/96hha6jnuL.dsk -m 4 -net none -nographic -monitor null
+Writing command line to /tmp/y628PHBQhH.dsk...
+qemu -hda /tmp/y628PHBQhH.dsk -hdb tmp.dsk -hdc /tmp/R7IsjHh6UZ.dsk -hdd /tmp/Vtlt6kvDyS.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q run 'tar fs.tar /' get fs.tar
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -1413,319 +1446,222 @@ hd1:0: detected 2,048 sector (1024 kB) disk, model "QEMU HARDDISK", serial "QM00
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Boot complete.
 Executing 'tar fs.tar /':
-/: open failed
-tar: exit(1)
-Execution of 'tar fs.tar /' complete.
-Getting 'fs.tar' from the file system...
-Timer: 55 ticks
-Thread: 30 idle ticks, 23 kernel ticks, 2 user ticks
+Kernel PANIC at ../../lib/string.c:330 in strlcpy(): assertion `dst != NULL' failed.
+Call stack: 0xc01077b6 0xc0107292 0xc010d8d1 0xc010c020 0x14 0xc0114b84 0xc011d00c 0xc011d40c 0xc012500c.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q run 'tar fs.tar /' get fs.tar
+Pintos booting with 4,096 kB RAM...
+[...details of reboot(s) omitted...]
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/userprog/wait-simple FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (wait-simple) begin
+  (child-simple) run
+  child-simple: exit(81)
+  (wait-simple) wait(exec()) = 81
+  (wait-simple) end
+  wait-simple: exit(0)
+Differences in `diff -u' format:
+  (wait-simple) begin
+  (child-simple) run
+- child-simple: exit(81)
+  (wait-simple) wait(exec()) = 81
+  (wait-simple) end
+  wait-simple: exit(0)
++ child-simple: exit(81)
+
+OUTPUT FROM tests/userprog/wait-simple:
+
+Copying tests/userprog/wait-simple into /tmp/6bxcWwayde.dsk...
+Copying tests/userprog/child-simple into /tmp/6bxcWwayde.dsk...
+Writing command line to /tmp/0cumB3UobF.dsk...
+qemu -hda /tmp/0cumB3UobF.dsk -hdb /tmp/lTz4WI95FD.dsk -hdc /tmp/6bxcWwayde.dsk -hdd /tmp/wbuJ0hugCi.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put wait-simple put child-simple run wait-simple
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 145 sector (72 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'wait-simple' into the file system...
+Putting 'child-simple' into the file system...
+Executing 'wait-simple':
+(wait-simple) begin
+(child-simple) run
+(wait-simple) wait(exec()) = 81
+(wait-simple) end
+wait-simple: exit(0)
+child-simple: exit(81)
+Execution of 'wait-simple' complete.
+Timer: 83 ticks
+Thread: 30 idle ticks, 44 kernel ticks, 9 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 31 reads, 5 writes
-hd1:0: 0 reads, 3 writes
+hd0:1: 57 reads, 153 writes
+hd1:0: 145 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 850 characters output
+Console: 1058 characters output
+Keyboard: 0 keys pressed
+Exception: 8 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/userprog/read-boundary FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (read-boundary) begin
+  (read-boundary) open "sample.txt"
+  (read-boundary) end
+  read-boundary: exit(0)
+Differences in `diff -u' format:
+  (read-boundary) begin
+  (read-boundary) open "sample.txt"
+- (read-boundary) end
+- read-boundary: exit(0)
++ read-boundary: exit(-1)
+
+OUTPUT FROM tests/userprog/read-boundary:
+
+Copying tests/userprog/read-boundary into /tmp/hgPh4vAP3D.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/hgPh4vAP3D.dsk...
+Writing command line to /tmp/wv7Q0DcQz2.dsk...
+qemu -hda /tmp/wv7Q0DcQz2.dsk -hdb /tmp/CeYvxGblAL.dsk -hdc /tmp/hgPh4vAP3D.dsk -hdd /tmp/16sViMFTFG.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put read-boundary put sample.txt run read-boundary
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  78,540,800 loops/s.
+hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
+hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
+hd1:0: detected 79 sector (39 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
+Formatting file system...done.
+Boot complete.
+Putting 'read-boundary' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'read-boundary':
+(read-boundary) begin
+(read-boundary) open "sample.txt"
+read-boundary: exit(-1)
+Execution of 'read-boundary' complete.
+Timer: 67 ticks
+Thread: 30 idle ticks, 32 kernel ticks, 5 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 31 reads, 86 writes
+hd1:0: 79 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1008 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...
-Copying tests/filesys/extended/syn-rw.tar out of /tmp/bPCIWVsyLG.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-DETAILS OF tests/userprog/create-bad-ptr FAILURE:
+DETAILS OF tests/vm/pt-grow-stk-sc FAILURE:
 
-Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc01077b6 0xc0102b2d 0xc01012f4 0xc0109b81 0xc0100ca7 0xc010c218 0xc010b645 0xc0101995 0xc0101b6b 0xc010c711 0xc010b883 0xc0101995 0xc0101b6b 0x804a019 0x80480ba 0x8048103 0x80486dc
-Translation of call stack:
-In kernel.o:
-0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0102b2d: lock_acquire (...../../threads/synch.c:243)
-0xc01012f4: acquire_file_lock (..../../threads/thread.c:662)
-0xc0109b81: process_exit (...../userprog/process.c:185)
-0xc0100ca7: thread_exit (..../../threads/thread.c:345)
-0xc010c218: close_all_filelist (...../userprog/syscall.c:579)
-0xc010b645: page_fault (.../userprog/exception.c:331)
-0xc0101995: intr_handler (..../threads/interrupt.c:361)
-0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
-0xc010c711: filesys_create (..../../filesys/filesys.c:61)
-0xc010b883: syscall_handler (...../userprog/syscall.c:142)
-0xc0101995: intr_handler (..../threads/interrupt.c:361)
-0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
-In tests/userprog/create-bad-ptr:
-0x0804a019: create (.../../lib/user/syscall.c:93)
-0x080480ba: test_main (...rprog/create-bad-ptr.c:11)
-0x08048103: main (...ild/../../tests/main.c:13)
-0x080486dc: _start (.../../../lib/user/entry.c:9)
-Translations of user virtual addresses above are based on a guess at
-the binary to use.  If this guess is incorrect, then those
-translations will be misleading.
+Test output failed to match any acceptable form.
 
-OUTPUT FROM tests/userprog/create-bad-ptr:
+Acceptable output:
+  (pt-grow-stk-sc) begin
+  (pt-grow-stk-sc) create "sample.txt"
+  (pt-grow-stk-sc) open "sample.txt"
+  (pt-grow-stk-sc) write "sample.txt"
+  (pt-grow-stk-sc) 2nd open "sample.txt"
+  (pt-grow-stk-sc) read "sample.txt"
+  (pt-grow-stk-sc) compare written data against read data
+  (pt-grow-stk-sc) end
+Differences in `diff -u' format:
+  (pt-grow-stk-sc) begin
+  (pt-grow-stk-sc) create "sample.txt"
+  (pt-grow-stk-sc) open "sample.txt"
+  (pt-grow-stk-sc) write "sample.txt"
+  (pt-grow-stk-sc) 2nd open "sample.txt"
+  (pt-grow-stk-sc) read "sample.txt"
+- (pt-grow-stk-sc) compare written data against read data
+- (pt-grow-stk-sc) end
 
-Copying tests/userprog/create-bad-ptr into /tmp/qr3XGZxRoH.dsk...
-Writing command line to /tmp/GAfRM4TvbE.dsk...
-qemu -hda /tmp/GAfRM4TvbE.dsk -hdb /tmp/Wtpnmff4NP.dsk -hdc /tmp/qr3XGZxRoH.dsk -hdd /tmp/4xQAs7lBC0.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put create-bad-ptr run create-bad-ptr
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/pt-grow-stk-sc:
+
+Copying tests/vm/pt-grow-stk-sc into /tmp/BoDmOti2Id.dsk...
+Writing command line to /tmp/a08kYii4rL.dsk...
+qemu -hda /tmp/a08kYii4rL.dsk -hdb /tmp/CL5fzFWFFV.dsk -hdc /tmp/BoDmOti2Id.dsk -hdd /tmp/PlbkNwbcAo.dsk -m 4 -net none -nographic -monitor null
+Kernel command line: -q -f put pt-grow-stk-sc run pt-grow-stk-sc
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
 372 pages available in user pool.
 Calibrating timer...  78,540,800 loops/s.
 hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
 hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 73 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
+hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
 hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
 Formatting file system...done.
 Boot complete.
-Putting 'create-bad-ptr' into the file system...
-Executing 'create-bad-ptr':
-(create-bad-ptr) begin
-create-bad-ptr: exit(-1)
-Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc01077b6 0xc0102b2d 0xc01012f4 0xc0109b81 0xc0100ca7 0xc010c218 0xc010b645 0xc0101995 0xc0101b6b 0xc010c711 0xc010b883 0xc0101995 0xc0101b6b 0x804a019 0x80480ba 0x8048103 0x80486dc.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
-Kernel command line: -q -f put create-bad-ptr run create-bad-ptr
-Pintos booting with 4,096 kB RAM...
-[...details of reboot(s) omitted...]
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/userprog/exec-bad-ptr FAILURE:
-
-Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc01077b6 0xc0102b2d 0xc01012f4 0xc0109b81 0xc0100ca7 0xc010c218 0xc010b645 0xc0101995 0xc0101b6b 0xc010b785 0xc0101995 0xc0101b6b 0x8049fd5 0x80480b2 0x80480e7 0x80486c0
-Translation of call stack:
-In kernel.o:
-0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0102b2d: lock_acquire (...../../threads/synch.c:243)
-0xc01012f4: acquire_file_lock (..../../threads/thread.c:662)
-0xc0109b81: process_exit (...../userprog/process.c:185)
-0xc0100ca7: thread_exit (..../../threads/thread.c:345)
-0xc010c218: close_all_filelist (...../userprog/syscall.c:579)
-0xc010b645: page_fault (.../userprog/exception.c:331)
-0xc0101995: intr_handler (..../threads/interrupt.c:361)
-0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
-0xc010b785: syscall_handler (...../userprog/syscall.c:101)
-0xc0101995: intr_handler (..../threads/interrupt.c:361)
-0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
-In tests/userprog/exec-bad-ptr:
-0x08049fd5: exec (.../../lib/user/syscall.c:81)
-0x080480b2: test_main (...serprog/exec-bad-ptr.c:11)
-0x080480e7: main (...ild/../../tests/main.c:13)
-0x080486c0: _start (.../../../lib/user/entry.c:9)
-Translations of user virtual addresses above are based on a guess at
-the binary to use.  If this guess is incorrect, then those
-translations will be misleading.
-
-OUTPUT FROM tests/userprog/exec-bad-ptr:
-
-Copying tests/userprog/exec-bad-ptr into /tmp/nP6ATiMYdr.dsk...
-Writing command line to /tmp/vw0WsrOpsl.dsk...
-qemu -hda /tmp/vw0WsrOpsl.dsk -hdb /tmp/QqIHzhIv40.dsk -hdc /tmp/nP6ATiMYdr.dsk -hdd /tmp/kcJCXnF8Kj.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put exec-bad-ptr run exec-bad-ptr
-Pintos booting with 4,096 kB RAM...
-373 pages available in kernel pool.
-372 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 73 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Formatting file system...done.
-Boot complete.
-Putting 'exec-bad-ptr' into the file system...
-Executing 'exec-bad-ptr':
-(exec-bad-ptr) begin
-exec-bad-ptr: exit(-1)
-Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc01077b6 0xc0102b2d 0xc01012f4 0xc0109b81 0xc0100ca7 0xc010c218 0xc010b645 0xc0101995 0xc0101b6b 0xc010b785 0xc0101995 0xc0101b6b 0x8049fd5 0x80480b2 0x80480e7 0x80486c0.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
-Kernel command line: -q -f put exec-bad-ptr run exec-bad-ptr
-Pintos booting with 4,096 kB RAM...
-[...details of reboot(s) omitted...]
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/userprog/open-bad-ptr FAILURE:
-
-Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc01077b6 0xc0102b2d 0xc01012f4 0xc0109b81 0xc0100ca7 0xc010c218 0xc010b645 0xc0101995 0xc0101b6b 0xc010c929 0xc010b8e4 0xc0101995 0xc0101b6b 0x804a049 0x80480b2 0x8048103 0x80486dc
-Translation of call stack:
-In kernel.o:
-0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0102b2d: lock_acquire (...../../threads/synch.c:243)
-0xc01012f4: acquire_file_lock (..../../threads/thread.c:662)
-0xc0109b81: process_exit (...../userprog/process.c:185)
-0xc0100ca7: thread_exit (..../../threads/thread.c:345)
-0xc010c218: close_all_filelist (...../userprog/syscall.c:579)
-0xc010b645: page_fault (.../userprog/exception.c:331)
-0xc0101995: intr_handler (..../threads/interrupt.c:361)
-0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
-0xc010c929: filesys_open (.../../filesys/filesys.c:135)
-0xc010b8e4: syscall_handler (...../userprog/syscall.c:170)
-0xc0101995: intr_handler (..../threads/interrupt.c:361)
-0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
-In tests/userprog/open-bad-ptr:
-0x0804a049: open (...../lib/user/syscall.c:105)
-0x080480b2: test_main (...serprog/open-bad-ptr.c:11)
-0x08048103: main (...ild/../../tests/main.c:13)
-0x080486dc: _start (.../../../lib/user/entry.c:9)
-Translations of user virtual addresses above are based on a guess at
-the binary to use.  If this guess is incorrect, then those
-translations will be misleading.
-
-OUTPUT FROM tests/userprog/open-bad-ptr:
-
-Copying tests/userprog/open-bad-ptr into /tmp/pGsqXkwuQZ.dsk...
-Writing command line to /tmp/K47x7cYEle.dsk...
-qemu -hda /tmp/K47x7cYEle.dsk -hdb /tmp/NSBEKtHhsX.dsk -hdc /tmp/pGsqXkwuQZ.dsk -hdd /tmp/5ldFFIQKBU.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put open-bad-ptr run open-bad-ptr
-Pintos booting with 4,096 kB RAM...
-373 pages available in kernel pool.
-372 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 73 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Formatting file system...done.
-Boot complete.
-Putting 'open-bad-ptr' into the file system...
-Executing 'open-bad-ptr':
-(open-bad-ptr) begin
-open-bad-ptr: exit(-1)
-Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc01077b6 0xc0102b2d 0xc01012f4 0xc0109b81 0xc0100ca7 0xc010c218 0xc010b645 0xc0101995 0xc0101b6b 0xc010c929 0xc010b8e4 0xc0101995 0xc0101b6b 0x804a049 0x80480b2 0x8048103 0x80486dc.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
-Kernel command line: -q -f put open-bad-ptr run open-bad-ptr
-Pintos booting with 4,096 kB RAM...
-[...details of reboot(s) omitted...]
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/userprog/write-bad-ptr FAILURE:
-
-Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc01077b6 0xc0102b2d 0xc010f526 0xc010f10b 0xc010e18f 0xc010d3b7 0xc0100ca2 0xc010c218 0xc010b645 0xc0101995 0xc0101b6b 0xc0106c22 0xc010f2ba 0xc010e5eb 0xc010d0f1 0xc010bb00 0xc0101995 0xc0101b6b 0x804a0a9 0x80480e7 0x8048127 0x8048700
-Translation of call stack:
-In kernel.o:
-0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0102b2d: lock_acquire (...../../threads/synch.c:243)
-0xc010f526: cache_lock_acquire (...../../filesys/cache.c:310)
-0xc010f10b: cache_read (...../../filesys/cache.c:152)
-0xc010e18f: bytes_to_sectors (.../../../filesys/inode.c:28)
-0xc010d3b7: dir_close (...../filesys/directory.c:61)
-0xc0100ca2: thread_exit (..../../threads/thread.c:341)
-0xc010c218: close_all_filelist (...../userprog/syscall.c:579)
-0xc010b645: page_fault (.../userprog/exception.c:331)
-0xc0101995: intr_handler (..../threads/interrupt.c:361)
-0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
-0xc0106c22: memcpy (...ild/../../lib/string.c:16)
-0xc010f2ba: cache_write (...../../filesys/cache.c:191)
-0xc010e5eb: inode_write_at (...../../filesys/inode.c:483)
-0xc010d0f1: file_write (.../../../filesys/file.c:105)
-0xc010bb00: syscall_handler (...../userprog/syscall.c:257)
-0xc0101995: intr_handler (..../threads/interrupt.c:361)
-0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
-In tests/userprog/write-bad-ptr:
-0x0804a0a9: write (...../lib/user/syscall.c:123)
-0x080480e7: test_main (...erprog/write-bad-ptr.c:15)
-0x08048127: main (...ild/../../tests/main.c:13)
-0x08048700: _start (.../../../lib/user/entry.c:9)
-Translations of user virtual addresses above are based on a guess at
-the binary to use.  If this guess is incorrect, then those
-translations will be misleading.
-
-OUTPUT FROM tests/userprog/write-bad-ptr:
-
-Copying tests/userprog/write-bad-ptr into /tmp/0ZHkMzXeOF.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/0ZHkMzXeOF.dsk...
-Writing command line to /tmp/c3Hic8pQwX.dsk...
-qemu -hda /tmp/c3Hic8pQwX.dsk -hdb /tmp/i75BKU4hvl.dsk -hdc /tmp/0ZHkMzXeOF.dsk -hdd /tmp/uag28IOabK.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put write-bad-ptr put sample.txt run write-bad-ptr
-Pintos booting with 4,096 kB RAM...
-373 pages available in kernel pool.
-372 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 75 sector (37 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Formatting file system...done.
-Boot complete.
-Putting 'write-bad-ptr' into the file system...
-Putting 'sample.txt' into the file system...
-Executing 'write-bad-ptr':
-(write-bad-ptr) begin
-(write-bad-ptr) open "sample.txt"
-Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc01077b6 0xc0102b2d 0xc010f526 0xc010f10b 0xc010e18f 0xc010d3b7 0xc0100ca2 0xc010c218 0xc010b645 0xc0101995 0xc0101b6b 0xc0106c22 0xc010f2ba 0xc010e5eb 0xc010d0f1 0xc010bb00 0xc0101995 0xc0101b6b 0x804a0a9 0x80480e7 0x8048127 0x8048700.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../threads/thread.c:316 in thread_current().
-Kernel command line: -q -f put write-bad-ptr put sample.txt run write-bad-ptr
-Pintos booting with 4,096 kB RAM...
-[...details of reboot(s) omitted...]
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/userprog/open-empty FAILURE:
-
-run: open() returned 2 instead of -1: FAILED
-
-OUTPUT FROM tests/userprog/open-empty:
-
-Copying tests/userprog/open-empty into /tmp/nzFbVdptbA.dsk...
-Writing command line to /tmp/4SWxUG1BrV.dsk...
-qemu -hda /tmp/4SWxUG1BrV.dsk -hdb /tmp/8HE9F7m97W.dsk -hdc /tmp/nzFbVdptbA.dsk -hdd /tmp/BAMF090AG7.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put open-empty run open-empty
-Pintos booting with 4,096 kB RAM...
-373 pages available in kernel pool.
-372 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 73 sector (36 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Formatting file system...done.
-Boot complete.
-Putting 'open-empty' into the file system...
-Executing 'open-empty':
-(open-empty) begin
-(open-empty) open() returned 2 instead of -1: FAILED
-open-empty: exit(1)
-Execution of 'open-empty' complete.
-Timer: 76 ticks
-Thread: 30 idle ticks, 38 kernel ticks, 8 user ticks
+Putting 'pt-grow-stk-sc' into the file system...
+Executing 'pt-grow-stk-sc':
+(pt-grow-stk-sc) begin
+(pt-grow-stk-sc) create "sample.txt"
+(pt-grow-stk-sc) open "sample.txt"
+(pt-grow-stk-sc) write "sample.txt"
+(pt-grow-stk-sc) 2nd open "sample.txt"
+(pt-grow-stk-sc) read "sample.txt"
+pt-grow-stk-sc: exit(-1)
+Execution of 'pt-grow-stk-sc' complete.
+Timer: 70 ticks
+Thread: 30 idle ticks, 34 kernel ticks, 6 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 26 reads, 78 writes
-hd1:0: 73 reads, 0 writes
+hd0:1: 33 reads, 86 writes
+hd1:0: 76 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 945 characters output
+Console: 1103 characters output
 Keyboard: 0 keys pressed
-Exception: 4 page faults
+Exception: 6 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/vm/page-merge-mm FAILURE:
 
-run: bad value 1 in byte 3558: FAILED
+Kernel panic in run: PANIC at ../../filesys/inode.c:420 in inode_read_at(): assertion `read_cache != NULL' failed.
+Call stack: 0xc01077b6 0xc010e4c1 0xc010d12b 0xc010b2dc 0xc0101995 0xc0101b6b 0x80482e8 0x8048387 0x8048143 0x804899c
+Translation of call stack:
+In kernel.o:
+0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
+0xc010e4c1: inode_read_at (...../../filesys/inode.c:421)
+0xc010d12b: file_read_at (...d/../../filesys/file.c:86)
+0xc010b2dc: page_fault (.../userprog/exception.c:235)
+0xc0101995: intr_handler (..../threads/interrupt.c:361)
+0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
+In tests/vm/page-merge-mm:
+0x080482e8: sort_chunks (...ts/vm/parallel-merge.c:77)
+0x08048387: merge (...s/vm/parallel-merge.c:114)
+0x08048143: sort_chunks (...ts/vm/parallel-merge.c:44)
+0x0804899c: check_file (...ild/../../tests/lib.c:157)
+Translations of user virtual addresses above are based on a guess at
+the binary to use.  If this guess is incorrect, then those
+translations will be misleading.
 
 OUTPUT FROM tests/vm/page-merge-mm:
 
-Copying tests/vm/page-merge-mm into /tmp/QJlcvKc2Uk.dsk...
-Copying tests/vm/child-qsort-mm into /tmp/QJlcvKc2Uk.dsk...
-Writing command line to /tmp/x6T0vaxh7U.dsk...
-qemu -hda /tmp/x6T0vaxh7U.dsk -hdb /tmp/op7HIK7j7o.dsk -hdc /tmp/QJlcvKc2Uk.dsk -hdd /tmp/CMKs2IsH3s.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/page-merge-mm into /tmp/ViejuyRdX3.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/ViejuyRdX3.dsk...
+Writing command line to /tmp/xY8uRfZ5hz.dsk...
+qemu -hda /tmp/xY8uRfZ5hz.dsk -hdb /tmp/hUspdqMCBG.dsk -hdc /tmp/ViejuyRdX3.dsk -hdd /tmp/RyzRYpn1J0.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -1752,100 +1688,13 @@ child-qsort-mm: exit(80)
 (page-merge-mm) sort chunk 4
 child-qsort-mm: exit(80)
 (page-merge-mm) sort chunk 5
-child-qsort-mm: exit(80)
-(page-merge-mm) sort chunk 6
-child-qsort-mm: exit(80)
-(page-merge-mm) sort chunk 7
-child-qsort-mm: exit(80)
-(page-merge-mm) wait for child 0
-(page-merge-mm) wait for child 1
-(page-merge-mm) wait for child 2
-(page-merge-mm) wait for child 3
-child-qsort-mm: exit(80)
-(page-merge-mm) wait for child 4
-(page-merge-mm) wait for child 5
-(page-merge-mm) wait for child 6
-(page-merge-mm) wait for child 7
-(page-merge-mm) merge
-(page-merge-mm) verify
-(page-merge-mm) bad value 1 in byte 3558: FAILED
-page-merge-mm: exit(1)
-Execution of 'page-merge-mm' complete.
-Timer: 759 ticks
-Thread: 30 idle ticks, 37 kernel ticks, 692 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 4310 reads, 4316 writes
-hd1:0: 160 reads, 0 writes
-hd1:1: 296 reads, 1464 writes
-Console: 1806 characters output
-Keyboard: 0 keys pressed
-Exception: 845 page faults
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/vm/pt-bad-read FAILURE:
-
-Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc01077b6 0xc0102b2d 0xc010f526 0xc010f10b 0xc010e18f 0xc010d3b7 0xc0100ca2 0xc010c218 0xc010b645 0xc0101995 0xc0101b6b 0xc0106c26 0xc010f206 0xc010e4a6 0xc010d082 0xc010ba5b 0xc0101995 0xc0101b6b 0x804a0a1 0x80480ef 0x80486db 0x8048708
-Translation of call stack:
-In kernel.o:
-0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
-0xc0102b2d: lock_acquire (...../../threads/synch.c:243)
-0xc010f526: cache_lock_acquire (...../../filesys/cache.c:310)
-0xc010f10b: cache_read (...../../filesys/cache.c:152)
-0xc010e18f: bytes_to_sectors (.../../../filesys/inode.c:28)
-0xc010d3b7: dir_close (...../filesys/directory.c:61)
-0xc0100ca2: thread_exit (..../../threads/thread.c:341)
-0xc010c218: close_all_filelist (...../userprog/syscall.c:579)
-0xc010b645: page_fault (.../userprog/exception.c:331)
-0xc0101995: intr_handler (..../threads/interrupt.c:361)
-0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
-0xc0106c26: memcpy (...ild/../../lib/string.c:16)
-0xc010f206: cache_read (...../../filesys/cache.c:168)
-0xc010e4a6: inode_read_at (...../../filesys/inode.c:418)
-0xc010d082: file_read (...d/../../filesys/file.c:75)
-0xc010ba5b: syscall_handler (...../userprog/syscall.c:230)
-0xc0101995: intr_handler (..../threads/interrupt.c:361)
-0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
-In tests/vm/pt-bad-read:
-0x0804a0a1: read (...../lib/user/syscall.c:117)
-0x080480ef: test_main (...tests/vm/pt-bad-read.c:15)
-0x080486db: main (...ild/../../tests/main.c:13)
-0x08048708: _start (.../../../lib/user/entry.c:9)
-Translations of user virtual addresses above are based on a guess at
-the binary to use.  If this guess is incorrect, then those
-translations will be misleading.
-
-OUTPUT FROM tests/vm/pt-bad-read:
-
-Copying tests/vm/pt-bad-read into /tmp/2C0XkJadkb.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/2C0XkJadkb.dsk...
-Writing command line to /tmp/r2sOmzjw3H.dsk...
-qemu -hda /tmp/r2sOmzjw3H.dsk -hdb /tmp/9oeCWZEFFL.dsk -hdc /tmp/2C0XkJadkb.dsk -hdd /tmp/SmlcjF9Vtk.dsk -m 4 -net none -nographic -monitor null
-Kernel command line: -q -f put pt-bad-read put sample.txt run pt-bad-read
-Pintos booting with 4,096 kB RAM...
-373 pages available in kernel pool.
-372 pages available in user pool.
-Calibrating timer...  78,540,800 loops/s.
-hd0:0: detected 161 sector (80 kB) disk, model "QEMU HARDDISK", serial "QM00001"
-hd0:1: detected 4,032 sector (1 MB) disk, model "QEMU HARDDISK", serial "QM00002"
-hd1:0: detected 76 sector (38 kB) disk, model "QEMU HARDDISK", serial "QM00003"
-hd1:1: detected 8,064 sector (3 MB) disk, model "QEMU HARDDISK", serial "QM00004"
-Formatting file system...done.
-Boot complete.
-Putting 'pt-bad-read' into the file system...
-Putting 'sample.txt' into the file system...
-Executing 'pt-bad-read':
-(pt-bad-read) begin
-(pt-bad-read) open "sample.txt"
-Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc01077b6 0xc0102b2d 0xc010f526 0xc010f10b 0xc010e18f 0xc010d3b7 0xc0100ca2 0xc010c218 0xc010b645 0xc0101995 0xc0101b6b 0xc0106c26 0xc010f206 0xc010e4a6 0xc010d082 0xc010ba5b 0xc0101995 0xc0101b6b 0x804a0a1 0x80480ef 0x80486db 0x8048708.
+Kernel PANIC at ../../filesys/inode.c:420 in inode_read_at(): assertion `read_cache != NULL' failed.
+Call stack: 0xc01077b6 0xc010e4c1 0xc010d12b 0xc010b2dc 0xc0101995 0xc0101b6b 0x80482e8 0x8048387 0x8048143 0x804899c.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Kernel PANIC recursion at ../../threads/thread.c:316 in thread_current().
-Kernel command line: -q -f put pt-bad-read put sample.txt run pt-bad-read
+Kernel PANIC recursion at ../../devices/timer.c:238 in real_time_sleep().
+Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
 Pintos booting with 4,096 kB RAM...
 [...details of reboot(s) omitted...]
 
@@ -1854,25 +1703,25 @@ Pintos booting with 4,096 kB RAM...
 DETAILS OF tests/vm/pt-write-code2 FAILURE:
 
 Kernel panic in run: PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc01077b6 0xc0102b2d 0xc010f526 0xc010f10b 0xc010e18f 0xc010d3b7 0xc0100ca2 0xc010c218 0xc010b645 0xc0101995 0xc0101b6b 0xc0106c26 0xc010f206 0xc010e4a6 0xc010d082 0xc010ba5b 0xc0101995 0xc0101b6b 0x804a091 0x80480e7 0x80486d3 0x8048700
+Call stack: 0xc01077b6 0xc0102b2d 0xc010f46c 0xc010f045 0xc010e16f 0xc010d427 0xc0100ca2 0xc010c282 0xc010b645 0xc0101995 0xc0101b6b 0xc0106c26 0xc010f140 0xc010e486 0xc010d0fa 0xc010ba60 0xc0101995 0xc0101b6b 0x804a091 0x80480e7 0x80486d3 0x8048700
 Translation of call stack:
 In kernel.o:
 0xc01077b6: debug_panic (.../../lib/kernel/debug.c:34)
 0xc0102b2d: lock_acquire (...../../threads/synch.c:243)
-0xc010f526: cache_lock_acquire (...../../filesys/cache.c:310)
-0xc010f10b: cache_read (...../../filesys/cache.c:152)
-0xc010e18f: bytes_to_sectors (.../../../filesys/inode.c:28)
-0xc010d3b7: dir_close (...../filesys/directory.c:61)
+0xc010f46c: cache_lock_acquire (...../../filesys/cache.c:311)
+0xc010f045: cache_read (...../../filesys/cache.c:153)
+0xc010e16f: bytes_to_sectors (.../../../filesys/inode.c:28)
+0xc010d427: dir_close (...../filesys/directory.c:62)
 0xc0100ca2: thread_exit (..../../threads/thread.c:341)
-0xc010c218: close_all_filelist (...../userprog/syscall.c:579)
+0xc010c282: close_all_filelist (...../userprog/syscall.c:590)
 0xc010b645: page_fault (.../userprog/exception.c:331)
 0xc0101995: intr_handler (..../threads/interrupt.c:361)
 0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
 0xc0106c26: memcpy (...ild/../../lib/string.c:16)
-0xc010f206: cache_read (...../../filesys/cache.c:168)
-0xc010e4a6: inode_read_at (...../../filesys/inode.c:418)
-0xc010d082: file_read (...d/../../filesys/file.c:75)
-0xc010ba5b: syscall_handler (...../userprog/syscall.c:230)
+0xc010f140: cache_read (...../../filesys/cache.c:169)
+0xc010e486: inode_read_at (...../../filesys/inode.c:419)
+0xc010d0fa: file_read (...d/../../filesys/file.c:73)
+0xc010ba60: syscall_handler (...../userprog/syscall.c:234)
 0xc0101995: intr_handler (..../threads/interrupt.c:361)
 0xc0101b6b: intr_entry (threads/intr-stubs.S:38)
 In tests/vm/pt-write-code2:
@@ -1886,10 +1735,10 @@ translations will be misleading.
 
 OUTPUT FROM tests/vm/pt-write-code2:
 
-Copying tests/vm/pt-write-code2 into /tmp/Mbs2ekO276.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/Mbs2ekO276.dsk...
-Writing command line to /tmp/h0na4lV0zc.dsk...
-qemu -hda /tmp/h0na4lV0zc.dsk -hdb /tmp/AHhAutMDgO.dsk -hdc /tmp/Mbs2ekO276.dsk -hdd /tmp/yPHl9G6IFn.dsk -m 4 -net none -nographic -monitor null
+Copying tests/vm/pt-write-code2 into /tmp/IKTmSIpD6C.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/IKTmSIpD6C.dsk...
+Writing command line to /tmp/8BTAotnchl.dsk...
+qemu -hda /tmp/8BTAotnchl.dsk -hdb /tmp/ZpfWwR6IYc.dsk -hdc /tmp/IKTmSIpD6C.dsk -hdd /tmp/6eSfzoQmTa.dsk -m 4 -net none -nographic -monitor null
 Kernel command line: -q -f put pt-write-code2 put sample.txt run pt-write-code2
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
@@ -1907,7 +1756,7 @@ Executing 'pt-write-code2':
 (pt-write-code2) begin
 (pt-write-code2) open "sample.txt"
 Kernel PANIC at ../../threads/synch.c:242 in lock_acquire(): assertion `!lock_held_by_current_thread (lock)' failed.
-Call stack: 0xc01077b6 0xc0102b2d 0xc010f526 0xc010f10b 0xc010e18f 0xc010d3b7 0xc0100ca2 0xc010c218 0xc010b645 0xc0101995 0xc0101b6b 0xc0106c26 0xc010f206 0xc010e4a6 0xc010d082 0xc010ba5b 0xc0101995 0xc0101b6b 0x804a091 0x80480e7 0x80486d3 0x8048700.
+Call stack: 0xc01077b6 0xc0102b2d 0xc010f46c 0xc010f045 0xc010e16f 0xc010d427 0xc0100ca2 0xc010c282 0xc010b645 0xc0101995 0xc0101b6b 0xc0106c26 0xc010f140 0xc010e486 0xc010d0fa 0xc010ba60 0xc0101995 0xc0101b6b 0x804a091 0x80480e7 0x80486d3 0x8048700.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.

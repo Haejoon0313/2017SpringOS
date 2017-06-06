@@ -459,23 +459,24 @@ syscall_handler (struct intr_frame *f UNUSED)
 						bool success;
 
 						int fd = *(p+1);
-						char * name = NULL;
-						name= *(p+2);
+						char * name = *(char **) *(p+2);
 
+
+
+						read_dir->inode =  file_get_inode(get_file_by_fd(&thread_current()->file_list, fd)->file);
+
+						off_t origin_pos = file_tell(get_file_by_fd(&thread_current()->file_list, fd)->file);
+
+						read_dir->pos = origin_pos;
 						acquire_file_lock();
-						read_dir->inode =  file_get_inode( get_file_by_fd(&thread_current()->file_list, fd)->file);
+						success = dir_readdir(read_dir, name);
 
-						//read_dir->inode = file_get_inode(read_file);
-						read_dir->pos = file_tell(get_file_by_fd(&thread_current()->file_list, fd)->file);
-						
-						success = dir_readdir(&read_dir, name);
-//						success = readdir_manager(&read_dir, name);
 						if(!success){
 							release_file_lock();
 							f->eax = success;
 							break;
 						}
-						file_seek(  get_file_by_fd(&thread_current()->file_list, fd)->file   , read_dir->pos);
+						file_seek(  get_file_by_fd(&thread_current()->file_list, fd)->file   , origin_pos);
 						release_file_lock();
 						f->eax = success;
 

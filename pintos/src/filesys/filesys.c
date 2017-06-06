@@ -138,6 +138,9 @@ filesys_open (const char *name)
 	char * temp_name;
 	size_t input_len = strlen(name);
 
+	if (input_len == 0)
+					return NULL;
+
 	temp_name = malloc(input_len + 1);
 	strlcpy(temp_name, name, input_len + 1);
 

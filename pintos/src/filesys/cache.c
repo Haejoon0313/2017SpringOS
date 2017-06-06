@@ -114,18 +114,18 @@ bool evict_cache(void){
 				bool check = false;
 
 				
-				for (elem =list_begin(&cache_list); elem != list_end(&cache_list) ; elem = list_next(elem)){
-								evicted_cache = list_entry(elem, struct cache, el);								
-								if(evicted_cache->open_cnt == 0){
-												cache_block_lock_acquire(evicted_cache);
-												check = true;
-												break;
-								}
-				}
+		//		for (elem =list_begin(&cache_list); elem != list_end(&cache_list) ; elem = list_next(elem)){
+			//					evicted_cache = list_entry(elem, struct cache, el);								
+				//				if(evicted_cache->open_cnt == 0){
+				//								cache_block_lock_acquire(evicted_cache);
+				//								check = true;
+			//									break;
+				//				}
+				//}
 
-				if(!check){
-					return check;
-				}
+				elem = list_begin(&cache_list);
+				evicted_cache = list_entry(elem, struct cache, el);
+
 
 				bool wb_check = write_behind(evicted_cache);
 
@@ -136,6 +136,7 @@ bool evict_cache(void){
 				cache_block_lock_release(evicted_cache);
 				free(evicted_cache);
 
+				check = true;
 				ASSERT(check);
 				return check;
 }
