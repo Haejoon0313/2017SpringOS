@@ -63,7 +63,7 @@ filesys_create (const char *name, off_t initial_size, bool is_dir)
 	temp_name = malloc(input_len + 1);
 	strlcpy(temp_name, name, input_len + 1);
 
-	char * temp_path = strrchr(temp_name, "/");
+	char * temp_path = strrchr(temp_name, '/');
 	char * open_path = NULL;
 	char * target_name = NULL;
 	struct dir * current_dir;
@@ -118,6 +118,7 @@ filesys_create (const char *name, off_t initial_size, bool is_dir)
 	free(target_name);
 	free(temp_name);
 
+
 	return result;
 }
 													
@@ -137,7 +138,7 @@ filesys_open (const char *name)
 	temp_name = malloc(input_len + 1);
 	strlcpy(temp_name, name, input_len + 1);
 
-	char * temp_path = strrchr(temp_name, "/");
+	char * temp_path = strrchr(temp_name, '/');
 	char * open_path = NULL;
 	char * target_name = NULL;
 	struct dir * current_dir;
@@ -175,7 +176,8 @@ filesys_open (const char *name)
 									free(open_path);
 									free(target_name);
 									free(temp_name);
-									return file_open(dir_get_inode(current_dir));
+									struct inode * temp = dir_get_inode(current_dir);
+									return file_open(temp);
 					}
 					dir_lookup(current_dir, target_name, &current_inode);
 					dir_close(current_dir);
