@@ -3,6 +3,7 @@
 #include <debug.h>
 #include <round.h>
 #include <string.h>
+#include "filesys/file.h"
 #include "filesys/filesys.h"
 #include "filesys/free-map.h"
 #include "threads/malloc.h"
@@ -415,7 +416,12 @@ inode_read_at (struct inode *inode, void *buffer_, off_t size, off_t offset)
 			ASSERT(read_cache != NULL);
 			read_cache->open_cnt--;
 			/*need read_ahead later??*/
-			
+		disk_sector_t ahead_sector = byte_to_sector(inode, offset);
+ 			if(ahead_sector != -1){
+ 				cache_read_ahead(ahead_sector);
+ 			}
+
+
 
       /* Advance. */
       size -= chunk_size;
@@ -519,3 +525,36 @@ inode_length (const struct inode *inode)
 	cache_read(inode->sector,(void *)&length, sizeof(disk_sector_t) ,sizeof(off_t));
 	return length;
 }
+
+int
+inode_to_inumber(struct inode * inode)
+{
+	ASSERT(inode != NULL);
+
+	int inumber = (int) inode->sector;
+
+	ASSERT(inumber != NULL);
+	return inumber;
+}
+
+
+
+bool
+inode_dir_check(struct inode * check_inode)
+{
+
+	struct inode_disk * disk_inode = NULL;
+	bool check_result;
+	
+	disk_inode = calloc(1, sizeof * disk_inode);
+	
+	cache_read(check_inode->sector, disk_inode, 0, DISK_SECTOR_SIZE);
+
+	check_result = disk_inode->is_dir;
+
+	free(disk_inode);
+
+	return check_result;
+
+}
+

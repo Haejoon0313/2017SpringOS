@@ -6,8 +6,14 @@
 #include "threads/vaddr.h"
 #include "filesys/filesys.h"
 #include "filesys/file.h"
+#include "filesys/inode.h"
 #include "userprog/process.h"
+#ifdef FILESYS
+#include "filesys/inode.h"
+
+#endif
 #include "vm/page.h"
+
 #define ARG_MAX = 3;
 #define EXIT_ERROR = -1;
 static void syscall_handler (struct intr_frame *);
@@ -438,11 +444,38 @@ syscall_handler (struct intr_frame *f UNUSED)
 						}
 		case SYS_ISDIR:
 						{
+						check_address(p+1);
+						int fd = *(p+1);
+						struct open_file *  temp = get_file_by_fd(&thread_current()->file_list, fd);
+						struct file * check_file = temp->file;
+							
+						if (check_file == NULL)
+						{
+							f->eax = -1;
+							break;
+						}
 
+						f->eax = inode_dir_check(file_get_inode(check_file));
 						break;
 						}
 		case SYS_INUMBER:
 						{
+						check_address(p+1);
+						int fd = *(p+1);
+						struct open_file * temp = get_file_by_fd(&thread_current()->file_list, fd);
+						struct file * number_file = temp->file;
+
+						if(number_file == NULL)
+						{
+							f->eax = -1;
+							break;
+						}
+					
+						int inumber = inode_to_inumber(file_get_inode(number_file));
+						
+						ASSERT(inumber != NULL);
+
+						f->eax = inumber;
 
 						break;
 						}

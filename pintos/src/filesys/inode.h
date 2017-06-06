@@ -50,4 +50,8 @@ void inode_allow_write (struct inode *);
 off_t inode_length (const struct inode *);
 
 bool inode_expand(struct inode * extend_inode, off_t extend_length);
+
+int inode_to_inumber(struct inode * inode);
+
+bool inode_dir_check(struct inode * inode);
 #endif /* filesys/inode.h */
