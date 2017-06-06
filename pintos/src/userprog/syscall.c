@@ -5,12 +5,13 @@
 #include "threads/thread.h"
 #include "threads/vaddr.h"
 #include "filesys/filesys.h"
-#include "filesys/file.h"
+
 #include "filesys/inode.h"
 #include "userprog/process.h"
 #ifdef FILESYS
 #include "filesys/inode.h"
-
+#include "filesys/file.h"
+#include "filesys/directory.h"
 #endif
 #include "vm/page.h"
 
@@ -51,14 +52,14 @@ void check_address(void *addr){
 
 	//addreess mapping the virtual memory check
 	void *mapping_check = pagedir_get_page(thread_current()->pagedir, addr);
-	if (!mapping_check)
+	if (!mapping_check){
 					mapping_check = pagedir_get_page(thread_current()->pagedir, addr);
 
-	//if (mapping_check==NULL){
-	//				exit_process(-1);
-	//}	
+	if (mapping_check==NULL){
+					exit_process(-1);
+	}	
 }
-
+}
 
 
 
@@ -128,6 +129,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 		case SYS_CREATE:
 						{
+						//check_address(p+1);
 						check_address(*(p+1));
 						check_address(p+2);
 
@@ -168,10 +170,12 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 						const char* file_name = *(p+1);
 						struct file *my_file = filesys_open(file_name);
-						
+						//printf("OPEN END!\n");
+						//printf("File name is %s \n",file_name);
 						release_file_lock();
 
 						if(my_file == NULL){
+							//printf("WHY my file is null file?\n");
 							f->eax = -1; // no file return -1
 						}else{
 							struct open_file *open_f = malloc(sizeof(struct open_file)); // malloc for open_file
@@ -459,15 +463,19 @@ syscall_handler (struct intr_frame *f UNUSED)
 						name= *(p+2);
 
 						acquire_file_lock();
-						struct open_file *  read_temp = get_file_by_fd(&thread_current()->file_list, fd);
-						struct file * read_file = read_temp->file;
+						read_dir->inode =  file_get_inode( get_file_by_fd(&thread_current()->file_list, fd)->file);
 
-						if((read_temp == NULL) || (read_file == NULL))
-						{
-							exit_process(-1);
+						//read_dir->inode = file_get_inode(read_file);
+						read_dir->pos = file_tell(get_file_by_fd(&thread_current()->file_list, fd)->file);
+						
+						success = dir_readdir(&read_dir, name);
+//						success = readdir_manager(&read_dir, name);
+						if(!success){
+							release_file_lock();
+							f->eax = success;
 							break;
 						}
-						success = readdir_manager(read_file, name);
+						file_seek(  get_file_by_fd(&thread_current()->file_list, fd)->file   , read_dir->pos);
 						release_file_lock();
 						f->eax = success;
 
@@ -482,6 +490,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 							
 						if (check_file == NULL)
 						{
+							exit_process(-1);
 							f->eax = -1;
 							break;
 						}
@@ -498,6 +507,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 						if(number_file == NULL)
 						{
+							exit_process(-1);
 							f->eax = -1;
 							break;
 						}

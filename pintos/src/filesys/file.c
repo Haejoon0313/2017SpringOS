@@ -4,8 +4,7 @@
 #include "threads/malloc.h"
 
 /* An open file. */
-struct file 
-  {
+struct file {
     struct inode *inode;        /* File's inode. */
     off_t pos;                  /* Current position. */
     bool deny_write;            /* Has file_deny_write() been called? */
@@ -17,8 +16,7 @@ struct file
 struct file *
 file_open (struct inode *inode) 
 {
-//	if(inode==NULL)
-//					printf("[f]inode in file_open is NULL!\n");
+
   struct file *file = calloc (1, sizeof *file);
   if (inode != NULL && file != NULL)
     {
@@ -177,3 +175,7 @@ file_tell (struct file *file)
   ASSERT (file != NULL);
   return file->pos;
 }
+
+
+
+

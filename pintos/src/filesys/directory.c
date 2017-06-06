@@ -6,6 +6,7 @@
 #include "filesys/inode.h"
 #include "threads/malloc.h"
 #include "threads/thread.h"
+#include "filesys/file.h"
 
 /* Creates a directory with space for ENTRY_CNT entries in the
    given SECTOR.  Returns true if successful, false on failure. */
@@ -80,12 +81,13 @@ lookup (const struct dir *dir, const char *name,
 {
   struct dir_entry e;
   size_t ofs;
-
+  
   ASSERT (dir != NULL);
   ASSERT (name != NULL);
 
+
   for (ofs = 0; inode_read_at (dir->inode, &e, sizeof e, ofs) == sizeof e;
-       ofs += sizeof e) 
+       ofs += sizeof e){
     if (e.in_use && !strcmp (name, e.name)) 
       {
         if (ep != NULL)
@@ -93,7 +95,7 @@ lookup (const struct dir *dir, const char *name,
         if (ofsp != NULL)
           *ofsp = ofs;
         return true;
-      }
+      }}
   return false;
 }
 
@@ -110,6 +112,7 @@ dir_lookup (const struct dir *dir, const char *name,
   ASSERT (dir != NULL);
   ASSERT (name != NULL);
 
+
 	if(!strcmp(name, ".")){
 		*inode = inode_reopen(dir->inode);
 	}else if(!strcmp(name, "..")){
@@ -118,6 +121,7 @@ dir_lookup (const struct dir *dir, const char *name,
     *inode = inode_open (e.inode_sector);
 	}else{
     *inode = NULL;
+
 	}
 
   return *inode != NULL;
@@ -255,7 +259,7 @@ struct dir * path_parsing(const char * path){
 				}
 				return temp_dir;
 }
-
+/*
 bool
 readdir_manager(struct file * read_file ,char name[15]){
 	struct inode * readdir_inode = file_get_inode(read_file);
@@ -276,4 +280,4 @@ readdir_manager(struct file * read_file ,char name[15]){
 	}
 	return false;
 }
-
+*/

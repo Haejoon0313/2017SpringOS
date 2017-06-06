@@ -43,5 +43,6 @@ bool dir_readdir (struct dir *, char name[NAME_MAX + 1]);
 
 struct dir * path_parsing(const char * path);
 bool dir_file_split(const char * path, char ** dir, char ** file);
-bool readdir_manager(struct file * read_file, char name[14 +1]);
+//bool readdir_manager(struct file * read_file, char name[14 +1]);
+bool dir_readdir(struct dir *dir, char name [15]);
 #endif /* filesys/directory.h */

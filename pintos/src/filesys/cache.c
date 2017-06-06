@@ -42,7 +42,7 @@ void cache_thread_init(void){
 				/*make thread for frequently write behind*/
 			thread_create("thread_function_wb_frequently",0,(thread_func* ) thread_function_wb_frequently,NULL);
 			
-			thread_create("thread_function_read_ahead",0,(thread_func *) read_ahead_manager,NULL);
+		//	thread_create("thread_function_read_ahead",0,(thread_func *) read_ahead_manager,NULL);
 }
 
 
@@ -294,7 +294,7 @@ void read_ahead_manager(){
 		disk_read(filesys_disk, ra_sec, read_ahead_cache->buffer);
 		
 		cache_lock_release();
-		//read_ahead_cache->open_cnt = 1;
+		read_ahead_cache->open_cnt = 1;
 
 		free(new_rae);
 		return;

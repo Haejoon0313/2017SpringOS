@@ -216,7 +216,8 @@ inode_create (disk_sector_t sector, off_t length, bool is_dir)
 	disk_inode->length = 0;/*file initial size is set to 0*/
 	disk_inode->magic = INODE_MAGIC;
 	disk_inode->is_dir = is_dir;
-	disk_inode->parent = ((struct inode *)dir_get_inode(curr->dir))->sector;
+	struct inode * temp = dir_get_inode(curr->dir);
+	disk_inode->parent = temp->sector;
 	
 	cache_write(sector,disk_inode,0,DISK_SECTOR_SIZE);
 
@@ -414,16 +415,15 @@ inode_read_at (struct inode *inode, void *buffer_, off_t size, off_t offset)
 			}
 			
 			cache_read(sector_idx, buffer + bytes_read, sector_ofs, chunk_size);
+
 			struct cache * read_cache =  find_cache(sector_idx);
 			ASSERT(read_cache != NULL);
 			read_cache->open_cnt--;
-			/*need read_ahead later??*/
-			//disk_sector_t ahead_sector = byte_to_sector(inode, offset);
- 			//if(ahead_sector != -1){
- 			//	cache_read_ahead(ahead_sector);
- 			//}
 
-
+			disk_sector_t ahead_sector = byte_to_sector(inode, offset);
+ 			if(ahead_sector != -1){
+ 				cache_read_ahead(ahead_sector);
+ 			}
 
       /* Advance. */
       size -= chunk_size;
