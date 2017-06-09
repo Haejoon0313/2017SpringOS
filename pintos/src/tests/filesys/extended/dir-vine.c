@@ -67,7 +67,8 @@ test_main (void)
       CHECK (chdir (dir_name), "chdir \"%s\"", dir_name);
     }
   CHECK (i > 200, "created files and directories only to level %d", i);
-  quiet = false;
+  
+	quiet = false;
 
   msg ("removing all but top 10 levels of files and directories...");
   quiet = true;

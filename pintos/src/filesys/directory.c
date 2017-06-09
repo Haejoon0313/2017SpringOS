@@ -88,6 +88,7 @@ lookup (const struct dir *dir, const char *name,
 
   for (ofs = 0; inode_read_at (dir->inode, &e, sizeof e, ofs) == sizeof e;
        ofs += sizeof e){
+
     if (e.in_use && !strcmp (name, e.name)) 
       {
         if (ep != NULL)
@@ -120,7 +121,7 @@ dir_lookup (const struct dir *dir, const char *name,
 	}else if(lookup (dir, name, &e, NULL)){
     *inode = inode_open (e.inode_sector);
 	}else{
-    *inode = NULL;
+					*inode = NULL;
 
 	}
 
@@ -232,6 +233,23 @@ dir_readdir (struct dir *dir, char name[NAME_MAX + 1])
   return false;
 }
 
+bool dir_empty_check(struct dir * dir){
+	struct dir  copy_dir;
+
+	copy_dir.inode = dir->inode;
+	copy_dir.pos = 0;
+
+	char temp[15];
+
+	bool success = !dir_readdir(&copy_dir, temp);
+
+	return success;
+
+
+}
+
+
+
 struct dir * path_parsing(const char * path){
 				char * temp_path;
 				char * token, * rest;
@@ -242,7 +260,7 @@ struct dir * path_parsing(const char * path){
 				temp_path = malloc(strlen(path) + 1); // where to free? (HJ)
 				strlcpy(temp_path, path,strlen(path) + 1);
 
-				if(temp_path[0] == "/"){
+				if(temp_path[0] == '/'){
 								temp_dir = dir_open_root();
 				}else{
 								temp_dir = dir_reopen(curr->dir);

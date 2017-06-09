@@ -57,6 +57,6 @@ do_remove (const char *format, ...)
   va_start (args, format);
   vsnprintf (name, sizeof name, format, args);
   va_end (args);
-
+//	CHECK (true, "REMOVE FILE start!\n");
   CHECK (remove (name), "remove \"%s\"", name);
 }

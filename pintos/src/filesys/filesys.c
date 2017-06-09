@@ -57,6 +57,8 @@ filesys_create (const char *name, off_t initial_size, bool is_dir)
 {
 	ASSERT(name != NULL);
 
+	if(strlen(name) ==0)
+					return false;
 
 	char * temp_name;
 	size_t input_len = strlen(name);
@@ -64,24 +66,52 @@ filesys_create (const char *name, off_t initial_size, bool is_dir)
 	temp_name = malloc(input_len + 1);
 	strlcpy(temp_name, name, input_len + 1);
 
+
+
 	char * temp_path = strrchr(temp_name, '/');
 	char * open_path = NULL;
 	char * target_name = NULL;
 	struct dir * current_dir;
 	struct inode * current_inode;
 	disk_sector_t sector;
+
+
 	bool result = false;
 
+
+
 	if(temp_path == NULL){
+					open_path= malloc(2);
 
 					target_name = (char *) malloc(input_len + 1 );
 
 					strlcpy(target_name, temp_name, input_len + 1);
 
-
 					current_dir = dir_reopen(thread_current()->dir);
 
-	}else{
+	}
+	/*
+	else if(temp_path == temp_name){
+					
+					open_path = (char *) malloc(2);
+
+					//strlcpy(open_path, name, 1);
+					open_path[0] = '/';
+					open_path[1] = 0;
+
+
+					target_name = (char *) malloc(input_len);
+
+					strlcpy(target_name, temp_name + 1, input_len);
+
+					current_dir = path_parsing(open_path);
+	}
+
+*/
+	
+	
+	
+	else{
 
 					size_t path_len = temp_path - temp_name;
 					open_path = (char *) malloc(path_len + 1);
@@ -125,6 +155,7 @@ filesys_create (const char *name, off_t initial_size, bool is_dir)
 	return result;
 }
 													
+
 
 /* Opens the file with the given NAME.
    Returns the new file if successful or a null pointer
@@ -211,6 +242,9 @@ filesys_remove (const char *name)
 	size_t input_len = strlen(name);
 	struct thread * curr = thread_current();
 
+	if(input_len == 0)
+					return NULL;
+
 	temp_name = malloc(input_len + 1);
 	strlcpy(temp_name, name, input_len + 1);
 
@@ -265,6 +299,9 @@ filesys_remove (const char *name)
 	return result;
 
 }
+
+
+
 
 /* Formats the file system. */
 static void

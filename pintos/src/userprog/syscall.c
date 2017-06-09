@@ -5,7 +5,7 @@
 #include "threads/thread.h"
 #include "threads/vaddr.h"
 #include "filesys/filesys.h"
-
+#include <string.h>
 #include "filesys/inode.h"
 #include "userprog/process.h"
 #ifdef FILESYS
@@ -150,10 +150,11 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 		case SYS_REMOVE:
 						check_address(p+1); // check address valid
-				
+					
+						char * filename = (char *) *(p+1);
 						acquire_file_lock();
 
-						if(filesys_remove(*(p+1)) == NULL){
+					if(filesys_remove(filename) == NULL){
 							f->eax = false; // no file return false
 						}else{
 							f->eax = true; // success return true
@@ -170,12 +171,9 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 						const char* file_name = *(p+1);
 						struct file *my_file = filesys_open(file_name);
-						//printf("OPEN END!\n");
-						//printf("File name is %s \n",file_name);
-						release_file_lock();
+											release_file_lock();
 
 						if(my_file == NULL){
-							//printf("WHY my file is null file?\n");
 							f->eax = -1; // no file return -1
 						}else{
 							struct open_file *open_f = malloc(sizeof(struct open_file)); // malloc for open_file
@@ -452,34 +450,62 @@ syscall_handler (struct intr_frame *f UNUSED)
 						}
 		case SYS_READDIR:
 						{
-						check_address(p+1);
-						//check_address(*(p+2));
-						check_address(p+2);
-						struct dir *read_dir;
+						//printf("read dir start!\n");
+										struct dir read_dir;
 						bool success;
 
 						int fd = *(p+1);
-						char * name = *(char **) *(p+2);
+						char name[16];
+						bool dir_check;
+						char * name1 = (char * ) *(p+2);
 
+		//				char * name1 = *(char **) *(p+2);
+		//				char * name = (char*)malloc(12*sizeof(char));// name[15] = malloc(16);
+						
+						memcpy(name, name1, strlen(name1));
+						
+						//strlcpy(name, name1, strlen(name1));
 
+						struct open_file *  temp1 = get_file_by_fd(&thread_current()->file_list, fd);
+						struct file * rfile = temp1->file;
 
-						read_dir->inode =  file_get_inode(get_file_by_fd(&thread_current()->file_list, fd)->file);
+						//printf("SUCCESS until file find!\n");
+						if(temp1 == NULL){
+							//printf("NO such file!\n");
+							f->eax = false;
+							break;
+						}
 
-						off_t origin_pos = file_tell(get_file_by_fd(&thread_current()->file_list, fd)->file);
+						ASSERT(temp1->file != NULL);
+						//printf("inode found start!\n");
+						read_dir.inode = file_get_inode(rfile);
 
-						read_dir->pos = origin_pos;
+						//printf("INODE get failed!\n");
+						off_t origin_pos = file_tell(temp1->file);
+
+						dir_check = inode_dir_check(file_get_inode(rfile));
+						
+						if(!dir_check){
+							//PANIC("NOT a DIR!\n");
+							f->eax = false;
+							break;
+						}		
+
+						read_dir.pos = origin_pos;
 						acquire_file_lock();
-						success = dir_readdir(read_dir, name);
+						success = dir_readdir(&read_dir, name);
 
 						if(!success){
+							//printf("READ dir is failed!\n");
 							release_file_lock();
 							f->eax = success;
 							break;
 						}
-						file_seek(  get_file_by_fd(&thread_current()->file_list, fd)->file   , origin_pos);
+						file_seek(temp1->file, read_dir.pos);
 						release_file_lock();
 						f->eax = success;
-
+						//free(name);
+						//printf("readdir successfulliy end!\n");
 						break;
 						}
 		case SYS_ISDIR:
@@ -489,32 +515,23 @@ syscall_handler (struct intr_frame *f UNUSED)
 						struct open_file *  temp = get_file_by_fd(&thread_current()->file_list, fd);
 						struct file * check_file = temp->file;
 							
-						if (check_file == NULL)
-						{
-							exit_process(-1);
-							f->eax = -1;
-							break;
-						}
-
 						f->eax = inode_dir_check(file_get_inode(check_file));
 						break;
 						}
 		case SYS_INUMBER:
 						{
+//						printf("!!!!!!!!!!!!!!!!!!!!!!!!!");
 						check_address(p+1);
 						int fd = *(p+1);
 						struct open_file * temp = get_file_by_fd(&thread_current()->file_list, fd);
-						struct file * number_file = temp->file;
 
-						if(number_file == NULL)
-						{
-							exit_process(-1);
-							f->eax = -1;
-							break;
-						}
-					
-						int inumber = inode_to_inumber(file_get_inode(number_file));
 						
+						if(temp==NULL)
+										PANIC("inimber file is empty!\n");
+						
+						int inumber = file_get_inode(temp->file)->sector;//inode_to_inumber(file_get_inode(temp->file));
+						
+	//					printf("fd : %d inumber : %d \n",fd,inumber);
 						ASSERT(inumber != NULL);
 
 						f->eax = inumber;

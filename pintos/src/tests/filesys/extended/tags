@@ -1,0 +1,67 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BUF_SIZE	syn-rw.h	6;"	d
+CHILD_CNT	syn-rw.c	12;"	d	file:
+CHUNK_CNT	syn-rw.h	5;"	d
+CHUNK_SIZE	syn-rw.h	4;"	d
+DIRECTORY	grow-dir-lg.c	5;"	d	file:
+FILE_CNT	grow-dir-lg.c	4;"	d	file:
+FILE_CNT	grow-root-lg.c	3;"	d	file:
+FILE_CNT	grow-root-sm.c	3;"	d	file:
+FILE_SIZE	grow-two-files.c	9;"	d	file:
+TESTS_FILESYS_EXTENDED_MK_TREE_H	mk-tree.h	2;"	d
+TESTS_FILESYS_EXTENDED_SYN_RW_H	syn-rw.h	2;"	d
+TEST_SIZE	grow-create.c	3;"	d	file:
+TEST_SIZE	grow-seq-lg.c	4;"	d	file:
+TEST_SIZE	grow-seq-sm.c	4;"	d	file:
+archive_directory	tar.c	/^archive_directory (char file_name[], size_t file_name_size, int file_fd,$/;"	f	file:
+archive_file	tar.c	/^archive_file (char file_name[], size_t file_name_size,$/;"	f	file:
+archive_ordinary_file	tar.c	/^archive_ordinary_file (const char *file_name, int file_fd,$/;"	f	file:
+buf	grow-file-size.c	/^static char buf[2134];$/;"	v	file:
+buf	grow-sparse.c	/^static char buf[76543];$/;"	v	file:
+buf	grow-tell.c	/^static char buf[2134];$/;"	v	file:
+buf	syn-rw.c	/^char buf[BUF_SIZE];$/;"	v
+buf1	child-syn-rw.c	/^static char buf1[BUF_SIZE];$/;"	v	file:
+buf2	child-syn-rw.c	/^static char buf2[BUF_SIZE];$/;"	v	file:
+buf_a	grow-two-files.c	/^static char buf_a[FILE_SIZE];$/;"	v	file:
+buf_b	grow-two-files.c	/^static char buf_b[FILE_SIZE];$/;"	v	file:
+check_file_size	grow-file-size.c	/^check_file_size (int fd, long ofs) $/;"	f	file:
+check_tell	grow-tell.c	/^check_tell (int fd, long ofs) $/;"	f	file:
+do_mkdir	mk-tree.c	/^do_mkdir (const char *format, ...) $/;"	f	file:
+do_remove	dir-rm-tree.c	/^do_remove (const char *format, ...) $/;"	f	file:
+do_touch	mk-tree.c	/^do_touch (const char *format, ...)$/;"	f	file:
+do_write	tar.c	/^do_write (int fd, const char *buffer, int size, bool *write_error) $/;"	f	file:
+file_name	syn-rw.h	/^static const char file_name[] = "logfile";$/;"	v
+main	child-syn-rw.c	/^main (int argc, const char *argv[]) $/;"	f
+main	tar.c	/^main (int argc, char *argv[]) $/;"	f
+make_tar_archive	tar.c	/^make_tar_archive (const char *archive_name, char *files[], size_t file_cnt) $/;"	f	file:
+make_tree	mk-tree.c	/^make_tree (int at, int bt, int ct, int dt) $/;"	f
+remove_tree	dir-rm-tree.c	/^remove_tree (int at, int bt, int ct, int dt) $/;"	f	file:
+return_block_size	grow-file-size.c	/^return_block_size (void) $/;"	f	file:
+return_block_size	grow-tell.c	/^return_block_size (void) $/;"	f	file:
+test_main	dir-empty-name.c	/^test_main (void) $/;"	f
+test_main	dir-mk-tree.c	/^test_main (void) $/;"	f
+test_main	dir-mkdir.c	/^test_main (void) $/;"	f
+test_main	dir-open.c	/^test_main (void) $/;"	f
+test_main	dir-over-file.c	/^test_main (void) $/;"	f
+test_main	dir-rm-cwd.c	/^test_main (void) $/;"	f
+test_main	dir-rm-parent.c	/^test_main (void) $/;"	f
+test_main	dir-rm-root.c	/^test_main (void) $/;"	f
+test_main	dir-rm-tree.c	/^test_main (void) $/;"	f
+test_main	dir-rmdir.c	/^test_main (void) $/;"	f
+test_main	dir-under-file.c	/^test_main (void) $/;"	f
+test_main	dir-vine.c	/^test_main (void) $/;"	f
+test_main	grow-file-size.c	/^test_main (void) $/;"	f
+test_main	grow-sparse.c	/^test_main (void) $/;"	f
+test_main	grow-tell.c	/^test_main (void) $/;"	f
+test_main	grow-two-files.c	/^test_main (void) $/;"	f
+test_main	syn-rw.c	/^test_main (void) $/;"	f
+test_name	child-syn-rw.c	/^const char *test_name = "child-syn-rw";$/;"	v
+usage	tar.c	/^usage (void) $/;"	f	file:
+wrap_open	dir-rm-cwd.c	/^wrap_open (const char *name) $/;"	f	file:
+write_header	tar.c	/^write_header (const char *file_name,$/;"	f	file:
+write_some_bytes	grow-two-files.c	/^write_some_bytes (const char *file_name, int fd, const char *buf, size_t *ofs) $/;"	f	file:

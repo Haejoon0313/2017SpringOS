@@ -45,4 +45,6 @@ struct dir * path_parsing(const char * path);
 bool dir_file_split(const char * path, char ** dir, char ** file);
 //bool readdir_manager(struct file * read_file, char name[14 +1]);
 bool readdir_manager(struct dir *dir, char name [15]);
+
+bool dir_empty_check(struct dir * dir);
 #endif /* filesys/directory.h */

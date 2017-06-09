@@ -30,9 +30,13 @@ test_main (void)
   CHECK (mkdir ("a"), "mkdir \"a\"");
 
   a_fd0 = wrap_open ("/a");
-  CHECK (!readdir (a_fd0, name), "verify \"/a\" is empty");
-  CHECK (inumber (root_fd) != inumber (a_fd0),
-         "\"/\" and \"/a\" must have different inumbers");
+
+	//CHECK( true, "START!");
+	CHECK (!readdir (a_fd0, name), "verify \"/a\" is empty");
+	//CHECK( true, "END!");
+
+	CHECK (inumber (root_fd) != inumber (a_fd0),
+        "\"/\" and \"/a\" must have different inumbers");
 
   CHECK (chdir ("a"), "chdir \"a\"");
 

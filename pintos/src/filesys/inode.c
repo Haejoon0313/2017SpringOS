@@ -531,11 +531,11 @@ inode_length (const struct inode *inode)
 int
 inode_to_inumber(struct inode * inode)
 {
-	ASSERT(inode != NULL);
+	//ASSERT(inode != NULL);
 
 	int inumber = (int) inode->sector;
 
-	ASSERT(inumber != NULL);
+	//ASSERT(inumber != NULL);
 	return inumber;
 }
 
