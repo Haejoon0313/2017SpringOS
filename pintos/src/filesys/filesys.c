@@ -248,7 +248,7 @@ filesys_remove (const char *name)
 	temp_name = malloc(input_len + 1);
 	strlcpy(temp_name, name, input_len + 1);
 
-	char * temp_path = strrchr(temp_name, "/");
+	char * temp_path = strrchr(temp_name, '/');
 	char * open_path = NULL;
 	char * target_name = NULL;
 	struct dir * current_dir;
