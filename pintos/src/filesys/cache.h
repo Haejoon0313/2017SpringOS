@@ -27,7 +27,7 @@ struct ahead_entry{
 };
 
 
-
+void cache_empty(void);
 
 
 void cache_init(void);

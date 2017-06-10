@@ -369,8 +369,10 @@ inode_close (struct inode *inode)
 						disk_inode->length = 0;
 					}
 					
-					cache_write(inode->sector, (void *)disk_inode, 0, DISK_SECTOR_SIZE);
-					free_map_release(inode->sector,1);
+					//cache_write(inode->sector, (void *)disk_inode, 0, DISK_SECTOR_SIZE);
+					free_map_release(inode->sector,1);					
+					struct cache * removed = find_cache(inode->sector);
+					free(removed);		
 
         }
 	lock_release(&inode->lock);	
@@ -420,7 +422,7 @@ inode_read_at (struct inode *inode, void *buffer_, off_t size, off_t offset)
 			ASSERT(read_cache != NULL);
 			read_cache->open_cnt--;
 
-			disk_sector_t ahead_sector = byte_to_sector(inode, offset);
+			disk_sector_t ahead_sector = byte_to_sector(inode, offset+512);
  			if(ahead_sector != -1){
  				cache_read_ahead(ahead_sector);
  			}
@@ -456,11 +458,12 @@ inode_write_at (struct inode *inode, const void *buffer_, off_t size,
 
 	/*File extension case*/
 	if(exist_length < offset + size){
+					lock_acquire(&inode->lock);
 					inode_expand(inode, offset + size - exist_length);
+					lock_release(&inode->lock);
 	}
 
-	//printf("@@@@@@@@@@@%d %d \n",exist_length, offset);
-  while (size > 0) 
+	  while (size > 0) 
     {
       /* Sector to write, starting byte offset within sector. */
       disk_sector_t sector_idx = byte_to_sector (inode, offset);
@@ -521,9 +524,6 @@ inode_length (const struct inode *inode)
 {
 	off_t length;
 
-//	struct inode_disk * disk_inode;
-//	cache_read(inode->sector, disk_inode,0, DISK_SECTOR_SIZE);
-//	length = (off_t*)& disk_inode->length;
 	cache_read(inode->sector,(void *)&length, sizeof(disk_sector_t) ,sizeof(off_t));
 	return length;
 }
@@ -531,11 +531,9 @@ inode_length (const struct inode *inode)
 int
 inode_to_inumber(struct inode * inode)
 {
-	//ASSERT(inode != NULL);
 
 	int inumber = (int) inode->sector;
 
-	//ASSERT(inumber != NULL);
 	return inumber;
 }
 

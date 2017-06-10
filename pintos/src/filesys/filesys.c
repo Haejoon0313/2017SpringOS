@@ -29,7 +29,7 @@ filesys_init (bool format)
   inode_init ();
   free_map_init ();
 	cache_init();
-	//list_init(&cache_list);
+
 
 	thread_current()->dir = dir_open_root();
   if (format) 
@@ -43,9 +43,9 @@ filesys_init (bool format)
 void
 filesys_done (void) 
 {	
-	free_map_close ();
 	destroy_cache_list();
-
+				free_map_close ();
+ 
 }
 
 /* Creates a file named NAME with the given INITIAL_SIZE.
@@ -90,7 +90,7 @@ filesys_create (const char *name, off_t initial_size, bool is_dir)
 					current_dir = dir_reopen(thread_current()->dir);
 
 	}
-	/*
+/*	
 	else if(temp_path == temp_name){
 					
 					open_path = (char *) malloc(2);
@@ -189,7 +189,30 @@ filesys_open (const char *name)
 
 					current_dir = dir_reopen(thread_current()->dir);
 	
-	}else{
+	}
+	/*
+	else if(temp_path == temp_name){
+					
+					open_path = (char *) malloc(2);
+
+					//strlcpy(open_path, name, 1);
+					open_path[0] = '/';
+					open_path[1] = 0;
+
+
+					target_name = (char *) malloc(input_len);
+
+					strlcpy(target_name, temp_name + 1, input_len);
+
+					current_dir = path_parsing(open_path);
+	}
+
+*/
+	
+	
+	
+	
+	else{
 					size_t path_len = temp_path - temp_name;
 					open_path = (char *) malloc(path_len + 1);
 
@@ -263,7 +286,25 @@ filesys_remove (const char *name)
 
 					current_dir = dir_reopen(curr->dir);
 
-	}else{
+	}
+	/*
+	else if(temp_path == temp_name){
+					
+					open_path = (char *) malloc(2);
+
+					//strlcpy(open_path, name, 1);
+					open_path[0] = '/';
+					open_path[1] = 0;
+
+
+					target_name = (char *) malloc(input_len);
+
+					strlcpy(target_name, temp_name + 1, input_len);
+
+					current_dir = path_parsing(open_path);
+	}	
+	*/
+	else{
 					size_t path_len = temp_path - temp_name;
 					open_path = (char *) malloc(path_len + 1);
 
@@ -276,7 +317,8 @@ filesys_remove (const char *name)
 
 					current_dir = path_parsing(open_path);
 	}
-
+	
+	
 	if(current_dir == NULL){
 					result = false;
 	}else{
@@ -292,6 +334,7 @@ filesys_remove (const char *name)
 					inode_close(current_inode);
 	}
 
+				
 	free(open_path);
 	free(target_name);
 	free(temp_name);
